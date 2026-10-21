@@ -17,11 +17,11 @@ The latest explicit instruction from Adam takes precedence over older project pr
 
 ## Phase and permission
 
-We are preparing project rules before detailed game design. No game implementation has started or been authorized. This task permits organizing rules and writing project context only.
+Adam approved `docs/specs/v1/gameplay.md` on 2026-10-21, including its rules and starting values. He explicitly requested recording approval only and no further progress for now. Project setup rules remain in effect. No game implementation has started or been authorized. Do not prepare implementation plans or continue design work until Adam requests further work.
 
 The process is: specification → Adam approves → implementation plan → Adam explicitly requests coding that feature. Approval of a specification or plan alone is not coding permission. Once a task is authorized, complete its routine reversible steps without repeated confirmation.
 
-Current scope: organize project files, skills, hooks, and instructions only. Do not open or operate Studio, start Rojo syncing, install tools, configure connections, change a game, spend money, or publish during this setup task.
+Current scope: record the gameplay approval and stop. Further planning, design, and implementation require a new request from Adam. Do not open or operate Studio, start Rojo syncing, install tools, configure connections, change a game, spend money, or publish during this design task.
 
 ## Project context
 
@@ -32,7 +32,7 @@ Current scope: organize project files, skills, hooks, and instructions only. Do 
 - Leading concept: leave a safe base, collect objects in a warehouse, and return to bank the haul before a closure or hazard. Valuable objects lie farther away. A larger carried stack slows the player, creating the choice to return or collect one more object.
 - Proposed failure rule: risk the current unbanked haul, not earlier banked progress. Exact loss, timing, controls, and hazards still need design decisions.
 - Proposed progression: carrying capacity, access to deeper areas, and visible cosmetic collections. Friends share the space; solo play must still be considered.
-- These are proposals, not an approved specification. Do not silently turn them into requirements.
+- The approved gameplay behavior is recorded in `docs/specs/v1/gameplay.md`. That document takes precedence over these background summaries. Progression, monetization, and other topics outside its scope remain proposals, not approved requirements.
 
 ## Scope and cost
 
@@ -56,7 +56,7 @@ Open Cloud, Roblox's service API, may later support publishing automation. Do no
 
 ## Docs layout
 
-Use this layout when design work is authorized. Do not create placeholder specifications or plans now.
+Use this layout for the authorized design work. Create substantive feature drafts and indexes as needed; do not create placeholder specifications or plans. No implementation plan is authorized before its specification is approved.
 
 - `docs/specs/index.md` — map of all specifications and named later work.
 - `docs/specs/v1/index.md` — map of the first version's features.
