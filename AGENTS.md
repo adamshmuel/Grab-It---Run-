@@ -71,7 +71,9 @@ Pass only the index and relevant feature documents to a reviewer or delegated ta
 
 ## Project skills and hooks
 
-- `.agents/skills/<skill-name>/SKILL.md` holds the nine project skills and their bundled references. Read only the skills relevant to the task. Skills do not grant coding, installation, Studio, or publishing permission.
+- `.agents/skills/<skill-name>/SKILL.md` holds the fourteen project skills and their bundled references. Read only the skills relevant to the task. Skills do not grant coding, installation, Studio, or publishing permission.
+- For substantive Hebrew writing and editing, read `hebrew-content-writer`; for RTL or mixed Hebrew-English display issues, read `hebrew-rtl-best-practices`. Preserve English technical terms and verify the actual rendered direction.
+- `hebrew-document-generator` supports Hebrew DOCX, PDF, and PPTX work alongside the corresponding document skill. `hebrew-nlp-toolkit` and `israeli-accessibility-compliance` apply only when NLP or accessibility work is in scope; neither is required for ordinary project prose.
 - `.codex/hooks/luau-check.sh` is the original imported hook. It expects Claude-style input and `CLAUDE_PROJECT_DIR`; it is retained for future adaptation, not connected to Codex or Git.
 - `.codex/hooks/README.md` records the hook's status. No automatic hooks are enabled. Do not execute it during the current setup task.
 - Root `/references/` remains ignored by Git; references bundled inside skills must remain trackable.
