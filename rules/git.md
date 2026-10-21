@@ -18,7 +18,7 @@ How work gets into git. The main chat makes the commits. Adam pushes.
 ## Commits
 
 - **Who:** only the main chat. Agents never run `git commit`, `git push`, `git merge` or any command that changes history.
-- **When:** once per task, after `code_lead` approves it: the task's tests, code, world scripts and docs together. Never in the middle of a step, and never with a failing test except reds the plan names as accepted.
+- **When:** once per completed task: the task's tests, code, world scripts and docs together. Never in the middle of a step, and never with a failing test except reds the plan names as accepted.
 - **Size:** one logical change per commit.
   - "Unrelated" means a different purpose, a different area of the project, or changes that don't depend on each other. Example: a rule update and a docs typo fix are unrelated, even if touched in the same session.
   - Changes that only make sense together stay in one commit: a rule change and the code it configures, or a rename applied across files.

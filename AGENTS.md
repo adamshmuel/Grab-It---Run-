@@ -2,17 +2,18 @@
 
 ## Read these rules first
 
-Before any project task, read all five files below. They apply to this whole project, not only to the `rules/` folder:
+Before any project task, read all six files below. They apply to this whole project, not only to the `rules/` folder:
 
 1. `rules/communication.md` — short, beginner-friendly communication in Hebrew for now.
 2. `rules/readable-docs.md` — readable documents and clear names.
 3. `rules/sdd.md` — approved specifications before plans; explicit permission before coding.
 4. `rules/tdd.md` — failing test, smallest passing change, then cleanup.
-5. `rules/git.md` — branches, review, commits, and no pushes.
+5. `rules/git.md` — branches, commits, and no pushes.
+6. `rules/code-review.md` — code review for code changes before completing a coding task.
 
 Keep the source rules in `rules/`. This root file makes reading them mandatory; the folder alone is not an automatic instruction source. Keep all configuration local to this project. `AGENTS.md` is the only root instruction file; do not create a duplicate `AGENT.md`.
 
-The latest explicit instruction from Adam takes precedence over older project preferences. Communicate with Adam in Hebrew, at least for the current phase. Use short answers and explain unfamiliar terms. Keep technical identifiers and names in English.
+The latest explicit instruction from Adam takes precedence over older project preferences. Communicate with Adam in Hebrew, at least for the current phase. Use short answers. Keep technical terms, identifiers, and product names in English; explain unfamiliar terms in simple Hebrew without replacing the English term with a translation.
 
 ## Phase and permission
 
@@ -66,7 +67,7 @@ Use this layout when design work is authorized. Do not create placeholder specif
 
 A feature is either in or out of its specification. Approved specifications contain no unanswered questions. Record later work by name in `docs/specs/index.md`.
 
-Pass only the index and relevant feature documents to a reviewer or delegated task. Delegation must follow the active session's permissions. The `code_lead` approval mentioned in `rules/git.md` is a required review before committing. Adam authorized a separate `code_lead` reviewer for this setup commit; this is not a standing assignment for future tasks. Do not invent approval or commit before that requirement is met. Adam alone pushes.
+Pass only the index and relevant feature documents to a reviewer or delegated task. Delegation must follow the active session's permissions. Adam alone pushes.
 
 ## Project skills and hooks
 

@@ -6,7 +6,7 @@ Every document an agent writes for this project is written so Adam can read it. 
 
 - Communication and explanations to Adam are in Hebrew for now, as set in `communication.md`.
 - Short sentences and simple words. One idea per sentence.
-- Explain every game or technical term the first time it appears in a document, in a few words (for example: "retention (players coming back)").
+- Keep technical terms in English, as required by `communication.md`. Explain unfamiliar game or technical terms briefly in Hebrew when first used; preserve the English term instead of translating or transliterating it.
 - Prefer a small table or a short list to a long paragraph.
 - Say what the player sees and does, not how the code works.
 

@@ -6,7 +6,8 @@ He is not a fast coder, and he cannot read long answers.
 - **Short.** A few sentences. Expand only when asked.
 - **Beginner level.** Explain a term the first time it appears. No jargon that
   the course has not covered.
-- **Hebrew communication, for now.** All conversation and explanations with Adam in this project are in Hebrew until he requests otherwise. Keep code identifiers and product names in English.
+- **Hebrew communication, for now.** All conversation and explanations with Adam in this project are in Hebrew until he requests otherwise.
+- **מונחים טכניים נשארים באנגלית.** אין לתרגם או לתעתק מונחים כמו code review, commit, branch, test ו־subagent לעברית. גם שמות מוצרים ומזהים בקוד נשארים באנגלית. אם מונח חדש דורש הסבר, מסבירים במשפט קצר בעברית מה הוא עושה, בלי להחליף את שמו באנגלית.
 - **עברית ואנגלית באותו טקסט.** יש לשמור על סדר קריאה ברור גם כשכיווני הכתיבה שונים. הכלל חל על הודעות, מסמכים ובקשות הרשאה.
   - העדף משפט קצר בעברית. הוסף שם באנגלית רק כאשר הוא נחוץ להבנה.
   - הפרד שם באנגלית מהטקסט העברי ברווח. אל תחבר אליו אות יחס או מקף עברי; למשל, כתוב "בתוכנת Studio".
