@@ -47,6 +47,8 @@ Monetization ideas: bag/cart appearances, deposit effects, base decorations, per
 
 ## Tooling and evidence
 
+The capability map in `docs/research/project-readiness.md` records Adam's six requested knowledge areas and four agreed additions, with sources, demonstrated capabilities, and remaining gaps. Update the relevant entry when new evidence is collected; the document is not an implementation plan or proof of overall game readiness.
+
 Environment verification on 2026-10-22 found Roblox Studio 0.744.0.7441077 and confirmed the native Studio MCP connection in this chat. On a new unpublished Baseplate named Place1, hierarchy inspection, temporary block creation, screenshot capture, play start/stop, Server and Client execution, replication, and console reads succeeded. The temporary block was removed and Studio returned to Edit. Details and remaining gaps are in `docs/environment-check.md`. No game implementation was started.
 
 Chosen approach for future authorized development: local Luau files, Rojo for syncing them into Studio, and Git for history. Rojo 7.7.1 live sync was verified from local files into the disposable Studio place. The reusable test project is `tools/environment-check/check.project.json`; no gameplay project has been implemented. Local files are the source of truth for Rojo-managed code: do not edit that code directly in Studio, through MCP, or through Script Sync. MCP is the connection that lets development tools operate Studio. Luau is Roblox's scripting language. The current Studio MCP environment check was authorized by Adam; future operations must remain within the task he authorizes. Rojo does not imply that every map object or asset is already represented in Git.

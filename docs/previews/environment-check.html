@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ראיות בדיקת סביבת הפיתוח</title>
+<style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+h2{scroll-margin-block-start:1rem}h3{font-size:1.1rem}table{font-size:.83em}td,th{vertical-align:top}td:first-child{min-inline-size:9rem}main{max-inline-size:1100px}code{overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;border-block-end:1px solid #888;padding-block-end:1rem}details{border-block-start:1px solid #666;padding-block:1rem}summary{font-weight:bold;cursor:pointer}details h2{margin-block:0 1rem}
+</style></head>
+<body><main><nav aria-label="מסמכי הפרויקט"><a href="project-goals.html">מטרות הפרויקט</a><a href="gameplay.html">המשחק המאושר</a><a href="competitor-research.html">מחקר המשחק הדומה</a></nav>
+<h1>בדיקת סביבת הפיתוח</h1>
+<p><strong>תאריך: 22/10/2026.</strong> הבדיקה בוצעה לפי בקשת אדם, לפני הכנת <bdi dir="ltr" lang="en">plan</bdi>. לא התחיל מימוש המשחק.</p>
+<h2>מה עובד</h2>
+<table>
+<thead>
+<tr>
+<th>כלי או פעולה</th>
+<th>מה נבדק בפועל</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><bdi dir="ltr" lang="en">Git 2.54.0</bdi></td>
+<td>הפקודה פועלת.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Rojo 7.7.1</bdi></td>
+<td>יצירת קובץ מקום וסנכרון חי נבדקו. שינוי קובץ מקומי מערך 1 לערך 2 נקרא מתוך <bdi dir="ltr" lang="en">Studio</bdi>.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">StyLua 2.5.2</bdi></td>
+<td>הפקודה הרגילה בפרויקט פועלת. בדיקת עיצוב לקובצי בדיקת הסביבה עברה.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Selene 0.32.0</bdi></td>
+<td>הפקודה הרגילה בפרויקט פועלת. קובצי בדיקת הסביבה עברו ללא שגיאות או אזהרות, עם הגדרות <bdi dir="ltr" lang="en">Roblox</bdi> מקומיות.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Wally 0.4.0-alpha.0</bdi></td>
+<td>פקודת הגרסה פועלת בהפעלה ישירה. התקנת חבילות לא נבדקה.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Studio 0.744.0.7441077</bdi></td>
+<td>נפתח מקום בדיקה חדש בשם <bdi dir="ltr" lang="en">Place1</bdi>, ללא פרסום.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Studio MCP</bdi></td>
+<td>החיבור זמין בשיחה ומזהה את מקום הבדיקה. קריאת מבנה, יצירת בלוק זמני וצילום עברו.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Playtest</bdi></td>
+<td>התחלה ועצירה עברו. פקודות בצד <bdi dir="ltr" lang="en">Server</bdi> ובצד <bdi dir="ltr" lang="en">Client</bdi> עברו. הבלוק שוכפל לצד השחקן.</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Output</bdi></td>
+<td>נקראו הודעות האימות משני הצדדים.</td>
+</tr>
+</tbody>
+</table>
+<p>הבלוק הזמני ושני מודולי בדיקת הסנכרון הוסרו. שרת <bdi dir="ltr" lang="en">Rojo</bdi> הזמני הופסק. מקום הבדיקה חזר למצב <bdi dir="ltr" lang="en">Edit</bdi> ולשם <bdi dir="ltr" lang="en">Place1</bdi>. לא נשמר או פורסם מקום, ולא בוצעה גישה לנתוני שחקנים שמורים.</p>
+<h2>הגדרות הפרויקט והרצת <bdi dir="ltr" lang="en">tests</bdi></h2>
+<ul>
+<li>נוספו קובצי <bdi dir="ltr" lang="en">rokit.toml</bdi>, <bdi dir="ltr" lang="en">stylua.toml</bdi> ו־<bdi dir="ltr" lang="en">selene.toml</bdi>. הם משתמשים בעותקי הכלים שכבר מותקנים; לא הותקנו כלים חדשים.</li>
+<li>הקובץ <bdi dir="ltr" lang="en">roblox.yml</bdi> הוא עותק מקומי של הגדרות ה־<bdi dir="ltr" lang="en">lint</bdi> שכבר היו במחשב. הבדיקה אינה תלויה בהורדה אוטומטית שלהן. לא אומתה התאמה מלאה של כל הגדרה לכל <bdi dir="ltr" lang="en">API</bdi> בגרסת <bdi dir="ltr" lang="en">Studio</bdi> הנוכחית.</li>
+<li>נשמר פרויקט <bdi dir="ltr" lang="en">Rojo</bdi> מבודד תחת <bdi dir="ltr" lang="en">tools/environment-check</bdi>, כולל שני מודולי בדיקה. גם יצירת קובץ מקום ממנו עברה.</li>
+<li>הורץ <bdi dir="ltr" lang="en">test</bdi> עם <bdi dir="ltr" lang="en">assert</bdi> המובנה בשפה: הוא נכשל כשהקובץ המקומי הכיל ערך 1, ולאחר שינוי לערך 2 עבר בלי לשנות את ה־<bdi dir="ltr" lang="en">test</bdi>. ההצלחה אומתה גם בצד <bdi dir="ltr" lang="en">Server</bdi> וגם בצד <bdi dir="ltr" lang="en">Client</bdi>, ונקראה מתוך <bdi dir="ltr" lang="en">Output</bdi>.</li>
+<li>ה־<bdi dir="ltr" lang="en">test</bdi> מאמת את שרשרת הקובץ המקומי, סנכרון <bdi dir="ltr" lang="en">Rojo</bdi> והרצת מודול ב־<bdi dir="ltr" lang="en">Studio</bdi>. אין צורך בחבילת <bdi dir="ltr" lang="en">tests</bdi> חיצונית לבדיקה הזאת. הוא אינו מכסה התנהגות משחק.</li>
+<li>בוצע <bdi dir="ltr" lang="en">code review</bdi> בשיחה הראשית לשני מודולי הבדיקה ולהיקף הסנכרון; לא נמצאה בעיה חוסמת. פרויקט הבדיקה שומר על אובייקטים שאינם מנוהלים על ידו ומנהל רק תיקייה ייעודית.</li>
+</ul>
+<h2>מגבלות ונושאים שאינם חלק מבדיקת התשתית הבסיסית</h2>
+<ul>
+<li><bdi dir="ltr" lang="en">Wally</bdi> זמין בהפעלה ישירה אך אינו נדרש כרגע: לא נבחרו חבילות חיצוניות ולא נוסף לפרויקט <bdi dir="ltr" lang="en">dependency</bdi> עליו.</li>
+<li>העותק הישן של <bdi dir="ltr" lang="en">Wally 0.3.2</bdi> נכשל בגלל חוסר התאמה לסוג המעבד. העותק החדש שצוין בטבלה פועל.</li>
+<li>לא נמצאו הפקודות <bdi dir="ltr" lang="en">Lune</bdi>, <bdi dir="ltr" lang="en">luau</bdi> או <bdi dir="ltr" lang="en">luau-analyze</bdi>. לא הוחלט שכולן נחוצות.</li>
+<li>לא נבדקו כמה שחקנים בו־זמנית או <bdi dir="ltr" lang="en">touch controls</bdi>.</li>
+<li>במהלך הפעלת מקום הבדיקה הופיעה שגיאת טעינת <bdi dir="ltr" lang="en">asset</bdi> שמספרו 203785492: סוג ה־<bdi dir="ltr" lang="en">asset</bdi> אינו תואם לסוג שהתבקש. מקור השגיאה לא אובחן. בדיקות החיבור והפקודות עברו למרות השגיאה.</li>
+</ul>
+<p><strong>מסקנה:</strong> כלי העבודה הבסיסיים אומתו מקצה לקצה: קבצים מקומיים, <bdi dir="ltr" lang="en">Rojo</bdi>, <bdi dir="ltr" lang="en">Studio MCP</bdi>, הרצת <bdi dir="ltr" lang="en">test</bdi> שנכשל ואז עובר, עיצוב קוד ו־<bdi dir="ltr" lang="en">lint</bdi>. זו סביבת בסיס עובדת לתכנון הפיתוח. <bdi dir="ltr" lang="en">tests</bdi> של המשחק, בדיקות מרובות שחקנים ובדיקות <bdi dir="ltr" lang="en">controls</bdi> יוגדרו לפי העבודה שתאושר. לא נכתב <bdi dir="ltr" lang="en">gameplay</bdi> ולא הוכן <bdi dir="ltr" lang="en">plan</bdi>.</p>
+
+</main></body></html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מוכנות לפרויקט — ידע, כלים וראיות</title>
+<style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+h2{scroll-margin-block-start:1rem}h3{font-size:1.1rem}table{font-size:.83em}td,th{vertical-align:top}td:first-child{min-inline-size:9rem}main{max-inline-size:1100px}code{overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;border-block-end:1px solid #888;padding-block-end:1rem}details{border-block-start:1px solid #666;padding-block:1rem}summary{font-weight:bold;cursor:pointer}details h2{margin-block:0 1rem}
+</style></head>
+<body><main><nav aria-label="מסמכי הפרויקט"><a href="project-goals.html">מטרות הפרויקט</a><a href="gameplay.html">המשחק המאושר</a><a href="competitor-research.html">מחקר המשחק הדומה</a></nav>
+<h1>מוכנות לפרויקט: ידע, כלים וראיות</h1>
+<p><strong>תאריך בדיקה: 22/10/2026. מצב: מיפוי ראשוני לדיון עם אדם.</strong></p>
+<p>המסמך מרכז את ששת התחומים שאדם הגדיר ואת ארבע התוספות שסוכמו. הוא בודק מה יש בידינו כדי להתקדם לעבר <a href="project-goals.html">מטרות הפרויקט</a>, ומה עדיין לא הוכח. הוא אינו <bdi dir="ltr" lang="en">implementation plan</bdi> ואינו אישור לכתיבת קוד.</p>
+<h2>תמונת המצב</h2>
+<p><strong>יש סביבת בסיס עובדת ויכולת מוכחת לבצע מחקר מתחרים וליצור מסמכים קריאים. עדיין אין הוכחה ליכולת לספק משחק שלם שעומד במטרות.</strong> הראיות לכך צריכות להצטבר במהלך עבודה שתאושר, ולא ניתן להחליף אותן בהצהרה על ידע או בנוכחות של <bdi dir="ltr" lang="en">skills</bdi>.</p>
+<table>
+<thead>
+<tr>
+<th>תחום</th>
+<th>מה כבר יש</th>
+<th>מה עדיין חסר</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. עיצוב המשחק והעיצוב החזותי</td>
+<td><bdi dir="ltr" lang="en">gameplay</bdi> מאושר ומחקר חזותי על משחק דומה</td>
+<td>השוואה רחבה יותר וקריטריונים לאיכות שלנו</td>
+</tr>
+<tr>
+<td>2. תכנות ואיכות קוד</td>
+<td>כלי עיצוב, <bdi dir="ltr" lang="en">lint</bdi> ויצירת מקום פועלים</td>
+<td>קוד משחק שנבדק, <bdi dir="ltr" lang="en">type checking</bdi> וביצועים מוכחים</td>
+</tr>
+<tr>
+<td>3. כלי בדיקה והיקף בדיקות</td>
+<td>בדיקת סביבה בסיסית ותיעוד בדיקות</td>
+<td>כיסוי התנהגות, כמה שחקנים ומסלול בדיקה חוזר</td>
+</tr>
+<tr>
+<td>4. מסמכים לפי המטרות</td>
+<td>מטרות, <bdi dir="ltr" lang="en">spec</bdi> ותצוגות <bdi dir="ltr" lang="en">HTML</bdi> קריאות</td>
+<td>קישור עקבי בין דרישות, מטרות ובדיקות</td>
+</tr>
+<tr>
+<td>5. משימות קטנות ושמירת <bdi dir="ltr" lang="en">context</bdi></td>
+<td>מסמכים נפרדים והיסטוריית <bdi dir="ltr" lang="en">commits</bdi></td>
+<td>הוכחה שהפירוק שומר רצף ומונע עבודה חוזרת</td>
+</tr>
+<tr>
+<td>6. מעקב אחר התוכנית</td>
+<td>כללי עבודה, אישורים וראיות מקומיות</td>
+<td>עדיין אין תוכנית או מעקב ביצוע שנוסו</td>
+</tr>
+<tr>
+<td>7. הבנת השחקנים וההנאה</td>
+<td>שאלות לבדיקה מתוך מסמך <bdi dir="ltr" lang="en">gameplay</bdi></td>
+<td>תצפיות על אנשים שמשחקים</td>
+</tr>
+<tr>
+<td>8. הבנת הפלטפורמה</td>
+<td>בדיקת חיבור ותיעוד אבטחה ובדיקות</td>
+<td>התנהגות בטוחה ועקבית במשחק שלנו</td>
+</tr>
+<tr>
+<td>9. חשיבה מוצרית ועסקית</td>
+<td>מטרות מוסכמות ודוגמת מוצרים של מתחרה</td>
+<td>מדדי הצלחה, מודל הכנסות והיקף מוצר מאושרים</td>
+</tr>
+<tr>
+<td>10. תחזוקה ושימוש חוזר</td>
+<td><bdi dir="ltr" lang="en">Git</bdi>, כללים ומיומנויות זמינות</td>
+<td>רכיבים שבאמת הוכיחו צורך משותף ותחזוקה פשוטה</td>
+</tr>
+</tbody>
+</table>
+<p>המצבים בטבלה אינם ציוני מומחיות או אחוזי מוכנות. בכל תחום מפורטים בהמשך הממצא, המקור והראיה שתידרש כדי לסגור את הפער.</p>
+<details><summary>1. עיצוב המשחק והעיצוב החזותי</summary><p><strong>נדרש:</strong> לחבר את החלטות המשחק לפשטות, לקצב, לרצון לעוד סיבוב ולרמת הצגה מתאימה. להבחין בין מכניקות לבין גרפיקה.</p>
+<p><strong>זמין והודגם:</strong> המיומנות <bdi dir="ltr" lang="en">roblox-trends</bdi> וכלי חיפוש ותמונות. <a href="competitor-research.html">מחקר המשחק הדומה</a> הדגים איסוף נתונים ושלוש תמונות <bdi dir="ltr" lang="en">gameplay</bdi>, הורדה, צפייה ושמירת מקורות. <a href="gameplay.html">מסמך <bdi dir="ltr" lang="en">gameplay</bdi> המאושר</a> מגדיר את הבחירה בין חזרה בטוחה לבין איסוף נוסף.</p>
+<p><strong>מקורות שנבדקו:</strong> <a href="https://create.roblox.com/docs/production/game-design/core-loops"><bdi dir="ltr" lang="en">Core loops</bdi></a> ותמונות מתוך מדריכי <a href="https://www.ldplayer.net/blog/escape-tsunami-for-brainrots-roblox-guide.html?n=60000"><bdi dir="ltr" lang="en">LDPlayer</bdi></a> וכן <a href="https://allthings.how/escape-tsunami-for-brainrots-all-events-and-spawn-mechanics/"><bdi dir="ltr" lang="en">All Things How</bdi></a>. הצילומים היסטוריים ותאריך הצילום המדויק אינו ידוע.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> משחק אחד אינו מייצג את השוק. נדרשים רפרנסים נוספים שמתאימים למכניקות שלנו, והסבר מה נאמץ מבחינת בהירות והצגה ולמה. אנימציה וקצב לא הוכחו בתמונות. אין בסיס לקביעה שהעיצוב גרם להצלחת המתחרה.</p>
+</details>
+<details><summary>2. תכנות ואיכות קוד</summary><p><strong>נדרש:</strong> ידע בשפת <bdi dir="ltr" lang="en">Luau</bdi> ובמבנה הקוד של <bdi dir="ltr" lang="en">Roblox</bdi>; מניעת שכפול מיותר, קוד שאינו בשימוש ותקלות במשאבים. טענות על יעילות צריכות להישען על מדידה.</p>
+<p><strong>זמין והודגם:</strong> המיומנויות <bdi dir="ltr" lang="en">roblox-dev-skill</bdi>, <bdi dir="ltr" lang="en">roblox-docs</bdi> וכן <bdi dir="ltr" lang="en">roblox-code-review</bdi> זמינות בפרויקט. היום אומתו מחדש <bdi dir="ltr" lang="en">Git 2.54.0</bdi>, <bdi dir="ltr" lang="en">Rojo 7.7.1</bdi>, <bdi dir="ltr" lang="en">StyLua 2.5.2</bdi> וכן <bdi dir="ltr" lang="en">Selene 0.32.0</bdi>. קובצי בדיקת הסביבה עברו בדיקת עיצוב וכן <bdi dir="ltr" lang="en">lint</bdi>; יצירת קובץ מקום מקומי עברה.</p>
+<p><strong>מקורות שנבדקו:</strong> <a href="https://luau.org/types/">מערכת הטיפוסים של <bdi dir="ltr" lang="en">Luau</bdi></a> וכן <a href="https://luau.org/performance/">ביצועי <bdi dir="ltr" lang="en">Luau</bdi></a>. מערכת הטיפוסים יכולה לזהות סוגי טעויות בזמן כתיבה; זו אינה הוכחת נכונות מלאה. המקור הישן <bdi dir="ltr" lang="en">typecheck</bdi> מפנה כעת לעמוד <bdi dir="ltr" lang="en">types</bdi>.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> לא קיים עדיין קוד <bdi dir="ltr" lang="en">gameplay</bdi>. בדיקת <bdi dir="ltr" lang="en">Selene</bdi> אינה <bdi dir="ltr" lang="en">type checking</bdi>, ופקודת <bdi dir="ltr" lang="en">luau-analyze</bdi> לא נמצאה בבדיקת הסביבה הקודמת. טרם הודגם מסלול בדיקת טיפוסים לפרויקט. היכולת הנדרשת תוכח בשינויים קטנים שעוברים <bdi dir="ltr" lang="en">tests</bdi> וכן <bdi dir="ltr" lang="en">code review</bdi>, ובמדידה כשיש חשש לביצועים. אין להסיק מומחיות מתקדמת משני מודולי בדיקה קטנים.</p>
+</details>
+<details><summary>3. כלי בדיקה והיקף בדיקות</summary><p><strong>נדרש:</strong> לבחור סוג בדיקה לפי ההתנהגות והסיכון: חישובים בנפרד, חיבור בין מערכות, וסיבוב משחק שלם. לכל דרישה צריכה להיות דרך ברורה לבדוק אותה.</p>
+<p><strong>זמין והודגם:</strong> המיומנות <bdi dir="ltr" lang="en">roblox-testing</bdi> נקראה. <a href="environment-check.html">בדיקת הסביבה</a> מתעדת <bdi dir="ltr" lang="en">test</bdi> שנכשל ואז עבר בצד <bdi dir="ltr" lang="en">Server</bdi> ובצד <bdi dir="ltr" lang="en">Client</bdi>, סנכרון <bdi dir="ltr" lang="en">Rojo</bdi> וקריאת <bdi dir="ltr" lang="en">Output</bdi>. זהו תיעוד מהבדיקה הקודמת היום; <bdi dir="ltr" lang="en">Studio</bdi> לא הופעל שוב במסגרת המסמך הזה.</p>
+<p><strong>מקור שנבדק:</strong> <a href="https://create.roblox.com/docs/studio/testing-modes">מצבי הבדיקה של <bdi dir="ltr" lang="en">Studio</bdi></a> מתעדים בדיקות עם כמה <bdi dir="ltr" lang="en">clients</bdi>, הדמיית מכשירים ותנאי רשת. הימצאות היכולות בתיעוד אינה הוכחה שהפעלנו אותן דרך <bdi dir="ltr" lang="en">MCP</bdi>.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> עדיין לא אומתו כמה שחקנים, קלט משתמש והדמיית מכשירים בכלים שלנו. עבור מסמך <bdi dir="ltr" lang="en">gameplay</bdi> המאושר נצטרך לכסות איסוף, הגבלת מטען והאטה, הפקדה יחידה, הגבול המדויק של הסגירה, אובדן מטען, סיבוב נוסף, הצטרפות באמצע ועצמאות בין שחקנים. דרושה גם בדיקה של שחקן חדש לאורך סשן. שמירה ורכישות יקבלו בדיקות רק אם ייכנסו למסמך <bdi dir="ltr" lang="en">spec</bdi> מאושר מתאים.</p>
+<p>חבילת <bdi dir="ltr" lang="en">tests</bdi> חיצונית לא נבחרה או הותקנה. המיומנות כוללת המלצות והנחות ישנות על <bdi dir="ltr" lang="en">runners</bdi>; אין לאמץ אותן לפני אימות נפרד. לא הודגם כיסוי של המשחק עצמו.</p>
+</details>
+<details><summary>4. בניית מסמכים לפי המטרות</summary><p><strong>נדרש:</strong> מסמך קצר וקריא שמסביר מה השחקן רואה ועושה, למה זה משרת מטרה, מה בפנים ומה בחוץ, ואיך נבדוק את התוצאה.</p>
+<p><strong>זמין והודגם:</strong> המיומנויות <bdi dir="ltr" lang="en">hebrew-content-writer</bdi> וכן <bdi dir="ltr" lang="en">hebrew-rtl-best-practices</bdi> שימשו לתיעוד. אדם אישר שתצוגת <bdi dir="ltr" lang="en">HTML</bdi> קריאה. קיימים מסמך מטרות וכן <bdi dir="ltr" lang="en">spec</bdi> מאושר; מקור נקי ותצוגת <bdi dir="ltr" lang="en">RTL</bdi> נפרדת הודגמו במסמכים החדשים.</p>
+<p><strong>מקור שנבדק:</strong> <a href="https://developers.google.com/tech-writing/one/audience">הנחיות <bdi dir="ltr" lang="en">Google</bdi> לכתיבה לפי קהל היעד</a> מדגישות התאמת מילים והסברים לידע של הקורא. אצלנו נשמרים מונחים טכניים באנגלית והכללים המקומיים קובעים את מבנה תהליך <bdi dir="ltr" lang="en">SDD</bdi>.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> אין עדיין מיפוי עקבי מדרישה למטרה ולבדיקה. מסמכים ישנים מסוימים עדיין מכילים תגיות <bdi dir="ltr" lang="en">HTML</bdi> בתוך <bdi dir="ltr" lang="en">Markdown</bdi>; אין להציגם כמקור קריאה תקין בלי תצוגה מתאימה. סגירת הפער תודגם במסמך הרלוונטי הבא, שאדם יוכל להבין ולבדוק ללא הסברים חסרים.</p>
+</details>
+<details><summary>5. פירוק למשימות קטנות ושמירת <bdi dir="ltr" lang="en">context</bdi></summary><p><strong>נדרש:</strong> משימה בעלת תוצאה אחת שניתן לבדוק, עם ההקשר הנחוץ והחלטות מתועדות. הפירוק צריך לשמור על משמעות ורצף, ולא לייצר הרבה קבצים או פעולות ללא צורך.</p>
+<p><strong>זמין והודגם:</strong> מסמכי המטרות, מסמך <bdi dir="ltr" lang="en">gameplay</bdi> ומחקר המתחרה מופרדים לפי תפקיד. קיימת היסטוריית <bdi dir="ltr" lang="en">commits</bdi> שניתן לחזור אליה. זה מוכיח שמירת תוצרים, ולא חיסכון בטוקנים או המשכיות מושלמת בין שיחות.</p>
+<p><strong>מקורות שנבדקו:</strong> <a href="https://google.github.io/eng-practices/review/developer/small-cls.html"><bdi dir="ltr" lang="en">Google</bdi> — שינויים קטנים</a> ממליץ על שינוי עצמאי שניתן להבין ולבדוק. <a href="https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"><bdi dir="ltr" lang="en">OpenAI</bdi> — התאמת <bdi dir="ltr" lang="en">skills</bdi> והוראות</a> מדגיש טעינה מדורגת של ידע וצמצום הוראות שאינן רלוונטיות. המאמר ממוקד במודל מסוים; הוא אינו מדידת עלות לפרויקט שלנו.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> לא בוצע ניסוי המשכיות מתוך מסמך וקבצים בלבד, ולא נמדדו טוקנים לכל משימה. יש גם מתח בין הרצון לצמצם <bdi dir="ltr" lang="en">context</bdi> לבין החובה המקומית לקרוא שבעה קובצי כללים בכל משימה. החובה נשארה בתוקף; שינוי בה אינו חלק מהמסמך. אפשר יהיה להעריך את השיטה לפי הצלחה בהמשך עבודה בלי החלטות שאבדו, קריאה חוזרת או תיקון הנחות שגויות. אין הבטחת חיסכון כמותית.</p>
+</details>
+<details><summary>6. מעקב אחר התוכנית וההתאמה למטרות</summary><p><strong>נדרש:</strong> לראות מה הושלם, איזו ראיה תומכת בכך, מה חסר, ואיך שינוי משפיע על המטרות ועל מסמך <bdi dir="ltr" lang="en">spec</bdi>. שינוי סטטוס חייב להתבסס על תוצאה.</p>
+<p><strong>זמין והודגם:</strong> כללי <bdi dir="ltr" lang="en">SDD</bdi> וכן <bdi dir="ltr" lang="en">Git</bdi>, תאריכי אישור, דוח סביבה ודוח מחקר עם מגבלות. <a href="../specs/index.md">מפת המסמכים</a> מציינת תחומים שלא נכנסו למסמך <bdi dir="ltr" lang="en">gameplay</bdi>. אין עדיין <bdi dir="ltr" lang="en">implementation plan</bdi>, ולכן אין ראיה לניטור תוכנית שבוצעה.</p>
+<p><strong>מקור שנבדק:</strong> <a href="https://create.roblox.com/docs/production/analytics"><bdi dir="ltr" lang="en">Roblox Analytics</bdi></a> מתאר מעקב אחרי השפעת עדכונים על התנהגות שחקנים. זהו ניטור מוצר; הוא אינו תחליף למעקב אחר ביצוע משימות. שיטת המעקב אחר משימות אצלנו נגזרת מכללי הפרויקט, ולא נטענת כתקן תעשייתי שנבדק.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> בתוכנית עתידית נצטרך לקשר כל משימה לדרישה, לתוצאה ולראיה; לתעד סטייה והחלטה במקום לסמן השלמה לפי עצם כתיבת הקוד. אין כרגע <bdi dir="ltr" lang="en">dashboard</bdi>, ניטור אוטומטי או נתוני שימוש של המשחק שלנו.</p>
+</details>
+<details><summary>7. הבנת השחקנים ובדיקת ההנאה</summary><p><strong>נדרש:</strong> להבין אם שחקן חדש יודע מה לעשות, מבין את הסיכון ורוצה לצאת לעוד סיבוב. להפריד בין רושם שלנו לבין התנהגות שנצפתה.</p>
+<p><strong>זמין והודגם:</strong> מסמך <bdi dir="ltr" lang="en">gameplay</bdi> כולל שאלות לבחינת ההתלבטות, האזהרה והרצון להמשיך. אפשר לחקור דוגמאות מבחוץ, אך לא נערך <bdi dir="ltr" lang="en">playtest</bdi> עם אנשים והמשחק שלנו עדיין לא ממומש.</p>
+<p><strong>מקורות שנבדקו:</strong> <a href="https://create.roblox.com/docs/production/game-design/onboarding"><bdi dir="ltr" lang="en">Onboarding</bdi></a> עוסק בלימוד הבסיס ובהגעה מהירה להנאה; <a href="https://create.roblox.com/docs/production/game-design/prototyping"><bdi dir="ltr" lang="en">Prototyping</bdi></a> מתאר בדיקת רעיונות בניסוי מוקדם. אלה עקרונות לבדיקה, לא הוכחה שהרעיון שלנו מהנה.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> קהל היעד ומכשירי היעד המדויקים אינם מוסכמים. דרושה בהמשך תצפית בשחקנים, עם תיעוד של נקודות בלבול, כישלון וחזרה למשחק. <bdi dir="ltr" lang="en">Tests</bdi> אוטומטיים ותמונות אינם יכולים לסגור את הפער הזה.</p>
+</details>
+<details><summary>8. הבנת הפלטפורמה, אבטחה וביצועים</summary><p><strong>נדרש:</strong> הפרדה בין <bdi dir="ltr" lang="en">Server</bdi> לבין <bdi dir="ltr" lang="en">Client</bdi>, התמודדות עם בקשות מזויפות וניתוקים, מצבי משחק עקביים ומדידת עומס. שמירה בין כניסות תיבדק כאשר תאושר במסגרת שלה.</p>
+<p><strong>זמין והודגם:</strong> המיומנויות <bdi dir="ltr" lang="en">roblox-security</bdi>, <bdi dir="ltr" lang="en">roblox-networking</bdi> וכן <bdi dir="ltr" lang="en">roblox-data-stores</bdi> זמינות. בדיקת הסביבה מתעדת תקשורת בסיסית ותצוגה בצד השחקן. הן אינן ראיה לאבטחה, לריבוי שחקנים או לשמירה תקינה.</p>
+<p><strong>מקור שנבדק:</strong> <a href="https://create.roblox.com/docs/scripting/security/client-server-boundary">אבטחת הגבול בין <bdi dir="ltr" lang="en">Client</bdi> לבין <bdi dir="ltr" lang="en">Server</bdi></a> מחייבת אימות נתונים והקשר בצד השרת לפני השימוש בהם. אין להסתפק בכך שהממשק מונע פעולה.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> בהמשך יידרשו בדיקות של איסוף ממרחק לא תקין, בקשות כפולות, בקשות בזמן סגירה וניתוק באמצע פעולה. מדידות של זמן תגובה, זיכרון וקצב תמונה יידרשו בסביבה ובמכשירים שיוגדרו. סוגיית טעינת <bdi dir="ltr" lang="en">asset</bdi> שנרשמה בבדיקת הסביבה עדיין לא אובחנה; אין להציג את הסביבה כנטולת שגיאות.</p>
+</details>
+<details><summary>9. חשיבה מוצרית ועסקית</summary><p><strong>נדרש:</strong> לבחור היקף שנוכל להשלים, להגדיר מהי הצלחה, ולהעריך מודל הכנסות בלי לפגוע בהנאה. להבחין בין פופולריות, הכנסות ורווח.</p>
+<p><strong>זמין והודגם:</strong> מטרות הפרויקט מוסכמות. במחקר המתחרה נקראו נתוני פעילות ורשימת מוצרים למכירה. לא אומתו הכנסות, מכירות או הסיבה להצלחה.</p>
+<p><strong>מקורות שנבדקו:</strong> <a href="https://create.roblox.com/docs/production/monetization"><bdi dir="ltr" lang="en">Monetization</bdi></a> מתאר אפשרויות הכנסה ומזהיר שאין הבטחת הצלחה; <a href="https://create.roblox.com/docs/production/analytics/retention"><bdi dir="ltr" lang="en">Retention</bdi></a> מגדיר חזרה למשחק לאחר פרקי זמן. מדריכי המתחרה ונתוניו נבדקו בנפרד במחקר המקושר, ולא הוחלפו בתיעוד של הפלטפורמה.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> לא נקבעו יעדים מספריים, מוצרי תשלום או תקציב מאושר. בהמשך נצטרך לבחור מדדים מתאימים ולבחון נתוני משחק אמיתיים. אין להעביר אלינו מחירים, היקף תוכן או יתרונות בתשלום רק מפני שהם קיימים אצל מתחרה.</p>
+</details>
+<details><summary>10. תחזוקה ושימוש חוזר במשחקים נוספים</summary><p><strong>נדרש:</strong> מבנה שקל להבין ולשנות, רכיבים בעלי תפקיד ברור והפרדה בין החלטות המשחק לבין מה שבאמת ניתן לשימוש חוזר.</p>
+<p><strong>זמין והודגם:</strong> <bdi dir="ltr" lang="en">Git</bdi>, כללי <bdi dir="ltr" lang="en">code review</bdi> וכן <bdi dir="ltr" lang="en">skills</bdi> זמינים. יש פרויקט בדיקת סביבה מבודד וניתן לשחזור מקומי. עדיין אין רכיבי <bdi dir="ltr" lang="en">gameplay</bdi> שמוכיחים אפשרות לשימוש במשחק נוסף.</p>
+<p><strong>מקור שנבדק:</strong> <a href="https://martinfowler.com/bliki/Yagni.html"><bdi dir="ltr" lang="en">Martin Fowler</bdi> — <bdi dir="ltr" lang="en">Yagni</bdi></a>, מתאריך 26/05/2015, עוסק בהימנעות מיכולת עתידית משוערת לפני שנדרשת. זהו עיקרון תכנון ותיק שנקרא מחדש היום, ולא מקור עדכני על יכולות <bdi dir="ltr" lang="en">Roblox</bdi>.</p>
+<p><strong>הפער והראיה הנדרשת:</strong> תחזוקה ושימוש חוזר יוכחו כאשר יהיה צורך ממשי בשינוי או בשימוש נוסף, ונוכל לבצעו בלי שכפול ובלי פגיעה בהתנהגות. אין הצדקה להקים <bdi dir="ltr" lang="en">framework</bdi> כללי לפני שיש צורך מוכח. גם אין להבטיח אפס שכפול או אפס תקלות על בסיס מבנה תיקיות בלבד.</p>
+</details>
+<h2>מה נבדק היום בפועל</h2>
+<table>
+<thead>
+<tr>
+<th>בדיקה</th>
+<th>תוצאה והיקף</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>קיום מיומנויות הפרויקט</td>
+<td>נמצאו 14 קובצי <bdi dir="ltr" lang="en">SKILL.md</bdi>. אין בכך אימות של כל המלצה או <bdi dir="ltr" lang="en">script</bdi> בתוכם.</td>
+</tr>
+<tr>
+<td>פקודות הכלים המקומיות</td>
+<td>הגרסאות הרשומות לעיל פועלות.</td>
+</tr>
+<tr>
+<td>בדיקת <bdi dir="ltr" lang="en">StyLua</bdi></td>
+<td>שני קובצי בדיקת הסביבה עברו; לא נבדק קוד משחק שאינו קיים.</td>
+</tr>
+<tr>
+<td>בדיקת <bdi dir="ltr" lang="en">Selene</bdi></td>
+<td>אפס שגיאות, אזהרות ושגיאות פענוח באותם קבצים.</td>
+</tr>
+<tr>
+<td>יצירת מקום באמצעות <bdi dir="ltr" lang="en">Rojo</bdi></td>
+<td>פרויקט הבדיקה נבנה לקובץ זמני. לא נפתח מקום ולא התחיל סנכרון.</td>
+</tr>
+<tr>
+<td>מקורות חיצוניים</td>
+<td>העמודים המקושרים נפתחו ונבדקו לנושאים המתוארים. קריאת מקור אינה מימוש או ניסוי.</td>
+</tr>
+<tr>
+<td>מסמכי הפרויקט והראיות הקודמות</td>
+<td>נקראו מטרות, <bdi dir="ltr" lang="en">gameplay</bdi>, כללים, בדיקת סביבה, מחקר מתחרה וקובצי בדיקת הסביבה.</td>
+</tr>
+</tbody>
+</table>
+<h2>איך לשמור את המיפוי אמין</h2>
+<p>בכל עבודה רלוונטית נעדכן את התחום שהושפע, את תאריך הבדיקה ואת הקישור לראיה. פער ייחשב סגור רק כאשר קיימת התוצאה הנדרשת; אם משתנים הכלים, המקורות או הדרישות, נבחן אם הראיה עדיין תקפה. המלצות מקורות אינן גוברות על הרשאות אדם וכללי הפרויקט.</p>
+<p><strong>המסקנה כרגע:</strong> מפת הידע והפערים מוכנה לדיון. אין עדיין אישור מוכנות כולל למשחק, ואין צורך להוכיח משחק שלם לפני שמותר לתכנן תחום מאושר. בחירת היקף התוכנית וסגירת הפערים הרלוונטיים לה יהיו החלטות נפרדות עם אדם. במסגרת המסמך הזה לא נוצרה תוכנית מימוש ולא נכתב קוד למשחק.</p>
+
+</main></body></html>
