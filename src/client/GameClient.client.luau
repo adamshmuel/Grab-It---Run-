@@ -5,9 +5,11 @@ local SoundService = game:GetService("SoundService")
 local root = game:GetService("ReplicatedStorage"):WaitForChild("GrabIt", 20)
 assert(root, "GrabIt content was not replicated")
 local Hud = require(root.ClientModules.Hud)
+local TargetPrompt = require(root.ClientModules.TargetPrompt)
 local player = Players.LocalPlayer
 local ui = Hud.create()
 ui.Screen.Parent = player:WaitForChild("PlayerGui", 20)
+local targetPrompt = TargetPrompt.create(ui.Screen.Parent)
 player.CameraMinZoomDistance = 8
 player.CameraMaxZoomDistance = 20
 player.CameraMode = Enum.CameraMode.Classic
@@ -99,6 +101,13 @@ local function render()
 		return
 	end
 	Hud.update(ui, state, UserInputService.TouchEnabled)
+	local world = workspace:FindFirstChild("GrabItWorld")
+	TargetPrompt.update(
+		targetPrompt,
+		state,
+		if world then world:FindFirstChild("Items") else nil,
+		UserInputService.TouchEnabled
+	)
 end
 table.insert(
 	connections,
@@ -148,5 +157,6 @@ table.insert(
 			sound:Destroy()
 		end
 		ui.Screen:Destroy()
+		targetPrompt.Gui:Destroy()
 	end)
 )

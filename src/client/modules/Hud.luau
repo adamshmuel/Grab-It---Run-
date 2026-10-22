@@ -45,7 +45,7 @@ function Hud.create()
 	local message = box(root, "Message", UDim2.fromScale(0.21, 0.18), UDim2.fromScale(0.58, 0.13))
 	message.BackgroundTransparency = 0.2
 	message.Visible = false
-	local tutorial = box(root, "Tutorial", UDim2.fromScale(0.22, 0.85), UDim2.fromScale(0.56, 0.09))
+	local tutorial = box(root, "Tutorial", UDim2.fromScale(0.22, 0.85), UDim2.fromScale(0.52, 0.09))
 	local button = Instance.new("TextButton")
 	button.Name = "Collect"
 	button.AnchorPoint = Vector2.new(1, 1)

@@ -2,7 +2,7 @@
   "date": "2026-10-22",
   "studio_version": "0.744.0.7441077",
   "project": "GrabItV1_DesktopMobile.rbxlx / GrabItV1",
-  "run_method": "Studio MCP execute_luau in verified project, Edit datamodel; six ModuleScript suites from ServerStorage.GrabItTests",
+  "run_method": "Studio MCP execute_luau in the verified project, fresh Server datamodel; seven ModuleScript suites from ServerStorage.GrabItTests",
   "suites": [
     {
       "name": "Features.spec",
@@ -26,6 +26,10 @@
     },
     {
       "name": "World.spec",
+      "passed": true
+    },
+    {
+      "name": "TargetPrompt.spec",
       "passed": true
     }
   ],

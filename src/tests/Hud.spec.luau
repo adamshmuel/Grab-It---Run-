@@ -31,9 +31,15 @@ return function()
 		assert(string.find(ui.Style.Text, "300"), "next progression target")
 		assert(not ui.Collect.Visible, "closed warehouse cannot offer collection")
 		assert(ui.Screen.ScreenInsets == Enum.ScreenInsets.CoreUISafeInsets, "safe screen area")
+		local tutorialRight = ui.Tutorial.Position.X.Scale + ui.Tutorial.Size.X.Scale
+		local collectLeft = ui.Collect.Position.X.Scale - ui.Collect.Size.X.Scale
+		assert(
+			tutorialRight < collectLeft,
+			"tutorial must leave a gap before the touch collect button"
+		)
 	end)
 	ui.Screen:Destroy()
 	assert(ok, tostring(err))
 	print("PASS HUD balance, cargo, warnings, progression and safe area")
-	return 6
+	return 7
 end
