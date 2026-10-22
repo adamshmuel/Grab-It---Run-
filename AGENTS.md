@@ -17,7 +17,7 @@ The latest explicit instruction from Adam takes precedence over older project pr
 
 ## Phase and permission
 
-Adam approved `docs/specs/v1/gameplay.md` on 2026-10-21, including its rules and starting values. He explicitly requested recording approval only and no further progress for now. Project setup rules remain in effect. No game implementation has started or been authorized. Do not prepare implementation plans or continue design work until Adam requests further work.
+Adam approved `docs/specs/v1/gameplay.md` on 2026-10-21, including its rules and starting values. On 2026-10-22 he authorized discussing and documenting the agreed project goals in `docs/specs/project-goals.md`. That request permits goals documentation, not an implementation plan or game code. Project setup rules remain in effect. No game implementation has started or been authorized.
 
 The process is: specification → Adam approves → implementation plan → Adam explicitly requests coding that feature. Approval of a specification or plan alone is not coding permission. Once a task is authorized, complete its routine reversible steps without repeated confirmation.
 
@@ -27,7 +27,7 @@ On 2026-10-22 Adam additionally authorized environment verification before plann
 
 - Platform: Roblox. Mobile and Meta Quest were comparisons, not current targets.
 - Adam is a beginner Roblox programmer using a Mac and an existing basic subscription for development help. Keep the project inexpensive and manageable.
-- Aim: strong replay appeal, clear progression, enjoyable play with friends, and a plausible income model. Profit and exposure are not guaranteed.
+- Agreed project goals are recorded in `docs/specs/project-goals.md`: a simple, fast, compelling Roblox hyper casual game; quality comparable to similar Roblox games; lasting reasons to return; manageable development and maintenance with income potential; and preserving knowledge and reusable components for future games of the same kind. Keep this game's design focused; do not build a general framework for a series in advance. These are goals, not numeric targets or guarantees of profit or exposure.
 - Repository name: `Grab-It-&-Run!`. Naming candidates discussed: **Grab It & Run!** and **One More Haul**. The final public title and name availability are unconfirmed.
 - Leading concept: leave a safe base, collect objects in a warehouse, and return to bank the haul before a closure or hazard. Valuable objects lie farther away. A larger carried stack slows the player, creating the choice to return or collect one more object.
 - Proposed failure rule: risk the current unbanked haul, not earlier banked progress. Exact loss, timing, controls, and hazards still need design decisions.
