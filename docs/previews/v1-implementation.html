@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V1 — מימוש ראשוני וראיות</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}img{max-inline-size:100%;block-size:auto;border-radius:8px}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a> · <a href="project-goals.html">מטרות הפרויקט</a></nav><h1><bdi dir="ltr" lang="en">V1</bdi> — מימוש ראשוני וראיות</h1>
+<p><strong>תאריך: 22/10/2026. מצב: גרסה מקומית ראשונית עובדת; <bdi dir="ltr" lang="en">V1</bdi> עדיין לא התקבל.</strong></p>
+<h2>ההרשאה וההיקף</h2>
+<p>אדם אישר את הגדרות <bdi dir="ltr" lang="en">V1</bdi> וביקש להתחיל לבנות. נכתבו תוכניות קטנות תחת <bdi dir="ltr" lang="en">docs</bdi>/<bdi dir="ltr" lang="en">plans</bdi>/<bdi dir="ltr" lang="en">v1</bdi> לפני קוד המשחק. נוספו לפי בקשותיו בדיקות התאמה למטרות ולמפת המסמכים, גרפיקה מול שלושה רפרנסים, עמידה ברמת המתחרים והעדפת שחקנים. סף ההעדפה המספרי החדש עדיין מוצע לאישור לפני ניסוי.</p>
+<h2>מה נבנה</h2>
+<ul>
+<li>כללי איסוף, מטען והאטה, הפקדה, סגירה וסיבוב חדש; מצב עצמאי לכל שחקן.</li>
+<li>מחסן, בסיס, אזור הפקדה ו־30 חפצים לפי מיקומי ה־<bdi dir="ltr" lang="en">spec</bdi>. המפה נוצרת מתוך קוד מקומי שבונה <bdi dir="ltr" lang="en">Rojo</bdi>.</li>
+<li><bdi dir="ltr" lang="en">HUD</bdi>, מקלדת, כפתור <bdi dir="ltr" lang="en">Collect</bdi> לנייד, הדרכה, אזהרות וצלילים מקבצים שמובנים ב־<bdi dir="ltr" lang="en">Studio</bdi>. אין <bdi dir="ltr" lang="en">assets</bdi> חיצוניים במשחק.</li>
+<li>דרגות מראה לפי יתרה, וערמת מטען שנראית לשחקנים אחרים.</li>
+<li>שכבת שמירה עם <bdi dir="ltr" lang="en">UpdateAsync</bdi>, נעילת <bdi dir="ltr" lang="en">session</bdi>, אישור רק לאחר הצלחת כתיבה והגנה מפני תגובה ישנה. בדיקותיה משתמשות ב־<bdi dir="ltr" lang="en">storage</bdi> מוזרק.</li>
+</ul>
+<p>ב־<bdi dir="ltr" lang="en">Studio</bdi> משתמשים בזיכרון של השרת בלבד, ומופיע <bdi dir="ltr" lang="en">Studio session only</bdi>. לא שונו הגדרות <bdi dir="ltr" lang="en">API Services</bdi> ולא פורסם המשחק. אין כאן הוכחה לשמירה בין עצירות <bdi dir="ltr" lang="en">play</bdi> או בין שרתים אמיתיים. הענף של <bdi dir="ltr" lang="en">DataStore</bdi> בקוד עדיין דורש בדיקה מבודדת ומורשית לפני הסתמכות עליו.</p>
+<h2>מה נבדק בפועל</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>בדיקה</th>
+<th>ראיה ותוצאה</th>
+<th>גבול</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><bdi dir="ltr" lang="en">TDD</bdi> מקומי</td>
+<td>נצפו כישלונות לפני יצירת <bdi dir="ltr" lang="en">GameRules</bdi>, <bdi dir="ltr" lang="en">Presentation</bdi>, <bdi dir="ltr" lang="en">Persistence</bdi>, <bdi dir="ltr" lang="en">World</bdi>, <bdi dir="ltr" lang="en">Hud</bdi> ו־<bdi dir="ltr" lang="en">Session</bdi>. נוספו כישלונות ממוקדים לכיוון המצלמה ולחיתוך שלט לפני תיקונם</td>
+<td>הכישלון הראשון של <bdi dir="ltr" lang="en">gameplay</bdi> היה ברמת כניסת החבילה; לא נצפה כישלון נפרד של כל תשעת מקרי ה־<bdi dir="ltr" lang="en">gameplay</bdi> לפני כתיבתם. זו חריגה מהמחזור המחמיר של <bdi dir="ltr" lang="en">test</bdi> אחד בכל פעם</td>
+</tr>
+<tr>
+<td>שש חבילות <bdi dir="ltr" lang="en">tests</bdi></td>
+<td>כולן עברו דרך <bdi dir="ltr" lang="en">MCP</bdi> במופע המשחק המאומת, מתוך <bdi dir="ltr" lang="en">ServerStorage</bdi>.<bdi dir="ltr" lang="en">GrabItTests</bdi>. <a href="../research/v1-tests.json">רישום תוצאות</a></td>
+<td>אין נתון <bdi dir="ltr" lang="en">coverage</bdi>. ספירת הערכים שהחבילות מחזירות אינה מדידה של מספר כל ה־<bdi dir="ltr" lang="en">assertions</bdi></td>
+</tr>
+<tr>
+<td>בדיקות מקומיות</td>
+<td><bdi dir="ltr" lang="en">StyLua check</bdi>, <bdi dir="ltr" lang="en">Selene</bdi> ללא <bdi dir="ltr" lang="en">errors</bdi> או <bdi dir="ltr" lang="en">warnings</bdi>, ו־<bdi dir="ltr" lang="en">Rojo build</bdi> עברו</td>
+<td><bdi dir="ltr" lang="en">Selene</bdi> אינו <bdi dir="ltr" lang="en">type checker</bdi>. לא הורץ <bdi dir="ltr" lang="en">type checking</bdi> מלא</td>
+</tr>
+<tr>
+<td>מחשב ב־<bdi dir="ltr" lang="en">Studio</bdi></td>
+<td>תנועה אל חפץ, לחיצה על <bdi dir="ltr" lang="en">E</bdi>, מטען של חפץ אחד, חזרה והפקדה: מטבע אחד ומטען ריק</td>
+<td>אינה בדיקת כל דרישות הקבלה במחשב</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">Samsung Galaxy A06</bdi> מדומה</td>
+<td>פרופיל 800 על 360, לרוחב; <bdi dir="ltr" lang="en">TouchEnabled</bdi> היה <bdi dir="ltr" lang="en">true</bdi>. כפתור <bdi dir="ltr" lang="en">Collect</bdi> הופיע; לחיצה מדומה דרך <bdi dir="ltr" lang="en">VirtualInput</bdi> והפקדה הביאו למטבע אחד ומטען ריק</td>
+<td>נעשה שימוש בנקודת לחיצה מדומה ובעזר תנועה; לא נבדקו אחיזה פיזית או שתי אצבעות בפועל. מרחב התצוגה הפעיל קטן מגודל הפרופיל בגלל אזורים בטוחים וממשק <bdi dir="ltr" lang="en">Studio</bdi></td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">iPhone</bdi> 13 מדומה</td>
+<td>פרופיל 844 על 390, לרוחב; שינוי תוך כדי משחק, <bdi dir="ltr" lang="en">HUD</bdi> והיתרה נשארו מוצגים</td>
+<td>בדיקת תצוגה, לא מסלול קלט מלא במכשיר השני</td>
+</tr>
+<tr>
+<td>ביקורת חזותית ראשונית</td>
+<td>נצפו המפה והממשק. תוקנו כיוון פתיחת המצלמה, חיתוך השלטים ועומס תוויות רחוקות</td>
+<td>המראה עדיין ראשוני. קיימת חפיפה אפשרית בין שלטים בעולם לבין <bdi dir="ltr" lang="en">HUD</bdi> בזוויות מסוימות; אין אישור עמידה ברף הגרפי של המתחרים</td>
+</tr>
+</tbody>
+</table></div>
+<p>לוג המשחק ממשיך להציג שגיאת <bdi dir="ltr" lang="en">asset</bdi> מספר 203785492 מסוג שאינו מתאים לבקשה. אותה שגיאה הופיעה כבר בבדיקת הסביבה לפני המימוש. מקור השגיאה לא אובחן; אין להציג את ה־<bdi dir="ltr" lang="en">console</bdi> כנקי.</p>
+<h2><bdi dir="ltr" lang="en">code review</bdi> בשיחה הראשית</h2>
+<p>נבדקו כללי המשחק מול ה־<bdi dir="ltr" lang="en">spec</bdi>, מקור הסמכות של מטבעות ואיסוף, מרחק, הקשר סיבוב, בקשות כפולות, מצב חדש, פינוי נתוני שחקן, הזרקת <bdi dir="ltr" lang="en">storage</bdi>, נעילת <bdi dir="ltr" lang="en">session</bdi> והגנת כתיבות ישנות.</p>
+<p>נמצאה בעיית זיהוי <bdi dir="ltr" lang="en">session</bdi> בעת חיבור חוזר: ניקוי ישן עלול היה לגעת במצב של שחקן חדש בעל אותו <bdi dir="ltr" lang="en">UserId</bdi>. ההפרדה תוקנה באמצעות מזהה <bdi dir="ltr" lang="en">session</bdi> ייחודי, בעוד שמפתח השמירה נשאר קבוע. קיימים <bdi dir="ltr" lang="en">tests</bdi> ל־<bdi dir="ltr" lang="en">sessions</bdi> ולכתיבה ישנה בשכבה הלוגית; עדיין אין בדיקת ניתוק וחיבור מקביל מלאה מול <bdi dir="ltr" lang="en">clients</bdi> אמיתיים.</p>
+<p>נבדקו גם ניקוי <bdi dir="ltr" lang="en">connections</bdi> של דמות, אובדן מטען במוות, אימות בקשות <bdi dir="ltr" lang="en">Server</bdi>, מניעת הענקה מהודעת <bdi dir="ltr" lang="en">Client</bdi> ותצוגת שמירה שאינה מציגה <bdi dir="ltr" lang="en">Saved</bdi> עבור יתרה חדשה שעדיין לא אושרה. לא נמצאה בכך הוכחה שכל נתיבי הקוד תקינים; מגבלות האינטגרציה רשומות כאן.</p>
+<h2>עבודה במופע אחד והגנת פרויקטים אחרים</h2>
+<p>בתחילה נפתחו מופעי בדיקה נפרדים דרך <bdi dir="ltr" lang="en">CLI</bdi>. לאחר הערת אדם עברנו למופע המשחק היחיד עם <bdi dir="ltr" lang="en">Rojo</bdi> ו־<bdi dir="ltr" lang="en">MCP</bdi>; מופעי העזר שנוצרו במהלך העבודה נסגרו. חלון <bdi dir="ltr" lang="en">Place1</bdi> של אדם נשאר פתוח ולא היה יעד לעריכת המשחק. שרת <bdi dir="ltr" lang="en">Rojo</bdi> היחיד של המשימה מפעיל את <bdi dir="ltr" lang="en">default</bdi>.<bdi dir="ltr" lang="en">project</bdi>.<bdi dir="ltr" lang="en">json</bdi> בפורט 34872.</p>
+<p>אימות מוקדם של שם קובץ נכשל בזמן טעינה; פעולת <bdi dir="ltr" lang="en">play</bdi> שכבר נשלחה לאותו קובץ שלנו נעצרה ונעשה אימות מחדש. בהמשך פעולות השינוי הופרדו מאימות היעד. אין בכך הצדקה לפעולה לפני אימות, והכלל החדש מחייב אימות קודם.</p>
+<p>בסיום בדיקות אלו המשחק הוחזר למצב <bdi dir="ltr" lang="en">Edit</bdi> והדמיית המכשיר הופסקה. אין הרשאת פרסום או <bdi dir="ltr" lang="en">push</bdi>.</p>
+<h2>מה עדיין מונע קבלת <bdi dir="ltr" lang="en">V1</bdi></h2>
+<p>בדיקת 2 ו־8 <bdi dir="ltr" lang="en">clients</bdi> אמיתיים, בדיקת <bdi dir="ltr" lang="en">session</bdi> מלאה בשני סוגי קלט, שתי פעולות <bdi dir="ltr" lang="en">touch</bdi> במקביל, מדידת ביצועים לפי התנאים שהוגדרו, שמירה בענן וכניסה מחדש אמיתית, אבחון שגיאת ה־<bdi dir="ltr" lang="en">asset</bdi>, השלמת דרישות הממשק וההשוואה החזותית, <bdi dir="ltr" lang="en">playtests</bdi> ובדיקת העדפה. אין עדיין ראיה ל־<bdi dir="ltr" lang="en">retention</bdi>, להכנסה או לסבירות בחירה גבוהה.</p>
+<p>המסמך אינו מסמן את היעדים האלה כהושלמו. <a href="v1/acceptance.html">קריטריוני הקבלה</a> הם המקור להחלטת הקבלה, ולא עצם קיום הקוד.</p>
+</main></body></html>

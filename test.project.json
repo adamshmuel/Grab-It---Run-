@@ -1,0 +1,34 @@
+{
+  "name": "GrabItV1Tests",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "GrabIt": {
+        "$className": "Folder",
+        "Shared": {
+          "$path": "src/shared"
+        },
+        "ClientModules": {
+          "$path": "src/client/modules"
+        }
+      },
+      "$ignoreUnknownInstances": true
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "GrabItModules": {
+        "$path": "src/server/modules"
+      },
+      "$ignoreUnknownInstances": true
+    },
+    "$ignoreUnknownInstances": true,
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      "$ignoreUnknownInstances": true,
+      "GrabItTests": {
+        "$path": "src/tests"
+      }
+    }
+  }
+}

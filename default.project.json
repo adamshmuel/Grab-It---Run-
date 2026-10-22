@@ -1,0 +1,90 @@
+{
+  "name": "GrabItV1",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "GrabIt": {
+        "$className": "Folder",
+        "Shared": {
+          "$path": "src/shared"
+        },
+        "ClientModules": {
+          "$path": "src/client/modules"
+        },
+        "Action": {
+          "$className": "RemoteEvent"
+        },
+        "State": {
+          "$className": "RemoteEvent"
+        },
+        "Notice": {
+          "$className": "RemoteEvent"
+        }
+      },
+      "$ignoreUnknownInstances": true
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "GrabItModules": {
+        "$path": "src/server/modules"
+      },
+      "GameServer": {
+        "$path": "src/server/GameServer.server.luau"
+      },
+      "$ignoreUnknownInstances": true
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "$properties": {
+        "CameraMinZoomDistance": 8,
+        "CameraMaxZoomDistance": 20,
+        "CharacterWalkSpeed": 16,
+        "CharacterJumpPower": 0,
+        "CharacterJumpHeight": 0,
+        "AutoJumpEnabled": false
+      },
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "GameClient": {
+          "$path": "src/client/GameClient.client.luau"
+        }
+      },
+      "$ignoreUnknownInstances": true
+    },
+    "StarterGui": {
+      "$className": "StarterGui",
+      "$properties": {
+        "ScreenOrientation": "LandscapeSensor"
+      },
+      "$ignoreUnknownInstances": true
+    },
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": {
+        "Brightness": 3,
+        "ClockTime": 14,
+        "GlobalShadows": false,
+        "Ambient": [
+          0.65,
+          0.65,
+          0.65
+        ],
+        "OutdoorAmbient": [
+          0.7,
+          0.7,
+          0.7
+        ]
+      },
+      "$ignoreUnknownInstances": true
+    },
+    "$ignoreUnknownInstances": true,
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      "$ignoreUnknownInstances": true,
+      "GrabItTests": {
+        "$path": "src/tests"
+      }
+    }
+  }
+}

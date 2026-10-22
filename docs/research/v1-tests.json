@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-22",
+  "studio_version": "0.744.0.7441077",
+  "project": "GrabItV1_DesktopMobile.rbxlx / GrabItV1",
+  "run_method": "Studio MCP execute_luau in verified project, Edit datamodel; six ModuleScript suites from ServerStorage.GrabItTests",
+  "suites": [
+    {
+      "name": "Features.spec",
+      "passed": true
+    },
+    {
+      "name": "Gameplay.spec",
+      "passed": true
+    },
+    {
+      "name": "Hud.spec",
+      "passed": true
+    },
+    {
+      "name": "Persistence.spec",
+      "passed": true
+    },
+    {
+      "name": "Session.spec",
+      "passed": true
+    },
+    {
+      "name": "World.spec",
+      "passed": true
+    }
+  ],
+  "notes": [
+    "Suite functions report behavior totals; these are not a measured coverage percentage or a count of all assertion executions.",
+    "Human playtests, eight-client testing, ten-minute performance sampling, physical mobile and cloud persistence were not completed."
+  ]
+}
