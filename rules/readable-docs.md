@@ -9,6 +9,7 @@ Every document an agent writes for this project is written so Adam can read it. 
 - Keep technical terms in English, as required by `communication.md`. Explain unfamiliar game or technical terms briefly in Hebrew when first used; preserve the English term instead of translating or transliterating it.
 - Prefer a small table or a short list to a long paragraph.
 - Say what the player sees and does, not how the code works.
+- Keep Markdown sources free of HTML used for text direction. This app can display those tags literally. Provide and link a separate rendered RTL HTML preview for Hebrew reading; keep English terms isolated in that preview, not as visible markup in the source.
 
 ## No bare codes or labels
 
