@@ -17,6 +17,7 @@ How work gets into git. The main chat makes the commits. Adam pushes.
 
 ## Commits
 
+- **Authorization:** Adam authorizes the main chat to create local commits whenever needed under these rules, without asking for approval each time. This applies only to authorized work and does not grant permission to start new work. Adam alone pushes.
 - **Who:** only the main chat. Agents never run `git commit`, `git push`, `git merge` or any command that changes history.
 - **When:** once per completed task: the task's tests, code, world scripts and docs together. Never in the middle of a step, and never with a failing test except reds the plan names as accepted.
 - **Size:** one logical change per commit.
