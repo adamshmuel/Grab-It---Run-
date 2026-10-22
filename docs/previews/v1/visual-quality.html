@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>בדיקת גרפיקה והשוואה חזותית</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}img{max-inline-size:100%;block-size:auto;border-radius:8px}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a> · <a href="../project-goals.html">מטרות הפרויקט</a></nav><h1>בדיקת גרפיקה והשוואה חזותית</h1>
+<p><strong>מצב: נוספה לדרישות הקבלה לבקשת אדם בתאריך 22/10/2026.</strong></p>
+<h2>המטרה והמקורות</h2>
+<p>לבדוק את איכות ההצגה בפועל מול משחקים דומים, כחלק ממטרה 2 במסמך <a href="../project-goals.html">מטרות הפרויקט</a>. הבדיקה מתבססת על <a href="../competitor-research.html">מחקר <bdi dir="ltr" lang="en">Escape Tsunami</bdi></a> ועל <a href="../visual-benchmark.html">מפת ההשוואה לשלושה משחקים</a>.</p>
+<h2>כלל 1: משווים <bdi dir="ltr" lang="en">gameplay</bdi> אמיתי</h2>
+<p>אוספים צילומים שלנו בבסיס, באיסוף, בחזרה עם מטען מלא ובאזהרת סגירה. כל מצב נבדק במחשב ובנייד מדומה, לפי גדלי המסך בתוך <a href="acceptance.html">קריטריוני הקבלה</a>.</p>
+<p>משווים לצילומים מתוך המשחקים שנחקרו, עם מקור, תאריך פרסום כשידוע ומגבלת גרסה. אין להסתמך רק על תמונת פתיחה, <bdi dir="ltr" lang="en">thumbnail</bdi> או זיכרון. צילומים היסטוריים מסומנים ככאלה.</p>
+<h2>כלל 2: מה חייב לעבור</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>תחום</th>
+<th>דרישת קבלה</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>סגנון וסביבה</td>
+<td>המחסן, הבסיס והחפצים נראים כחלק מאותו משחק; אין אובייקטים חופפים, מרחפים ללא כוונה או פרטים שמפריעים למסלול</td>
+</tr>
+<tr>
+<td>מסלול ואזורים</td>
+<td>מזהים כניסה, בסיס, הפקדה והבדלי ערך; צבע אינו הסימן היחיד</td>
+</tr>
+<tr>
+<td>חפצים ומטען</td>
+<td>חפץ זמין נבדל מהרקע; המטען נראה בלי להסתיר את השחקן או את דרך החזרה</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">UI</bdi> ותוויות</td>
+<td>הטקסט קריא, אין חיתוך או חפיפה, וה־<bdi dir="ltr" lang="en">HUD</bdi> אינו מכסה פעולה חשובה או <bdi dir="ltr" lang="en">touch controls</bdi></td>
+</tr>
+<tr>
+<td>מצלמה</td>
+<td>הפתיחה מכוונת למחסן; אפשר לראות נתיב ומטרה גם עם מטען מלא ובסמוך לקירות</td>
+</tr>
+<tr>
+<td>תאורה וצבע</td>
+<td>ניגוד מספיק בין פעולה, חפץ ורקע, תוך שמירת התאורה הקבועה שהוגדרה</td>
+</tr>
+<tr>
+<td>תגובות חזותיות</td>
+<td>איסוף, הפקדה, אזהרה וכישלון נבדלים ונראים בזמן משחק, בלי להסתיר את המתרחש</td>
+</tr>
+</tbody>
+</table></div>
+<p>אנימציה, תנועה ומשך תגובה נבדקים בזמן משחק. צילום סטטי אינו מוכיח אותם. מתחילים בתמונות; משתמשים בקטע קצר וממוקד רק אם צריך לתעד התנהגות שלא נראית בתמונה.</p>
+<h2>כלל 3: תוצאה וראיות</h2>
+<p>לכל תחום רושמים רפרנס מסוים, צילום שלנו, פער, תוצאה ותיקון שנדרש. המצבים: עבר, לא עבר, טרם אומת. כל תחום בטבלה חייב לעבור כדי לסמן את הבדיקה החזותית כמושלמת.</p>
+<p>בדיקה אינה עוברת כאשר פרט חיוני מוסתר, הטקסט נחתך, דרך החזרה אינה ברורה או ההצגה סותרת את הסגנון המאושר. לאחר תיקון נדרשת ראיה חדשה מאותה סצנה.</p>
+<p>הרפרנסים מגדירים שאלות ואיכות להצגה, ולא דרישה להעתיק <bdi dir="ltr" lang="en">assets</bdi>, מפות או מכניקות. הבדיקה אינה מרחיבה את ההיקף שמופיע בתוך <a href="../specs.html">מפת ההגדרות</a>.</p>
+</main></body></html>
