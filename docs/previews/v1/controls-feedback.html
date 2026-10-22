@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Controls ותגובות המשחק</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a> · <a href="../project-goals.html">מטרות הפרויקט</a></nav><h1><bdi dir="ltr" lang="en">Controls</bdi> ותגובות המשחק</h1>
+<p><strong>מצב: טיוטה לאישור אדם. 22/10/2026.</strong></p>
+<h2>המטרה והקשר למסמכים</h2>
+<p>להבין איך לשחק בלי הוראות ארוכות, ולדעת מה קרה אחרי כל פעולה. חוקי האיסוף, המטען והכישלון נשארים בבעלות <a href="../gameplay.html"><bdi dir="ltr" lang="en">gameplay</bdi></a>.</p>
+<h2>כלל 1: פעולות במחשב</h2>
+<p>תנועה באמצעות <bdi dir="ltr" lang="en">WASD</bdi> או חצים. מהירות רגילה מוצעת: 16 <bdi dir="ltr" lang="en">studs</bdi> לשנייה; ההאטה מחושבת לפי <bdi dir="ltr" lang="en">gameplay</bdi>. העכבר שולט במצלמת גוף שלישי; אין מצלמת גוף ראשון. הגלילה מקרבת ומרחיקה בטווח 8 עד 20 <bdi dir="ltr" lang="en">studs</bdi> מהדמות. נקודת ההתחלה היא 14 <bdi dir="ltr" lang="en">studs</bdi>. אין <bdi dir="ltr" lang="en">sprint</bdi> או פעולת קפיצה בגרסה הזאת.</p>
+<p>כאשר מרכז הדמות נמצא עד 6 <bdi dir="ltr" lang="en">studs</bdi> ממרכז חפץ, מוצגת מעליו הפעולה <code><bdi dir="ltr" lang="en">Collect</bdi></code> עם המקש <bdi dir="ltr" lang="en">E</bdi>. לחיצה בודדת אוספת חפץ אחד, בלי החזקה ובלי איסוף אוטומטי. אם יש כמה חפצים בטווח, נבחר הקרוב ביותר; בשוויון נבחר זה שקרוב יותר לפתח, ולאחר מכן זה שבצד שמאל במבט מהבסיס. רק חפץ אחד מסומן בכל רגע. האיסוף מותר רק בתוך מחסן פתוח, ללא קיר שמפריד בין הדמות לחפץ.</p>
+<p>אם המטען מלא, מוצגת ההודעה <code><bdi dir="ltr" lang="en">Bag full</bdi></code>. לחיצות נוספות אינן משנות את המטען. השחקן חוזר לאזור ההפקדה ללא כפתור הפקדה.</p>
+<h2>כלל 2: מידע קבוע על המסך</h2>
+<p>טקסט המשחק באנגלית בלבד בגרסה הזאת. מסמכי הפרויקט נשארים בעברית.</p>
+<ul>
+<li>למעלה במרכז: מצב המחסן ויתרת הזמן בתצוגת דקות ושניות.</li>
+<li>למעלה משמאל: <code><bdi dir="ltr" lang="en">Coins</bdi></code>, יתרת המטבעות שהופקדו; בצמוד מצב השמירה לפי <a href="saving.html">שמירה</a>.</li>
+<li>למטה במרכז: <code><bdi dir="ltr" lang="en">Bag</bdi></code> עם מספר החפצים מתוך הקיבולת, ולצדו <code><bdi dir="ltr" lang="en">Cargo value</bdi></code>, ערך ההפקדה של המטען הנוכחי.</li>
+<li>למעלה מימין: <code><bdi dir="ltr" lang="en">Next style</bdi></code> וההתקדמות ליעד הבא לפי <a href="progression.html">התקדמות</a>.</li>
+</ul>
+<p>הטקסט אינו חוסם את מרכז המסך או חופף לפעולת האיסוף. ברזולוציה 1280 על 720 כל השדות נראים ללא חיתוך. אין תפריטי קנייה, חלונות קופצים או דרישה לסגור מסך כדי להתחיל לשחק.</p>
+<h2>כלל 3: הדרכה בתוך הפעולה</h2>
+<p>בכניסה הראשונה מוצג המשפט <code><bdi dir="ltr" lang="en">Collect items</bdi>. <bdi dir="ltr" lang="en">Return here to bank them</bdi>.</code> אזור ההפקדה מסומן כבר אז. לאחר האיסוף הראשון ההודעה משתנה ליותר קצרה: <code><bdi dir="ltr" lang="en">Return before closing</bdi></code>. לאחר ההפקדה הראשונה ההדרכה נעלמת ואינה חוזרת כל עוד ההתקדמות נטענה בהצלחה.</p>
+<p>מי שמצטרף בזמן סגירה רואה <code><bdi dir="ltr" lang="en">Warehouse closed</bdi>. <bdi dir="ltr" lang="en">Next round in</bdi></code> ואת יתרת הזמן. אין הצגת הוראת איסוף בזמן שהכניסה חסומה.</p>
+<h2>כלל 4: תגובה ברורה להצלחה ולכישלון</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>אירוע</th>
+<th>תגובה</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>איסוף הצליח</td>
+<td>החפץ נעלם עבור השחקן, המטען מתעדכן, נשמע צליל קצר</td>
+</tr>
+<tr>
+<td>הפקדה הצליחה</td>
+<td>מופיע <code><bdi dir="ltr" lang="en">Banked</bdi> +</code> עם הסכום למשך 2 שניות, המטען מתרוקן ונשמע צליל נפרד</td>
+</tr>
+<tr>
+<td>תחילת האזהרה המאושרת</td>
+<td>הודעת <code><bdi dir="ltr" lang="en">Return to base</bdi></code> וצליל אזהרה אחד; הזמן מודגש בצבע ובטקסט</td>
+</tr>
+<tr>
+<td>כישלון בסגירה</td>
+<td>חזרה לבסיס והודעת <code><bdi dir="ltr" lang="en">Cargo lost</bdi>. <bdi dir="ltr" lang="en">Banked coins kept</bdi></code> למשך 3 שניות</td>
+</tr>
+<tr>
+<td>פתיחה מחדש</td>
+<td><code><bdi dir="ltr" lang="en">Warehouse open</bdi></code> וצליל פתיחה קצר</td>
+</tr>
+</tbody>
+</table></div>
+<p>אין הבהוב מסך, רעד מצלמה או הודעה שמונעת תנועה. מי שמשחק בלי קול מקבל את כל המידע הדרוש בטקסט. תגובת הצלחה מוצגת רק כאשר הפעולה אכן התקבלה במשחק, לא על עצם הלחיצה.</p>
+<h2>דוגמאות קבלה</h2>
+<p>לחיצות חוזרות ליד חפץ שכבר נאסף אינן נותנות חפצים נוספים. שני שחקנים יכולים לאסוף את העותק האישי של אותו חפץ. בעת סגירה פעולת איסוף לא מוצגת כמצליחה לאחר שהמחסן נסגר. לאחר <bdi dir="ltr" lang="en">respawn</bdi> המטען מוצג ריק והמטבעות נשארים לפי <bdi dir="ltr" lang="en">gameplay</bdi>.</p>
+<h2>ערכי התחלה ומחוץ למסמך</h2>
+<p>הטווח, המצלמה ומשך ההודעות הם הצעות לבדיקה. אם שחקנים לוחצים מחוץ לטווח שוב ושוב, בודקים את בהירות הסימון לפני הגדלת הטווח. <bdi dir="ltr" lang="en">touch controls</bdi>, <bdi dir="ltr" lang="en">gamepad</bdi> ושפות נוספות מחוץ לגרסה הזאת. התנהגות המצלמה והקלט המדויקת עדיין לא אומתה מקומית; האימות ייעשה רק בעבודה שתאושר בנפרד.</p>
+</main></body></html>

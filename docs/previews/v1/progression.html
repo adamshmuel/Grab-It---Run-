@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>התקדמות ומטרות אישיות</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a> · <a href="../project-goals.html">מטרות הפרויקט</a></nav><h1>התקדמות ומטרות אישיות</h1>
+<p><strong>מצב: טיוטה לאישור אדם. 22/10/2026.</strong></p>
+<h2>המטרה והגבול</h2>
+<p>לתת סיבה קרובה לעוד יציאה למחסן, בלי להוסיף פעולות או לשנות את הסיכון המאושר. אין שדרוג למהירות, לקיבולת או לערכי חפצים. ההצעה מרחיבה את התוכן שמעבר ל<a href="../gameplay.html"><bdi dir="ltr" lang="en">gameplay</bdi></a>, ואינה משנה את כלליו.</p>
+<h2>כלל 1: מטבעות מצטברים פותחים מראה</h2>
+<p>שחקן חדש מתחיל עם 0 מטבעות ומראה בסיסי. אין הוצאה של מטבעות בגרסה הזאת. כל דרגה נפתחת כשסך המטבעות שהופקדו מגיע לסף, כולל מטבעות שנטענו מכניסה קודמת.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>סך מטבעות</th>
+<th>המראה שמתקבל</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>פחות מ־30</td>
+<td>מטען ללא מסגרת</td>
+</tr>
+<tr>
+<td>30</td>
+<td>מסגרת נחושת סביב המטען</td>
+</tr>
+<tr>
+<td>100</td>
+<td>מסגרת כסופה סביב המטען</td>
+</tr>
+<tr>
+<td>300</td>
+<td>מסגרת זהובה סביב המטען</td>
+</tr>
+</tbody>
+</table></div>
+<p>המראה הגבוה ביותר שנפתח מופעל אוטומטית. אין מסך בחירה. המסגרת מופיעה גם כשהמטען ריק ונראית לשחקנים אחרים. היא אינה מסתירה חפצים, משנה את גודל הדמות או משפיעה על איסוף ותנועה.</p>
+<h2>כלל 2: תמיד ברור מה היעד הבא</h2>
+<p>לפני הדרגה הראשונה מוצג <bdi dir="ltr" lang="en">Copper style</bdi> ומתחתיו ההתקדמות מתוך 30. בהמשך מוצג היעד הבא והסף המצטבר שלו. לדוגמה, עם 75 מטבעות מוצג <bdi dir="ltr" lang="en">Silver style</bdi> עם 75 מתוך 100.</p>
+<p>פתיחת דרגה מציגה <bdi dir="ltr" lang="en">Style unlocked</bdi> ואת שמה למשך 3 שניות, בלי לעצור את המשחק. אם הפקדה חוצה כמה ספים, מתקבלת מיד הדרגה הגבוהה ביותר, ומוצגת רק הודעה אחת עבורה.</p>
+<p>לאחר 300 מטבעות מוצג <bdi dir="ltr" lang="en">All styles unlocked</bdi>. המטבעות ממשיכים להצטבר, והמשחק ממשיך כרגיל. אין הבטחה לתוכן נוסף ואין מסך סיום.</p>
+<h2>כלל 3: כישלון אינו מוחק התקדמות שהופקדה</h2>
+<p>מטען שלא הופקד אינו נספר להתקדמות. סגירה או <bdi dir="ltr" lang="en">respawn</bdi> אינם מורידים מטבעות או דרגה. המצב בין כניסות נקבע רק לפי <a href="saving.html">שמירה</a>. לא מעניקים שוב תגמול מספרי כאשר נטענת דרגה שכבר נפתחה.</p>
+<h2>דוגמאות קבלה</h2>
+<ul>
+<li>שחקן עם 29 מטבעות מפקיד מטבע אחד ומקבל מסגרת נחושת.</li>
+<li>שחקן עם 29 מטבעות מאבד מטען בשווי 6; הוא נשאר עם 29 וללא המסגרת.</li>
+<li>שחקן עם 99 מטבעות מפקיד 6 ומגיע ל־105 עם מסגרת כסופה.</li>
+<li>לאחר כניסה מחדש עם 105 מטבעות שנשמרו, המראה הכסוף נטען והיעד הוא זהב.</li>
+</ul>
+<h2>מדוע זו הצעה לבדיקה</h2>
+<p>הספים הם נקודת התחלה שלנו, ללא נתוני <bdi dir="ltr" lang="en">retention</bdi> או הוכחת הנאה. אם שחקנים אינם מבחינים במראה או אינם מתעניינים בו, לא מעלים את הספים כדי להאריך משחק באופן מלאכותי. בודקים מה חסר במשמעות של התגמול. כל שינוי דורש עדכון המסמך ואישור.</p>
+<h2>מחוץ למסמך</h2>
+<p>אין חנות, רכישות, שדרוגים, משימות יומיות או תגמול על זמן המתנה. זו התקדמות קצרה לבדיקת הגרסה הראשונה; היא אינה פתרון מוכח לחזרה לאורך חודשים.</p>
+</main></body></html>

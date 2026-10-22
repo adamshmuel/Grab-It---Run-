@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>המחסן והסגנון החזותי</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a> · <a href="../project-goals.html">מטרות הפרויקט</a></nav><h1>המחסן והסגנון החזותי</h1>
+<p><strong>מצב: טיוטה לאישור אדם. 22/10/2026.</strong></p>
+<h2>המטרה והקשר למסמכים</h2>
+<p>לתת משמעות להתרחקות מהבסיס בלי להפוך את הדרך לחידה. <a href="../gameplay.html"><bdi dir="ltr" lang="en">Gameplay</bdi></a> קובע ערכים, מהירות נשיאה ומחזורי פתיחה. <a href="index.html">מפת הגרסה</a> מגדירה את ההיקף.</p>
+<h2>כלל 1: מחסן פשוט עם דרך חזרה ברורה</h2>
+<p>בסיס מלבני ברוחב 40 ובעומק 24 <bdi dir="ltr" lang="en">studs</bdi>, יחידות המרחק של <bdi dir="ltr" lang="en">Roblox</bdi>. ממנו יוצאים דרך פתח ברוחב 16 <bdi dir="ltr" lang="en">studs</bdi> למחסן ברוחב 48 ובעומק 120 <bdi dir="ltr" lang="en">studs</bdi>.</p>
+<p>מרכז אזור ההפקדה נמצא 8 <bdi dir="ltr" lang="en">studs</bdi> לפני הפתח, בתוך הבסיס. האזור בגודל 16 על 8 <bdi dir="ltr" lang="en">studs</bdi>. חציית הגבול שלו מתחילה הפקדה לפי <bdi dir="ltr" lang="en">gameplay</bdi>. הוא אינו נמצא על קו הסגירה.</p>
+<p>במחסן יש מעבר מרכזי פנוי ברוחב 16 <bdi dir="ltr" lang="en">studs</bdi>. מדפים דקורטיביים נמצאים בצדדים ואינם מסתירים חפצים, חוסמים את המעבר או יוצרים מסלול חלופי. הקירות בגובה 20 <bdi dir="ltr" lang="en">studs</bdi> והגג סגור. אין צורך לקפוץ כדי להגיע לשום חפץ. אין התנגשות בין שחקנים.</p>
+<h2>כלל 2: שלושה אזורי איסוף</h2>
+<p>המרחקים נמדדים מהפתח פנימה. בכל אזור 10 חפצים במקומות קבועים, 5 בכל צד של המעבר. מרכזי החפצים נמצאים 12 <bdi dir="ltr" lang="en">studs</bdi> מימין ומשמאל למרכז המעבר.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>אזור</th>
+<th>עומקים של זוגות החפצים</th>
+<th>מראה החפץ</th>
+<th>ערך</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>קרוב</td>
+<td><code>12, 18, 24, 30, 36 <bdi dir="ltr" lang="en">studs</bdi></code></td>
+<td>קופסת עץ, ספרה גדולה 1</td>
+<td>לפי <bdi dir="ltr" lang="en">gameplay</bdi></td>
+</tr>
+<tr>
+<td>בינוני</td>
+<td><code>48, 54, 60, 66, 72 <bdi dir="ltr" lang="en">studs</bdi></code></td>
+<td>ארגז מתכת, ספרה גדולה 3</td>
+<td>לפי <bdi dir="ltr" lang="en">gameplay</bdi></td>
+</tr>
+<tr>
+<td>רחוק</td>
+<td><code>84, 90, 96, 102, 108 <bdi dir="ltr" lang="en">studs</bdi></code></td>
+<td>מכל כחול, ספרה גדולה 6</td>
+<td>לפי <bdi dir="ltr" lang="en">gameplay</bdi></td>
+</tr>
+</tbody>
+</table></div>
+<p>לכל חפץ צורה פשוטה בגודל 3 על 3 על 3 <bdi dir="ltr" lang="en">studs</bdi>. כל החפצים באותה רמת ערך זהים. הם אישיים לכל שחקן ומתחדשים רק לפי <bdi dir="ltr" lang="en">gameplay</bdi>. חפץ שלא נאסף אינו משנה מיקום במהלך הסיבוב.</p>
+<h2>כלל 3: בסיס מזוהה וסגירה מובנת</h2>
+<p>לבסיס רצפה ירוקה עם סמל בית. למחסן רצפה אפורה; בכל אזור ספרה גדולה ושלט ערך. פס לבן רציף במעבר וחצים עם סמל הבית מצביעים לבסיס. צבע לבדו אינו נושא את המידע.</p>
+<p>שלט מעל הפתח מציג פתוח או סגור. בסגירה דלת מלאה חוסמת את הכניסה, וכל מי שלא חצה לבסיס מטופל לפי <bdi dir="ltr" lang="en">gameplay</bdi>. הסגירה נמדדת בגבול הפתח, לא לפי מראה הדלת בזמן תנועתה.</p>
+<h2>כלל 4: סגנון עקבי וקריאות</h2>
+<p>גאומטריה פשוטה, צבעים אחידים ותאורה קבועה. אין חושך, ערפל, אורות מהבהבים או פרטים שמסתירים חפצים. הדמויות שומרות על המראה האישי שלהן. המטען מוצג כערמה של עד 5 חפצים מאחורי הדמות, בלי להסתיר את הדרך או לשנות התנגשות.</p>
+<p>הרפרנס הוא <a href="../competitor-research.html">מחקר המתחרה</a>: נצפו משטחים פשוטים והבחנה חזותית בין אזורים. זו השראה לקריאות, ולא העתקת <bdi dir="ltr" lang="en">assets</bdi> או הוכחת איכות המפה שלנו.</p>
+<h2>דוגמאות קבלה</h2>
+<ul>
+<li>שחקן בבסיס מזהה את הכניסה ואת אזור ההפקדה בלי לפתוח תפריט.</li>
+<li>שני שחקנים הולכים זה מול זה במעבר בלי לחסום זה את זה.</li>
+<li>לאחר איסוף כל החפצים הקרובים, עדיין יש חפצים רחוקים; אין חידוש לפני הסיבוב הבא.</li>
+<li>בסגירה אין דרך להיכנס למחסן דרך קיר, גג או מדף.</li>
+</ul>
+<h2>ערכי התחלה ושינוי בעקבות בדיקה</h2>
+<p>המידות הן הצעת התחלה, ולא מפת תנועה שנבדקה. אם שחקנים הולכים לאיבוד, משנים את הסימון לפני שמוסיפים חצים נוספים. אם אין התלבטות בין חזרה לעוד חפץ, בודקים את המרחקים מול ההאטה המאושרת. כל שינוי נרשם במסמך המתאים לפני מימושו.</p>
+<h2>מחוץ למסמך</h2>
+<p>אין מפות נוספות, מכשולים, אויבים או אזורים נעולים. אין כאן הוראות בנייה או בחירה טכנית לייצוג המפה בתוך <bdi dir="ltr" lang="en">Git</bdi>.</p>
+</main></body></html>

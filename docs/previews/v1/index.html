@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V1 — הגדרות המשחק</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a> · <a href="../project-goals.html">מטרות הפרויקט</a></nav><h1><bdi dir="ltr" lang="en">V1</bdi> — הגדרות המשחק</h1>
+<p><strong>מצב: טיוטה לדיון עם אדם. נכתבה בתאריך 22/10/2026.</strong></p>
+<p>זהו המסמך המקשר של הגרסה הראשונה. רק מסמך <bdi dir="ltr" lang="en">gameplay</bdi> כבר אושר. כל ההרחבות כאן הן הצעות חדשות, ואינן משנות אותו עד אישור מפורש.</p>
+<h2>החוויה המוצעת</h2>
+<p>משחק <bdi dir="ltr" lang="en">Roblox</bdi> בסגנון <bdi dir="ltr" lang="en">hyper casual</bdi>: נכנסים למחסן, בוחרים כמה להסתכן, אוספים וחוזרים לבסיס לפני הסגירה. הפקדות מקדמות יעד אישי ופותחות מראה חדש למטען. ההתקדמות נשמרת לכניסה הבאה.</p>
+<p>ההצעה היא גרסה ראשונה לבדיקות עם שחקנים מוזמנים, במחשב עם מקלדת ועכבר. זו החלטת היקף מוצעת, ולא קביעה שמשחק מחשב בלבד מתאים להשקה רחבה. פרסום לציבור ומוצרים בתשלום מחוץ לגרסה הזאת.</p>
+<h2>סדר הקריאה</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>מסמך</th>
+<th>השאלה שהוא פותר</th>
+<th>מצב</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../gameplay.html"><bdi dir="ltr" lang="en">Gameplay</bdi> — איסוף וחזרה</a></td>
+<td>מה עושים ומה מסכנים?</td>
+<td>מאושר בתאריך 21/10/2026</td>
+</tr>
+<tr>
+<td><a href="warehouse.html">המחסן והסגנון החזותי</a></td>
+<td>איפה משחקים ואיך מזהים את הדרך?</td>
+<td>טיוטה</td>
+</tr>
+<tr>
+<td><a href="controls-feedback.html"><bdi dir="ltr" lang="en">Controls</bdi> ותגובות המשחק</a></td>
+<td>איך פועלים ומה רואים ושומעים?</td>
+<td>טיוטה</td>
+</tr>
+<tr>
+<td><a href="progression.html">התקדמות ומטרות אישיות</a></td>
+<td>בשביל מה יוצאים לעוד סיבוב?</td>
+<td>טיוטה</td>
+</tr>
+<tr>
+<td><a href="saving.html">שמירת ההתקדמות</a></td>
+<td>מה נשאר כשחוזרים למשחק?</td>
+<td>טיוטה</td>
+</tr>
+<tr>
+<td><a href="acceptance.html">קריטריוני הקבלה של הגרסה</a></td>
+<td>איך נחליט אם התוצאה מתאימה למטרות?</td>
+<td>טיוטה</td>
+</tr>
+</tbody>
+</table></div>
+<p>כל מסמך מחזיק את הכללים שלו. מפנים למסמך המקורי במקום להעתיק מספרים בין מסמכים.</p>
+<h2>הקשר למטרות</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>מטרה מוסכמת</th>
+<th>הביטוי שלה בטיוטה</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>משחק פשוט ומהיר</td>
+<td>פעולה אחת לאיסוף, הפקדה אוטומטית, כניסה בלי תפריט ראשי</td>
+</tr>
+<tr>
+<td>איכות ברורה ומגיבה</td>
+<td>סגנון חזותי עקבי, תגובה לכל פעולה, הודעה ברורה על כישלון</td>
+</tr>
+<tr>
+<td>רצון להמשיך ולחזור</td>
+<td>בחירת סיכון, יעד אישי קרוב, מראה שנפתח ונשמר</td>
+</tr>
+<tr>
+<td>היקף שאפשר לתחזק והכנסה אפשרית</td>
+<td>מחסן קטן ובלי חנות בגרסה הזאת; בודקים הנאה לפני מודל הכנסות</td>
+</tr>
+<tr>
+<td>אפשרות למשחקים עתידיים</td>
+<td>כללים ונתונים מתועדים בנפרד; שימוש חוזר יישען על מה שיוכח במשחק הזה</td>
+</tr>
+</tbody>
+</table></div>
+<p>שלוש דרגות מראה אינן הוכחה לחזרה לאורך זמן. הטיוטה מציעה דרך להתחיל לבדוק זאת, ולא פתרון מוכח לכל מטרות הפרויקט.</p>
+<h2>הגבולות המוצעים</h2>
+<p><strong>כלול:</strong> מחסן אחד, בסיס אחד, שלוש רמות ערך לפי <bdi dir="ltr" lang="en">gameplay</bdi>, שלושה סוגי חפצים חזותיים, עד 8 שחקנים באותו שרת, התקדמות אישית, שמירה, הדרכה קצרה ותגובות חזותיות וקוליות.</p>
+<p><strong>מחוץ לגרסה:</strong> <bdi dir="ltr" lang="en">touch controls</bdi>, <bdi dir="ltr" lang="en">gamepad</bdi>, <bdi dir="ltr" lang="en">VR</bdi>, מפות נוספות, אויבים, <bdi dir="ltr" lang="en">PvP</bdi>, גניבה, מסחר, שדרוגי כוח או מהירות, פתיחת אזורים, משימות יומיות, לוחות דירוג, מוצרים בתשלום ופרסום לציבור. שמות המסמכים להמשך רשומים ב<a href="../specs.html">מפת המסמכים הכללית</a>.</p>
+<h2>בסיס ההצעה והגבולות של הידע</h2>
+<p>הכיוון נשען על <a href="../project-goals.html">מטרות הפרויקט</a>, על <bdi dir="ltr" lang="en">gameplay</bdi> המאושר ועל <a href="../competitor-research.html">מחקר המתחרה</a>, שנבדק בתאריך 22/10/2026. במחקר ראינו גאומטריה פשוטה, הבחנה בצבעים ויעדים בולטים. לא הוכח שהבחירות האלה גורמות להצלחה.</p>
+<p>פריסת המחסן, יעדי ההתקדמות וקריטריוני הבדיקה כאן הם הצעות שלנו. הם טרם נבדקו במשחק. <a href="../project-readiness.html">מפת המוכנות</a> מפרטת את פערי ההיתכנות, ובייחוד שמירה, <bdi dir="ltr" lang="en">multiplayer</bdi> והנאה. אין כאן טענה שהפערים נסגרו.</p>
+<h2>אישור ושינויים לפי <bdi dir="ltr" lang="en">SDD</bdi></h2>
+<p>כל מסמך חדש ממתין לאישור אדם בנפרד. אין בטיוטה שאלות פתוחות או ערכים חסרים; אפשר לשנות את ההצעות בדיון לפני האישור. אישור חלק מהמסמכים אינו אישור לשאר הגרסה.</p>
+<p>לאחר אישור מסמך אפשר לבקש <bdi dir="ltr" lang="en">implementation plan</bdi> תואם. כתיבת קוד תתחיל רק לאחר בקשה מפורשת נוספת. לא נוצרו כאן תוכניות מימוש ולא הופעל <bdi dir="ltr" lang="en">Studio</bdi>.</p>
+<p>בעת שינוי החלטה מעדכנים את המסמך שבבעלותו הכלל ואת הקישורים שמושפעים ממנו. שינוי בכלל <bdi dir="ltr" lang="en">gameplay</bdi> מחייב אישור חדש של אדם. בכל מסמך שאושר יירשמו תאריך האישור והיקפו.</p>
+</main></body></html>

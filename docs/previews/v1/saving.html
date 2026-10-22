@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>שמירת ההתקדמות</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a> · <a href="../project-goals.html">מטרות הפרויקט</a></nav><h1>שמירת ההתקדמות</h1>
+<p><strong>מצב: טיוטה לאישור אדם. 22/10/2026.</strong></p>
+<h2>המטרה והקשר למסמכים</h2>
+<p>לאפשר לחזור להתקדמות שהושגה, ולהסביר בבירור כשהיא עדיין לא נשמרה. <a href="../gameplay.html"><bdi dir="ltr" lang="en">Gameplay</bdi></a> מגדיר הפקדה מיידית במהלך המשחק; המסמך הזה מוסיף את ההתנהגות בין כניסות.</p>
+<h2>כלל 1: מה נשמר</h2>
+<p>נשמרים סך המטבעות שהופקדו והשלמת ההדרכה לאחר הפקדה ראשונה. דרגת המראה נגזרת מסך המטבעות לפי <a href="progression.html">התקדמות</a>. לא נשמרים מטען, מיקום, זמן המחסן או החפצים שנאספו בסיבוב.</p>
+<p>בכניסה מוצלחת מתחילים בבסיס בלי מטען ועם היתרה השמורה. החפצים זמינים לפי מצב הסיבוב הנוכחי ועבור שחקן שמצטרף אליו. כניסה מחדש אינה משחזרת את הסיבוב הקודם.</p>
+<h2>כלל 2: טעינה לפני תחילת משחק</h2>
+<p>כל עוד ההתקדמות נטענת, מוצג <bdi dir="ltr" lang="en">Loading progress</bdi> והשחקן אינו נכנס למחסן או מפקיד. אם אין רשומה קודמת והקריאה הסתיימה בהצלחה, מתחילים כחדשים. כישלון בטעינה אינו נחשב שחקן חדש.</p>
+<p>לאחר 15 שניות ללא טעינה מוצלחת מוצג <bdi dir="ltr" lang="en">Progress unavailable</bdi>. <bdi dir="ltr" lang="en">Rejoin to retry</bdi> והמשחק נשאר חסום עבור אותו שחקן. אין התחלה עם אפס מטבעות שעלולה להחליף שמירה קיימת. אם יש <bdi dir="ltr" lang="en">session</bdi> פעיל אחר לאותו שחקן, גם אז לא מתחילים <bdi dir="ltr" lang="en">session</bdi> נוסף עם אפשרות לשנות התקדמות.</p>
+<h2>כלל 3: הפקדה והודעת מצב</h2>
+<p>הפקדה מוסיפה מיד את המטבעות למצב הנוכחי, כפי שאושר ב־<bdi dir="ltr" lang="en">gameplay</bdi>. לצדה מוצג <bdi dir="ltr" lang="en">Saving</bdi> עד שמתקבל אישור לשמירת ההתקדמות הזאת. רק לאחר אישור מוצג <bdi dir="ltr" lang="en">Saved</bdi>.</p>
+<p>לאחר 10 שניות ללא אישור מוצג <bdi dir="ltr" lang="en">Not saved yet</bdi>. <bdi dir="ltr" lang="en">Rejoining may lose recent progress</bdi>. אפשר להמשיך לשחק, אך לא מובטח שההפקדות הלא מאושרות יחזרו בכניסה הבאה. אזהרה זו אינה נעלמת בגלל הפקדה נוספת; היא נעלמת רק לאחר אישור שמירה שמכסה את כל ההפקדות עד אותו רגע.</p>
+<p>אין הצגת <bdi dir="ltr" lang="en">Saved</bdi> עבור מצב ישן כשקיימת הפקדה חדשה שטרם נשמרה. אם החיבור נותק או השרת נעצר לפני אישור, הכניסה הבאה מחזירה את המצב האחרון שאושר ונשמר. אין הבטחה לשחזור מטבעות שלא נשמרו.</p>
+<h2>כלל 4: ללא הכפלה או דריסה של התקדמות</h2>
+<p>שתי הפקדות שונות מצטברות פעם אחת כל אחת. ניסיון חוזר לשמור אותה הפקדה אינו מעניק אותה שוב. תגובת שמירה ישנה אינה מורידה יתרה חדשה יותר. <bdi dir="ltr" lang="en">session</bdi> קודם אינו רשאי לדרוס התקדמות שנוצרה לאחריו.</p>
+<p>השליטה ביתרה אינה בידי הודעה מהמחשב של השחקן. שינוי מקומי של מספר או טענה על איסוף אינם מעניקים מטבעות או מסגרת לשחקנים אחרים.</p>
+<h2>דוגמאות קבלה</h2>
+<ul>
+<li>שחקן חדש מפקיד 7, רואה <bdi dir="ltr" lang="en">Saved</bdi>, יוצא וחוזר: 7 מטבעות ומטען ריק.</li>
+<li>טעינה נכשלת: אין משחק עם יתרה חלופית ואין כתיבה של אפס מעל הרשומה.</li>
+<li>אישור שמירה מתעכב: המטבעות נראים במהלך המשחק ומוצג מצב ההמתנה המתאים.</li>
+<li>שני <bdi dir="ltr" lang="en">sessions</bdi> מתחרים או ניסיון שמירה חוזר אינם מכפילים מטבעות או מוחקים מצב מתקדם יותר.</li>
+</ul>
+<h2>היתכנות ומחוץ למסמך</h2>
+<p>אלו דרישות התנהגות, ולא הבטחה שכבר נבדקו. לפי <a href="../project-readiness.html">מפת המוכנות</a>, שמירה ו־<bdi dir="ltr" lang="en">session conflicts</bdi> טרם אומתו בפרויקט. לפני הסתמכות על מימוש יידרשו מקור עדכני וניסוי ממוקד שיאושרו במסגרת העבודה המתאימה. אם יתברר שהדרישה אינה ישימה בהיקף המוסכם, חוזרים לעדכון <bdi dir="ltr" lang="en">spec</bdi>; לא מחליפים אותה בשקט.</p>
+<p>אין כאן בחירת ספרייה, <bdi dir="ltr" lang="en">DataStore schema</bdi> או סדר פעולות למימוש. מסחר, קניות בתשלום והעברת מידע בין חשבונות מחוץ למסמך.</p>
+</main></body></html>

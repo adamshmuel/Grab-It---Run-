@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>קריטריוני הקבלה של V1</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}nav{font-size:.9rem;border-block-end:1px solid #888;padding-block-end:1rem} main{max-inline-size:1000px}h1{line-height:1.4}code{overflow-wrap:anywhere}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a> · <a href="../project-goals.html">מטרות הפרויקט</a></nav><h1>קריטריוני הקבלה של <bdi dir="ltr" lang="en">V1</bdi></h1>
+<p><strong>מצב: טיוטה לאישור אדם. 22/10/2026.</strong></p>
+<h2>מה המסמך קובע</h2>
+<p>מה צריך לראות כדי לקבל את הגרסה, ולא כיצד לממש או להריץ <bdi dir="ltr" lang="en">tests</bdi>. כל הקריטריונים כאן הם הצעות, לא תוצאות שהושגו. אישור הגרסה אינו אישור לפרסום לציבור.</p>
+<h2>כלל 1: נכונות ההתנהגות</h2>
+<p>כל הדוגמאות במסמכי <a href="index.html">הגרסה</a> חייבות להתקיים. נדרשת בדיקה רציפה שמתחילה בשחקן חדש: טעינה, איסוף, הפקדה, יציאה נוספת, כישלון בסגירה, סיבוב חדש, פתיחת מראה וכניסה מחדש לאחר אישור שמירה.</p>
+<p>נבדקים גם מטען מלא, לחיצות חוזרות, הצטרפות בזמן סגירה, <bdi dir="ltr" lang="en">respawn</bdi>, הפקדה סמוך לסגירה, שגיאות טעינה ושמירה ו־<bdi dir="ltr" lang="en">sessions</bdi> מתחרים. אין קבלה כאשר יש הכפלת מטבעות, מחיקת יתרה שמורה או איסוף אחרי סגירה.</p>
+<h2>כלל 2: לבד ולצד חברים</h2>
+<p>אפשר להשלים את המסלול בלי שחקן נוסף. בבדיקה עם 2 שחקנים ובבדיקה עם 8, לכל אחד חפצים, מטען ויתרה עצמאיים. הסיבוב משותף, ואין חסימת מעבר בין דמויות. יציאת שחקן אינה מאפסת את האחרים.</p>
+<p>הערך 8 הוא היקף בדיקה מוצע, ולא הוכחת ביצועים מקומית או העתקת הגדרות שרת המתחרה.</p>
+<h2>כלל 3: בהירות ואיכות תצוגה</h2>
+<p>במסך 1280 על 720 ובמסך 1920 על 1080 אין טקסט חתוך או חפיפה בין שדות. גם בלי קול אפשר לזהות איסוף, הפקדה, אזהרה וכישלון. צילום מתוך המשחק מציג דרך חזרה ברורה, הפרדה בין בסיס למחסן וחפצים שאפשר להבחין בהם.</p>
+<p>ההשוואה החזותית תשתמש ברפרנסים מתוך <a href="../competitor-research.html">מחקר המתחרה</a>. הרפרנסים היסטוריים ואינם מדד מלא לתעשייה. לא מסיקים מתמונה על ביצועים, אנימציה או הנאה.</p>
+<h2>כלל 4: ביצועים ויציבות בהיקף המוצע</h2>
+<p>יעד התחלה: לפחות 30 <bdi dir="ltr" lang="en">FPS</bdi> במשך 95% מהדגימות בבדיקה רציפה של 10 דקות אחרי טעינה, על המחשב של אדם, ברזולוציה 1280 על 720 ודרגת גרפיקה 5, כאשר 8 שחקנים פעילים בשרת. יתועדו דגם המחשב, גרסת <bdi dir="ltr" lang="en">Studio</bdi> או <bdi dir="ltr" lang="en">Roblox</bdi>, צורת הבדיקה ומרווח הדגימה. אין להשליך מכך על כל המחשבים או על <bdi dir="ltr" lang="en">mobile</bdi>.</p>
+<p>לא נשארות שגיאות משחק לא מוסברות ב־<bdi dir="ltr" lang="en">console</bdi> במהלך הבדיקה. השהיה מורגשת בין פעולה לתגובה נרשמת לבדיקה; אין כאן הבטחה לזמן תגובה מספרי ברשת שלא נמדדה. כלי המדידה ודרך בדיקת 8 שחקנים עדיין לא אומתו בפרויקט; זהו פער מימוש שיש לפתור לפני שמציגים עמידה בקריטריון.</p>
+<h2>כלל 5: הבנה ורצון להמשיך</h2>
+<p>סבב בדיקה ראשון יכלול 5 שחקנים שלא קראו את ההגדרות. לפחות 4 יצליחו להפקיד בתוך 90 שניות מזמן משחק במחסן פתוח, בלי הסבר בעל פה. המתנה לסיבוב או לטעינה אינה נספרת.</p>
+<p>לפחות 3 יבחרו לצאת שוב לאחר ההפקדה הראשונה בלי בקשה מהבודק. מתעדים מה הבינו לגבי אובדן המטען ומה גרם להם לחזור או לפרוש. אלה ספי בדיקה מוצעים למדגם קטן, ולא הוכחת <bdi dir="ltr" lang="en">retention</bdi> ארוך או יעד הכנסה.</p>
+<p>אם הספים לא מתקיימים, מתעדים את הקושי ומשנים את <bdi dir="ltr" lang="en">spec</bdi> הרלוונטי באישור אדם לפני מימוש השינוי. לא מסמנים את המטרה כמי שהושגה רק משום שכל <bdi dir="ltr" lang="en">tests</bdi> עברו.</p>
+<h2>כלל 6: תיעוד והמשך</h2>
+<p>לכל תוצאה יהיה תאריך וקישור לראיה. מעדכנים את <a href="../project-readiness.html">מפת המוכנות</a> רק במה שאומת. שומרים מגבלות ידועות, והחלטות שימוש חוזר נובעות מצורך שהופיע בפועל.</p>
+<p>אין צורך לאמת <bdi dir="ltr" lang="en">retention</bdi>, הכנסה או השקה ציבורית כדי לקבל את גרסת הבדיקה הזאת. אלה דורשים היקף, מסמכים ואישור נפרדים; אין להסיק שהמטרות האלה הושגו בעקבות קבלת <bdi dir="ltr" lang="en">V1</bdi>.</p>
+</main></body></html>

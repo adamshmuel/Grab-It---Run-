@@ -20,6 +20,8 @@ The latest explicit instruction from Adam takes precedence over older project pr
 
 Adam approved `docs/specs/v1/gameplay.md` on 2026-10-21, including its rules and starting values. On 2026-10-22 he authorized discussing and documenting the agreed project goals in `docs/specs/project-goals.md`. That request permits goals documentation, not an implementation plan or game code. Project setup rules remain in effect. No game implementation has started or been authorized.
 
+On 2026-10-22 Adam authorized drafting the V1 specifications, split into small feature documents linked by `docs/specs/v1/index.md`, aligned with the agreed goals. Only gameplay remains approved; the V1 scope and all new feature documents are proposals awaiting Adam's approval. This request authorizes specification work, not implementation plans, code, Studio operations, or publishing.
+
 The process is: specification → Adam approves → implementation plan → Adam explicitly requests coding that feature. Approval of a specification or plan alone is not coding permission. Once a task is authorized, complete its routine reversible steps without repeated confirmation.
 
 On 2026-10-22 Adam additionally authorized environment verification before planning and opened a disposable Baseplate for MCP checks. After Adam requested completing the environment check, existing local tool versions were configured for the project, and Rojo live sync plus failing/passing tests were verified in the disposable place. No gameplay code, implementation plan, new tool installations, publishing, or production-place changes were performed. Environment checks do not authorize game implementation.
