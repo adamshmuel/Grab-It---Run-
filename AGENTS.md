@@ -2,7 +2,7 @@
 
 ## Read these rules first
 
-Before any project task, read all six files below. They apply to this whole project, not only to the `rules/` folder:
+Before any project task, read all seven files below. They apply to this whole project, not only to the `rules/` folder:
 
 1. `rules/communication.md` — short, beginner-friendly communication in Hebrew for now.
 2. `rules/readable-docs.md` — readable documents and clear names.
@@ -10,6 +10,7 @@ Before any project task, read all six files below. They apply to this whole proj
 4. `rules/tdd.md` — failing test, smallest passing change, then cleanup.
 5. `rules/git.md` — branches, commits, and no pushes.
 6. `rules/code-review.md` — code review for code changes before completing a coding task.
+7. `rules/research.md` — current sources, practical feasibility checks, and explicit evidence across all agreed capability areas.
 
 Keep the source rules in `rules/`. This root file makes reading them mandatory; the folder alone is not an automatic instruction source. Keep all configuration local to this project. `AGENTS.md` is the only root instruction file; do not create a duplicate `AGENT.md`.
 
