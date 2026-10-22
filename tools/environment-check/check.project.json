@@ -1,0 +1,14 @@
+{
+  "name": "EnvironmentCheckOnly",
+  "tree": {
+    "$className": "DataModel",
+    "$ignoreUnknownInstances": true,
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "$ignoreUnknownInstances": true,
+      "EnvironmentCheck": {
+        "$path": "src"
+      }
+    }
+  }
+}

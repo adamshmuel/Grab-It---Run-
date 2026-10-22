@@ -21,7 +21,7 @@ Adam approved `docs/specs/v1/gameplay.md` on 2026-10-21, including its rules and
 
 The process is: specification → Adam approves → implementation plan → Adam explicitly requests coding that feature. Approval of a specification or plan alone is not coding permission. Once a task is authorized, complete its routine reversible steps without repeated confirmation.
 
-Current scope: record the gameplay approval and stop. Further planning, design, and implementation require a new request from Adam. Do not open or operate Studio, start Rojo syncing, install tools, configure connections, change a game, spend money, or publish during this design task.
+On 2026-10-22 Adam additionally authorized environment verification before planning and opened a disposable Baseplate for MCP checks. After Adam requested completing the environment check, existing local tool versions were configured for the project, and Rojo live sync plus failing/passing tests were verified in the disposable place. No gameplay code, implementation plan, new tool installations, publishing, or production-place changes were performed. Environment checks do not authorize game implementation.
 
 ## Project context
 
@@ -46,11 +46,11 @@ Monetization ideas: bag/cart appearances, deposit effects, base decorations, per
 
 ## Tooling and evidence
 
-A read-only check found Roblox Studio 0.743.0.7431133 and its built-in StudioMCP executable installed. No successful connection or game operation has been verified. Recheck the available tools before relying on earlier observations.
+Environment verification on 2026-10-22 found Roblox Studio 0.744.0.7441077 and confirmed the native Studio MCP connection in this chat. On a new unpublished Baseplate named Place1, hierarchy inspection, temporary block creation, screenshot capture, play start/stop, Server and Client execution, replication, and console reads succeeded. The temporary block was removed and Studio returned to Edit. Details and remaining gaps are in `docs/environment-check.md`. No game implementation was started.
 
-Chosen approach for future authorized development: local Luau files, Rojo for syncing them into Studio, and Git for history. Adam reports that Rojo is installed and working; this chat has not verified its connection for this game. Local files are the source of truth for Rojo-managed code: do not edit that code directly in Studio, through MCP, or through Script Sync. MCP is the connection that lets development tools operate Studio. Luau is Roblox's scripting language. Future Studio MCP inspection and testing still require separate authorization and connection verification. Rojo does not imply that every map object or asset is already represented in Git.
+Chosen approach for future authorized development: local Luau files, Rojo for syncing them into Studio, and Git for history. Rojo 7.7.1 live sync was verified from local files into the disposable Studio place. The reusable test project is `tools/environment-check/check.project.json`; no gameplay project has been implemented. Local files are the source of truth for Rojo-managed code: do not edit that code directly in Studio, through MCP, or through Script Sync. MCP is the connection that lets development tools operate Studio. Luau is Roblox's scripting language. The current Studio MCP environment check was authorized by Adam; future operations must remain within the task he authorizes. Rojo does not imply that every map object or asset is already represented in Git.
 
-Before future implementation, verify the connection on a disposable test place. Test inspection, a block edit, play mode, screenshots, console output, and stopping play. Check multi-player testing separately. This verification is planned, not performed.
+Basic environment verification is complete: Git, Rojo build and live sync, Studio MCP, a failing-then-passing assertion test in Server and Client, StyLua, and Selene were exercised. Project `rokit.toml` pins cached Rojo 7.7.1, StyLua 2.5.2, and Selene 0.32.0; normal commands work. Selene uses the local pinned `roblox.yml` copied from existing cached definitions. The environment smoke test uses built-in Luau assertions and needs no external test package. No new tools were installed. Multi-player testing, touch controls, saving, purchases, and gameplay tests remain feature-specific work, not completed by this environment check.
 
 Open Cloud, Roblox's service API, may later support publishing automation. Do not request keys for the local prototype or put credentials in project files.
 
