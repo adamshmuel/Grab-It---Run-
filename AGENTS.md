@@ -28,7 +28,7 @@ On 2026-10-22 Adam additionally authorized environment verification before plann
 
 ## Project context
 
-- Platform: Roblox. Mobile and Meta Quest were comparisons, not current targets.
+- Platform: Roblox. On 2026-10-22 Adam required V1 acceptance checks on desktop and mobile, including Studio device/touch simulation. The V1 drafts now include touch controls; simulator execution remains unverified locally. Meta Quest is not a current target.
 - Adam is a beginner Roblox programmer using a Mac and an existing basic subscription for development help. Keep the project inexpensive and manageable.
 - Agreed project goals are recorded in `docs/specs/project-goals.md`: a simple, fast, compelling Roblox hyper casual game; quality comparable to similar Roblox games; lasting reasons to return; manageable development and maintenance with income potential; and preserving knowledge and reusable components for future games of the same kind. Keep this game's design focused; do not build a general framework for a series in advance. These are goals, not numeric targets or guarantees of profit or exposure.
 - Repository name: `Grab-It-&-Run!`. Naming candidates discussed: **Grab It & Run!** and **One More Haul**. The final public title and name availability are unconfirmed.
