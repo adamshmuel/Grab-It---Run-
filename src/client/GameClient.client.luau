@@ -14,10 +14,22 @@ player.CameraMinZoomDistance = 8
 player.CameraMaxZoomDistance = 20
 player.CameraMode = Enum.CameraMode.Classic
 local View = require(root.Shared.Presentation)
+local Wire = require(root.Shared.NetworkState)
+local Rules = require(root.Shared.GameRules)
 local RunService = game:GetService("RunService")
 local state = nil
 local connections = {}
 local sounds = {}
+local displayedTarget = nil
+local function currentTarget()
+	local character = player.Character
+	local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
+	local humanoid = if character then character:FindFirstChildOfClass("Humanoid") else nil
+	if not state or not center or not humanoid or humanoid.Health <= 0 then
+		return nil
+	end
+	return View.collectionTarget(Rules.items, state, center.Position)
+end
 local function orientCamera(character)
 	local center = character:WaitForChild("HumanoidRootPart", 10)
 	if not center then
@@ -26,11 +38,18 @@ local function orientCamera(character)
 	RunService.RenderStepped:Wait()
 	local camera = workspace.CurrentCamera
 	if camera and player.Character == character then
+		player.CameraMinZoomDistance = 14
+		player.CameraMaxZoomDistance = 14
 		camera.CameraType = Enum.CameraType.Scriptable
 		camera.CFrame = View.camera(center.Position)
 		task.wait(0.1)
 		if player.Character == character then
 			camera.CameraType = Enum.CameraType.Custom
+			RunService.RenderStepped:Wait()
+			if player.Character == character then
+				player.CameraMinZoomDistance = 8
+				player.CameraMaxZoomDistance = 20
+			end
 		end
 	end
 end
@@ -60,8 +79,9 @@ local function play(kind)
 	end
 end
 local function collect()
-	if state and state.ready and state.open and state.target then
-		root.Action:FireServer("collect", state.target)
+	local target = currentTarget()
+	if target then
+		root.Action:FireServer("collect", target)
 	end
 end
 table.insert(connections, ui.Collect.Activated:Connect(collect))
@@ -100,18 +120,35 @@ local function render()
 	if not state then
 		return
 	end
-	Hud.update(ui, state, UserInputService.TouchEnabled)
+	displayedTarget = currentTarget()
+	local display = table.clone(state)
+	display.target = displayedTarget
+	Hud.update(ui, display, UserInputService.TouchEnabled)
 	local world = workspace:FindFirstChild("GrabItWorld")
 	TargetPrompt.update(
 		targetPrompt,
-		state,
+		display,
 		if world then world:FindFirstChild("Items") else nil,
 		UserInputService.TouchEnabled
 	)
 end
+local renderElapsed = 0
+table.insert(
+	connections,
+	RunService.Heartbeat:Connect(function(dt)
+		renderElapsed += dt
+		if renderElapsed >= 0.1 then
+			renderElapsed = 0
+			if currentTarget() ~= displayedTarget then
+				render()
+			end
+		end
+	end)
+)
 table.insert(
 	connections,
 	root.State.OnClientEvent:Connect(function(nextState)
+		nextState.collected = Wire.unpackCollected(nextState.collected)
 		state = nextState
 		if state.warning and not previousWarning then
 			message("Return to base", 3)

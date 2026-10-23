@@ -41,6 +41,9 @@ function Hud.create()
 	local coins = box(root, "Coins", UDim2.fromScale(0.02, 0.02), UDim2.fromScale(0.27, 0.13))
 	local round = box(root, "Round", UDim2.fromScale(0.32, 0.02), UDim2.fromScale(0.36, 0.13))
 	local style = box(root, "Style", UDim2.fromScale(0.71, 0.02), UDim2.fromScale(0.27, 0.13))
+	for _, field in { coins, round, style } do
+		field.BackgroundTransparency = 0
+	end
 	local bag = box(root, "Bag", UDim2.fromScale(0.29, 0.72), UDim2.fromScale(0.42, 0.10))
 	local message = box(root, "Message", UDim2.fromScale(0.21, 0.18), UDim2.fromScale(0.58, 0.13))
 	message.BackgroundTransparency = 0.2
@@ -93,11 +96,11 @@ function Hud.update(ui, state, touch: boolean)
 	ui.Style.Text = if style.target
 		then "NEXT: " .. string.upper(style.nextName) .. "\n" .. state.coins .. " / " .. style.target
 		else "ALL STYLES\nUNLOCKED"
-	ui.Collect.Visible = state.open and state.target ~= nil and state.ready == true
+	ui.Collect.Visible = touch and state.open and state.target ~= nil and state.ready == true
 	ui.Collect.Text = if state.cargoCount >= 5
 		then "Bag full"
 		else (if touch then "Collect" else "Collect [E]")
-	ui.Tutorial.Visible = not state.tutorial or not state.ready or savingWarning
+	ui.Tutorial.Visible = not state.tutorial or not state.ready or not state.open or savingWarning
 	ui.Tutorial.Text = if savingWarning
 		then state.save
 		elseif not state.ready then state.save

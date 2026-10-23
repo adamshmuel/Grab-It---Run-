@@ -1,0 +1,109 @@
+{
+  "status": "superseded diagnostic run; not final acceptance",
+  "clients": [
+    {
+      "player": "Player7",
+      "id": "030bb9fa-3241-40ad-8b29-534d9f053da6",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 10\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "player": "Player3",
+      "id": "3666eb26-8e24-41e2-bae3-38da895711b1",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 10\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "player": "Player1",
+      "id": "6038e78a-3d43-4b67-9cd1-d462101e352c",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 11\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "player": "Player8",
+      "id": "7a3bbdbc-9de8-4a4f-a03b-916081167d93",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 11\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "player": "Player4",
+      "id": "7b03f62d-5a1d-4389-88e2-29162874443b",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 11\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "player": "Player2",
+      "id": "c6675930-a7d7-4d6d-ac24-94df7dbc640d",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 11\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "player": "Player5",
+      "id": "c7a920c1-cfb1-4a6e-9939-b9a5ac62be3f",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 11\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "player": "Player6",
+      "id": "f110a49f-7e0c-4779-aee8-6eb24267f486",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"bag\":\"BAG  0 / 5     VALUE  0\",\"marker\":\"GrabItV1.AutomatedQA\",\"viewport\":\"1280, 720\",\"stage\":\"load-loop\",\"coins\":\"COINS 10\\nStudio session only\"}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ]
+}

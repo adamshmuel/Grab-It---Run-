@@ -6,9 +6,11 @@ local DataStoreService = game:GetService("DataStoreService")
 local root = game:GetService("ReplicatedStorage"):WaitForChild("GrabIt")
 local Rules = require(root.Shared.GameRules)
 local View = require(root.Shared.Presentation)
+local Wire = require(root.Shared.NetworkState)
 local Session = require(root.Shared.Session)
 local Persistence = require(root.Shared.Persistence)
 local World = require(script.Parent.GrabItModules.World)
+local Appearance = require(script.Parent.GrabItModules.Appearance)
 local world = World.build()
 local start = workspace:GetServerTimeNow()
 local session = Session.new(function()
@@ -63,58 +65,8 @@ local function appearance(player)
 	local entry = entries[player]
 	local p = if entry then session:get(entry.sessionId) else nil
 	local character = player.Character
-	if not p or not character then
-		return
-	end
-	local center = character:FindFirstChild("HumanoidRootPart")
-	if not center then
-		return
-	end
-	local previous = character:FindFirstChild("GrabItCargo")
-	if previous then
-		previous:Destroy()
-	end
-	local model = Instance.new("Model")
-	model.Name = "GrabItCargo"
-	model.Parent = character
-	local function piece(name, size, offset, color)
-		local part = Instance.new("Part")
-		part.Name = name
-		part.Size = size
-		part.Color = color
-		part.Material = Enum.Material.SmoothPlastic
-		part.CanCollide = false
-		part.CanTouch = false
-		part.CanQuery = false
-		part.Massless = true
-		part.CFrame = center.CFrame * CFrame.new(offset)
-		part.Parent = model
-		local weld = Instance.new("WeldConstraint")
-		weld.Part0 = center
-		weld.Part1 = part
-		weld.Parent = part
-	end
-	for i, id in p.cargo do
-		piece(
-			"Cargo",
-			Vector3.new(0.9, 0.8, 0.9),
-			Vector3.new(0, -1 + i * 0.8, 2),
-			({
-				Color3.fromRGB(172, 120, 69),
-				Color3.fromRGB(184, 199, 209),
-				Color3.fromRGB(68, 156, 232),
-			})[Rules.items[id].zone]
-		)
-	end
-	local style = View.style(p.coins)
-	if style.tier > 0 then
-		local color = Color3.fromRGB(table.unpack(style.color))
-		for _, x in { -0.7, 0.7 } do
-			piece("Frame", Vector3.new(0.12, 4.4, 0.12), Vector3.new(x, 1.2, 2), color)
-		end
-		for _, y in { -1, 3.4 } do
-			piece("Frame", Vector3.new(1.5, 0.12, 0.12), Vector3.new(0, y, 2), color)
-		end
+	if p and character then
+		Appearance.update(character, p)
 	end
 end
 local function send(player, entry)
@@ -160,7 +112,7 @@ local function send(player, entry)
 		ready = p ~= nil,
 		save = save,
 		tutorial = if p then p.tutorial else false,
-		collected = collected,
+		collected = Wire.packCollected(collected),
 	}
 	local signature = HttpService:JSONEncode(state)
 	if signature ~= entry.lastState then
@@ -322,6 +274,7 @@ root.Action.OnServerEvent:Connect(function(player, action, itemId)
 		return
 	end
 	local params = RaycastParams.new()
+	params.CollisionGroup = "GrabItPlayers"
 	params.FilterType = Enum.RaycastFilterType.Exclude
 	params.FilterDescendantsInstances = { character, world.Items }
 	local point = Vector3.new(Rules.items[itemId].x, 2.5, Rules.items[itemId].z)

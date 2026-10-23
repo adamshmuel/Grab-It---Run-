@@ -1,5 +1,10 @@
 --!strict
 local View = {}
+View.itemColors = table.freeze({
+	Color3.fromRGB(172, 120, 69),
+	Color3.fromRGB(184, 199, 209),
+	Color3.fromRGB(68, 156, 232),
+})
 local tiers = {
 	{ threshold = 30, name = "Copper", color = { 184, 115, 51 } },
 	{ threshold = 100, name = "Silver", color = { 195, 211, 220 } },
@@ -51,6 +56,18 @@ function View.nearest(items, collected, _roundId: number, x: number, y: number, 
 	return best
 end
 function View.camera(position: Vector3): CFrame
-	return CFrame.lookAt(position + Vector3.new(0, 7, -14), position + Vector3.new(0, 2, 6))
+	local focus = position + Vector3.new(0, 2, 0)
+	return CFrame.lookAt(focus + Vector3.new(0, 5, -14).Unit * 14, focus)
+end
+function View.collectionTarget(items, state, position: Vector3?): number?
+	if
+		not state.ready
+		or not state.open
+		or not position
+		or not View.inWarehouse(position.X, position.Y, position.Z)
+	then
+		return nil
+	end
+	return View.nearest(items, state.collected, state.roundId, position.X, position.Y, position.Z)
 end
 return table.freeze(View)
