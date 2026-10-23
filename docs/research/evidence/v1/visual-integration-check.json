@@ -28,18 +28,130 @@
     "release.project.json"
   ],
   "build_validation": "native templates found in each XML; release excludes GrabItQA and GrabItTests; temporary outputs deleted",
-  "client_render_probe": {
+  "visual_acceptance": "new screenshots captured and compared; overall competitive and player-preference acceptance remains open",
+  "limits": [
+    "Human playtests and likelihood of preference not verified",
+    "Mobile screenshots verify layout, not touch gestures or a physical phone",
+    "Cloud saving and performance acceptance remain open",
+    "Working place and user manual save were not overwritten"
+  ],
+  "client_render_probe_before_wake": {
     "viewport": [
       1,
       1
     ],
     "render_stepped_events_over_one_second": 0
   },
-  "visual_acceptance": "not verified; no screenshot obtained",
-  "limits": [
-    "Human playtests not run",
-    "New mobile visual acceptance not run",
-    "No cloud saving or performance acceptance claimed",
-    "Working place and user manual save were not overwritten"
+  "render_recovery": {
+    "action": "Temporary caffeinate user-activity and display-idle assertions; no persistent settings changed",
+    "observed_after_action": {
+      "viewport": [
+        2554,
+        1140
+      ],
+      "render_events_over_two_seconds": 30
+    },
+    "cause": "not proven; recovery observed after wake assertion",
+    "not_a_performance_acceptance": true
+  },
+  "runtime_cargo": {
+    "desktop": {
+      "count": 5,
+      "value": 22,
+      "speed": 8,
+      "families": 3,
+      "coins_before": 1,
+      "coins_after_deposit": 23
+    },
+    "mobile": {
+      "count": 5,
+      "value": 22,
+      "note": "First route reached four items; collecting missing wood crate then confirmed five. Fixed-duration scripted movement is not a touch-control test."
+    }
+  },
+  "simulated_devices": [
+    {
+      "id": "samsung_galaxy_a06",
+      "configured_resolution": [
+        800,
+        360
+      ],
+      "camera_viewport": [
+        706,
+        339
+      ],
+      "touch_enabled": true
+    },
+    {
+      "id": "iphone_13",
+      "configured_resolution": [
+        844,
+        390
+      ],
+      "camera_viewport": [
+        750,
+        390
+      ],
+      "touch_enabled": true
+    }
+  ],
+  "camera_note": "Return and mobile full-cargo inspection cameras were positioned through MCP, then restored to Custom. No claim of player camera gesture testing.",
+  "screenshots": [
+    {
+      "path": "docs/research/evidence/v1/images/redesign-desktop-base.jpg",
+      "pixels": [
+        1920,
+        857
+      ]
+    },
+    {
+      "path": "docs/research/evidence/v1/images/redesign-desktop-collect.jpg",
+      "pixels": [
+        1920,
+        857
+      ]
+    },
+    {
+      "path": "docs/research/evidence/v1/images/redesign-desktop-families.jpg",
+      "pixels": [
+        1920,
+        857
+      ]
+    },
+    {
+      "path": "docs/research/evidence/v1/images/redesign-desktop-return.jpg",
+      "pixels": [
+        1920,
+        857
+      ]
+    },
+    {
+      "path": "docs/research/evidence/v1/images/redesign-iphone-full.jpg",
+      "pixels": [
+        1688,
+        780
+      ]
+    },
+    {
+      "path": "docs/research/evidence/v1/images/redesign-mobile-closed.jpg",
+      "pixels": [
+        1600,
+        720
+      ]
+    },
+    {
+      "path": "docs/research/evidence/v1/images/redesign-mobile-full.jpg",
+      "pixels": [
+        1600,
+        720
+      ]
+    },
+    {
+      "path": "docs/research/evidence/v1/images/redesign-mobile-warning.jpg",
+      "pixels": [
+        1600,
+        720
+      ]
+    }
   ]
 }
