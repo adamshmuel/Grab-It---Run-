@@ -12,12 +12,15 @@
 
 ## שחזור הקבצים
 
-מתוך תיקיית הפרויקט, שלוש הפקודות יוצרות את קובצי הדגמים בתוך build:
+מתוך תיקיית הפרויקט, שלוש הפקודות יוצרות את קובצי הדגמים בתוך build/prototypes:
 
 ```sh
-rojo build assets/prototypes/collectibles/wood-crate.project.json -o build/VisualPrototype_WoodCrate.rbxmx
-rojo build assets/prototypes/collectibles/tool-case.project.json -o build/VisualPrototype_ToolCase.rbxmx
-rojo build assets/prototypes/collectibles/energy-canister.project.json -o build/VisualPrototype_EnergyCanister.rbxmx
+mkdir -p build/prototypes
+rojo build assets/prototypes/collectibles/wood-crate.project.json -o build/prototypes/VisualPrototype_WoodCrate.rbxmx
+rojo build assets/prototypes/collectibles/tool-case.project.json -o build/prototypes/VisualPrototype_ToolCase.rbxmx
+rojo build assets/prototypes/collectibles/energy-canister.project.json -o build/prototypes/VisualPrototype_EnergyCanister.rbxmx
 ```
 
 בתאריך 23/10/2026 הייצוא עבר באמצעות Rojo 7.7.1. בדיקת XML אישרה גדלים, צבעים, שמירת צורת Cylinder והיעדר scripts. התוצאות נשמרו בתוך docs/research/evidence/v1/native-visual-prototypes.json. אין עדיין צילום Studio, אישור חזותי או הוכחת ביצועים. אין להציג את הדגמים כאילו כבר עברו השוואה למתחרים.
+
+לאחר סיום הצגת הדגמים אפשר למחוק את תוצרי rbxmx ולבנות אותם שוב מהמקור בעת הצורך. אין צורך ליצור או לשמור סביבות משחק נוספות עבורם.
