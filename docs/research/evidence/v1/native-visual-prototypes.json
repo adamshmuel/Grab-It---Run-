@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-23",
+  "method": "Rojo 7.7.1 export and XML inspection; not Studio visual acceptance",
+  "models": [
+    {
+      "source": "assets/prototypes/collectibles/energy-canister.model.json",
+      "build": "build/VisualPrototype_EnergyCanister.rbxmx",
+      "parts": 10,
+      "dimensions": [
+        2.1,
+        2.925,
+        2.1
+      ],
+      "distinctColors": 6,
+      "scripts": 0,
+      "studioInspected": false
+    },
+    {
+      "source": "assets/prototypes/collectibles/tool-case.model.json",
+      "build": "build/VisualPrototype_ToolCase.rbxmx",
+      "parts": 9,
+      "dimensions": [
+        2.45,
+        2.04,
+        1.875
+      ],
+      "distinctColors": 7,
+      "scripts": 0,
+      "studioInspected": false
+    },
+    {
+      "source": "assets/prototypes/collectibles/wood-crate.model.json",
+      "build": "build/VisualPrototype_WoodCrate.rbxmx",
+      "parts": 10,
+      "dimensions": [
+        1.74,
+        1.8,
+        1.82
+      ],
+      "distinctColors": 4,
+      "scripts": 0,
+      "studioInspected": false
+    }
+  ]
+}

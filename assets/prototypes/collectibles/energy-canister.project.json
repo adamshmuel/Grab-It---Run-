@@ -1,0 +1,6 @@
+{
+  "name": "EnergyCanister",
+  "tree": {
+    "$path": "energy-canister.model.json"
+  }
+}

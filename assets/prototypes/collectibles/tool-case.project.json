@@ -1,0 +1,6 @@
+{
+  "name": "ToolCase",
+  "tree": {
+    "$path": "tool-case.model.json"
+  }
+}

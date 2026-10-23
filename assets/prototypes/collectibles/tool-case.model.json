@@ -1,0 +1,329 @@
+{
+  "ClassName": "Model",
+  "Children": [
+    {
+      "Name": "TurquoiseBody",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          2.25,
+          1.25,
+          1.65
+        ],
+        "CFrame": [
+          0,
+          0.825,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.109804,
+          0.666667,
+          0.694118
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "RaisedLid",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          2.45,
+          0.22,
+          1.85
+        ],
+        "CFrame": [
+          0,
+          1.53,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.309804,
+          0.862745,
+          0.8
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "DarkBase",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          2.4,
+          0.2,
+          1.8
+        ],
+        "CFrame": [
+          0,
+          0.1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.113725,
+          0.215686,
+          0.290196
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "LeftHandle",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.13,
+          0.3,
+          0.16
+        ],
+        "CFrame": [
+          -0.35,
+          1.79,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.105882,
+          0.2,
+          0.270588
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "RightHandle",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.13,
+          0.3,
+          0.16
+        ],
+        "CFrame": [
+          0.35,
+          1.79,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.105882,
+          0.2,
+          0.270588
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "YellowHandleGrip",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.83,
+          0.14,
+          0.18
+        ],
+        "CFrame": [
+          0,
+          1.97,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          1.0,
+          0.811765,
+          0.305882
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "LeftLatch",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.22,
+          0.4,
+          0.12
+        ],
+        "CFrame": [
+          -0.82,
+          1.35,
+          -0.89,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          1.0,
+          0.827451,
+          0.337255
+        ],
+        "Shape": "Block",
+        "Material": "Metal",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "RightLatch",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.22,
+          0.4,
+          0.12
+        ],
+        "CFrame": [
+          0.82,
+          1.35,
+          -0.89,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          1.0,
+          0.827451,
+          0.337255
+        ],
+        "Shape": "Block",
+        "Material": "Metal",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "FrontBadge",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.5,
+          0.4,
+          0.06
+        ],
+        "CFrame": [
+          0,
+          0.86,
+          -0.86,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.882353,
+          0.956863,
+          0.921569
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    }
+  ]
+}

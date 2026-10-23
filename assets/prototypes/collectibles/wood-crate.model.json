@@ -1,0 +1,365 @@
+{
+  "ClassName": "Model",
+  "Children": [
+    {
+      "Name": "WoodBody",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          1.6,
+          1.6,
+          1.6
+        ],
+        "CFrame": [
+          0,
+          0.9,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.854902,
+          0.615686,
+          0.27451
+        ],
+        "Shape": "Block",
+        "Material": "WoodPlanks",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "TopPanel",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          1.7,
+          0.12,
+          1.7
+        ],
+        "CFrame": [
+          0,
+          1.64,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.972549,
+          0.764706,
+          0.396078
+        ],
+        "Shape": "Block",
+        "Material": "WoodPlanks",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "FrontLeftBrace",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.15,
+          1.8,
+          0.12
+        ],
+        "CFrame": [
+          -0.64,
+          0.9,
+          -0.84,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.929412,
+          0.505882,
+          0.215686
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "FrontRightBrace",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.15,
+          1.8,
+          0.12
+        ],
+        "CFrame": [
+          0.64,
+          0.9,
+          -0.84,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.929412,
+          0.505882,
+          0.215686
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "BackLeftBrace",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.15,
+          1.8,
+          0.12
+        ],
+        "CFrame": [
+          -0.64,
+          0.9,
+          0.84,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.929412,
+          0.505882,
+          0.215686
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "BackRightBrace",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.15,
+          1.8,
+          0.12
+        ],
+        "CFrame": [
+          0.64,
+          0.9,
+          0.84,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.929412,
+          0.505882,
+          0.215686
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "LeftBottomCorner",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.3,
+          0.22,
+          0.12
+        ],
+        "CFrame": [
+          -0.72,
+          0.12,
+          -0.86,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          1.0,
+          0.933333,
+          0.694118
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "LeftTopCorner",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.3,
+          0.22,
+          0.12
+        ],
+        "CFrame": [
+          -0.72,
+          1.68,
+          -0.86,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          1.0,
+          0.933333,
+          0.694118
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "RightBottomCorner",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.3,
+          0.22,
+          0.12
+        ],
+        "CFrame": [
+          0.72,
+          0.12,
+          -0.86,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          1.0,
+          0.933333,
+          0.694118
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "RightTopCorner",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.3,
+          0.22,
+          0.12
+        ],
+        "CFrame": [
+          0.72,
+          1.68,
+          -0.86,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          1.0,
+          0.933333,
+          0.694118
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    }
+  ]
+}

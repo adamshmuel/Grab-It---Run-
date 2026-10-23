@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V1 — התאמה למטרות ולהיקף</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1><bdi dir="ltr" lang="en">V1</bdi> — התאמה למטרות ולהיקף</h1>
+<p><strong>בדיקת המשך: 23/10/2026. <bdi dir="ltr" lang="en">V1</bdi> עדיין לא התקבל.</strong></p>
+<p>הבדיקה מבוססת על <a href="project-goals.html">מטרות הפרויקט</a>, <a href="specs.html">מפת ההגדרות</a> ועל <a href="v1/index.html">מפת <bdi dir="ltr" lang="en">V1</bdi></a>. תוצאות ההרצות והפערים מתעדכנים בתוך <a href="v1-validation.html">דוח הבדיקות</a>.</p>
+<h2>התאמה למטרות</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>מטרה</th>
+<th>המצב שנבדק</th>
+<th>מסקנה ומגבלה</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>משחק פשוט, מהיר וממכר</td>
+<td>כניסה ללא תפריט, פעולת איסוף אחת, האטת מטען והפקדה אוטומטית מומשו ונבדקו</td>
+<td>ההתנהגות הטכנית קיימת. פשטות בעיני שחקן חדש ורצון להמשיך טרם אומתו עם אנשים</td>
+</tr>
+<tr>
+<td>איכות שמתאימה למשחקים דומים</td>
+<td>שילוט, סימון חפץ ומטען תוקנו בעקבות בדיקות; קיימים שלושה רפרנסים</td>
+<td>אין עדיין קבלה חזותית מלאה, קלט נייד מלא או מדידת ביצועים בכל התנאים המאושרים</td>
+</tr>
+<tr>
+<td>סיבה לחזור לאורך זמן</td>
+<td>ספי מראה נבדקו; קיימת שכבת שמירה עם נעילת <bdi dir="ltr" lang="en">session</bdi></td>
+<td>שמירה בענן וחזרה אמיתית טרם אומתו; אין נתוני <bdi dir="ltr" lang="en">retention</bdi></td>
+</tr>
+<tr>
+<td>מוצר שאפשר לתחזק ולהפיק ממנו הכנסה</td>
+<td>מקורות מקומיים, <bdi dir="ltr" lang="en">build</bdi>, <bdi dir="ltr" lang="en">tests</bdi> ותיקוני <bdi dir="ltr" lang="en">regression</bdi> עם ראיות; בלי שירות בתשלום</td>
+<td>תחזוקה מקומית הודגמה בהיקף השינויים. הכנסות מחוץ ל־<bdi dir="ltr" lang="en">V1</bdi> ולא הוכחו</td>
+</tr>
+<tr>
+<td>אפשרות למשחקים נוספים מאותו הסוג</td>
+<td>כללים, הצגה, קידוד מצב ושמירה מופרדים; צבעים משותפים במקום כפילות</td>
+<td>הפרדה נבדקה במשחק הזה. שימוש חוזר במשחק נוסף עדיין לא נוסה</td>
+</tr>
+</tbody>
+</table></div>
+<h2>בדיקת גבולות הגרסה</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>תחום ומסמך המקור</th>
+<th>מימוש וראיות</th>
+<th>מה עוד נדרש</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="gameplay.html"><bdi dir="ltr" lang="en">Gameplay</bdi></a></td>
+<td>חפצים אישיים, מטען, האטה, הפקדה, סגירה ואובדן המטען הנוכחי; <bdi dir="ltr" lang="en">tests</bdi> ובדיקות <bdi dir="ltr" lang="en">Studio</bdi></td>
+<td>השלמת מסלול קלט מלא בנייד ובדיקות עומס ההמשך</td>
+</tr>
+<tr>
+<td><a href="v1/warehouse.html">המחסן</a></td>
+<td>בסיס, שלושה אזורי ערך, חפצים גאומטריים, שילוט וחיצי חזרה</td>
+<td>ביקורת חזותית בכל מצבי הקבלה ובגדלי המסך</td>
+</tr>
+<tr>
+<td><a href="v1/controls-feedback.html"><bdi dir="ltr" lang="en">Controls</bdi></a></td>
+<td><bdi dir="ltr" lang="en">E</bdi> במחשב, <bdi dir="ltr" lang="en">HUD</bdi>, סימון חפץ, כפתור נייד, הודעות וקולות</td>
+<td><bdi dir="ltr" lang="en">touch</bdi> אמיתי בהדמיה, שתי פעולות במקביל, <bdi dir="ltr" lang="en">pinch</bdi> ומצלמה ליד קירות</td>
+</tr>
+<tr>
+<td><a href="v1/progression.html">התקדמות</a></td>
+<td>ספי <bdi dir="ltr" lang="en">Copper</bdi>, <bdi dir="ltr" lang="en">Silver</bdi> ו־<bdi dir="ltr" lang="en">Gold</bdi> נבדקו לוגית; מסגרת נישאת מומשה</td>
+<td>פתיחת מראה במהלך <bdi dir="ltr" lang="en">session</bdi> מלא ומעבר ליעד הראשון</td>
+</tr>
+<tr>
+<td><a href="v1/saving.html">שמירה</a></td>
+<td><bdi dir="ltr" lang="en">UpdateAsync</bdi>, נעילה, הגנה מכתיבה ישנה, בדיקות שגיאה וחזרה מול <bdi dir="ltr" lang="en">storage</bdi> מוזרק</td>
+<td>בדיקת <bdi dir="ltr" lang="en">DataStore</bdi> בסביבת <bdi dir="ltr" lang="en">QA</bdi> פרטית מורשית. <bdi dir="ltr" lang="en">Studio</bdi> משתמש בזיכרון שרת ומצהיר על כך</td>
+</tr>
+<tr>
+<td><a href="v1/acceptance.html">קבלה</a></td>
+<td>כלי <bdi dir="ltr" lang="en">QA</bdi> ותוצאות שמורות; הבדיקות נמשכות</td>
+<td>כל פער נשאר גלוי. אין קבלה על סמך קיום הקוד</td>
+</tr>
+<tr>
+<td><a href="v1/visual-quality.html">גרפיקה</a></td>
+<td>השוואה לתמונות <bdi dir="ltr" lang="en">gameplay</bdi> שמורות</td>
+<td>השלמת כל ארבע הסצנות במחשב ובנייד</td>
+</tr>
+<tr>
+<td><a href="v1/competitive-review.html">מתחרים והעדפה</a></td>
+<td>הרפרנסים והשאלות מוגדרים</td>
+<td>תצפיות אנושיות ואישור סף ההעדפה שהוצע</td>
+</tr>
+</tbody>
+</table></div>
+<p>התחומים שמסומנים להמשך במפת ההגדרות לא נוספו ל־<bdi dir="ltr" lang="en">V1</bdi>: חנות, תשלום, <bdi dir="ltr" lang="en">PvP</bdi>, מסחר, מפות נוספות, שדרוגי כוח, דירוגים, <bdi dir="ltr" lang="en">VR</bdi> ופרסום לציבור. אין שינוי סמוי בהיקף כדי להכריז על השלמה.</p>
+</main></body></html>

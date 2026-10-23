@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V1 — בדיקות המשך וקבלה</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1><bdi dir="ltr" lang="en">V1</bdi> — בדיקות המשך וקבלה</h1>
+<p><strong>תאריך: 23/10/2026. המראה לא עבר; המשך בדיקות הקבלה נעצר עד לתיקון חזותי.</strong></p>
+<p>החלטת אדם: השוואה למתחרים בתכנון, ושוב בסיום לפני שחקנים ושאר בדיקות הקבלה. הגרסה הנוכחית חסרה גיוון של צבעים וצורות והחפצים פשוטים מדי. המשך העבודה מתמקד כעת ב<a href="v1/visual-direction.html">הגדרה חזותית מתוקנת לאישור</a>.</p>
+<p>המקור לדרישות הוא <a href="v1/acceptance.html">קריטריוני הקבלה</a>. <a href="v1-implementation.html">דוח המימוש הראשוני</a> נשמר כהיסטוריה; המסמך הזה מתעד את סבב ההמשך.</p>
+<h2>מה תוקן</h2>
+<ul>
+<li>
+<p>השילוט מחובר למשטחים בעולם. שלט מצב המחסן נמצא מעל הכניסה; נוספו סמלי בית וספרות אזור לפי ההגדרות.</p>
+</li>
+<li>
+<p>המידע העליון בממשק אינו שקוף לטקסט של שלטים שנמצאים מאחוריו. כפתור <bdi dir="ltr" lang="en">Collect</bdi> במסך משמש נייד; במחשב מוצג הסימון עם <bdi dir="ltr" lang="en">E</bdi> מעל החפץ.</p>
+</li>
+<li>
+<p>מטען מלא הוסט מעט מאחורי הכתף והוקטן, כך שבמבט מאחור הראש וגוף הדמות נשארים נראים. צבעי החפצים והמטען מוגדרים במקום משותף.</p>
+</li>
+<li>
+<p>שחקן שכבר השלים הדרכה רואה את ההודעה על הסיבוב הבא כשהמחסן סגור.</p>
+</li>
+<li>
+<p>בדיקת האיסוף בשרת משתמשת בקבוצת ההתנגשות של השחקנים, כדי שדמויות אחרות לא ישמשו כקיר.</p>
+</li>
+<li>
+<p>נמצא סימון ישן מחוץ לטווח: מצב שרת הצביע על חפץ בעומק 12, בעוד שהשחקן הגיע לעומק 18.065. נוספה בדיקת <bdi dir="ltr" lang="en">regression</bdi> שנכשלה. הסימון והכוונה לאיסוף מחשבים כעת את החפץ הקרוב לפי מיקום מקומי עדכני ומצב החפצים שאושר בשרת. ההענקה והאימות נשארו בשרת.</p>
+</li>
+<li>
+<p>תוקנה העברת רשימת החפצים שנאספו: מזהים דלילים מועברים כעת כמפת מפתחות <bdi dir="ltr" lang="en">string</bdi> ומפוענחים בצד השחקן. בדיקה עם שני שחקנים נכשלה לפני התיקון ועברה אחריו. בלי התיקון, חפץ שכבר נאסף הוצע שוב וניסיון האיסוף נדחה בשרת.</p>
+</li>
+<li>
+<p>נקודת ההתחלה של המצלמה תוקנה ל־14 <bdi dir="ltr" lang="en">studs</bdi>; המרחק נמדד בשני <bdi dir="ltr" lang="en">clients</bdi> חדשים.</p>
+</li>
+</ul>
+<h2>מצב הראיות</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>תחום</th>
+<th>מה הוכח עד כה</th>
+<th>מה נשאר</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><bdi dir="ltr" lang="en">tests</bdi> לוגיים ומבנה</td>
+<td>תשע חבילות עברו בשרת חדש, כולל <bdi dir="ltr" lang="en">Appearance</bdi> וכן <bdi dir="ltr" lang="en">NetworkState</bdi>; בדיקות ממוקדות נכשלו לפני התיקונים</td>
+<td>בדיקות אינטגרציה נוספות אינן מוחלפות בבדיקות המודולים</td>
+</tr>
+<tr>
+<td>שני שחקנים</td>
+<td>איסוף אישי של חמישה חפצים לכל אחד, האטה, הפקדה, סגירה, אובדן מטען, שמירת יתרה וסיבוב חדש</td>
+<td>בדיקת המשך נפרדת של 100 שניות עברה אחרי תיקון הרשת; יציאת שחקן השאירה לאחר יתרה של 5</td>
+</tr>
+<tr>
+<td>שמונה שחקנים</td>
+<td>שמונה <bdi dir="ltr" lang="en">clients</bdi> אמיתיים הגיעו לסיבוב חדש ולהפקדות עצמאיות</td>
+<td>בדיקה של 240 שניות עברה לאחר התיקון: שמונה <bdi dir="ltr" lang="en">reports</bdi> תקינים ושבע בדיקות יתרה לאחר יציאת שחקן. התוצאה נשמרה בתוך <code><bdi dir="ltr" lang="en">qa</bdi>-8-<bdi dir="ltr" lang="en">session</bdi>-<bdi dir="ltr" lang="en">and</bdi>-<bdi dir="ltr" lang="en">leave</bdi>-<bdi dir="ltr" lang="en">passed</bdi>.<bdi dir="ltr" lang="en">json</bdi></code></td>
+</tr>
+<tr>
+<td>ביצועים</td>
+<td>נשמרו מדידות אבחון; הוגדר ואומת <bdi dir="ltr" lang="en">viewport</bdi> בגודל 1280 על 720</td>
+<td>מדידה לפי כל התנאים המאושרים עדיין פתוחה. בהרצה של 240 שניות וב־<bdi dir="ltr" lang="en">viewport</bdi> אחר לא היו דגימות שנייה מתחת ל־30 <bdi dir="ltr" lang="en">FPS</bdi>; אין להחליף בכך את קריטריון עשר הדקות</td>
+</tr>
+<tr>
+<td>תצוגה</td>
+<td>נצפו השילוט ומטען מלא לפני ואחרי תיקון במחשב</td>
+<td>השלמת מצבי הקבלה בנייד וההשוואה החזותית</td>
+</tr>
+<tr>
+<td>שמירה</td>
+<td>שכבת השמירה נבדקה מול <bdi dir="ltr" lang="en">storage</bdi> מוזרק; <bdi dir="ltr" lang="en">Studio</bdi> מציג במפורש שמירה לזמן השרת בלבד</td>
+<td><bdi dir="ltr" lang="en">DataStore</bdi> אמיתי, יציאה וכניסה מחדש בסביבה פרטית מורשית</td>
+</tr>
+<tr>
+<td>שחקנים והעדפה</td>
+<td>הקריטריונים וההליך מתועדים</td>
+<td>בדיקה עם אנשים; אין ראיה להנאה, <bdi dir="ltr" lang="en">retention</bdi> או סבירות בחירה גבוהה</td>
+</tr>
+</tbody>
+</table></div>
+<h2>בדיקות מול המטרות והרפרנסים</h2>
+<p><a href="v1-goals-review.html">התאמה למטרות ולהיקף</a> מרכזת את החיבור למסמכי המקור. <a href="v1-visual-review.html">הבדיקה החזותית</a> מפרידה בין תצפיות בתמונות, פערים והערכת בחירה. שני המסמכים אינם מסמנים קבלה מלאה.</p>
+<h2>מה שמור לשחזור</h2>
+<p>קובצי התוצאות נמצאים בתוך <a href="../research/evidence/v1">תיקיית הראיות</a>. נשמרו גם כישלונות, כולל המתנה חסרה לדמות ובחירה ישנה. הרצה שנכשלה או הופסקה אינה נספרת כהצלחה. כלי האינטגרציה והגבולות שלהם מתועדים בתוך <code><bdi dir="ltr" lang="en">tools</bdi>/<bdi dir="ltr" lang="en">qa</bdi>/<bdi dir="ltr" lang="en">README</bdi>.<bdi dir="ltr" lang="en">md</bdi></code>.</p>
+<p><code><bdi dir="ltr" lang="en">release</bdi>.<bdi dir="ltr" lang="en">project</bdi>.<bdi dir="ltr" lang="en">json</bdi></code> מייצר קובץ מקומי בלי <bdi dir="ltr" lang="en">tests</bdi> ובלי כלי <bdi dir="ltr" lang="en">QA</bdi>. קובץ הבדיקה נבנה בתוך <code><bdi dir="ltr" lang="en">build</bdi>/<bdi dir="ltr" lang="en">GrabItV1</bdi>_<bdi dir="ltr" lang="en">PrivateTestCandidate</bdi>.<bdi dir="ltr" lang="en">rbxlx</bdi></code>; לא בוצע פרסום ולא שונו הרשאות <bdi dir="ltr" lang="en">API</bdi>. הקובץ שאדם שמר בשורש הפרויקט לא שונה.</p>
+<h2>אבחון סביבת <bdi dir="ltr" lang="en">Studio</bdi></h2>
+<p>המחשב שנבדק: <bdi dir="ltr" lang="en">Mac17</bdi>,9, מעבד <bdi dir="ltr" lang="en">Apple M5 Pro</bdi> וזיכרון 48 <bdi dir="ltr" lang="en">GiB</bdi>. גרסת <bdi dir="ltr" lang="en">Studio</bdi> שנצפתה היא 0.744.0.7441077. מניעת שינה הופעלה לזמן מוגבל לצורך העבודה.</p>
+<p>שינוי איכות הגרפיקה דרך <bdi dir="ltr" lang="en">API</bdi> החזיר שגיאת <bdi dir="ltr" lang="en">native</bdi>. הקריאה עדיין מציגה <bdi dir="ltr" lang="en">Automatic</bdi>. אין לטעון שנמדדה דרגה 5 או לשנות את יעד הקבלה בשקט.</p>
+<p>ההתראה על <bdi dir="ltr" lang="en">asset</bdi> מספר 203785492 תואמת את צליל ההתראה בקובץ <a href="https://raw.githubusercontent.com/rojo-rbx/rojo/v7.7.1/plugin/src/Assets.lua"><bdi dir="ltr" lang="en">Assets</bdi>.<bdi dir="ltr" lang="en">lua</bdi> של <bdi dir="ltr" lang="en">Rojo</bdi> 7.7.1</a>. קיים גם <a href="https://github.com/rojo-rbx/rojo/issues/1342">דיווח תואם במאגר <bdi dir="ltr" lang="en">Rojo</bdi></a>, מתאריך 16/10/2026. המספר לא נמצא במקורות המשחק או במאפייני התוכן שנבדקו בזמן משחק. זהו שיוך מבוסס מקורות להתראת <bdi dir="ltr" lang="en">plugin</bdi>; לא בוצע ניסוי מקומי של כיבוי <bdi dir="ltr" lang="en">plugin</bdi>, ולא נטען שההתראה תוקנה.</p>
+<h2>מקור לתיקון הרשת</h2>
+<p><a href="https://create.roblox.com/docs/scripting/events/remote"><bdi dir="ltr" lang="en">Remote events</bdi> — מגבלות טבלאות</a> נבדק בתאריך 23/10/2026. התיעוד מזהיר מחורים בטבלאות ומערבוב מפתחות. התיקון נבדק גם מול <bdi dir="ltr" lang="en">JSON</bdi> המשמש לחתימת השינויים, וגם בהעברת <bdi dir="ltr" lang="en">RemoteEvent</bdi> אמיתית. תוצאות לפני ואחרי נשמרו בקבצים <code><bdi dir="ltr" lang="en">qa</bdi>-2-<bdi dir="ltr" lang="en">sparse</bdi>-<bdi dir="ltr" lang="en">state</bdi>-<bdi dir="ltr" lang="en">red</bdi>.<bdi dir="ltr" lang="en">json</bdi></code> וכן <code><bdi dir="ltr" lang="en">qa</bdi>-2-<bdi dir="ltr" lang="en">sparse</bdi>-<bdi dir="ltr" lang="en">state</bdi>-<bdi dir="ltr" lang="en">green</bdi>.<bdi dir="ltr" lang="en">json</bdi></code>. הכישלון הקודם של שמונה <bdi dir="ltr" lang="en">clients</bdi> נשמר בקובץ <code><bdi dir="ltr" lang="en">qa</bdi>-8-<bdi dir="ltr" lang="en">sparse</bdi>-<bdi dir="ltr" lang="en">state</bdi>-<bdi dir="ltr" lang="en">failure</bdi>.<bdi dir="ltr" lang="en">json</bdi></code>.</p>
+<h2>מגבלת המדידה שנמצאה בהרצת שמונה שחקנים</h2>
+<p>ההרצה מ־05:58:19 <bdi dir="ltr" lang="en">UTC</bdi> הפעילה שמונה <bdi dir="ltr" lang="en">clients</bdi>, וכל אחד הוגדר ל־1280 על 720. לאחר יותר מעשר דקות, בדיקת <bdi dir="ltr" lang="en">probe</bdi> נפרדת בשני <bdi dir="ltr" lang="en">clients</bdi> החזירה אפס אירועי <bdi dir="ltr" lang="en">RenderStepped</bdi> במהלך שנייה, אף שהדמויות המשיכו לנוע והיתרות גדלו. אין בסיס לחישוב <bdi dir="ltr" lang="en">FPS</bdi> מחלונות שאינם מרנדרים באותו רגע. סיבת עצירת <bdi dir="ltr" lang="en">render</bdi> לא הוכחה; אין לייחס זאת בוודאות לשינה או למזעור. ההרצה הופסקה במפורש ונשמרה בקובץ <code><bdi dir="ltr" lang="en">qa</bdi>-8-<bdi dir="ltr" lang="en">render</bdi>-<bdi dir="ltr" lang="en">measurement</bdi>-<bdi dir="ltr" lang="en">blocked</bdi>.<bdi dir="ltr" lang="en">json</bdi></code>. גם דרגת הגרפיקה הייתה <bdi dir="ltr" lang="en">Automatic</bdi>. אין כאן תוצאת ביצועים שעברה.</p>
+<p>הצעד הבא בכל מדידת ביצועים הוא <bdi dir="ltr" lang="en">probe</bdi> קצר שמאמת שהחלון הנמדד מרנדר לפני פתיחת חלון של עשר דקות. בדיקת ההתנהגות של שמונה שחקנים נפרדת מהמדידה, כדי שתוצאה טכנית אחת לא תסתיר את השנייה.</p>
+<h2>תוצאת שמונה שחקנים וסגירת חלונות</h2>
+<p>בדיקת התנהגות נפרדת של 240 שניות הסתיימה בהצלחה: תשע חבילות <bdi dir="ltr" lang="en">tests</bdi>, שמונה שחקנים עם 10 מטבעות ומטען ריק, ושבע בדיקות אחרי יציאת שחקן ששמרו על היתרה. המדידה בהרצה הזאת הייתה במצב <bdi dir="ltr" lang="en">Automatic</bdi> וב־<bdi dir="ltr" lang="en">viewport</bdi> של 803 על 692; היא אינה אישור ליעד הביצועים שהוגדר.</p>
+<p>לאחר מכן הופיעו שוב שמונה <bdi dir="ltr" lang="en">clients</bdi> חדשים של בדיקה מקומית. סיבת ההפעלה החוזרת טרם הוכחה. חלון הפרויקט והשרת כבר לא היו מחוברים כשאדם ביקש להשאיר חלון אחד. זוהו תהליכי <bdi dir="ltr" lang="en">clients</bdi> לפי נתיב קובץ הפרויקט, פקודת <bdi dir="ltr" lang="en">StartClient</bdi> וה־<bdi dir="ltr" lang="en">parent</bdi> של שרת הבדיקה. סיום רגיל לא סגר אותם; שמונת התהליכים הזמניים האלה נסגרו באופן ממוקד. בדיקת תהליכים ו־<bdi dir="ltr" lang="en">MCP</bdi> אימתה שנשאר רק <bdi dir="ltr" lang="en">Studio</bdi> אחד, חלון <bdi dir="ltr" lang="en">Place1</bdi> הקיים של אדם. לא הופעל ולא שונה בו משחק. אין לפתוח שוב בדיקת <bdi dir="ltr" lang="en">multiplayer</bdi> במסגרת ההמשך הנוכחי.</p>
+<p>בדיקת נייד חדשה הספיקה לאמת פרופיל <bdi dir="ltr" lang="en">Samsung Galaxy A06</bdi> ברוחב, <bdi dir="ltr" lang="en">TouchEnabled</bdi> ופתיחת מצלמה במרחק 14. התקבל צילום בסיס. טרם בוצעה בדיקת מחוות <bdi dir="ltr" lang="en">touch</bdi> מלאה, ואין להציג את המסלול הזה כמי שעבר.</p>
+<h2><bdi dir="ltr" lang="en">code review</bdi> לתיקוני האינטגרציה</h2>
+<p>בשיחה הראשית נבדקו קידוד ופענוח מצב החפצים, סמכות השרת, אימות בקשות האיסוף, חישוב המטרה המקומית, ניקוי חיבורים, החלפת מודל המטען והפרדת כלי <bdi dir="ltr" lang="en">QA</bdi> מקובץ הבדיקה הפרטי. לא נוספה דרך שבה <bdi dir="ltr" lang="en">Client</bdi> מעניק מטבעות. הגנות המרחק, הסיבוב, הכפילות והקיבולת נשארו בשרת. התיקונים עברו תשע חבילות בשרת חדש, בדיקות המשך עם שני שחקנים ובדיקה מלאה עם שמונה. <bdi dir="ltr" lang="en">StyLua</bdi>, <bdi dir="ltr" lang="en">Selene</bdi> ו־<bdi dir="ltr" lang="en">Rojo build</bdi> עברו לפני שינוי סדר הקבלה.</p>
+<p>אין בכך אישור לרמה החזותית שנדחתה, לשמירה בענן, ל־<bdi dir="ltr" lang="en">touch</bdi> מלא או ליעד הביצועים. מאז החלטת אדם ממשיכים רק בתכנון החזותי ובבדיקות הנחוצות לו.</p>
+<h2>המשך חזותי לפי החלטת אדם</h2>
+<p>איור <bdi dir="ltr" lang="en">SVG</bdi> מקומי שנוצר לדיון הוסר לאחר שאדם ביקש להשקיע בדגמים שמישים בתוך <bdi dir="ltr" lang="en">Studio</bdi>. במקומו נבנו שלושה מקורות דגם מקומיים ויוצאו לקובצי <bdi dir="ltr" lang="en">Roblox</bdi>: ארגז עץ, מזוודת כלים ומכל גלילי, בעלי גדלים וצבעים שונים. הייצוא ובדיקת המבנה עברו; המראה בתוך <bdi dir="ltr" lang="en">Studio</bdi> טרם נבדק. אין חיבור שלהם למשחק ואין שינוי לכללי הנשיאה. קובץ הראיות הוא <code><bdi dir="ltr" lang="en">native</bdi>-<bdi dir="ltr" lang="en">visual</bdi>-<bdi dir="ltr" lang="en">prototypes</bdi>.<bdi dir="ltr" lang="en">json</bdi></code> בתיקיית הראיות. המשך הבדיקה החזותית ממתין לפתיחת קובץ הפרויקט בחלון <bdi dir="ltr" lang="en">Studio</bdi> היחיד; החלון האחר לא שונה.</p>
+</main></body></html>

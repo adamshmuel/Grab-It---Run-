@@ -1,0 +1,365 @@
+{
+  "ClassName": "Model",
+  "Children": [
+    {
+      "Name": "BlueCylinder",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          2.2,
+          1.8,
+          1.8
+        ],
+        "CFrame": [
+          0,
+          1.3,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.282353,
+          0.454902,
+          0.878431
+        ],
+        "Shape": "Cylinder",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "BaseCap",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.3,
+          2.1,
+          2.1
+        ],
+        "CFrame": [
+          0,
+          0.15,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.458824,
+          0.32549,
+          0.784314
+        ],
+        "Shape": "Cylinder",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "VioletCap",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.25,
+          2.1,
+          2.1
+        ],
+        "CFrame": [
+          0,
+          2.4,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.458824,
+          0.32549,
+          0.784314
+        ],
+        "Shape": "Cylinder",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "LowerCyanRing",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.08,
+          1.93,
+          1.93
+        ],
+        "CFrame": [
+          0,
+          0.65,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.439216,
+          0.964706,
+          0.870588
+        ],
+        "Shape": "Cylinder",
+        "Material": "Neon",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "UpperCyanRing",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.08,
+          1.93,
+          1.93
+        ],
+        "CFrame": [
+          0,
+          1.9,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.439216,
+          0.964706,
+          0.870588
+        ],
+        "Shape": "Cylinder",
+        "Material": "Neon",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "DarkMiddleBand",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.22,
+          1.91,
+          1.91
+        ],
+        "CFrame": [
+          0,
+          1.27,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.113725,
+          0.196078,
+          0.356863
+        ],
+        "Shape": "Cylinder",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "LeftHandle",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.15,
+          0.3,
+          0.15
+        ],
+        "CFrame": [
+          -0.4,
+          2.65,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.105882,
+          0.192157,
+          0.266667
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "RightHandle",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.15,
+          0.3,
+          0.15
+        ],
+        "CFrame": [
+          0.4,
+          2.65,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.105882,
+          0.192157,
+          0.266667
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "HandleGrip",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.95,
+          0.15,
+          0.15
+        ],
+        "CFrame": [
+          0,
+          2.85,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.105882,
+          0.192157,
+          0.266667
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    },
+    {
+      "Name": "FrontBadge",
+      "ClassName": "Part",
+      "Properties": {
+        "Size": [
+          0.5,
+          0.55,
+          0.05
+        ],
+        "CFrame": [
+          0,
+          1.3,
+          -0.97,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Color": [
+          0.729412,
+          0.929412,
+          0.937255
+        ],
+        "Shape": "Block",
+        "Material": "SmoothPlastic",
+        "Anchored": true,
+        "CanCollide": false,
+        "CanTouch": false,
+        "CanQuery": false
+      }
+    }
+  ]
+}

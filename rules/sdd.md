@@ -35,3 +35,7 @@ explicitly: *"let's start coding X."* Then only X is coded, nothing else.
 
 If a plan seems to lead naturally into code, it stops at the plan anyway and
 waits.
+
+## Competitive visual standard before and after implementation
+
+Follow the two gates in `research.md`: establish the reference-based visual standard during planning, then verify the implemented game against it before human player tests and the remaining acceptance tests. An approved technical plan or passing code tests is not approval of competitive visual quality. A failed visual gate returns to the relevant specification before a revised implementation plan or code.

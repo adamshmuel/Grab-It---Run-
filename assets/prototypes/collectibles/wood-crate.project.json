@@ -1,0 +1,6 @@
+{
+  "name": "WoodCrate",
+  "tree": {
+    "$path": "wood-crate.model.json"
+  }
+}
