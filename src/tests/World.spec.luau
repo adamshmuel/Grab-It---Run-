@@ -4,6 +4,8 @@ return function()
 	local entry = modules:FindFirstChild("World")
 	assert(entry, "RED: Rojo-managed warehouse builder must exist")
 	local fresh = entry:Clone()
+	fresh.Name = "WorldTestCopy"
+	fresh.Parent = modules
 	local World = require(fresh :: ModuleScript)
 	fresh:Destroy()
 	local root = World.build("GrabItWorldTest")
@@ -27,7 +29,35 @@ return function()
 				item:GetAttribute("ItemId") and item:FindFirstChild("ValueLabel"),
 				"identifiable value"
 			)
+			local visual = item:FindFirstChildWhichIsA("Model")
+			assert(
+				visual and item.Transparency == 1,
+				"item uses detailed model instead of visible cube"
+			)
 		end
+		local entrance = root:FindFirstChild("EntranceFrame")
+		assert(entrance and entrance:IsA("Model"), "entrance has a deliberate colored frame")
+		local bands = {}
+		for zone = 1, 3 do
+			local accent = root:FindFirstChild("ZoneAccent" .. zone)
+			assert(accent and accent:IsA("Model"), "zone has floor bands and wall accents")
+			local band = accent:FindFirstChild("FloorBand")
+			assert(band and not band.CanCollide, "colored floor never blocks the route")
+			bands[tostring(band.Color)] = true
+			for _, detail in accent:GetDescendants() do
+				if detail:IsA("BasePart") then
+					assert(
+						not detail.CanCollide and not detail.CanQuery,
+						"decoration never changes collisions or pickup rays"
+					)
+				end
+			end
+		end
+		local distinct = 0
+		for _ in bands do
+			distinct += 1
+		end
+		assert(distinct == 3, "each zone has a distinct accent palette")
 		local entrySign = root:FindFirstChild("EntrySign")
 		assert(
 			entrySign and entrySign.Position.Y > 12,

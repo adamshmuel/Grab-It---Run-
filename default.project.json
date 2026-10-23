@@ -88,6 +88,18 @@
       "GrabItQA": {
         "$path": "tools/qa",
         "$ignoreUnknownInstances": true
+      },
+      "GrabItModels": {
+        "$className": "Folder",
+        "WoodCrate": {
+          "$path": "assets/collectibles/wood-crate.model.json"
+        },
+        "ToolCase": {
+          "$path": "assets/collectibles/tool-case.model.json"
+        },
+        "EnergyCanister": {
+          "$path": "assets/collectibles/energy-canister.model.json"
+        }
       }
     }
   }

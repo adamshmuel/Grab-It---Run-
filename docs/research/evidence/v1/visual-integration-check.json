@@ -1,0 +1,45 @@
+{
+  "checked_on": "2026-10-24",
+  "studio_id": "aae9898c-8ce2-4f8d-9d21-37ea0156e017",
+  "place_file": "build/GrabItV1_DesktopMobile.rbxlx",
+  "connected_studios": 1,
+  "players": 1,
+  "suites": {
+    "Persistence": 12,
+    "NetworkState": 4,
+    "Hud": 7,
+    "Appearance": 3,
+    "Session": 11,
+    "ItemVisibility": 4,
+    "TargetPrompt": 4,
+    "Gameplay": 9,
+    "World": 7,
+    "Visuals": 5,
+    "Features": 10
+  },
+  "suite_result": "all passed in current Solo server; reported numbers are suite return values, not independent test counts",
+  "static_checks": {
+    "stylua": "passed",
+    "selene": "0 errors, 0 warnings, 0 parse errors"
+  },
+  "builds": [
+    "default.project.json",
+    "test.project.json",
+    "release.project.json"
+  ],
+  "build_validation": "native templates found in each XML; release excludes GrabItQA and GrabItTests; temporary outputs deleted",
+  "client_render_probe": {
+    "viewport": [
+      1,
+      1
+    ],
+    "render_stepped_events_over_one_second": 0
+  },
+  "visual_acceptance": "not verified; no screenshot obtained",
+  "limits": [
+    "Human playtests not run",
+    "New mobile visual acceptance not run",
+    "No cloud saving or performance acceptance claimed",
+    "Working place and user manual save were not overwritten"
+  ]
+}

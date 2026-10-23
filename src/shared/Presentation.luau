@@ -1,10 +1,5 @@
 --!strict
 local View = {}
-View.itemColors = table.freeze({
-	Color3.fromRGB(172, 120, 69),
-	Color3.fromRGB(184, 199, 209),
-	Color3.fromRGB(68, 156, 232),
-})
 local tiers = {
 	{ threshold = 30, name = "Copper", color = { 184, 115, 51 } },
 	{ threshold = 100, name = "Silver", color = { 195, 211, 220 } },

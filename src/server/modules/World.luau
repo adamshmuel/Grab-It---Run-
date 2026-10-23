@@ -1,8 +1,7 @@
 --!strict
 local Rules = require(game:GetService("ReplicatedStorage").GrabIt.Shared.GameRules)
-local View = require(game:GetService("ReplicatedStorage").GrabIt.Shared.Presentation)
+local Visuals = require(script.Parent.Visuals)
 local World = {}
-local materials = { Enum.Material.WoodPlanks, Enum.Material.Metal, Enum.Material.SmoothPlastic }
 local function part(
 	parent: Instance,
 	name: string,
@@ -22,6 +21,22 @@ local function part(
 	p.Parent = parent
 	return p
 end
+local function decoration(
+	parent: Instance,
+	name: string,
+	size: Vector3,
+	position: Vector3,
+	color: Color3
+): Part
+	local detail = part(parent, name, size, position, color)
+	detail.CanCollide = false
+	detail.CanTouch = false
+	detail.CanQuery = false
+	return detail
+end
+local accents =
+	{ Color3.fromRGB(237, 159, 69), Color3.fromRGB(34, 184, 187), Color3.fromRGB(139, 110, 224) }
+local frameColor = Color3.fromRGB(35, 68, 91)
 local function label(parent: BasePart, text: string, color: Color3)
 	local isItem = parent:GetAttribute("ItemId") ~= nil
 	local gui = if isItem then Instance.new("BillboardGui") else Instance.new("SurfaceGui")
@@ -86,8 +101,14 @@ end
 function World.build(name: string?): Model
 	local root = Instance.new("Model")
 	root.Name = name or "GrabItWorld"
-	part(root, "Base", Vector3.new(40, 1, 24), Vector3.new(0, 0, -12), Color3.fromRGB(64, 133, 107))
-	part(root, "Floor", Vector3.new(48, 1, 120), Vector3.new(0, 0, 60), Color3.fromRGB(74, 87, 100))
+	part(root, "Base", Vector3.new(40, 1, 24), Vector3.new(0, 0, -12), Color3.fromRGB(70, 156, 123))
+	part(
+		root,
+		"Floor",
+		Vector3.new(48, 1, 120),
+		Vector3.new(0, 0, 60),
+		Color3.fromRGB(91, 108, 122)
+	)
 	local bank = part(
 		root,
 		"Deposit",
@@ -107,7 +128,7 @@ function World.build(name: string?): Model
 		"Roof",
 		Vector3.new(48, 1, 120),
 		Vector3.new(0, 20.5, 60),
-		Color3.fromRGB(119, 135, 148)
+		Color3.fromRGB(207, 218, 220)
 	)
 	for _, x in { -24.5, 24.5 } do
 		part(
@@ -115,7 +136,7 @@ function World.build(name: string?): Model
 			"Wall",
 			Vector3.new(1, 20, 120),
 			Vector3.new(x, 10, 60),
-			Color3.fromRGB(158, 176, 187)
+			Color3.fromRGB(207, 226, 229)
 		)
 	end
 	part(
@@ -123,7 +144,7 @@ function World.build(name: string?): Model
 		"BackWall",
 		Vector3.new(48, 20, 1),
 		Vector3.new(0, 10, 120.5),
-		Color3.fromRGB(153, 171, 183)
+		Color3.fromRGB(201, 220, 225)
 	)
 	for _, x in { -16.25, 16.25 } do
 		part(
@@ -131,7 +152,7 @@ function World.build(name: string?): Model
 			"FrontWall",
 			Vector3.new(16.5, 20, 1),
 			Vector3.new(x, 10, 0),
-			Color3.fromRGB(153, 171, 183)
+			Color3.fromRGB(201, 220, 225)
 		)
 	end
 	part(
@@ -139,9 +160,63 @@ function World.build(name: string?): Model
 		"Lintel",
 		Vector3.new(16, 8, 1),
 		Vector3.new(0, 16, 0),
-		Color3.fromRGB(153, 171, 183)
+		Color3.fromRGB(201, 220, 225)
 	)
 	part(root, "Door", Vector3.new(16, 12, 1), Vector3.new(0, 6, 0), Color3.fromRGB(228, 103, 71))
+	local entrance = Instance.new("Model")
+	entrance.Name = "EntranceFrame"
+	entrance.Parent = root
+	for _, x in { -8.65, 8.65 } do
+		decoration(
+			entrance,
+			"BluePillar",
+			Vector3.new(0.9, 12.6, 0.8),
+			Vector3.new(x, 6.3, -0.7),
+			frameColor
+		)
+		decoration(
+			entrance,
+			"YellowEdge",
+			Vector3.new(0.16, 11.8, 0.12),
+			Vector3.new(x, 6.1, -1.15),
+			Color3.fromRGB(255, 206, 76)
+		)
+	end
+	decoration(
+		entrance,
+		"TopBeam",
+		Vector3.new(18.2, 0.7, 0.8),
+		Vector3.new(0, 12.3, -0.7),
+		frameColor
+	)
+	for x = -7, 7, 2 do
+		local stripe = decoration(
+			entrance,
+			"ClosureStripe",
+			Vector3.new(0.65, 0.04, 0.8),
+			Vector3.new(x, 0.55, -0.7),
+			Color3.fromRGB(255, 207, 77)
+		)
+		stripe.CFrame *= CFrame.Angles(0, math.rad(25), 0)
+	end
+	for _, x in { -8.15, 8.15 } do
+		decoration(
+			root,
+			"BankBorder",
+			Vector3.new(0.22, 0.05, 8.3),
+			Vector3.new(x, 0.59, -8),
+			Color3.fromRGB(225, 255, 231)
+		)
+	end
+	for _, z in { -12.15, -3.85 } do
+		decoration(
+			root,
+			"BankBorder",
+			Vector3.new(16.5, 0.05, 0.22),
+			Vector3.new(0, 0.59, z),
+			Color3.fromRGB(225, 255, 231)
+		)
+	end
 	local entrySign = part(
 		root,
 		"EntrySign",
@@ -175,6 +250,41 @@ function World.build(name: string?): Model
 	end
 	for zone = 1, 3 do
 		local z = (zone - 1) * 36 + 6
+		local accent = Instance.new("Model")
+		accent.Name = "ZoneAccent" .. zone
+		accent.Parent = root
+		for _, side in { -1, 1 } do
+			decoration(
+				accent,
+				"FloorBand",
+				Vector3.new(7.5, 0.03, 33),
+				Vector3.new(side * 12, 0.52, z + 15),
+				accents[zone]
+			)
+			decoration(
+				accent,
+				"WallPanel",
+				Vector3.new(0.12, 7, 32),
+				Vector3.new(side * 23.95, 8, z + 15),
+				Color3.fromRGB(228, 237, 234)
+			)
+			decoration(
+				accent,
+				"WallStripe",
+				Vector3.new(0.16, 0.55, 32),
+				Vector3.new(side * 23.85, 11.7, z + 15),
+				accents[zone]
+			)
+			for _, dz in { 0, 33 } do
+				decoration(
+					accent,
+					"WallPost",
+					Vector3.new(0.35, 18, 0.65),
+					Vector3.new(side * 23.7, 9.5, z + dz),
+					frameColor
+				)
+			end
+		end
 		local marker = part(
 			root,
 			"ZoneMarker" .. zone,
@@ -200,23 +310,42 @@ function World.build(name: string?): Model
 			Color3.fromRGB(255, 235, 173)
 		)
 		for _, x in { -21, 21 } do
-			part(
-				root,
-				"Shelf",
-				Vector3.new(3, 0.6, 24),
-				Vector3.new(x, 7, z + 13),
-				Color3.fromRGB(52, 70, 83)
-			)
-			for _, dz in { 2, 24 } do
-				part(
+			for _, y in { 2.2, 5, 7.8 } do
+				decoration(
 					root,
-					"ShelfSupport",
-					Vector3.new(0.6, 7, 0.6),
-					Vector3.new(x, 4, z + dz),
-					Color3.fromRGB(46, 61, 73)
+					"Shelf",
+					Vector3.new(3.8, 0.25, 24),
+					Vector3.new(x, y, z + 13),
+					frameColor
+				)
+				decoration(
+					root,
+					"ShelfLip",
+					Vector3.new(0.12, 0.25, 24),
+					Vector3.new(x - math.sign(x) * 1.9, y, z + 13),
+					accents[zone]
 				)
 			end
+			for _, dx in { -1.5, 1.5 } do
+				for _, dz in { 2, 24 } do
+					decoration(
+						root,
+						"ShelfSupport",
+						Vector3.new(0.2, 8, 0.3),
+						Vector3.new(x + dx, 4.5, z + dz),
+						frameColor
+					)
+				end
+			end
 		end
+		decoration(
+			root,
+			"RoofBeam",
+			Vector3.new(47, 0.45, 0.6),
+			Vector3.new(0, 19.5, z + 1),
+			frameColor
+		)
+
 		local light = part(
 			root,
 			"CeilingStrip",
@@ -230,7 +359,7 @@ function World.build(name: string?): Model
 	folder.Name = "Items"
 	folder.Parent = root
 	for _, item in Rules.items do
-		local color = View.itemColors[item.zone]
+		local color = Color3.fromRGB(255, 255, 255)
 		local crate = part(
 			folder,
 			tostring(item.id),
@@ -238,7 +367,9 @@ function World.build(name: string?): Model
 			Vector3.new(item.x, 2.5, item.z),
 			color
 		)
-		crate.Material = materials[item.zone]
+		crate.Transparency = 1
+		crate.CanQuery = false
+		Visuals.create(item.zone, crate, CFrame.new(item.x, 0.5, item.z))
 		crate.CanCollide = false
 		crate:SetAttribute("ItemId", item.id)
 		label(crate, tostring(item.value), Color3.fromRGB(255, 244, 202))

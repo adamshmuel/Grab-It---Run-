@@ -6,6 +6,7 @@ local root = game:GetService("ReplicatedStorage"):WaitForChild("GrabIt", 20)
 assert(root, "GrabIt content was not replicated")
 local Hud = require(root.ClientModules.Hud)
 local TargetPrompt = require(root.ClientModules.TargetPrompt)
+local ItemVisibility = require(root.ClientModules.ItemVisibility)
 local player = Players.LocalPlayer
 local ui = Hud.create()
 ui.Screen.Parent = player:WaitForChild("PlayerGui", 20)
@@ -166,11 +167,7 @@ table.insert(
 			for _, part in items:GetChildren() do
 				if part:IsA("BasePart") then
 					local hidden = state.collected[part:GetAttribute("ItemId")] == true
-					part.LocalTransparencyModifier = if hidden then 1 else 0
-					local label = part:FindFirstChild("ValueLabel")
-					if label then
-						label.Enabled = not hidden
-					end
+					ItemVisibility.set(part, hidden)
 				end
 			end
 		end
