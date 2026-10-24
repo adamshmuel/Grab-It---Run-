@@ -1,0 +1,249 @@
+{
+  "date": "2026-10-24",
+  "commit": "4550558",
+  "targetSelectedBeforeMeasurement": "Player8 / userId -8",
+  "target": {
+    "touch": false,
+    "cargo": 0,
+    "frames": 35978,
+    "coins": 22,
+    "slowSamples": 0,
+    "quality": "Enum.SavedQualitySetting.QualityLevel5",
+    "sampleSeconds": 600.0126520672347,
+    "input": "Humanoid MoveTo and real client RemoteEvent requests",
+    "viewport": "1280, 720",
+    "sampleCount": 594,
+    "minimumFPS": 58.71987012329098,
+    "slowFrames": 56
+  },
+  "qualifiedSecondSamplesPercent": 100,
+  "frameRateOverWholeWindow": 59.962068926454016,
+  "passed": true,
+  "hardware": {
+    "model": "Mac17,9",
+    "processor": "Apple M5 Pro",
+    "memoryGiB": 48
+  },
+  "studioVersion": "0.744.0.7441077",
+  "method": "One-second RenderStepped bins; only complete bins counted, so 594 bins over 600.013 seconds. Partial final bin excluded. Eight active server players throughout measurement; background clients retained in raw report and rendered about 15 FPS. Criterion evaluates the preselected measured client, not all eight OS windows.",
+  "raw": "qa-8-quality5-600seconds.json",
+  "functionalPassed": true,
+  "joined": 8,
+  "leaveChecks": {
+    "-3": {
+      "passed": true,
+      "stage": "after-leave",
+      "coins": 22
+    },
+    "-2": {
+      "passed": true,
+      "stage": "after-leave",
+      "coins": 22
+    },
+    "-1": {
+      "passed": true,
+      "stage": "after-leave",
+      "coins": 22
+    },
+    "-4": {
+      "passed": true,
+      "stage": "after-leave",
+      "coins": 22
+    },
+    "-5": {
+      "passed": true,
+      "stage": "after-leave",
+      "coins": 22
+    },
+    "-6": {
+      "passed": true,
+      "stage": "after-leave",
+      "coins": 22
+    },
+    "-7": {
+      "passed": true,
+      "stage": "after-leave",
+      "coins": 22
+    }
+  },
+  "qualitySetup": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player2",
+        "id": "18963222-c862-40d3-8509-6b11f11218d7",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player4",
+        "id": "47e18182-0d39-46ce-ba66-5517638e096b",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player7",
+        "id": "8c35018b-62a8-4682-b99a-9f79ffa868c1",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player3",
+        "id": "98d83ec3-0fcc-4ac8-b1a1-ed42aae26900",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player6",
+        "id": "ae1f2cdb-5fd5-4665-856e-02c100804f8c",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player1",
+        "id": "c85480b1-8989-447c-825d-de0d9088a5cd",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player8",
+        "id": "cc6e3ecb-1e93-4096-8715-5c388d76c010",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player5",
+        "id": "e2d84af7-9f00-4e43-9c48-ca5179ae41df",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"viewport\":\"1280, 720\",\"menuOpen\":false,\"stage\":\"load-loop\",\"quality\":\"QualityLevel5\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    }
+  ],
+  "mixedInputFinal": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player2",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"state\":{\"warning\":false,\"tutorial\":true,\"save\":\"Studio session only\",\"cargoCount\":2,\"coins\":5,\"remaining\":44,\"roundId\":1,\"cargoValue\":2,\"collected\":{\"9\":true,\"3\":true,\"2\":true,\"5\":true,\"4\":true,\"7\":true,\"1\":true},\"open\":true,\"ready\":true},\"input\":\"Touch\",\"position\":\"12.000116348266602, 3.7248411178588867, 17.2763729095459\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "name": "Player1",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"state\":{\"warning\":false,\"tutorial\":true,\"save\":\"Studio session only\",\"cargoCount\":2,\"coins\":5,\"remaining\":44,\"roundId\":1,\"cargoValue\":2,\"collected\":{\"9\":true,\"3\":true,\"2\":true,\"5\":true,\"4\":true,\"7\":true,\"1\":true},\"open\":true,\"ready\":true},\"input\":\"Keyboard\",\"position\":\"12.018503189086914, 3.7248411178588867, 17.326616287231445\"}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    }
+  ],
+  "desktopKeyboardPath": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"state\":{\"warning\":false,\"tutorial\":true,\"save\":\"Studio session only\",\"cargoCount\":0,\"coins\":1,\"remaining\":126,\"roundId\":1,\"cargoValue\":0,\"collected\":{\"2\":true},\"open\":true,\"ready\":true},\"events\":{\"1\":{\"type\":\"Keyboard\",\"key\":\"W\",\"processed\":false},\"3\":{\"type\":\"Keyboard\",\"key\":\"W\",\"processed\":false},\"2\":{\"type\":\"Keyboard\",\"key\":\"A\",\"processed\":false},\"5\":{\"type\":\"Keyboard\",\"key\":\"D\",\"processed\":false},\"4\":{\"type\":\"Keyboard\",\"key\":\"E\",\"processed\":false},\"6\":{\"type\":\"Keyboard\",\"key\":\"S\",\"processed\":false}},\"position\":\"0.2724683880805969, 3.7248411178588867, -12.136955261230469\"}"
+      }
+    ],
+    "isError": false
+  },
+  "touchPathExistingProgress": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"before\":{\"state\":{\"warning\":false,\"tutorial\":true,\"save\":\"Studio session only\",\"cargoCount\":0,\"coins\":1,\"remaining\":139,\"roundId\":2,\"cargoValue\":0,\"collected\":[],\"open\":true,\"ready\":true},\"position\":\"2.1771857738494873, 3.724841833114624, -13.822504997253418\"},\"collected\":{\"state\":{\"warning\":true,\"tutorial\":true,\"save\":\"Studio session only\",\"open\":true,\"coins\":1,\"cargoValue\":1,\"ready\":true,\"cargoCount\":1,\"target\":3,\"collected\":{\"1\":true},\"remaining\":9,\"roundId\":2},\"pos\":\"-11.950119018554688, 3.724841356277466, 14.622363090515137\"},\"after\":{\"state\":{\"warning\":true,\"tutorial\":true,\"save\":\"Studio session only\",\"cargoCount\":0,\"coins\":2,\"remaining\":3,\"roundId\":2,\"cargoValue\":0,\"collected\":{\"1\":true},\"open\":true,\"ready\":true},\"pos\":\"0.9023911356925964, 3.7248411178588867, -11.85892105102539\"}}"
+      }
+    ],
+    "isError": false
+  }
+}

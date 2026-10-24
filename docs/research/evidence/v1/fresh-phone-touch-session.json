@@ -1,0 +1,745 @@
+{
+  "date": "2026-10-24",
+  "studio": "0.744.0.7441077",
+  "device": "Samsung Galaxy A06",
+  "orientation": "LandscapeLeft",
+  "configured": [
+    800,
+    360
+  ],
+  "viewport": [
+    706,
+    339
+  ],
+  "input": "Native Studio simulated Touch via joystick drags and Collect taps. No WASD, MoveTo, remote collect calls or teleports used during this fresh-player path. Camera direction read only to guide subsequent joystick drags. Alt is used only for documented pinch gestures after progression.",
+  "observations": {
+    "progression": {
+      "state": {
+        "warning": false,
+        "tutorial": true,
+        "save": "Studio session only",
+        "cargoCount": 0,
+        "coins": 31,
+        "remaining": 40,
+        "roundId": 2,
+        "cargoValue": 0,
+        "collected": {
+          "21": true,
+          "23": true,
+          "25": true,
+          "27": true,
+          "29": true
+        },
+        "open": true,
+        "ready": true
+      },
+      "cargoModel": 4,
+      "style": "NEXT: SILVER\n31 / 100",
+      "pos": "-0.2380085289478302, 3.724841356277466, -7.684111595153809"
+    },
+    "firstBank": {
+      "state": {
+        "warning": false,
+        "tutorial": true,
+        "save": "Studio session only",
+        "cargoCount": 0,
+        "coins": 1,
+        "remaining": 121,
+        "roundId": 1,
+        "cargoValue": 0,
+        "collected": {
+          "1": true
+        },
+        "open": true,
+        "ready": true
+      },
+      "pos": "-0.666144073009491, 3.724841356277466, -10.20071792602539"
+    },
+    "secondTrip": {
+      "state": {
+        "warning": false,
+        "tutorial": true,
+        "save": "Studio session only",
+        "open": true,
+        "coins": 1,
+        "cargoValue": 1,
+        "ready": true,
+        "cargoCount": 1,
+        "target": 4,
+        "collected": {
+          "1": true,
+          "2": true
+        },
+        "remaining": 99,
+        "roundId": 1
+      },
+      "pos": "13.086698532104492, 3.7248411178588867, 13.904383659362793"
+    },
+    "pinchIn": {
+      "events": {
+        "1": {
+          "scale": 1.1455501317977905,
+          "state": "Begin",
+          "processed": false
+        },
+        "2": {
+          "scale": 1.3145630359649658,
+          "state": "Change",
+          "processed": false
+        },
+        "3": {
+          "scale": 1.4560500383377075,
+          "state": "Change",
+          "processed": false
+        },
+        "4": {
+          "scale": 1.6248890161514282,
+          "state": "Change",
+          "processed": false
+        },
+        "5": {
+          "scale": 1.7841424942016602,
+          "state": "Change",
+          "processed": false
+        },
+        "6": {
+          "scale": 1.951426386833191,
+          "state": "Change",
+          "processed": false
+        },
+        "7": {
+          "scale": 2.122629404067993,
+          "state": "Change",
+          "processed": false
+        },
+        "8": {
+          "scale": 2.2930855751037598,
+          "state": "Change",
+          "processed": false
+        },
+        "9": {
+          "scale": 2.463763475418091,
+          "state": "Change",
+          "processed": false
+        },
+        "10": {
+          "scale": 2.634418487548828,
+          "state": "Change",
+          "processed": false
+        },
+        "11": {
+          "scale": 2.8081259727478027,
+          "state": "Change",
+          "processed": false
+        },
+        "12": {
+          "scale": 2.9803645610809326,
+          "state": "Change",
+          "processed": false
+        },
+        "13": {
+          "scale": 3.1520354747772217,
+          "state": "Change",
+          "processed": false
+        },
+        "14": {
+          "scale": 3.325578451156616,
+          "state": "Change",
+          "processed": false
+        },
+        "15": {
+          "scale": 3.5007851123809814,
+          "state": "Change",
+          "processed": false
+        },
+        "16": {
+          "scale": 3.6736249923706055,
+          "state": "Change",
+          "processed": false
+        },
+        "17": {
+          "scale": 3.849353790283203,
+          "state": "Change",
+          "processed": false
+        },
+        "18": {
+          "scale": 4.024993419647217,
+          "state": "Change",
+          "processed": false
+        },
+        "19": {
+          "scale": 4.026534557342529,
+          "state": "Change",
+          "processed": false
+        },
+        "20": {
+          "scale": 4.026534557342529,
+          "state": "End",
+          "processed": false
+        }
+      },
+      "distance": 7.999999523162842
+    },
+    "pinchOut": {
+      "events": {
+        "1": {
+          "scale": 0.9653680920600891,
+          "state": "Begin",
+          "processed": false
+        },
+        "2": {
+          "scale": 0.9303716421127319,
+          "state": "Change",
+          "processed": false
+        },
+        "3": {
+          "scale": 0.8939201235771179,
+          "state": "Change",
+          "processed": false
+        },
+        "4": {
+          "scale": 0.861528754234314,
+          "state": "Change",
+          "processed": false
+        },
+        "5": {
+          "scale": 0.8275964856147766,
+          "state": "Change",
+          "processed": false
+        },
+        "6": {
+          "scale": 0.7937327027320862,
+          "state": "Change",
+          "processed": false
+        },
+        "7": {
+          "scale": 0.75910884141922,
+          "state": "Change",
+          "processed": false
+        },
+        "8": {
+          "scale": 0.7250477075576782,
+          "state": "Change",
+          "processed": false
+        },
+        "9": {
+          "scale": 0.691653311252594,
+          "state": "Change",
+          "processed": false
+        },
+        "10": {
+          "scale": 0.6589781045913696,
+          "state": "Change",
+          "processed": false
+        },
+        "11": {
+          "scale": 0.6251064538955688,
+          "state": "Change",
+          "processed": false
+        },
+        "12": {
+          "scale": 0.5923956632614136,
+          "state": "Change",
+          "processed": false
+        },
+        "13": {
+          "scale": 0.5595519542694092,
+          "state": "Change",
+          "processed": false
+        },
+        "14": {
+          "scale": 0.5276619791984558,
+          "state": "Change",
+          "processed": false
+        },
+        "15": {
+          "scale": 0.4975120723247528,
+          "state": "Change",
+          "processed": false
+        },
+        "16": {
+          "scale": 0.4657755196094513,
+          "state": "Change",
+          "processed": false
+        },
+        "17": {
+          "scale": 0.4355398714542389,
+          "state": "Change",
+          "processed": false
+        },
+        "18": {
+          "scale": 0.4058542251586914,
+          "state": "Change",
+          "processed": false
+        },
+        "19": {
+          "scale": 0.4058542251586914,
+          "state": "End",
+          "processed": false
+        }
+      },
+      "distance": 19.999998092651367
+    },
+    "before": {
+      "state": {
+        "warning": false,
+        "tutorial": false,
+        "save": "Studio session only",
+        "cargoCount": 0,
+        "coins": 0,
+        "remaining": 149,
+        "roundId": 1,
+        "cargoValue": 0,
+        "collected": [],
+        "open": true,
+        "ready": true
+      },
+      "pos": "0, 3.7248411178588867, -18"
+    },
+    "afterClosure": {
+      "state": {
+        "warning": false,
+        "tutorial": true,
+        "save": "Studio session only",
+        "cargoCount": 0,
+        "coins": 1,
+        "remaining": 177,
+        "roundId": 2,
+        "cargoValue": 0,
+        "collected": [],
+        "open": true,
+        "ready": true
+      },
+      "pos": "-1.1489873941172846e-08, 3.7248411178588867, -18"
+    },
+    "events": {
+      "1": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "2": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "3": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "4": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "5": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "6": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "7": {
+        "type": "Touch",
+        "key": "None",
+        "processed": true
+      },
+      "8": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "9": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "10": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "11": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "12": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "13": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "14": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "15": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "16": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "17": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "18": {
+        "type": "Touch",
+        "key": "None",
+        "processed": true
+      },
+      "19": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "20": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "21": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "22": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "23": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "24": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "25": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "26": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "27": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "28": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "29": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "30": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "31": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "32": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "33": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "34": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "35": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "36": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "37": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "38": {
+        "type": "Touch",
+        "key": "None",
+        "processed": true
+      },
+      "39": {
+        "type": "Touch",
+        "key": "None",
+        "processed": true
+      },
+      "40": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "41": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "42": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "43": {
+        "type": "Touch",
+        "key": "None",
+        "processed": true
+      },
+      "44": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "45": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "46": {
+        "type": "Touch",
+        "key": "None",
+        "processed": true
+      },
+      "47": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "48": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "49": {
+        "type": "Touch",
+        "key": "None",
+        "processed": true
+      },
+      "50": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "51": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "52": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "53": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "54": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "55": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "56": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "57": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "58": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "59": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "60": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "61": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "62": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "63": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "64": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "65": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "66": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "67": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "68": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "69": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "70": {
+        "type": "Keyboard",
+        "key": "LeftAlt",
+        "processed": false
+      },
+      "71": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "72": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "73": {
+        "type": "Keyboard",
+        "key": "LeftAlt",
+        "processed": false
+      },
+      "74": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      },
+      "75": {
+        "type": "Touch",
+        "key": "None",
+        "processed": false
+      }
+    },
+    "collected": {
+      "state": {
+        "warning": false,
+        "tutorial": false,
+        "save": "Studio session only",
+        "cargoCount": 1,
+        "coins": 0,
+        "remaining": 141,
+        "roundId": 1,
+        "cargoValue": 1,
+        "collected": {
+          "1": true
+        },
+        "open": true,
+        "ready": true
+      },
+      "pos": "-12.058377265930176, 3.7248411178588867, 11.94814682006836"
+    },
+    "fullCargo": {
+      "state": {
+        "warning": false,
+        "tutorial": true,
+        "save": "Studio session only",
+        "cargoCount": 5,
+        "coins": 1,
+        "remaining": 86,
+        "roundId": 2,
+        "cargoValue": 30,
+        "collected": {
+          "21": true,
+          "23": true,
+          "25": true,
+          "27": true,
+          "29": true
+        },
+        "open": true,
+        "ready": true
+      },
+      "speed": 8,
+      "pos": "-11.999690055847168, 3.724841594696045, 106.77848052978516"
+    },
+    "failure": {
+      "visible": true,
+      "cargo": 0,
+      "label": "Cargo lost. Banked coins kept",
+      "position": "-6.434675015043467e-09, 3.7213683128356934, -18",
+      "fits": true,
+      "text": "Cargo lost. Banked coins kept",
+      "coins": 1
+    }
+  },
+  "simultaneousIndependentContacts": "NOT VERIFIED",
+  "cloudSaving": "NOT VERIFIED: Studio session only"
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-24",
+  "updated_managed_paths": [
+    "/ReplicatedStorage/GrabIt/Shared",
+    "/ReplicatedStorage/GrabIt/ClientModules",
+    "/ServerScriptService/GrabItModules",
+    "/ServerScriptService/GameServer",
+    "/StarterPlayer/StarterPlayerScripts/GameClient",
+    "/ServerStorage/GrabItTests",
+    "/ServerStorage/GrabItQA",
+    "/ServerStorage/GrabItModels"
+  ],
+  "unmanaged_workspace_and_lighting_preserved": true,
+  "manual_save_sha256": "913d8756184e988973a051bad7494ceae7a030806aec0b008c33063d77f0dc8b",
+  "temporary_export_removed": true,
+  "quality_restored": "Automatic",
+  "simulation_stopped": true,
+  "canonical_source_files_verified": 27,
+  "one_studio_verified": true
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>מצב הקבלה של V1</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1>מצב הקבלה של <bdi dir="ltr" lang="en">V1</bdi></h1>
+<p><strong>עדכון: 24/10/2026. <bdi dir="ltr" lang="en">V1</bdi> עדיין אינה עומדת בכל תנאי הקבלה.</strong></p>
+<p>זהו המיפוי הקצר של <a href="v1/acceptance.html">קריטריוני הקבלה</a>. תיעוד ההרצות המפורט נשמר בתוך <a href="v1-validation.html">דוח הבדיקות</a>. כל תוצאה מוגבלת למה שנבדק בפועל.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>תנאי</th>
+<th>תוצאה וראיה</th>
+<th>פער שנותר</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>כלל 1: נכונות ההתנהגות</td>
+<td>אחת־עשרה חבילות <bdi dir="ltr" lang="en">tests</bdi> עברו; מסלול חדש מ־0 ל־34, מטען מלא, <bdi dir="ltr" lang="en">Copper</bdi>, סגירה וסיבוב חדש נבדקו. <a href="../research/evidence/v1/visual-gate-fixes.json">ראיות התיקונים</a></td>
+<td>כניסה מחדש אחרי שמירה אמיתית בענן טרם נבדקה</td>
+</tr>
+<tr>
+<td>כלל 2: לבד ולצד חברים</td>
+<td><a href="../research/evidence/v1/qa-2-final-visual.json">שני שחקנים</a> וכן <a href="../research/evidence/v1/qa-8-quality5-600seconds.json">שמונה שחקנים</a> עברו מחזור משחק. יציאת אחד השאירה לשאר את יתרתם. איסוף מקביל במקלדת וב־<bdi dir="ltr" lang="en">touch</bdi> נבדק בנפרד</td>
+<td>הבדיקה האוטומטית מניעה דמויות באמצעות <bdi dir="ltr" lang="en">MoveTo</bdi>; אינה תצפית על אנשים</td>
+</tr>
+<tr>
+<td>כלל 3: בהירות ותצוגה</td>
+<td>ארבעת גדלי המסך עברו בדיקות גבולות, <bdi dir="ltr" lang="en">TextFits</bdi> וחפיפה. מסלול מקלדת חדש עבר; <a href="../research/evidence/v1/fresh-phone-touch-session.json">מסלול <bdi dir="ltr" lang="en">touch</bdi> חדש</a> כלל הפקדה, כישלון, סיבוב נוסף, מטען מלא ופתיחת <bdi dir="ltr" lang="en">Copper</bdi>. מצלמה ליד קיר, <bdi dir="ltr" lang="en">swipe</bdi> ושני גבולות <bdi dir="ltr" lang="en">pinch</bdi> נבדקו</td>
+<td>תנועה ואיסוף באמצעות שני מגעים בו־זמנית עדיין לא הוכחו</td>
+</tr>
+<tr>
+<td>כלל 4: ביצועים ויציבות</td>
+<td>עבר יעד המדידה המקומי: 600.013 שניות, 1280 על 720, גרפיקה 5 ושמונה שחקנים. כל 594 דגימות השנייה השלמות היו מעל 30 <bdi dir="ltr" lang="en">FPS</bdi>; הנמוכה כ־58.72. <a href="../research/evidence/v1/final-performance-and-input.json">ראיה ומגבלות</a></td>
+<td>זו מדידה של חלון אחד שנבחר מראש על <bdi dir="ltr" lang="en">Mac</bdi>, ולא הוכחת ביצועים בטלפון פיזי או בכל חלונות הרקע</td>
+</tr>
+<tr>
+<td>כלל 5: הבנה ורצון להמשיך</td>
+<td>טרם בוצע סבב עם אנשים</td>
+<td>נדרשים 5 שחקנים חדשים ותצפיות אמיתיות. אין הרשאה לפנות למשתתפים בשמו של אדם</td>
+</tr>
+<tr>
+<td>כלל 6: תיעוד והמשך</td>
+<td>דוחות, מקורות וקובצי תוצאות נשמרים בנפרד; מפת המוכנות והמטרות מעודכנות</td>
+<td>אין להסיק קבלה מעצם קיום התיעוד</td>
+</tr>
+<tr>
+<td>כלל 7: הדמיית נייד</td>
+<td>שני פרופילי טלפון, <bdi dir="ltr" lang="en">touch</bdi>, <bdi dir="ltr" lang="en">joystick</bdi>, גרירת מצלמה ו־<bdi dir="ltr" lang="en">pinch</bdi> הופעלו בגרסת <bdi dir="ltr" lang="en">Studio</bdi> המקומית</td>
+<td>בדיקת שני מגעים עצמאיים פתוחה; לא נבדק טלפון פיזי</td>
+</tr>
+<tr>
+<td>כלל 8: התאמה למטרות</td>
+<td><a href="v1-goals-review.html">בדיקת המטרות</a> מבדילה בין התנהגות טכנית, איכות חזותית והוכחות אנושיות</td>
+<td>הנאה, חזרה לאורך זמן והכנסה אינן מוכחות</td>
+</tr>
+<tr>
+<td>כלל 9: היקף ומפת ההגדרות</td>
+<td><a href="v1/index.html">מפת <bdi dir="ltr" lang="en">V1</bdi></a> והמסמכים המקושרים נבדקו; לא נוספו תחומי ההמשך</td>
+<td>תחום השמירה אינו עובר קבלה מלאה ללא בדיקת ענן</td>
+</tr>
+<tr>
+<td>כלל 10: גרפיקה מבוססת מחקר</td>
+<td><a href="v1-visual-review.html">ההשוואה החזותית</a> עברה בדיקה עצמאית מול שלושת הרפרנסים לאחר תיקוני הגיוון, המטען והמצלמה</td>
+<td>הערכת הסצנות אינה תצפית על העדפת שחקנים ואינה דירוג שוק</td>
+</tr>
+<tr>
+<td>כלל 11: רמת המתחרים ובחירה</td>
+<td>ההשוואה החזותית והערכת סיבת הבחירה תועדו</td>
+<td>העדפת אנשים טרם נבדקה; סף ההעדפה המספרי במסמך עדיין הצעה</td>
+</tr>
+</tbody>
+</table></div>
+<h2>התלויות שמונעות קבלה מלאה</h2>
+<p><strong>שמירה בענן:</strong> המקום המקומי אינו מפורסם ומזהי <bdi dir="ltr" lang="en">PlaceId</bdi> ו־<bdi dir="ltr" lang="en">GameId</bdi> הם 0. <bdi dir="ltr" lang="en">Studio</bdi> משתמש בזיכרון מבודד ומציג זאת לשחקן. בדיקות השמירה מול <bdi dir="ltr" lang="en">storage</bdi> מוזרק עברו, אך אינן בדיקת <bdi dir="ltr" lang="en">DataStore</bdi> אמיתי. פרסום מקום פרטי ושינוי הרשאות <bdi dir="ltr" lang="en">API</bdi> אינם נכללים בהרשאה הנוכחית, ולכן לא בוצעו.</p>
+<p><strong>בדיקות אנושיות:</strong> אין אפשרות להסיק מהפעלה אוטומטית מה הבינו חמישה אנשים או אם ירצו לשחק שוב. אי אפשר להחליף אותם בסוכנים או בבוטים. לא נאספו תוצאות מומצאות ולא נשלחו הזמנות לאחרים.</p>
+<p><strong>שני מגעים עצמאיים:</strong> המחוות המתועדות של <bdi dir="ltr" lang="en">Studio</bdi> הופעלו, אבל הניסיון למקם מגע אחד על <bdi dir="ltr" lang="en">joystick</bdi> ומגע שני על <bdi dir="ltr" lang="en">Collect</bdi> לא השלים איסוף תוך כדי תנועה. זו מגבלת ראיה פתוחה, ולא הוכחה לכישלון המשחק. אין סימון מעבר לסעיף הזה.</p>
+<p>בהתאם להוראת אדם, אין בקשת בדיקה שלו באמצע העבודה. הגבולות האלה נשארים גלויים; הם אינם סיבה לשנות בשקט את דרישות <bdi dir="ltr" lang="en">V1</bdi> או להכריז על השלמה.</p>
+</main></body></html>

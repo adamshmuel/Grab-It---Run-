@@ -1,0 +1,231 @@
+{
+  "ok": true,
+  "collectionOnly": false,
+  "duration": 900,
+  "result": {
+    "reports": {
+      "-3": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 9001,
+          "coins": 22,
+          "slowSamples": 578,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.0422560498118,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 578,
+          "minimumFPS": 14.969023455993593,
+          "slowFrames": 9001
+        },
+        "passed": true
+      },
+      "-8": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 35978,
+          "coins": 22,
+          "slowSamples": 0,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.0126520672347,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 594,
+          "minimumFPS": 58.71987012329098,
+          "slowFrames": 56
+        },
+        "passed": true
+      },
+      "-1": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 9001,
+          "coins": 22,
+          "slowSamples": 576,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.0425904840231,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 576,
+          "minimumFPS": 14.969034029272976,
+          "slowFrames": 9001
+        },
+        "passed": true
+      },
+      "-2": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 9001,
+          "coins": 22,
+          "slowSamples": 576,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.0426270738244,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 576,
+          "minimumFPS": 14.96884104145164,
+          "slowFrames": 9001
+        },
+        "passed": true
+      },
+      "-4": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 9001,
+          "coins": 22,
+          "slowSamples": 577,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.0422954559326,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 577,
+          "minimumFPS": 14.969192296355796,
+          "slowFrames": 9001
+        },
+        "passed": true
+      },
+      "-5": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 9001,
+          "coins": 22,
+          "slowSamples": 576,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.0431380867958,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 576,
+          "minimumFPS": 14.96840344275092,
+          "slowFrames": 9001
+        },
+        "passed": true
+      },
+      "-6": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 9001,
+          "coins": 22,
+          "slowSamples": 577,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.0437371432781,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 577,
+          "minimumFPS": 14.96858707082967,
+          "slowFrames": 9001
+        },
+        "passed": true
+      },
+      "-7": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 9001,
+          "coins": 22,
+          "slowSamples": 577,
+          "quality": "Enum.SavedQualitySetting.QualityLevel5",
+          "sampleSeconds": 600.044463776052,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 577,
+          "minimumFPS": 14.968918280501445,
+          "slowFrames": 9001
+        },
+        "passed": true
+      }
+    },
+    "joined": 8,
+    "suites": {
+      "World.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "NetworkState.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "Session.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "Appearance.spec": {
+        "result": "3",
+        "passed": true
+      },
+      "Persistence.spec": {
+        "result": "12",
+        "passed": true
+      },
+      "ItemVisibility.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "TargetPrompt.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "Gameplay.spec": {
+        "result": "9",
+        "passed": true
+      },
+      "Hud.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "Visuals.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "Features.spec": {
+        "result": "10",
+        "passed": true
+      }
+    },
+    "passed": true,
+    "leaveChecks": {
+      "-3": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 22
+      },
+      "-2": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 22
+      },
+      "-1": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 22
+      },
+      "-4": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 22
+      },
+      "-5": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 22
+      },
+      "-6": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 22
+      },
+      "-7": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 22
+      }
+    }
+  },
+  "players": 8
+}
