@@ -3,4 +3,5 @@ docs/handoff.md
 docs/action-items.md
 /references/
 
-/build/
+/build/*
+!/build/GrabItV1_DesktopMobile.rbxlx

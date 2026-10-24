@@ -56,6 +56,8 @@ Monetization ideas: bag/cart appearances, deposit effects, base decorations, per
 
 ## Tooling and evidence
 
+On 2026-10-24 Adam requested including his locally saved environment in a commit. Track the single working file `build/GrabItV1_DesktopMobile.rbxlx`; other build outputs and lock files remain ignored. Preserve his older root backup. Adam also reports saving this game to Roblox. The new Studio connection was verified read-only as place 106986292768692, universe 10772701508, with the expected GrabIt hierarchy. Authorized work continues in that verified project only; cloud saving has not yet been validated. Adam will perform his manual check after independent work is finished.
+
 Current implementation: `default.project.json` maps the game and Studio-only QA templates; `release.project.json` excludes QA and tests. Rojo serves the verified project on localhost:34872. The working file is `build/GrabItV1_DesktopMobile.rbxlx`, updated on 2026-10-24 from current managed sources while preserving unmanaged Workspace and Lighting content. The root manual save remains unchanged. Eleven suites, two/eight-client sessions and the exact local performance target have passed within documented limits. Temporary multiplayer instances were closed and one working Studio was verified afterward. Graphics quality was restored to Automatic and device simulation stopped. Studio persistence remains explicitly memory-only. Cloud persistence, independent two-contact collection and human acceptance remain open; use `docs/research/v1-acceptance-status.md` and `docs/research/v1-validation.md` for evidence. Historical environment observations below do not supersede these results.
 
 
