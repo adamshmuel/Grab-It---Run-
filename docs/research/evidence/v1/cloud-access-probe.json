@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-24",
+  "studioId": "99c22846-b4a9-450c-b2ca-48e35dec7419",
+  "placeId": 106986292768692,
+  "universeId": 10772701508,
+  "expectedGrabItHierarchyVerified": true,
+  "userReportsCloudSave": true,
+  "operation": "GetAsync of probe_read_20261024 in isolated GrabItV1_QA_Verification namespace",
+  "writesPerformed": false,
+  "readSucceeded": false,
+  "error": "502: API Services rejected request with error. Error code: 7 Reason: Studio access to APIs is not allowed.",
+  "securitySettingsChanged": false,
+  "separateApiAccessApprovalRequested": true,
+  "cloudPlayerPersistenceAccepted": false
+}

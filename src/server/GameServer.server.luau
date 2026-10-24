@@ -11,25 +11,40 @@ local Session = require(root.Shared.Session)
 local Persistence = require(root.Shared.Persistence)
 local World = require(script.Parent.GrabItModules.World)
 local Appearance = require(script.Parent.GrabItModules.Appearance)
+local StorageMode = require(script.Parent.GrabItModules.StorageMode)
 local world = World.build()
 local start = workspace:GetServerTimeNow()
 local session = Session.new(function()
 	return workspace:GetServerTimeNow() - start
 end)
 local studio = RunService:IsStudio()
+local storage = StorageMode.select(
+	studio,
+	if studio then game:GetService("ServerStorage"):GetAttribute("GrabItQACloudRun") else nil
+)
+local memoryOnly = storage.memory
 local memory = {}
-local dataStore = if not studio then DataStoreService:GetDataStore("GrabItV1_PlayerData") else nil
+local dataStore = if memoryOnly
+	then nil
+	else DataStoreService:GetDataStore(
+		assert(storage.name, "cloud storage requires a store name"),
+		"global"
+	)
 local function update(key, transform)
-	if studio then
+	if memoryOnly then
 		local result = transform(memory[key])
 		if result then
 			memory[key] = result
 		end
 		return result
 	end
+	assert(dataStore, "cloud storage must be selected before updating")
 	return dataStore:UpdateAsync(key, function(old)
 		local result = transform(old)
 		if result then
+			if studio then
+				return result
+			end
 			return result, { tonumber(string.sub(key, 6)) }
 		end
 		return nil
@@ -97,7 +112,7 @@ local function send(player, entry)
 			then "Not saved yet. Rejoining may lose recent progress."
 			else "Saving"
 	end
-	if studio and p and not entry.dirtyAt then
+	if memoryOnly and p and not entry.dirtyAt then
 		save = "Studio session only"
 	end
 	local state = {
@@ -196,7 +211,7 @@ local function joined(player)
 		return
 	end
 	local entry = {
-		key = "User_" .. player.UserId,
+		key = storage.keyPrefix .. "User_" .. player.UserId,
 		sessionId = HttpService:GenerateGUID(false),
 		store = Persistence.new(update, HttpService:GenerateGUID(false), os.time),
 		status = "Loading progress",
@@ -416,5 +431,8 @@ game:BindToClose(function()
 end)
 print(
 	"GrabIt V1 server ready; persistence:",
-	if studio then "isolated Studio memory" else "DataStore"
+	if memoryOnly
+		then "isolated Studio memory"
+		elseif studio then "isolated QA DataStore"
+		else "DataStore"
 )

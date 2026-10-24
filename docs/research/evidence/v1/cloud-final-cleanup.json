@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-24",
+  "workingFile": "build/GrabItV1_DesktopMobile.rbxlx",
+  "sourceFilesMatched": 30,
+  "canonicalUpdate": "Only GameServer source and three new modules updated; other saved properties, models, references and unmanaged content preserved.",
+  "rootBackupUnchangedSha256": "913d8756184e988973a051bad7494ceae7a030806aec0b008c33063d77f0dc8b",
+  "temporaryExportsDeleted": [
+    "/tmp/grabit-current-managed.rbxlx",
+    "/tmp/grabit-current-test.rbxlx",
+    "/tmp/grabit-current-release.rbxlx"
+  ],
+  "buildsPassed": [
+    "default.project.json",
+    "test.project.json",
+    "release.project.json"
+  ],
+  "releaseExcludesQAAndTests": true,
+  "styluaPassed": true,
+  "selene": {
+    "errors": 0,
+    "warnings": 0,
+    "parseErrors": 0
+  },
+  "studioWindows": 1,
+  "mode": "Edit",
+  "apiAccess": "Enabled only for approved universe 10772701508; remains Private; no new publication.",
+  "wakePrevention": "Existing temporary caffeinate helper 42112 verified active; no persistent power settings changed.",
+  "consoleReview": "No new unexplained game error in final normal session. Repeated asset 203785492 warning belongs to existing plugin; earlier API denial, read assertions and AssistantCommand diagnostics retained as test history.",
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"claimRestored\":true,\"qaMarkerRemoved\":true,\"gameId\":10772701508,\"temporaryResultRemoved\":true,\"placeId\":106986292768692}"
+      }
+    ],
+    "isError": false
+  }
+}

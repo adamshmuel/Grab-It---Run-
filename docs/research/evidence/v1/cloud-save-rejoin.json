@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-24",
+  "placeId": 106986292768692,
+  "universeId": 10772701508,
+  "runId": "cloud_gnk9e77tr7",
+  "store": "GrabItV1_QA_Verification",
+  "scope": "global",
+  "userId": 3345343071,
+  "approval": "Adam approved enabling Studio API services only for this game; enabled in Creator Hub. Game remains Private; no new publication.",
+  "procedure": "Two independent Solo servers in the same verified Studio. Navigation used Humanoid MoveTo, collection used actual MCP keyboard E. First server 0→30/Copper; exit with one unbanked item. Second server restored30/tutorial/Copper4frame parts/cargo0, deposited1→31. Uncached backend checks before/after shutdown verified lock release.",
+  "limits": "Studio integration in an isolated QA store, not production-store writes or a production player server. Five human playtests and preference remain unperformed.",
+  "storageModeRed": {
+    "date": "2026-10-24",
+    "synced": true,
+    "passed": false,
+    "error": "ServerStorage.GrabItTests.StorageMode.spec:4: storage selection needs an isolated cloud QA mode"
+  },
+  "cloudScopeRed": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"ServerStorage.GrabItQA.cloud-check:14: cloud QA record is missing from global scope\",\"passed\":false,\"synced\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudFreshGlobal": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"uncached\":true,\"key\":\"QA_cloud_gnk9e77tr7_User_3345343071\",\"locked\":true,\"tutorial\":false,\"coins\":0}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudBankedGlobal": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"uncached\":true,\"key\":\"QA_cloud_gnk9e77tr7_User_3345343071\",\"locked\":true,\"tutorial\":true,\"coins\":30}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudCompeting": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"concurrentWriteRejected\":true,\"concurrentLoadRejected\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudFirstSession": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"before\":{\"warning\":false,\"tutorial\":false,\"save\":\"Saved\",\"cargoCount\":0,\"coins\":0,\"remaining\":163,\"roundId\":1,\"cargoValue\":0,\"collected\":[],\"open\":true,\"ready\":true},\"banked\":{\"cargoParts\":4,\"style\":\"NEXT: SILVER\\n30 / 100\",\"state\":{\"warning\":false,\"tutorial\":true,\"save\":\"Saved\",\"cargoCount\":0,\"coins\":30,\"remaining\":102,\"roundId\":1,\"cargoValue\":0,\"collected\":{\"25\":true,\"27\":true,\"29\":true,\"21\":true,\"23\":true},\"open\":true,\"ready\":true}},\"exit\":{\"warning\":false,\"tutorial\":true,\"save\":\"Saved\",\"cargoCount\":1,\"coins\":30,\"remaining\":51,\"roundId\":1,\"cargoValue\":1,\"collected\":{\"25\":true,\"27\":true,\"2\":true,\"21\":true,\"29\":true,\"23\":true},\"open\":true,\"ready\":true},\"full\":{\"speed\":8,\"state\":{\"warning\":false,\"tutorial\":false,\"save\":\"Saved\",\"cargoCount\":5,\"coins\":0,\"remaining\":117,\"roundId\":1,\"cargoValue\":30,\"collected\":{\"25\":true,\"27\":true,\"29\":true,\"21\":true,\"23\":true},\"open\":true,\"ready\":true}},\"notices\":{\"1\":{\"text\":\"Collected +6\",\"kind\":\"collect\"},\"8\":{\"text\":\"Collected +1\",\"kind\":\"collect\"},\"3\":{\"text\":\"Collected +6\",\"kind\":\"collect\"},\"2\":{\"text\":\"Collected +6\",\"kind\":\"collect\"},\"5\":{\"text\":\"Collected +6\",\"kind\":\"collect\"},\"4\":{\"text\":\"Collected +6\",\"kind\":\"collect\"},\"7\":{\"text\":\"Style unlocked: Copper\",\"kind\":\"style\"},\"6\":{\"text\":\"Banked +30\",\"kind\":\"bank\"}}}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudReleasedFirst": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"uncached\":true,\"key\":\"QA_cloud_gnk9e77tr7_User_3345343071\",\"locked\":false,\"tutorial\":true,\"coins\":30}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudSecondSession": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"initial\":{\"Bag\":\"BAG  0 / 5     VALUE  0\",\"Action\":\"Collect [E]\",\"Collect\":\"Collect [E]\",\"Coins\":\"COINS 30\\nSaved\",\"Message\":\"Warehouse open\",\"MessageMode\":\"\",\"TextLabel\":\"Chat '/?' or '/help' for a list of chat commands.\",\"TextButton\":\"Cancel\",\"Round\":\"WAREHOUSE OPEN\\n2:44\",\"Tutorial\":\"Collect items. Return here to bank them.\",\"Style\":\"NEXT: SILVER\\n30 / 100\"},\"afterCollect\":{\"warning\":false,\"tutorial\":true,\"save\":\"Saved\",\"cargoCount\":1,\"coins\":30,\"remaining\":120,\"roundId\":2,\"cargoValue\":1,\"collected\":{\"2\":true},\"open\":true,\"ready\":true},\"banked\":{\"warning\":false,\"tutorial\":true,\"save\":\"Saved\",\"cargoCount\":0,\"coins\":31,\"remaining\":117,\"roundId\":2,\"cargoValue\":0,\"collected\":{\"2\":true},\"open\":true,\"ready\":true},\"latest\":{\"warning\":false,\"tutorial\":true,\"save\":\"Saved\",\"cargoCount\":0,\"coins\":31,\"remaining\":107,\"roundId\":2,\"cargoValue\":0,\"collected\":{\"2\":true},\"open\":true,\"ready\":true},\"frameParts\":4,\"beforeCollect\":{\"warning\":false,\"tutorial\":true,\"save\":\"Saved\",\"open\":true,\"coins\":30,\"cargoValue\":0,\"ready\":true,\"cargoCount\":0,\"target\":2,\"collected\":[],\"remaining\":121,\"roundId\":2},\"frames\":[],\"states\":[]}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudSecondBanked": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"uncached\":true,\"key\":\"QA_cloud_gnk9e77tr7_User_3345343071\",\"locked\":true,\"tutorial\":true,\"coins\":31}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudCleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"keyRemoved\":true,\"uncached\":true,\"tutorial\":true,\"markerRemoved\":true,\"locked\":false,\"key\":\"QA_cloud_gnk9e77tr7_User_3345343071\",\"coins\":31}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudFinalSuites": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"StorageMode.spec\":{\"result\":\"5\",\"passed\":true},\"Persistence.spec\":{\"result\":\"12\",\"passed\":true},\"NetworkState.spec\":{\"result\":\"4\",\"passed\":true},\"Hud.spec\":{\"result\":\"7\",\"passed\":true},\"Appearance.spec\":{\"result\":\"3\",\"passed\":true},\"World.spec\":{\"result\":\"7\",\"passed\":true},\"ItemVisibility.spec\":{\"result\":\"4\",\"passed\":true},\"TargetPrompt.spec\":{\"result\":\"4\",\"passed\":true},\"Gameplay.spec\":{\"result\":\"9\",\"passed\":true},\"Session.spec\":{\"result\":\"11\",\"passed\":true},\"Visuals.spec\":{\"result\":\"5\",\"passed\":true},\"Features.spec\":{\"result\":\"10\",\"passed\":true}}"
+      }
+    ],
+    "isError": false
+  },
+  "cloudNormalRestored": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Message\":\"Label\",\"Bag\":\"BAG  0 / 5     VALUE  0\",\"Style\":\"NEXT: COPPER\\n0 / 30\",\"Tutorial\":\"Collect items. Return here to bank them.\",\"Action\":\"Collect [E]\",\"Round\":\"WAREHOUSE OPEN\\n2:50\",\"TextLabel\":\"Chat '/?' or '/help' for a list of chat commands.\",\"Coins\":\"COINS 0\\nStudio session only\"}"
+      }
+    ],
+    "isError": false
+  }
+}

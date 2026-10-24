@@ -2112,7 +2112,7 @@ return table.freeze(NetworkState)
 		</Properties>
 		<Item class="Script" referent="14">
 			<Properties>
-				<ProtectedString name="Source"><![CDATA[--!strict
+				<ProtectedString name="Source">--!strict
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
@@ -2125,25 +2125,40 @@ local Session = require(root.Shared.Session)
 local Persistence = require(root.Shared.Persistence)
 local World = require(script.Parent.GrabItModules.World)
 local Appearance = require(script.Parent.GrabItModules.Appearance)
+local StorageMode = require(script.Parent.GrabItModules.StorageMode)
 local world = World.build()
 local start = workspace:GetServerTimeNow()
 local session = Session.new(function()
 	return workspace:GetServerTimeNow() - start
 end)
 local studio = RunService:IsStudio()
+local storage = StorageMode.select(
+	studio,
+	if studio then game:GetService("ServerStorage"):GetAttribute("GrabItQACloudRun") else nil
+)
+local memoryOnly = storage.memory
 local memory = {}
-local dataStore = if not studio then DataStoreService:GetDataStore("GrabItV1_PlayerData") else nil
+local dataStore = if memoryOnly
+	then nil
+	else DataStoreService:GetDataStore(
+		assert(storage.name, "cloud storage requires a store name"),
+		"global"
+	)
 local function update(key, transform)
-	if studio then
+	if memoryOnly then
 		local result = transform(memory[key])
 		if result then
 			memory[key] = result
 		end
 		return result
 	end
+	assert(dataStore, "cloud storage must be selected before updating")
 	return dataStore:UpdateAsync(key, function(old)
 		local result = transform(old)
 		if result then
+			if studio then
+				return result
+			end
 			return result, { tonumber(string.sub(key, 6)) }
 		end
 		return nil
@@ -2168,7 +2183,7 @@ local function movement(entry, position)
 		math.min(6, entry.budget + (now - entry.lastMovement) * (if p then Rules.speed(p) else 16))
 	entry.lastMovement = now
 	local traveled = (position - entry.lastPosition).Magnitude
-	if traveled > entry.budget + 1 or position.Y ~= position.Y then
+	if traveled &gt; entry.budget + 1 or position.Y ~= position.Y then
 		return false
 	end
 	entry.budget = math.max(0, entry.budget - traveled)
@@ -2207,11 +2222,11 @@ local function send(player, entry)
 		else nil
 	local save = entry.status
 	if p and entry.dirtyAt then
-		save = if os.clock() - entry.dirtyAt >= 10
+		save = if os.clock() - entry.dirtyAt &gt;= 10
 			then "Not saved yet. Rejoining may lose recent progress."
 			else "Saving"
 	end
-	if studio and p and not entry.dirtyAt then
+	if memoryOnly and p and not entry.dirtyAt then
 		save = "Studio session only"
 	end
 	local state = {
@@ -2310,7 +2325,7 @@ local function joined(player)
 		return
 	end
 	local entry = {
-		key = "User_" .. player.UserId,
+		key = storage.keyPrefix .. "User_" .. player.UserId,
 		sessionId = HttpService:GenerateGUID(false),
 		store = Persistence.new(update, HttpService:GenerateGUID(false), os.time),
 		status = "Loading progress",
@@ -2350,14 +2365,14 @@ local function joined(player)
 				return
 			end
 			task.wait(1)
-		until os.clock() >= deadline
+		until os.clock() &gt;= deadline
 		entry.status = "Progress unavailable. Rejoin to retry"
 		send(player, entry)
 	end)
 end
 root.Action.OnServerEvent:Connect(function(player, action, itemId)
 	local entry = entries[player]
-	if not entry or os.clock() - entry.lastRequest < 0.12 then
+	if not entry or os.clock() - entry.lastRequest &lt; 0.12 then
 		return
 	end
 	entry.lastRequest = os.clock()
@@ -2382,7 +2397,7 @@ root.Action.OnServerEvent:Connect(function(player, action, itemId)
 		not p
 		or not center
 		or not humanoid
-		or humanoid.Health <= 0
+		or humanoid.Health &lt;= 0
 		or not movement(entry, center.Position)
 	then
 		return
@@ -2433,7 +2448,7 @@ Players.PlayerRemoving:Connect(function(player)
 				break
 			end
 			task.wait(1)
-		until os.clock() >= deadline
+		until os.clock() &gt;= deadline
 		session:remove(entry.sessionId)
 	end)
 end)
@@ -2444,7 +2459,7 @@ local previousOpen = nil
 local accumulated = 0
 RunService.Heartbeat:Connect(function(dt)
 	accumulated += dt
-	if accumulated < 0.1 then
+	if accumulated &lt; 0.1 then
 		return
 	end
 	accumulated = 0
@@ -2472,11 +2487,11 @@ RunService.Heartbeat:Connect(function(dt)
 				local event = session:step(entry.sessionId, pos.X, pos.Y, pos.Z)
 				if
 					event.returnHome
-					or math.abs(pos.X) > 26
-					or pos.Z > 122
-					or pos.Z < -26
-					or pos.Y < 0
-					or pos.Y > 22
+					or math.abs(pos.X) &gt; 26
+					or pos.Z &gt; 122
+					or pos.Z &lt; -26
+					or pos.Y &lt; 0
+					or pos.Y &gt; 22
 				then
 					resetPosition(entry, character)
 				end
@@ -2484,20 +2499,20 @@ RunService.Heartbeat:Connect(function(dt)
 					appearance(player)
 					notice(player, "Cargo lost. Banked coins kept", "lost")
 				end
-				if event.banked > 0 then
+				if event.banked &gt; 0 then
 					entry.dirtyAt = entry.dirtyAt or os.clock()
 					appearance(player)
 					notice(player, "Banked +" .. event.banked, "bank")
 					local style = View.style(p.coins)
-					if style.tier > previousTier then
+					if style.tier &gt; previousTier then
 						notice(player, "Style unlocked: " .. style.name, "style")
 					end
 				end
 				if
 					not entry.saving
 					and (
-						(entry.dirtyAt and os.clock() - entry.lastSaved >= 5)
-						or os.clock() - entry.lastSaved >= 30
+						(entry.dirtyAt and os.clock() - entry.lastSaved &gt;= 5)
+						or os.clock() - entry.lastSaved &gt;= 30
 					)
 				then
 					task.spawn(save, entry, false)
@@ -2519,20 +2534,23 @@ game:BindToClose(function()
 					break
 				end
 				task.wait(0.5)
-			until os.clock() >= deadline
+			until os.clock() &gt;= deadline
 			pending -= 1
 		end)
 	end
 	local deadline = os.clock() + 25
-	while pending > 0 and os.clock() < deadline do
+	while pending &gt; 0 and os.clock() &lt; deadline do
 		task.wait(0.1)
 	end
 end)
 print(
 	"GrabIt V1 server ready; persistence:",
-	if studio then "isolated Studio memory" else "DataStore"
+	if memoryOnly
+		then "isolated Studio memory"
+		elseif studio then "isolated QA DataStore"
+		else "DataStore"
 )
-]]></ProtectedString>
+</ProtectedString>
 				<bool name="Disabled">false</bool>
 				<Content name="LinkedSource"><null></null></Content>
 				<token name="RunContext">0</token>
@@ -3118,6 +3136,31 @@ return table.freeze(Visuals)
 					<int64 name="SourceAssetId">-1</int64>
 					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					<UniqueId name="UniqueId">38891aa5b601d1530aecfb3f00000a06</UniqueId>
+				</Properties>
+			</Item>
+		<Item class="ModuleScript" referent="RBX1adb4b7f023347379b138d189078d6c2">
+				<Properties>
+					<string name="Name">StorageMode</string>
+					<string name="Source">--!strict
+local Mode = {}
+export type Selection = { memory: boolean, name: string?, keyPrefix: string }
+
+function Mode.select(isStudio: boolean, runId: any): Selection
+	if not isStudio then
+		return { memory = false, name = "GrabItV1_PlayerData", keyPrefix = "" }
+	end
+	if type(runId) == "string" and #runId &gt; 0 and #runId &lt;= 20 and runId:match("^[%w_%-]+$") then
+		return {
+			memory = false,
+			name = "GrabItV1_QA_Verification",
+			keyPrefix = "QA_" .. runId .. "_",
+		}
+	end
+	return { memory = true, keyPrefix = "" }
+end
+
+return Mode
+</string>
 				</Properties>
 			</Item>
 		</Item>
@@ -4009,6 +4052,44 @@ end
 					<UniqueId name="UniqueId">38891aa5b601d1530aecfb3f00000b58</UniqueId>
 				</Properties>
 			</Item>
+		<Item class="ModuleScript" referent="RBX6974e6ff068249d18bd8dbc49da96e95">
+				<Properties>
+					<string name="Name">StorageMode.spec</string>
+					<string name="Source">--!strict
+return function()
+	local source = game:GetService("ServerScriptService").GrabItModules
+		:FindFirstChild("StorageMode")
+	assert(source, "storage selection needs an isolated cloud QA mode")
+	local Mode = require(source)
+	local live = Mode.select(false, "qa_cloud_01")
+	assert(
+		not live.memory and live.name == "GrabItV1_PlayerData" and live.keyPrefix == "",
+		"live storage ignores QA markers"
+	)
+	local normal = Mode.select(true, nil)
+	assert(
+		normal.memory and normal.name == nil and normal.keyPrefix == "",
+		"ordinary Studio stays isolated"
+	)
+	local qa = Mode.select(true, "qa_cloud_01")
+	assert(
+		not qa.memory and qa.name == "GrabItV1_QA_Verification",
+		"cloud QA has a fixed separate store"
+	)
+	assert(qa.keyPrefix == "QA_qa_cloud_01_", "cloud QA keys belong to one explicit run")
+	for _, value in { false, 10, {}, "", "../production", string.rep("x", 21) } do
+		assert(Mode.select(true, value).memory, "invalid QA markers cannot enable cloud writes")
+	end
+	local longest = Mode.select(true, string.rep("x", 20))
+	assert(
+		#(longest.keyPrefix .. "User_" .. string.rep("9", 20)) &lt;= 50,
+		"run prefix fits the datastore key limit"
+	)
+	return 5
+end
+</string>
+				</Properties>
+			</Item>
 		</Item>
 		<Item class="Folder" referent="RBX4adb79e7606c4e779feb163784a03161">
 			<Properties>
@@ -4520,6 +4601,40 @@ end
 					<int64 name="SourceAssetId">-1</int64>
 					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					<UniqueId name="UniqueId">38891aa5b601d1530aecfb3f00000979</UniqueId>
+				</Properties>
+			</Item>
+		<Item class="ModuleScript" referent="RBX30d6d654b00c4880b995cb2ef8b9fef9">
+				<Properties>
+					<string name="Name">cloud-check</string>
+					<string name="Source">--!strict
+return function(runId: string, userId: number, coins: number, tutorial: boolean, locked: boolean)
+	assert(game:GetService("RunService"):IsStudio(), "cloud QA verification is Studio-only")
+	assert(
+		#runId &gt; 0 and #runId &lt;= 20 and runId:match("^[%w_%-]+$"),
+		"valid isolated QA run required"
+	)
+	local key = "QA_" .. runId .. "_User_" .. userId
+	local store = game:GetService("DataStoreService")
+		:GetDataStore("GrabItV1_QA_Verification", "global")
+	local options = Instance.new("DataStoreGetOptions")
+	options.UseCache = false
+	local record = store:GetAsync(key, options)
+	assert(record, "cloud QA record is missing from global scope")
+	assert(record.version == 1, "cloud record uses the current schema")
+	assert(
+		record.coins == coins and record.tutorial == tutorial,
+		"cloud progress matches confirmed game state"
+	)
+	assert((record.owner ~= nil) == locked, "cloud session lock matches lifecycle")
+	return {
+		key = key,
+		coins = record.coins,
+		tutorial = record.tutorial,
+		locked = locked,
+		uncached = true,
+	}
+end
+</string>
 				</Properties>
 			</Item>
 		</Item>

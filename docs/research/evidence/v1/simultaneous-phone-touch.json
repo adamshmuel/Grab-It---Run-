@@ -1,0 +1,458 @@
+{
+  "date": "2026-10-24",
+  "placeId": 106986292768692,
+  "universeId": 10772701508,
+  "scope": "Native simulated simultaneous movement and Collect on two approved phone profiles. Humanoid MoveTo was used only to position the fresh empty player near a valid object before the input check. No direct remote or GUI signal firing during either check.",
+  "method": "While keeping Alt held, use Alt+Shift pan and Alt pinch/rotate to place the two contacts, release the mouse without releasing Alt, then begin a new gesture with one contact on Collect and one on joystick. Move the Collect contact 14 pixels within the button: the joystick contact moves in the opposite direction. Release inside Collect. Distinct native InputObjects are measured. The paths are coupled by the simulator, not two freely controlled physical fingers.",
+  "passedBothProfiles": true,
+  "criteria": "Two distinct simultaneous Touch objects in the two UI regions; Collect.Activated sees 2 active touches and non-zero Humanoid.MoveDirection; server state increases cargo from 0 to exactly 1.",
+  "profiles": [
+    {
+      "device": "Samsung Galaxy A06",
+      "viewport": "706, 339",
+      "calibrationEndpoints": [
+        {
+          "movement": "0, 0, 0",
+          "position": "606, 64, 0",
+          "id": 9,
+          "kind": "start",
+          "time": 70463.58698945833,
+          "processed": false
+        },
+        {
+          "movement": "0, 0, 0",
+          "position": "100, 180, 0",
+          "id": 10,
+          "kind": "start",
+          "time": 70463.58728537502,
+          "processed": false
+        },
+        {
+          "movement": "0, 0, 0",
+          "position": "606, 243, 0",
+          "id": 9,
+          "kind": "end",
+          "time": 70464.91957625002,
+          "processed": true
+        },
+        {
+          "movement": "0, 0, 0",
+          "position": "100, 179, 0",
+          "id": 10,
+          "kind": "end",
+          "time": 70464.91989529168,
+          "processed": false
+        }
+      ],
+      "actualEvents": {
+        "1": {
+          "movement": "0, 0, 0",
+          "position": "606, 243, 0",
+          "id": 11,
+          "kind": "start",
+          "time": 70465.18380537501,
+          "processed": true
+        },
+        "2": {
+          "movement": "0, 0, 0",
+          "position": "100, 179, 0",
+          "id": 12,
+          "kind": "start",
+          "time": 70465.1842665,
+          "processed": false
+        },
+        "3": {
+          "movement": "0, 0, 0",
+          "position": "606, 246.11669921875, 0",
+          "id": 11,
+          "kind": "move",
+          "time": 70465.58510091668,
+          "processed": true
+        },
+        "4": {
+          "movement": "0, 0, 0",
+          "position": "100, 175.88330078125, 0",
+          "id": 12,
+          "kind": "move",
+          "time": 70465.58556075001,
+          "processed": true
+        },
+        "5": {
+          "movement": "0.8002991080284119, 0, 0.5996010899543762",
+          "position": "606, 249.2564697265625, 0",
+          "id": 11,
+          "kind": "move",
+          "time": 70465.651067375,
+          "processed": true
+        },
+        "6": {
+          "movement": "0.8002991080284119, 0, 0.5996010899543762",
+          "position": "100, 172.7435302734375, 0",
+          "id": 12,
+          "kind": "move",
+          "time": 70465.651334625,
+          "processed": true
+        },
+        "7": {
+          "movement": "0.8002990484237671, 0, 0.5996010899543762",
+          "position": "606, 252.354736328125, 0",
+          "id": 11,
+          "kind": "move",
+          "time": 70465.71706266666,
+          "processed": true
+        },
+        "8": {
+          "movement": "0.8002990484237671, 0, 0.5996010899543762",
+          "position": "100, 169.645263671875, 0",
+          "id": 12,
+          "kind": "move",
+          "time": 70465.71742116669,
+          "processed": true
+        },
+        "9": {
+          "movement": "0.8002990484237671, 0, 0.5996010899543762",
+          "position": "606, 255.44229125976562, 0",
+          "id": 11,
+          "kind": "move",
+          "time": 70465.78502670836,
+          "processed": true
+        },
+        "10": {
+          "movement": "0.8002990484237671, 0, 0.5996010899543762",
+          "position": "100, 166.55770874023438, 0",
+          "id": 12,
+          "kind": "move",
+          "time": 70465.78530541668,
+          "processed": true
+        },
+        "11": {
+          "movement": "0.8002990484237671, 0, 0.5996010303497314",
+          "position": "606, 257, 0",
+          "id": 11,
+          "kind": "move",
+          "time": 70465.85080820834,
+          "processed": true
+        },
+        "12": {
+          "movement": "0.8002990484237671, 0, 0.5996010303497314",
+          "position": "100, 165, 0",
+          "id": 12,
+          "kind": "move",
+          "time": 70465.85108475,
+          "processed": true
+        },
+        "13": {
+          "movement": "0.8002990484237671, 0, 0.5996010899543762",
+          "position": "606, 257, 0",
+          "id": 11,
+          "kind": "end",
+          "time": 70465.98408925,
+          "processed": true
+        },
+        "14": {
+          "movement": "0.8002990484237671, 0, 0.5996010899543762",
+          "position": "100, 165, 0",
+          "id": 12,
+          "kind": "end",
+          "time": 70465.98429783335,
+          "processed": true
+        }
+      },
+      "activation": {
+        "1": {
+          "state": {
+            "warning": true,
+            "tutorial": false,
+            "save": "Studio session only",
+            "open": true,
+            "coins": 0,
+            "cargoValue": 0,
+            "ready": true,
+            "cargoCount": 0,
+            "target": 2,
+            "collected": [],
+            "remaining": 11,
+            "roundId": 2
+          },
+          "time": 70465.98387716667,
+          "active": 2,
+          "move": "0.8002990484237671, 0, 0.5996010899543762",
+          "pos": "14.560603141784668, 3.7248411178588867, 13.913978576660156"
+        }
+      },
+      "button": {
+        "position": "543.619995, 221.98999",
+        "size": "141.199997, 42.1500015"
+      },
+      "immediateStateAfterRecordedFromToolResponse": {
+        "coins": 0,
+        "cargoCount": 1,
+        "cargoValue": 1,
+        "target": 4,
+        "collected": {
+          "2": true
+        },
+        "roundId": 2,
+        "remaining": 11,
+        "open": true
+      },
+      "laterStateAtEvidenceCapture": {
+        "warning": false,
+        "tutorial": false,
+        "save": "Studio session only",
+        "cargoCount": 0,
+        "coins": 0,
+        "remaining": 148,
+        "roundId": 3,
+        "cargoValue": 0,
+        "collected": [],
+        "open": true,
+        "ready": true
+      }
+    },
+    {
+      "device": "iPhone 13",
+      "viewport": "750, 390",
+      "before": {
+        "state": {
+          "warning": false,
+          "tutorial": false,
+          "save": "Studio session only",
+          "open": true,
+          "coins": 0,
+          "cargoValue": 0,
+          "ready": true,
+          "cargoCount": 0,
+          "target": 2,
+          "collected": [],
+          "remaining": 98,
+          "roundId": 1
+        },
+        "pos": "11.414169311523438, 3.7248411178588867, 11.770405769348145"
+      },
+      "calibrationEndpoints": [
+        {
+          "movement": "0, 0, 0",
+          "position": "653, 80, 0",
+          "id": 1,
+          "kind": "start",
+          "time": 70637.84715945835,
+          "processed": false
+        },
+        {
+          "movement": "0, 0, 0",
+          "position": "53, 164, 0",
+          "id": 2,
+          "kind": "start",
+          "time": 70637.847870625,
+          "processed": false
+        },
+        {
+          "movement": "0, 0, 0",
+          "position": "653, 287, 0",
+          "id": 1,
+          "kind": "end",
+          "time": 70639.445090125,
+          "processed": true
+        },
+        {
+          "movement": "0, 0, 0",
+          "position": "99.5, 200.1800537109375, 0",
+          "id": 2,
+          "kind": "end",
+          "time": 70639.44560008333,
+          "processed": false
+        }
+      ],
+      "actualEvents": {
+        "1": {
+          "movement": "0, 0, 0",
+          "position": "653, 287, 0",
+          "id": 3,
+          "kind": "start",
+          "time": 70639.97723362502,
+          "processed": true
+        },
+        "2": {
+          "movement": "0, 0, 0",
+          "position": "652.5, 287.1799621582031, 0",
+          "id": 3,
+          "kind": "move",
+          "time": 70639.977575125,
+          "processed": true
+        },
+        "3": {
+          "movement": "0, 0, 0",
+          "position": "99.5, 200.1800537109375, 0",
+          "id": 4,
+          "kind": "start",
+          "time": 70639.97795441668,
+          "processed": false
+        },
+        "4": {
+          "movement": "0, 0, 0",
+          "position": "100, 200.00009155273438, 0",
+          "id": 4,
+          "kind": "move",
+          "time": 70639.97831158334,
+          "processed": true
+        },
+        "5": {
+          "movement": "0, 0, 0",
+          "position": "652.1113891601562, 290.15814208984375, 0",
+          "id": 3,
+          "kind": "move",
+          "time": 70640.37697579167,
+          "processed": true
+        },
+        "6": {
+          "movement": "0, 0, 0",
+          "position": "100.38861083984375, 197.02191162109375, 0",
+          "id": 4,
+          "kind": "move",
+          "time": 70640.37731308333,
+          "processed": true
+        },
+        "7": {
+          "movement": "0.3545430600643158, 0, 0.9350396990776062",
+          "position": "652.2221069335938, 293.29827880859375, 0",
+          "id": 3,
+          "kind": "move",
+          "time": 70640.44424820834,
+          "processed": true
+        },
+        "8": {
+          "movement": "0.3545430600643158, 0, 0.9350396990776062",
+          "position": "100.27789306640625, 193.88177490234375, 0",
+          "id": 4,
+          "kind": "move",
+          "time": 70640.4445565,
+          "processed": true
+        },
+        "9": {
+          "movement": "0.49150654673576355, 0, 0.8708739280700684",
+          "position": "652.332763671875, 296.4375915527344, 0",
+          "id": 3,
+          "kind": "move",
+          "time": 70640.51020858335,
+          "processed": true
+        },
+        "10": {
+          "movement": "0.49150654673576355, 0, 0.8708739280700684",
+          "position": "100.167236328125, 190.74246215820312, 0",
+          "id": 4,
+          "kind": "move",
+          "time": 70640.51055316668,
+          "processed": true
+        },
+        "11": {
+          "movement": "0.5363638401031494, 0, 0.8439868092536926",
+          "position": "652.4449462890625, 299.6183776855469, 0",
+          "id": 3,
+          "kind": "move",
+          "time": 70640.57706820834,
+          "processed": true
+        },
+        "12": {
+          "movement": "0.5363638401031494, 0, 0.8439868092536926",
+          "position": "100.0550537109375, 187.56167602539062, 0",
+          "id": 4,
+          "kind": "move",
+          "time": 70640.57740604167,
+          "processed": true
+        },
+        "13": {
+          "movement": "0.5586406588554382, 0, 0.8294098973274231",
+          "position": "652.5, 301.1799621582031, 0",
+          "id": 3,
+          "kind": "move",
+          "time": 70640.64398958333,
+          "processed": true
+        },
+        "14": {
+          "movement": "0.5586406588554382, 0, 0.8294098973274231",
+          "position": "100, 186.00009155273438, 0",
+          "id": 4,
+          "kind": "move",
+          "time": 70640.64426779168,
+          "processed": true
+        },
+        "15": {
+          "movement": "0.5658459067344666, 0, 0.824510931968689",
+          "position": "653, 301, 0",
+          "id": 3,
+          "kind": "move",
+          "time": 70640.77771258334,
+          "processed": true
+        },
+        "16": {
+          "movement": "0.5658459067344666, 0, 0.824510931968689",
+          "position": "653, 301, 0",
+          "id": 3,
+          "kind": "end",
+          "time": 70640.77817037501,
+          "processed": true
+        },
+        "17": {
+          "movement": "0.5658459067344666, 0, 0.824510931968689",
+          "position": "99.5, 186.1800537109375, 0",
+          "id": 4,
+          "kind": "move",
+          "time": 70640.77848412501,
+          "processed": true
+        },
+        "18": {
+          "movement": "0.5658459067344666, 0, 0.824510931968689",
+          "position": "99.5, 186.1800537109375, 0",
+          "id": 4,
+          "kind": "end",
+          "time": 70640.77874608335,
+          "processed": true
+        }
+      },
+      "activation": {
+        "1": {
+          "state": {
+            "warning": false,
+            "tutorial": false,
+            "save": "Studio session only",
+            "open": true,
+            "coins": 0,
+            "cargoValue": 0,
+            "ready": true,
+            "cargoCount": 0,
+            "target": 2,
+            "collected": [],
+            "remaining": 97,
+            "roundId": 1
+          },
+          "time": 70640.77794208334,
+          "active": 2,
+          "move": "0.5658459067344666, 0, 0.824510931968689",
+          "pos": "13.136946678161621, 3.7248411178588867, 14.448309898376465"
+        }
+      },
+      "stateAfter": {
+        "warning": false,
+        "tutorial": false,
+        "save": "Studio session only",
+        "open": true,
+        "coins": 0,
+        "cargoValue": 1,
+        "ready": true,
+        "cargoCount": 1,
+        "target": 4,
+        "collected": {
+          "2": true
+        },
+        "remaining": 97,
+        "roundId": 1
+      },
+      "posAfter": "13.199923515319824, 3.7248411178588867, 14.54011344909668"
+    }
+  ],
+  "limits": [
+    "Not a physical phone test",
+    "Does not replace human usability or preference observations"
+  ]
+}
