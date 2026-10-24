@@ -21,6 +21,16 @@ local function part(
 	p.Parent = parent
 	return p
 end
+local cameraGeometry = {
+	WallPanel = true,
+	WallPost = true,
+	Shelf = true,
+	ShelfSupport = true,
+	ShelfLip = true,
+	RoofBeam = true,
+	BluePillar = true,
+	TopBeam = true,
+}
 local function decoration(
 	parent: Instance,
 	name: string,
@@ -29,9 +39,9 @@ local function decoration(
 	color: Color3
 ): Part
 	local detail = part(parent, name, size, position, color)
-	detail.CanCollide = false
+	detail.CanCollide = name == "Shelf" or name == "ShelfSupport"
 	detail.CanTouch = false
-	detail.CanQuery = false
+	detail.CanQuery = cameraGeometry[name] == true
 	return detail
 end
 local accents =
@@ -310,6 +320,15 @@ function World.build(name: string?): Model
 			Color3.fromRGB(255, 235, 173)
 		)
 		for _, x in { -21, 21 } do
+			local blocker = part(
+				root,
+				"ShelfBlocker",
+				Vector3.new(4.2, 8, 24.2),
+				Vector3.new(x, 4.5, z + 13),
+				frameColor
+			)
+			blocker.Transparency = 1
+			blocker.CanTouch = false
 			for _, y in { 2.2, 5, 7.8 } do
 				decoration(
 					root,

@@ -41,23 +41,66 @@ return function()
 		for zone = 1, 3 do
 			local accent = root:FindFirstChild("ZoneAccent" .. zone)
 			assert(accent and accent:IsA("Model"), "zone has floor bands and wall accents")
+			local panel = accent:FindFirstChild("WallPanel")
+			assert(
+				panel and panel.CanQuery,
+				"RED: opaque wall panels must participate in camera occlusion"
+			)
 			local band = accent:FindFirstChild("FloorBand")
 			assert(band and not band.CanCollide, "colored floor never blocks the route")
 			bands[tostring(band.Color)] = true
 			for _, detail in accent:GetDescendants() do
 				if detail:IsA("BasePart") then
-					assert(
-						not detail.CanCollide and not detail.CanQuery,
-						"decoration never changes collisions or pickup rays"
-					)
+					assert(not detail.CanCollide, "decoration never changes collisions")
 				end
 			end
+		end
+		root.Parent = workspace
+		local rayParams = RaycastParams.new()
+		rayParams.FilterType = Enum.RaycastFilterType.Include
+		rayParams.FilterDescendantsInstances = { root }
+		for _, item in root.Items:GetChildren() do
+			local origin = item.Position + Vector3.new(0, 1, 5)
+			assert(
+				workspace:Raycast(origin, item.Position - origin, rayParams) == nil,
+				"camera geometry never blocks legal pickup paths"
+			)
 		end
 		local distinct = 0
 		for _ in bands do
 			distinct += 1
 		end
 		assert(distinct == 3, "each zone has a distinct accent palette")
+		for _, detail in root:GetChildren() do
+			if
+				detail:IsA("BasePart") and (detail.Name == "Shelf" or detail.Name == "ShelfSupport")
+			then
+				assert(detail.CanCollide, "RED: players cannot walk through shelves")
+				assert(
+					math.abs(detail.Position.X) - detail.Size.X / 2 >= 18,
+					"shelves leave the central route clear"
+				)
+			end
+		end
+		local blockers = 0
+		for _, detail in root:GetChildren() do
+			if detail:IsA("BasePart") and detail.Name == "ShelfBlocker" then
+				blockers += 1
+				assert(
+					detail.Size.X > 3.8 and detail.Size.Z > 24,
+					"RED: shelf collision covers exposed step edges"
+				)
+				assert(
+					detail.CanCollide and detail.Transparency == 1,
+					"shelf blocker is an invisible solid volume"
+				)
+				assert(
+					detail.Size.Y >= 8 and math.abs(detail.Position.X) - detail.Size.X / 2 >= 18,
+					"shelves cannot become stairs or block the route"
+				)
+			end
+		end
+		assert(blockers == 6, "RED: all six shelf units need solid interior volumes")
 		local entrySign = root:FindFirstChild("EntrySign")
 		assert(
 			entrySign and entrySign.Position.Y > 12,

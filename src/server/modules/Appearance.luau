@@ -31,16 +31,20 @@ function Appearance.update(character: Model, p: { coins: number, cargo: { number
 		weld.Part1 = part
 		weld.Parent = part
 	end
-	local bottom = -1
-	for _, id in p.cargo do
+	local bottom, rowHeight = -1.4, 0
+	for index, id in p.cargo do
 		local cargo = Visuals.create(
 			Rules.items[id].zone,
 			model,
-			center.CFrame * CFrame.new(1.15, bottom, 1.5),
-			0.22
+			center.CFrame * CFrame.new(if index % 2 == 1 then 1.5 else 2.65, bottom, 1.5),
+			0.4
 		)
 		local _, size = cargo:GetBoundingBox()
-		bottom += size.Y + 0.07
+		rowHeight = math.max(rowHeight, size.Y)
+		if index % 2 == 0 then
+			bottom += rowHeight + 0.08
+			rowHeight = 0
+		end
 		for _, detail in cargo:GetDescendants() do
 			if detail:IsA("BasePart") then
 				detail.Anchored = false
@@ -55,11 +59,11 @@ function Appearance.update(character: Model, p: { coins: number, cargo: { number
 	local style = View.style(p.coins)
 	if style.tier > 0 then
 		local color = Color3.fromRGB(table.unpack(style.color))
-		for _, x in { 0.6, 1.7 } do
-			piece("Frame", Vector3.new(0.08, 3.65, 0.08), Vector3.new(x, 0.825, 1.5), color)
+		for _, x in { 0.9, 3.25 } do
+			piece("Frame", Vector3.new(0.08, 3.8, 0.08), Vector3.new(x, 0.45, 1.5), color)
 		end
-		for _, y in { -1, 2.65 } do
-			piece("Frame", Vector3.new(1.1, 0.08, 0.08), Vector3.new(1.15, y, 1.5), color)
+		for _, y in { -1.45, 2.35 } do
+			piece("Frame", Vector3.new(2.35, 0.08, 0.08), Vector3.new(2.075, y, 1.5), color)
 		end
 	end
 	model.Parent = character

@@ -1,0 +1,99 @@
+{
+  "ok": true,
+  "collectionOnly": false,
+  "duration": 240,
+  "result": {
+    "reports": {
+      "-1": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 3646,
+          "coins": 10,
+          "slowSamples": 234,
+          "quality": "Enum.SavedQualitySetting.Automatic",
+          "sampleSeconds": 243.1396188288927,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "1280, 720",
+          "sampleCount": 234,
+          "minimumFPS": 14.277262363167537,
+          "slowFrames": 3646
+        },
+        "passed": true
+      },
+      "-2": {
+        "result": {
+          "touch": true,
+          "cargo": 0,
+          "frames": 14513,
+          "coins": 10,
+          "slowSamples": 0,
+          "quality": "Enum.SavedQualitySetting.Automatic",
+          "sampleSeconds": 242.06180375558324,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "706, 339",
+          "sampleCount": 239,
+          "minimumFPS": 55.69856449154036,
+          "slowFrames": 18
+        },
+        "passed": true
+      }
+    },
+    "joined": 2,
+    "suites": {
+      "World.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "NetworkState.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "Session.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "Appearance.spec": {
+        "result": "3",
+        "passed": true
+      },
+      "Persistence.spec": {
+        "result": "12",
+        "passed": true
+      },
+      "ItemVisibility.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "TargetPrompt.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "Gameplay.spec": {
+        "result": "9",
+        "passed": true
+      },
+      "Hud.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "Visuals.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "Features.spec": {
+        "result": "10",
+        "passed": true
+      }
+    },
+    "passed": true,
+    "leaveChecks": {
+      "-1": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 10
+      }
+    }
+  },
+  "players": 2
+}

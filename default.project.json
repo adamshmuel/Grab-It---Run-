@@ -42,7 +42,8 @@
         "CharacterWalkSpeed": 16,
         "CharacterJumpPower": 0,
         "CharacterJumpHeight": 0,
-        "AutoJumpEnabled": false
+        "AutoJumpEnabled": false,
+        "DevCameraOcclusionMode": "Invisicam"
       },
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",

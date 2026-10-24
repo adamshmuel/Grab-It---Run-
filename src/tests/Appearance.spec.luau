@@ -20,6 +20,11 @@ return function()
 		for _, cargo in model:GetChildren() do
 			assert(cargo:IsA("Model"), "carried items keep their actual family shape")
 			families[cargo.Name] = true
+			local _, size = cargo:GetBoundingBox()
+			assert(
+				size.X >= 0.65,
+				"RED: carried family must remain visibly wider than a thin token"
+			)
 			for _, piece in cargo:GetDescendants() do
 				if piece:IsA("BasePart") then
 					local localPosition = center.CFrame:PointToObjectSpace(piece.Position)
@@ -47,6 +52,27 @@ return function()
 			count += 1
 		end
 		assert(count == 3, "mixed cargo retains all three collectible families")
+		local tall = Appearance.update(character, { coins = 30, cargo = { 21, 21, 21, 21, 21 } })
+		assert(tall, "full canister rack exists")
+		local _, rackSize = tall:GetBoundingBox()
+		assert(rackSize.Y <= 4.1, "full cargo stays compact instead of becoming a tall pole")
+		local bounds = {}
+		for _, cargo in tall:GetChildren() do
+			if cargo:IsA("Model") then
+				local cf, size = cargo:GetBoundingBox()
+				for _, previous in bounds do
+					local delta = cf.Position - previous.position
+					local combined = (size + previous.size) / 2
+					assert(
+						math.abs(delta.X) >= combined.X
+							or math.abs(delta.Y) >= combined.Y
+							or math.abs(delta.Z) >= combined.Z,
+						"neighboring cargo silhouettes never overlap"
+					)
+				end
+				table.insert(bounds, { position = cf.Position, size = size })
+			end
+		end
 		local empty = Appearance.update(character, { coins = 30, cargo = {} })
 		assert(empty and #empty:GetChildren() == 4, "unlocked frame remains with empty cargo")
 		assert(#character:GetChildren() == 2, "updates replace only the owned cargo model")

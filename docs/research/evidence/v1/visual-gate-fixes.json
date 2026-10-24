@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-24",
+  "studio_id": "aae9898c-8ce2-4f8d-9d21-37ea0156e017",
+  "only_one_studio": true,
+  "awake_assertion_pid": 42112,
+  "awake_assertion_seconds": 43200,
+  "hardware": {
+    "model": "Mac17,9",
+    "processor": "Apple M5 Pro",
+    "memory_bytes": 51539607552
+  },
+  "red_tests": [
+    "carried family must remain visibly wider than a thin token",
+    "opaque wall panels must participate in camera occlusion",
+    "players cannot walk through shelves",
+    "all six shelf units need solid interior volumes",
+    "shelf collision covers exposed step edges",
+    "wall compressed camera to 1.609 below minimum 8"
+  ],
+  "green_suites": [
+    "Appearance",
+    "World",
+    "Persistence",
+    "NetworkState",
+    "Hud",
+    "Session",
+    "ItemVisibility",
+    "TargetPrompt",
+    "Gameplay",
+    "Visuals",
+    "Features"
+  ],
+  "cargo": {
+    "full_count": 5,
+    "value": 22,
+    "speed": 8,
+    "layout": "two columns, up to three rows",
+    "family_scale": 0.4,
+    "parts_remain_noncolliding_massless_welded": true
+  },
+  "camera": {
+    "mode": "Invisicam",
+    "before_distance": 1.6093897819519043,
+    "after_distance": 14,
+    "structural_occluders_queryable": true,
+    "clear_pickup_rays_checked": 30,
+    "lowest_shelf_standing_root_y": 5.549841403961182,
+    "observed_root_x": 18.366647720336914,
+    "observed_root_y": 4.089841365814209,
+    "limits": "A hard-coded y<4 QA check was too strict for collision contact; final check compares against actual lowest shelf standing height and verifies player stays outside shelf volume. No claim of zero vertical motion on contact."
+  },
+  "runtime_progression": {
+    "start_coins": 0,
+    "first_banked": 22,
+    "next_banked_total": 34,
+    "unlocked_frame_parts": 4,
+    "style_label": "NEXT: SILVER / 34 / 100",
+    "closure_retained_coins": 34,
+    "closure_cargo": 0,
+    "closure_notice": "Cargo lost. Banked coins kept",
+    "reopened_round": 4,
+    "reopened_collected": []
+  },
+  "touch": {
+    "collect_button_input_type": "Touch",
+    "collected_per_tap": 1,
+    "thumbstick_displacement": 15.373927116394043,
+    "camera_swipe_look_dot": -0.16111910343170166,
+    "pinch_event_scale": 1.6155849695205688,
+    "pinch_camera_before": 20.000001907348633,
+    "pinch_camera_after": 7.999999523162842,
+    "two_independent_touch_points_for_move_and_collect": "not yet verified",
+    "independent_second_touch_attempt": "Right mouse while holding left generated only one Touch and no collection; not accepted as simultaneous touch proof"
+  },
+  "display_profiles": [
+    {
+      "id": "hd_720",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "id": "hd_1080",
+      "viewport": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "id": "samsung_galaxy_a06",
+      "configured": [
+        800,
+        360
+      ],
+      "viewport": [
+        706,
+        339
+      ]
+    },
+    {
+      "id": "iphone_13",
+      "configured": [
+        844,
+        390
+      ],
+      "viewport": [
+        750,
+        390
+      ]
+    }
+  ],
+  "console": "Known Rojo plugin asset warning 203785492 remains explained separately; AssistantCommand red/probe failures are QA results, not unhandled game errors",
+  "human_preference": "not verified",
+  "real_cloud_persistence": "not verified",
+  "failure_message_ui": {
+    "text": "Cargo lost. Banked coins kept",
+    "visible": true,
+    "fits": true
+  },
+  "ui_bounds": {
+    "hd_720": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "safe_root": [
+        1280,
+        662
+      ],
+      "passed": true
+    },
+    "hd_1080": {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "safe_root": [
+        1920,
+        1022
+      ],
+      "passed": true
+    },
+    "samsung_galaxy_a06": {
+      "viewport": [
+        706,
+        339
+      ],
+      "safe_root": [
+        706,
+        281
+      ],
+      "passed": true
+    },
+    "iphone_13": {
+      "viewport": [
+        750,
+        390
+      ],
+      "safe_root": [
+        750,
+        332
+      ],
+      "passed": true
+    }
+  },
+  "quality_setup": {
+    "original": "Automatic",
+    "selected": "QualityLevel5",
+    "method": "Native in-game Settings menu through Studio MCP input; direct property setter raised std::exception and was not relied on",
+    "restore_required_after_test": true
+  },
+  "code_review": {
+    "cargo_replacement_welds_and_mass": "checked",
+    "max_cargo_and_empty_frame": "checked",
+    "pickup_paths": "30 clear rays checked",
+    "colliding_volume_query_experiment": "Raycast returned ShelfBlocker despite CanQuery=false. Ineffective assignment removed; legal pickup paths remain clear.",
+    "new_client_authority": "none",
+    "gameplay_values_changed": false
+  }
+}
