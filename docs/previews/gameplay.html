@@ -1,8 +1,5 @@
 <!doctype html>
-<html lang="he" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>המשחק — מסמך מאושר</title>
-<style>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gameplay — הבסיס המקורי</title><style>
 :root {color-scheme:light dark} *{box-sizing:border-box}
 body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
 main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
@@ -11,13 +8,11 @@ p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
 table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
 a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 .preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
-</style></head>
-<body><main><p class="preview-note">תצוגה לקריאה. המקור לעריכה נשאר בקובץ <bdi dir="ltr" lang="en">docs/specs/v1/gameplay.md</bdi>.</p>
-<div dir="rtl" lang="he">
-<h1>המשחק — מסמך מאושר</h1>
+
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1><bdi dir="ltr" lang="en">Gameplay</bdi> — הבסיס המקורי</h1>
 <p><bdi dir="ltr" lang="en">Gameplay</bdi></p>
 <p><strong>מצב: מאושר על ידי אדם בתאריך 21/10/2026.</strong></p>
-<p>אדם אישר את הטיוטה, כולל הכללים והמספרים שבה. לבקשתו, עוצרים לאחר תיעוד האישור. אין אישור להכין <bdi dir="ltr" lang="en">plan</bdi>, לכתוב קוד או להתקדם לעבודה נוספת.</p>
+<p>זהו תיעוד אישור 21/10/2026. באותו יום נרשם אישור בלבד; ב־22/10 אדם ביקש בנייה. כיום המימוש הישן נכשל בבדיקת המטרות, ו<a href="v1/improvements.html">הגדרות שיפורי <bdi dir="ltr" lang="en">V1</bdi></a> מתארות את התיקון המוגש לאדם. הוראות הנשיאה, הזמנים וההתקדמות להלן הן הבסיס ההיסטורי, ולא הדרישות החדשות. אין הרשאת קוד מכוח התיעוד הזה.</p>
 <h2>הרעיון המרכזי</h2>
 <p>יוצאים מבסיס בטוח, אוספים חפצים במחסן וחוזרים להפקיד אותם לפני הסגירה.</p>
 <p>ככל שמתרחקים מהיציאה, מוצאים חפצים יקרים יותר. ככל שאוספים יותר, הולכים לאט יותר.</p>
@@ -28,7 +23,7 @@ a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 <p>השחקן מתחיל בבסיס בלי מטען. כל עוד המחסן פתוח, אפשר להיכנס, לאסוף ולחזור כמה פעמים שרוצים.</p>
 <p>חפץ שנאסף אינו חוזר עבור אותו שחקן עד הסיבוב הבא.</p>
 <h2>כלל 2: חפצים רחוקים שווים יותר</h2>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th>מיקום החפץ</th>
@@ -49,11 +44,11 @@ a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 <td>6 מטבעות</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>כל חפץ תופס מקום אחד במטען, בלי קשר לערך שלו.</p>
 <h2>כלל 3: המטען מאט את השחקן</h2>
-<p>אפשר לשאת עד 5 חפצים. כל חפץ מפחית <bdi dir="ltr">10%</bdi> מהמהירות הרגילה.</p>
-<p>עם 2 חפצים נעים במהירות של <bdi dir="ltr">80%</bdi>. עם 5 חפצים נעים בחצי מהמהירות הרגילה, ואי אפשר לאסוף עוד.</p>
+<p>אפשר לשאת עד 5 חפצים. כל חפץ מפחית 10% מהמהירות הרגילה.</p>
+<p>עם 2 חפצים נעים במהירות של 80%. עם 5 חפצים נעים בחצי מהמהירות הרגילה, ואי אפשר לאסוף עוד.</p>
 <h2>כלל 4: מפקידים כדי לשמור את הרווח</h2>
 <p>כניסה לאזור ההפקדה בבסיס ממירה מיד את כל המטען למטבעות. המטען מתרוקן והמהירות חוזרת למצב הרגיל.</p>
 <p>אפשר לצאת שוב למחסן באותו סיבוב. אי אפשר להפקיד את אותו מטען פעמיים.</p>
@@ -74,22 +69,20 @@ a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 <p>מטען שלא הופקד אובד ביציאה מהמשחק וגם בעת <bdi dir="ltr" lang="en">respawn</bdi>.</p>
 <p>שמירת מטבעות בין כניסות אינה מוגדרת כאן. היא תתואר במסמך <bdi dir="ltr" lang="en">spec</bdi> נפרד.</p>
 <h2>דוגמה קצרה</h2>
-<p>השחקן אוסף חפץ קרוב וחפץ רחוק. הוא נושא 2 חפצים בשווי כולל של 7 מטבעות ונע במהירות של <bdi dir="ltr">80%</bdi>.</p>
+<p>השחקן אוסף חפץ קרוב וחפץ רחוק. הוא נושא 2 חפצים בשווי כולל של 7 מטבעות ונע במהירות של 80%.</p>
 <p>הוא חוזר לבסיס ומפקיד. עכשיו יש לו 7 מטבעות והמטען ריק.</p>
 <p>אם יצא שוב וייתפס במחסן בסגירה, יאבד רק את המטען החדש. 7 המטבעות שהפקיד נשארים.</p>
 <h2>מה לא כלול במסמך הזה</h2>
 <p>שדרוגים, פתיחת אזורים, שמירה בין כניסות, המפה המדויקת, משימות, אויבים ומוצרים בתשלום אינם כלולים כאן.</p>
 <p>גם נושאי <bdi dir="ltr" lang="en">HUD</bdi>, <bdi dir="ltr" lang="en">controls</bdi> ו־<bdi dir="ltr" lang="en">cosmetics</bdi> יוגדרו בנפרד.</p>
-<p>הנושאים להמשך מופיעים ב<a href="../specs/index.md">מפת המסמכים</a>. המטבעות במסמך זה מצטברים בלבד; אין עדיין אפשרות לקנות בהם דבר.</p>
-<h2>מה נבדוק בהמשך</h2>
-<p>לאחר אישור נפרד להמשך העבודה, נבדוק את ההתנהגות במהלך <bdi dir="ltr" lang="en">playtest</bdi>. עדיין לא בוצעה בדיקה כזאת.</p>
+<p>הנושאים להמשך מופיעים ב<a href="specs.html">מפת המסמכים</a>. המטבעות במסמך זה מצטברים בלבד; אין עדיין אפשרות לקנות בהם דבר.</p>
+<h2>בדיקות הבסיס שנקבעו באישור המקורי</h2>
+<p>באישור המקורי נקבעו הבדיקות להלן. התוצאות הטכניות שהושגו אחר כך מתועדות ב<a href="v1-validation.html">דוח <bdi dir="ltr" lang="en">V1</bdi></a>; בדיקת המטרות המאוחרת נכשלה לפי <a href="v1-design-failure-review.html">אבחון הכשל</a>. בדיקות השיפורים בבעלות מסמך הקבלה שלהן.</p>
 <ul>
 <li>אם חוזרים עם מטען מלא בלי התלבטות, נבחן הגדלת המרחק לחפצים היקרים במסמך המפה.</li>
 <li>אם מבינים את האזהרה ובכל זאת לא מספיקים לחזור מהאזור הקרוב, נבחן אזהרה מוקדמת יותר או האטה קטנה יותר.</li>
 <li>אם מפסיקים אחרי ההפקדה הראשונה, נבדוק מה חסר כדי לרצות לצאת שוב, לפני שמוסיפים תוכן.</li>
 </ul>
-<p>ערכי ההתחלה המאושרים הם 3 דקות פתיחה, 20 שניות סגירה, עד 5 חפצים והאטה של <bdi dir="ltr">10%</bdi> לכל חפץ.</p>
+<p>ערכי ההתחלה המאושרים הם 3 דקות פתיחה, 20 שניות סגירה, עד 5 חפצים והאטה של 10% לכל חפץ.</p>
 <p>כל שינוי בעקבות הבדיקה יירשם במסמך <bdi dir="ltr" lang="en">spec</bdi> לפני שינוי הקוד. המסמך מאושר. המשך העבודה דורש בקשה חדשה של אדם.</p>
-</div>
-
 </main></body></html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Controls ותגובות המשחק</title><style>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Controls, מידע ותוצאות</title><style>
 :root {color-scheme:light dark} *{box-sizing:border-box}
 body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
 main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
@@ -9,31 +9,44 @@ table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1
 a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 .preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
 
-.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a></nav><h1><bdi dir="ltr" lang="en">Controls</bdi> ותגובות המשחק</h1>
-<p><strong>מצב: מאושר על ידי אדם בתאריך 22/10/2026, עם בקשה מפורשת להתחיל לבנות.</strong></p>
-<h2>המטרה והקשר למסמכים</h2>
-<p>להבין איך לשחק בלי הוראות ארוכות, ולדעת מה קרה אחרי כל פעולה. חוקי האיסוף, המטען והכישלון נשארים בבעלות <a href="../gameplay.html"><bdi dir="ltr" lang="en">gameplay</bdi></a>.</p>
-<h2>כלל 1: פעולות במחשב</h2>
-<p>תנועה באמצעות <bdi dir="ltr" lang="en">WASD</bdi> או חצים. מהירות רגילה מוצעת: 16 <bdi dir="ltr" lang="en">studs</bdi> לשנייה; ההאטה מחושבת לפי <bdi dir="ltr" lang="en">gameplay</bdi>. העכבר שולט במצלמת גוף שלישי; אין מצלמת גוף ראשון. הגלילה מקרבת ומרחיקה בטווח 8 עד 20 <bdi dir="ltr" lang="en">studs</bdi> מהדמות. נקודת ההתחלה היא 14 <bdi dir="ltr" lang="en">studs</bdi>. אין <bdi dir="ltr" lang="en">sprint</bdi> או פעולת קפיצה בגרסה הזאת. ליד קיר נשמר טווח המצלמה: מכשול שמסתיר את הדמות נעשה שקוף מקומית במקום לדחוס את המצלמה לתוך הראש. הקיר נשאר מוצק, וההסתרה אינה משנה איסוף או מעבר. זהו תיקון לדרישת המצלמה הקיימת, במסגרת הוראת אדם להשלים את <bdi dir="ltr" lang="en">V1</bdi> בתאריך 24/10/2026.</p>
-<p>כאשר מרכז הדמות נמצא עד 6 <bdi dir="ltr" lang="en">studs</bdi> ממרכז חפץ, מוצגת מעליו הפעולה <code><bdi dir="ltr" lang="en">Collect</bdi></code> עם המקש <bdi dir="ltr" lang="en">E</bdi>. לחיצה בודדת אוספת חפץ אחד, בלי החזקה ובלי איסוף אוטומטי. אם יש כמה חפצים בטווח, נבחר הקרוב ביותר; בשוויון נבחר זה שקרוב יותר לפתח, ולאחר מכן זה שבצד שמאל במבט מהבסיס. רק חפץ אחד מסומן בכל רגע. האיסוף מותר רק בתוך מחסן פתוח, ללא קיר שמפריד בין הדמות לחפץ.</p>
-<p>אם המטען מלא, מוצגת ההודעה <code><bdi dir="ltr" lang="en">Bag full</bdi></code>. לחיצות נוספות אינן משנות את המטען. השחקן חוזר לאזור ההפקדה ללא כפתור הפקדה.</p>
-<h2>כלל 5: פעולות בנייד</h2>
-<p>המשחק בנייד מוצג לרוחב. תנועה באמצעות <bdi dir="ltr" lang="en">joystick</bdi> בצד שמאל למטה. גרירה באזור פנוי בצד ימין מסובבת את המצלמה; <bdi dir="ltr" lang="en">pinch</bdi> משנה מרחק בתוך אותו טווח שהוגדר למחשב. אין כפתור קפיצה.</p>
-<p>כפתור <code><bdi dir="ltr" lang="en">Collect</bdi></code> מופיע בצד ימין למטה כאשר יש חפץ מתאים בטווח. נגיעה אחת אוספת חפץ אחד; החזקה אינה אוספת ברצף. בחירת החפץ, הטווח והגבלת המטען זהים למחשב. אין צורך במקלדת או בעכבר. אפשר לנוע ולאסוף בלי ששתי הפעולות יבטלו זו את זו.</p>
-<p>הכפתור ואזור התנועה אינם חופפים למידע הקבוע או לכפתורי <bdi dir="ltr" lang="en">Roblox</bdi>. הודעות נשארות בתוך האזור הבטוח של המסך, בלי להיחתך ליד מגרעת המצלמה. בעת החלפת גודל מסך הסידור מתעדכן בלי לאבד מטען או לאפס סיבוב.</p>
-<h2>כלל 2: מידע קבוע על המסך</h2>
-<p>טקסט המשחק באנגלית בלבד בגרסה הזאת. מסמכי הפרויקט נשארים בעברית.</p>
-<ul>
-<li>למעלה במרכז: מצב המחסן ויתרת הזמן בתצוגת דקות ושניות.</li>
-<li>למעלה משמאל: <code><bdi dir="ltr" lang="en">Coins</bdi></code>, יתרת המטבעות שהופקדו; בצמוד מצב השמירה לפי <a href="saving.html">שמירה</a>.</li>
-<li>למטה במרכז: <code><bdi dir="ltr" lang="en">Bag</bdi></code> עם מספר החפצים מתוך הקיבולת, ולצדו <code><bdi dir="ltr" lang="en">Cargo value</bdi></code>, ערך ההפקדה של המטען הנוכחי.</li>
-<li>למעלה מימין: <code><bdi dir="ltr" lang="en">Next style</bdi></code> וההתקדמות ליעד הבא לפי <a href="progression.html">התקדמות</a>.</li>
-</ul>
-<p>הטקסט אינו חוסם את מרכז המסך או חופף לפעולת האיסוף. בכל גדלי המסך המוגדרים בתוך <a href="acceptance.html">קריטריוני הקבלה</a> כל השדות נראים ללא חיתוך. בנייד אזור המידע על המטען נמצא מעל אזורי המגע. אין תפריטי קנייה, חלונות קופצים או דרישה לסגור מסך כדי להתחיל לשחק.</p>
-<h2>כלל 3: הדרכה בתוך הפעולה</h2>
-<p>בכניסה הראשונה מוצג המשפט <code><bdi dir="ltr" lang="en">Collect items</bdi>. <bdi dir="ltr" lang="en">Return here to bank them</bdi>.</code> אזור ההפקדה מסומן כבר אז. לאחר האיסוף הראשון ההודעה משתנה ליותר קצרה: <code><bdi dir="ltr" lang="en">Return before closing</bdi></code>. לאחר ההפקדה הראשונה ההדרכה נעלמת ואינה חוזרת כל עוד ההתקדמות נטענה בהצלחה.</p>
-<p>מי שמצטרף בזמן סגירה רואה <code><bdi dir="ltr" lang="en">Warehouse closed</bdi>. <bdi dir="ltr" lang="en">Next round in</bdi></code> ואת יתרת הזמן. אין הצגת הוראת איסוף בזמן שהכניסה חסומה.</p>
-<h2>כלל 4: תגובה ברורה להצלחה ולכישלון</h2>
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a></nav><h1><bdi dir="ltr" lang="en">Controls</bdi>, מידע ותוצאות</h1>
+<p><strong>מצב: ההגדרות אושרו על ידי אדם בתאריך 25/10/2026. אושרו בדיקות היתכנות ולאחריהן קידוד; נדרשת עצירה לפני שלב בדיקות הקבלה.</strong></p>
+<p>טקסט המשחק באנגלית. המטרה היא לשמר את פעולת האיסוף הפשוטה ולהציג מידע הדרוש למשקל, לזמן ולתחרות. התנהגות הנשיאה בבעלות <a href="carrying-weight.html">הנשיאה</a>, והדירוג בבעלות <a href="stage-progression.html">השלבים</a>.</p>
+<h2>כלל 1: מחשב ונייד</h2>
+<p>במחשב תנועה באמצעות <bdi dir="ltr" lang="en">WASD</bdi> או חצים, <bdi dir="ltr" lang="en">E</bdi> לאיסוף חפץ אחד בכל לחיצה. בנייד תנועה באמצעות <bdi dir="ltr" lang="en">joystick</bdi> וכפתור <bdi dir="ltr" lang="en">Collect</bdi>; החזקה אינה אוספת ברצף. אפשר לנוע ולאסוף בשני מגעים במקביל. אין <bdi dir="ltr" lang="en">sprint</bdi> או קפיצה, ואין צורך בפעולת הפקדה: כניסה לאזור ההפקדה מפקידה לפי הכללים.</p>
+<p>המצלמה בגוף שלישי, מרחק התחלה <bdi dir="ltr" lang="en">14 studs</bdi> וטווח 8 עד 20. העכבר או גרירה באזור פנוי מימין מסובבים אותה; גלילה או <bdi dir="ltr" lang="en">pinch</bdi> משנים מרחק. אין שינוי מצלמה אוטומטי בגלל הופעת תוצאות על הקיר. ליד קיר נשמר הטווח והקיר שמסתיר את הדמות נעשה שקוף מקומית; התנגשות ואיסוף דרך קירות אינם משתנים.</p>
+<p>מטרה אחת מסומנת בכל רגע לפי הקרבה וטווח <bdi dir="ltr" lang="en">6 studs</bdi>. הסימון אינו עובר לבד מחפץ כבד מדי לאחר. משקל ותגמול מוצגים על חפץ רגיל מסומן; בשוויון מרחק נשמר סדר הקרבה לפתח ואז שמאל. הבחירה והקיבולת זהות במחשב ובנייד.</p>
+<h2>כלל 2: מידע קבוע</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>מקום</th>
+<th>מידע</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>למעלה במרכז</td>
+<td>שם השלב, <bdi dir="ltr" lang="en">Stage</bdi> מתוך 3, מצב המחסן וזמן בדקות ושניות</td>
+</tr>
+<tr>
+<td>למעלה משמאל</td>
+<td><bdi dir="ltr" lang="en">Coins</bdi> — היתרה הזמינה לקנייה; מצב <bdi dir="ltr" lang="en">Saving</bdi> או <bdi dir="ltr" lang="en">Saved</bdi> לפי השמירה</td>
+</tr>
+<tr>
+<td>למעלה מימין</td>
+<td><bdi dir="ltr" lang="en">Styles</bdi> לפתיחת האוסף כשנמצאים בבסיס או בתוצאות</td>
+</tr>
+<tr>
+<td>למטה במרכז</td>
+<td><bdi dir="ltr" lang="en">Weight</bdi> מול הקיבולת, <bdi dir="ltr" lang="en">Cargo value</bdi>, וכן <bdi dir="ltr" lang="en">Banked</bdi> עם מספר הפריטים שהופקדו מתוך 30 או 31</td>
+</tr>
+</tbody>
+</table></div>
+<p><bdi dir="ltr" lang="en">Next style</bdi> הישן מוחלף בגישה לאוסף; אין החלפת מסגרת אוטומטית בגלל סף <bdi dir="ltr" lang="en">Coins</bdi>. <bdi dir="ltr" lang="en">Bag</bdi> מתוך 5 מוחלף במשקל ואינו מציג מגבלת כמות. אין כפילות מיותרת של ניקוד תחרות על המסך הקבוע: הוא בלוח החי ובתוצאות.</p>
+<p>בנייד המשחק לרוחב. המידע נמצא מעל אזורי המגע, עם טקסט עיקרי של לפחות 18 פיקסלים וכפתורים בגודל 48 פיקסלים לפחות. אין חפיפה לאזור <bdi dir="ltr" lang="en">joystick</bdi>, לכפתור האיסוף או לכפתורי <bdi dir="ltr" lang="en">Roblox</bdi>. מרכז הדרך נשאר גלוי בשני פרופילי הנייד שבקבלה. שינוי גודל אינו מאפס מטען, זמן או קנייה.</p>
+<h2>כלל 3: הבנה ותגובות בסיסיות</h2>
+<p>ההדרכה הקיימת נשמרת: <bdi dir="ltr" lang="en">Collect items</bdi>. <bdi dir="ltr" lang="en">Return here to bank them</bdi>. לאחר איסוף ראשון: <bdi dir="ltr" lang="en">Return before closing</bdi>. אחרי הפקדה ראשונה ההדרכה נעלמת ונשמרת. לא מוסיפים מסך הדרכה או מעכבים כניסה למשחק.</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -43,30 +56,43 @@ a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 </thead>
 <tbody>
 <tr>
-<td>איסוף הצליח</td>
-<td>החפץ נעלם עבור השחקן, המטען מתעדכן, נשמע צליל קצר</td>
+<td>איסוף שהתקבל</td>
+<td>הפריט נעלם עבור השחקן, המטען מתעדכן וצליל קצר</td>
 </tr>
 <tr>
-<td>הפקדה הצליחה</td>
-<td>מופיע <code><bdi dir="ltr" lang="en">Banked</bdi> +</code> עם הסכום למשך 2 שניות, המטען מתרוקן ונשמע צליל נפרד</td>
+<td>חריגת משקל</td>
+<td><bdi dir="ltr" lang="en">Too heavy</bdi>, ללא איסוף, חיוב או מעבר אוטומטי למטרה אחרת</td>
 </tr>
 <tr>
-<td>תחילת האזהרה המאושרת</td>
-<td>הודעת <code><bdi dir="ltr" lang="en">Return to base</bdi></code> וצליל אזהרה אחד; הזמן מודגש בצבע ובטקסט</td>
+<td>הפקדה שהתקבלה</td>
+<td><bdi dir="ltr" lang="en">Banked</bdi> + עם הסכום למשך 2 שניות וצליל נפרד</td>
 </tr>
 <tr>
-<td>כישלון בסגירה</td>
-<td>חזרה לבסיס והודעת <code><bdi dir="ltr" lang="en">Cargo lost</bdi>. <bdi dir="ltr" lang="en">Banked coins kept</bdi></code> למשך 3 שניות</td>
+<td>אובדן מטען</td>
+<td><bdi dir="ltr" lang="en">Cargo lost</bdi>. <bdi dir="ltr" lang="en">Banked coins kept</bdi> למשך 3 שניות; ללא סכום שחושף את המיוחד</td>
 </tr>
 <tr>
-<td>פתיחה מחדש</td>
-<td><code><bdi dir="ltr" lang="en">Warehouse open</bdi></code> וצליל פתיחה קצר</td>
+<td>מעבר שלב</td>
+<td>שם השלב הבא והקיבולת בתוצאות, ואחריהם התחלה משותפת</td>
 </tr>
 </tbody>
 </table></div>
-<p>אין הבהוב מסך, רעד מצלמה או הודעה שמונעת תנועה. מי שמשחק בלי קול מקבל את כל המידע הדרוש בטקסט. תגובת הצלחה מוצגת רק כאשר הפעולה אכן התקבלה במשחק, לא על עצם הלחיצה.</p>
-<h2>דוגמאות קבלה</h2>
-<p>לחיצות חוזרות ליד חפץ שכבר נאסף אינן נותנות חפצים נוספים. שני שחקנים יכולים לאסוף את העותק האישי של אותו חפץ. בעת סגירה פעולת איסוף לא מוצגת כמצליחה לאחר שהמחסן נסגר. לאחר <bdi dir="ltr" lang="en">respawn</bdi> המטען מוצג ריק והמטבעות נשארים לפי <bdi dir="ltr" lang="en">gameplay</bdi>.</p>
-<h2>ערכי התחלה ומחוץ למסמך</h2>
-<p>הטווח, המצלמה ומשך ההודעות הם ערכי ההתחלה המאושרים לבדיקה. אם שחקנים לוחצים מחוץ לטווח שוב ושוב, בודקים את בהירות הסימון לפני הגדלת הטווח. <bdi dir="ltr" lang="en">gamepad</bdi> ושפות נוספות מחוץ לגרסה הזאת. קלט מקלדת, מסלול <bdi dir="ltr" lang="en">touch</bdi>, מחוות מצלמה, גבולות <bdi dir="ltr" lang="en">pinch</bdi> ותנועה ואיסוף בשני מגעים אומתו מקומית בהיקף המתועד בתוך <a href="../v1-validation.html">דוח הבדיקות</a>. אין בכך בדיקת נוחות עם אנשים או במכשיר פיזי.</p>
+<p>אין הודעת הצלחה על עצם לחיצה. בלי קול נשאר כל המידע החיוני בטקסט. אובדן אינו מפחית מטבעות שהופקדו; במהלך שלב פעיל הפריטים שלא הופקדו חוזרים למקומם לפי החלטת אדם המעודכנת.</p>
+<h2>כלל 4: התרעת הסיום</h2>
+<p>ב־15 השניות האחרונות: <bdi dir="ltr" lang="en">Return to base</bdi>, מסגרת טיימר אדומה הפועמת פעם בשנייה וספרות יציבות. ב־5 האחרונות מתווסף צליל קצר בכל שנייה אם הקול פעיל. משתמשים בצליל האזהרה הקיים, בלי נכס חיצוני חדש. אין הבהוב מסך מלא, רעד או חסימת תנועה. הצלילים והפעימה נפסקים במעבר או בסיום. התחברות מאוחרת אינה משמיעה בדיעבד צלילים שכבר חלפו.</p>
+<h2>כלל 5: מידע החפץ המיוחד</h2>
+<p>אין תווית משקל או תגמול מדויקת לפני ההפקדה. כשנושאים מיוחד יחד עם רגילים מוצג למשל <code><bdi dir="ltr" lang="en">Weight</bdi> 4 + ? / 18</code> ו־<code><bdi dir="ltr" lang="en">Cargo value</bdi> 7 + ?</code>. החלק הידוע מתייחס רק לרגילים. כשהמיוחד לבדו: <code><bdi dir="ltr" lang="en">Weight</bdi> ? / 18</code> ו־<code><bdi dir="ltr" lang="en">Cargo value</bdi> ?</code>. אין שדה אחר של משקל כולל, משקל פנוי, אחוז תפוסה מספרי או ערך מלא שמגלה את הנתון בחיסור.</p>
+<p>גם הודעת איסוף, שילוט מתקן, הודעת אובדן וסכום תגמול צפוי אינם חושפים את הנתונים. הגודל וההאטה נותנים רמזים. יציאה מהמחסן לבדה אינה חושפת סכום; ההפקדה מציגה את תגמול המיוחד המדויק לצד ההפקדה הכוללת ומעניקה אותו פעם אחת. אובדן לפני הפקדה מחזיר אותו למתקן במהלך השלב, בלי גילוי תגמול. אחרי הפקדתו או אובדנו חוזרת תצוגת המטען הרגילה.</p>
+<h2>כלל 6: לוח דירוג חי על הקיר</h2>
+<p>הלוח נמצא על הפנים של הקיר הקדמי, משמאל לכניסה במבט אל תוך המחסן. רוחב 12 וגובה <bdi dir="ltr" lang="en">8 studs</bdi>, מרכזו <bdi dir="ltr" lang="en">16 studs</bdi> משמאל לציר המעבר, ותחתיתו בגובה 2 מעל הרצפה. הוא אינו חוצה את הפתח. הכותרת <bdi dir="ltr" lang="en">LIVE RESULTS</bdi> וסביבה ריקה מעיטור מתחרה.</p>
+<p>אזור הצפייה הוא המעבר והשטח הפנוי מול הלוח, 6 עד <bdi dir="ltr" lang="en">16 studs</bdi> בתוך המחסן. מסובבים מצלמה כרגיל כדי לצפות. אין טענה שכל שורה קריאה מכל מרחק או מכל כיוון. נדרשת קריאות בבדיקה מתוך אזור זה; הלוח אינו תחליף לתוצאות על המסך.</p>
+<p>הלוח מציג עד 8 שורות: מקום, שם, <bdi dir="ltr" lang="en">Stage score</bdi> מההפקדות, אחוז פריטים שהופקדו וזמן סיום למי שהפקיד הכול. <bdi dir="ltr" lang="en">Stage score</bdi> הוא מדד ההובלה; האחוז אינו מדד דירוג חלופי. מי שלא השלים מציג מקף בזמן הסיום. מצטרף באמצע מסומן <bdi dir="ltr" lang="en">Unranked</bdi> במקום מקום, ואינו משנה את מקומות הזכאים. שוויון מציג אותו מקום לכל השווים. שם ארוך נחתך עם סימן המשך; אין גלישת טקסט לעמודת ניקוד.</p>
+<p>עדכון מופיע בתוך חצי שנייה מקבלת הפקדה בתנאי החיבור שבבדיקת הרשת המקומית; אין הבטחה לזמן רשת חיצוני. דוגמת תחילת שורה: <code>1 | <bdi dir="ltr" lang="en">Adam</bdi> | 234 | 67% | —</code>. בלוח אין סכום של מטען לא מופקד, לרבות המיוחד.</p>
+<h2>כלל 7: תוצאות על המסך</h2>
+<p>אחרי שלבים 1 ו־2 מוצגת טבלת <bdi dir="ltr" lang="en">Stage results</bdi> ל־5 שניות: אותן עמודות ודירוג כמו בלוח, עם שורת השחקן מודגשת ושם השלב הבא. אין הצגה באמצע איסוף פעיל. לכל שורה מקום מוגדר גם כשלא הסתיים ריקון, ואין זמן סיום מזויף.</p>
+<p>אחרי שלב 3 מוצג סיכום המקצה ל־10 שניות. ברירת המחדל במשותף היא <bdi dir="ltr" lang="en">Match results</bdi>: מקום, שם, <bdi dir="ltr" lang="en">Match points</bdi> וזכאות. בחירה בלשונית <bdi dir="ltr" lang="en">Stage</bdi> 3 מציגה את תוצאת השלב האחרון. מעל הטבלה מוצג גם ההישג האישי מההפקדות במקצה. במשחק יחיד ברירת המחדל היא פירוט שלושת השלבים וסכום ההפקדות, עם <bdi dir="ltr" lang="en">Play again</bdi>. אין צורך ביריב כדי לראות שיפור בהישג.</p>
+<p>נשמרים 8 מקומות בטבלה, בגובה שורה 26 פיקסלים לפחות. הטבלה מתאימה לשטח התצוגה הבטוח; כותרת, שורות וספירה אינם חופפים. נבדק כל הניקוד בשני פרופילי הנייד; חיתוך, כתב בלתי קריא או צורך לנחש עמודה חוסמים קבלה. אין עצירת השרת על ידי פתיחת פירוט. תזמון המעבר בבעלות <a href="stage-progression.html">כלל 8: תוצאות ומקצה נוסף</a>.</p>
+<p>כל המנצחים המשותפים מוצגים בשם ובאותו מקום. מצטרף מאוחר יכול להיות מדורג בשלב ועדיין להיות מסומן <bdi dir="ltr" lang="en">Not eligible</bdi> בסיכום המקצה. מי שעזב אינו מוצג כמתחרה נוכחי, ונתוני שלבים קודמים של האחרים אינם נכתבים מחדש.</p>
+<h2>בסיס האימות</h2>
+<p><bdi dir="ltr" lang="en">SurfaceGui</bdi> לשילוט קיים וכן <bdi dir="ltr" lang="en">ScreenGui</bdi> למידע על המסך כבר משמשים בפרויקט. <a href="https://create.roblox.com/docs/reference/engine/classes/SurfaceGui">התיעוד הרשמי ללוח על משטח</a> נבדק שוב בתאריך 25/10/2026. זו תשתית מתועדת, לא בדיקה של הלוח החדש, מידותיו או סנכרונו. קלט מחשב ושני פרופילי <bdi dir="ltr" lang="en">touch</bdi> אומתו בגרסה הקודמת לפי <a href="../v1-validation.html">דוח <bdi dir="ltr" lang="en">V1</bdi></a>; המשקל והמסכים החדשים עדיין דורשים בדיקה משלהם. <bdi dir="ltr" lang="en">Gamepad</bdi>, <bdi dir="ltr" lang="en">VR</bdi> ושפות משחק נוספות מחוץ למקצה הזה.</p>
 </main></body></html>

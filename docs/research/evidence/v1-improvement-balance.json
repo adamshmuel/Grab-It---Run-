@@ -1,0 +1,1843 @@
+{
+  "status": "design calculation only; not a Roblox gameplay test; candidate values are not approved specifications",
+  "date": "2026-10-25",
+  "assumptions": {
+    "start": [
+      0,
+      -8
+    ],
+    "speed": "16 * (1 - 0.35 * carried_weight / capacity)",
+    "pickup_seconds": 0.3,
+    "deposit_seconds": 1,
+    "distances": "straight segments between collection points; no human steering, network or collision simulation",
+    "stopping": "only banked complete trips counted; no search for shorter feasible partial routes after the next full trip exceeds the limit; not an optimum",
+    "policy_near": "nearest remaining fitting object from current collection point, ties by object id",
+    "policy_value": "highest next-object reward / (incremental travel time + pickup time + return time at new load), ties by object id",
+    "policy_ratio": "highest reward/weight, then nearest distance, then object id"
+  },
+  "inputs": [
+    {
+      "stage": 1,
+      "capacity": 10,
+      "limit_seconds": 180,
+      "objects": [
+        {
+          "id": 1,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 12,
+          "collection_x": -8,
+          "collection_z": 12,
+          "weight": 1,
+          "reward": 2
+        },
+        {
+          "id": 2,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 12,
+          "collection_x": 8,
+          "collection_z": 12,
+          "weight": 1,
+          "reward": 2
+        },
+        {
+          "id": 3,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 18,
+          "collection_x": -8,
+          "collection_z": 18,
+          "weight": 1,
+          "reward": 2
+        },
+        {
+          "id": 4,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 18,
+          "collection_x": 8,
+          "collection_z": 18,
+          "weight": 1,
+          "reward": 2
+        },
+        {
+          "id": 5,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 24,
+          "collection_x": -8,
+          "collection_z": 24,
+          "weight": 1,
+          "reward": 2
+        },
+        {
+          "id": 6,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 24,
+          "collection_x": 8,
+          "collection_z": 24,
+          "weight": 1,
+          "reward": 2
+        },
+        {
+          "id": 7,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 30,
+          "collection_x": -8,
+          "collection_z": 30,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 8,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 30,
+          "collection_x": 8,
+          "collection_z": 30,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 9,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 36,
+          "collection_x": -8,
+          "collection_z": 36,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 10,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 36,
+          "collection_x": 8,
+          "collection_z": 36,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 11,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 42,
+          "collection_x": -8,
+          "collection_z": 42,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 12,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 42,
+          "collection_x": 8,
+          "collection_z": 42,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 13,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 48,
+          "collection_x": -8,
+          "collection_z": 48,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 14,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 48,
+          "collection_x": 8,
+          "collection_z": 48,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 15,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 54,
+          "collection_x": -8,
+          "collection_z": 54,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 16,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 54,
+          "collection_x": 8,
+          "collection_z": 54,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 17,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 60,
+          "collection_x": -8,
+          "collection_z": 60,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 18,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 60,
+          "collection_x": 8,
+          "collection_z": 60,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 19,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 66,
+          "collection_x": -8,
+          "collection_z": 66,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 20,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 66,
+          "collection_x": 8,
+          "collection_z": 66,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 21,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 72,
+          "collection_x": -8,
+          "collection_z": 72,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 22,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 72,
+          "collection_x": 8,
+          "collection_z": 72,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 23,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 78,
+          "collection_x": -8,
+          "collection_z": 78,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 24,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 78,
+          "collection_x": 8,
+          "collection_z": 78,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 25,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 84,
+          "collection_x": -8,
+          "collection_z": 84,
+          "weight": 5,
+          "reward": 10
+        },
+        {
+          "id": 26,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 84,
+          "collection_x": 8,
+          "collection_z": 84,
+          "weight": 5,
+          "reward": 10
+        },
+        {
+          "id": 27,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 90,
+          "collection_x": -8,
+          "collection_z": 90,
+          "weight": 5,
+          "reward": 10
+        },
+        {
+          "id": 28,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 90,
+          "collection_x": 8,
+          "collection_z": 90,
+          "weight": 5,
+          "reward": 10
+        },
+        {
+          "id": 29,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 96,
+          "collection_x": -8,
+          "collection_z": 96,
+          "weight": 5,
+          "reward": 10
+        },
+        {
+          "id": 30,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 96,
+          "collection_x": 8,
+          "collection_z": 96,
+          "weight": 5,
+          "reward": 10
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "capacity": 14,
+      "limit_seconds": 135,
+      "objects": [
+        {
+          "id": 1,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 12,
+          "collection_x": -8,
+          "collection_z": 12,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 2,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 12,
+          "collection_x": 8,
+          "collection_z": 12,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 3,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 18,
+          "collection_x": -8,
+          "collection_z": 18,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 4,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 18,
+          "collection_x": 8,
+          "collection_z": 18,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 5,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 24,
+          "collection_x": -8,
+          "collection_z": 24,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 6,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 24,
+          "collection_x": 8,
+          "collection_z": 24,
+          "weight": 2,
+          "reward": 3
+        },
+        {
+          "id": 7,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 30,
+          "collection_x": -8,
+          "collection_z": 30,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 8,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 30,
+          "collection_x": 8,
+          "collection_z": 30,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 9,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 36,
+          "collection_x": -8,
+          "collection_z": 36,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 10,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 36,
+          "collection_x": 8,
+          "collection_z": 36,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 11,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 42,
+          "collection_x": -8,
+          "collection_z": 42,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 12,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 42,
+          "collection_x": 8,
+          "collection_z": 42,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 13,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 48,
+          "collection_x": -8,
+          "collection_z": 48,
+          "weight": 4,
+          "reward": 8
+        },
+        {
+          "id": 14,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 48,
+          "collection_x": 8,
+          "collection_z": 48,
+          "weight": 4,
+          "reward": 8
+        },
+        {
+          "id": 15,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 54,
+          "collection_x": -8,
+          "collection_z": 54,
+          "weight": 4,
+          "reward": 8
+        },
+        {
+          "id": 16,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 54,
+          "collection_x": 8,
+          "collection_z": 54,
+          "weight": 4,
+          "reward": 8
+        },
+        {
+          "id": 17,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 60,
+          "collection_x": -8,
+          "collection_z": 60,
+          "weight": 4,
+          "reward": 8
+        },
+        {
+          "id": 18,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 60,
+          "collection_x": 8,
+          "collection_z": 60,
+          "weight": 4,
+          "reward": 8
+        },
+        {
+          "id": 19,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 66,
+          "collection_x": -8,
+          "collection_z": 66,
+          "weight": 6,
+          "reward": 12
+        },
+        {
+          "id": 20,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 66,
+          "collection_x": 8,
+          "collection_z": 66,
+          "weight": 6,
+          "reward": 12
+        },
+        {
+          "id": 21,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 72,
+          "collection_x": -8,
+          "collection_z": 72,
+          "weight": 6,
+          "reward": 12
+        },
+        {
+          "id": 22,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 72,
+          "collection_x": 8,
+          "collection_z": 72,
+          "weight": 6,
+          "reward": 12
+        },
+        {
+          "id": 23,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 78,
+          "collection_x": -8,
+          "collection_z": 78,
+          "weight": 6,
+          "reward": 12
+        },
+        {
+          "id": 24,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 78,
+          "collection_x": 8,
+          "collection_z": 78,
+          "weight": 6,
+          "reward": 12
+        },
+        {
+          "id": 25,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 84,
+          "collection_x": -8,
+          "collection_z": 84,
+          "weight": 8,
+          "reward": 18
+        },
+        {
+          "id": 26,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 84,
+          "collection_x": 8,
+          "collection_z": 84,
+          "weight": 8,
+          "reward": 18
+        },
+        {
+          "id": 27,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 90,
+          "collection_x": -8,
+          "collection_z": 90,
+          "weight": 8,
+          "reward": 18
+        },
+        {
+          "id": 28,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 90,
+          "collection_x": 8,
+          "collection_z": 90,
+          "weight": 8,
+          "reward": 18
+        },
+        {
+          "id": 29,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 96,
+          "collection_x": -8,
+          "collection_z": 96,
+          "weight": 8,
+          "reward": 18
+        },
+        {
+          "id": 30,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 96,
+          "collection_x": 8,
+          "collection_z": 96,
+          "weight": 8,
+          "reward": 18
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "capacity": 18,
+      "limit_seconds": 100,
+      "objects": [
+        {
+          "id": 1,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 12,
+          "collection_x": -8,
+          "collection_z": 12,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 2,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 12,
+          "collection_x": 8,
+          "collection_z": 12,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 3,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 18,
+          "collection_x": -8,
+          "collection_z": 18,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 4,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 18,
+          "collection_x": 8,
+          "collection_z": 18,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 5,
+          "type": 1,
+          "world_x": -12,
+          "world_z": 24,
+          "collection_x": -8,
+          "collection_z": 24,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 6,
+          "type": 1,
+          "world_x": 12,
+          "world_z": 24,
+          "collection_x": 8,
+          "collection_z": 24,
+          "weight": 3,
+          "reward": 5
+        },
+        {
+          "id": 7,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 30,
+          "collection_x": -8,
+          "collection_z": 30,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 8,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 30,
+          "collection_x": 8,
+          "collection_z": 30,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 9,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 36,
+          "collection_x": -8,
+          "collection_z": 36,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 10,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 36,
+          "collection_x": 8,
+          "collection_z": 36,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 11,
+          "type": 2,
+          "world_x": -12,
+          "world_z": 42,
+          "collection_x": -8,
+          "collection_z": 42,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 12,
+          "type": 2,
+          "world_x": 12,
+          "world_z": 42,
+          "collection_x": 8,
+          "collection_z": 42,
+          "weight": 4,
+          "reward": 7
+        },
+        {
+          "id": 13,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 48,
+          "collection_x": -8,
+          "collection_z": 48,
+          "weight": 6,
+          "reward": 11
+        },
+        {
+          "id": 14,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 48,
+          "collection_x": 8,
+          "collection_z": 48,
+          "weight": 6,
+          "reward": 11
+        },
+        {
+          "id": 15,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 54,
+          "collection_x": -8,
+          "collection_z": 54,
+          "weight": 6,
+          "reward": 11
+        },
+        {
+          "id": 16,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 54,
+          "collection_x": 8,
+          "collection_z": 54,
+          "weight": 6,
+          "reward": 11
+        },
+        {
+          "id": 17,
+          "type": 3,
+          "world_x": -12,
+          "world_z": 60,
+          "collection_x": -8,
+          "collection_z": 60,
+          "weight": 6,
+          "reward": 11
+        },
+        {
+          "id": 18,
+          "type": 3,
+          "world_x": 12,
+          "world_z": 60,
+          "collection_x": 8,
+          "collection_z": 60,
+          "weight": 6,
+          "reward": 11
+        },
+        {
+          "id": 19,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 66,
+          "collection_x": -8,
+          "collection_z": 66,
+          "weight": 8,
+          "reward": 16
+        },
+        {
+          "id": 20,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 66,
+          "collection_x": 8,
+          "collection_z": 66,
+          "weight": 8,
+          "reward": 16
+        },
+        {
+          "id": 21,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 72,
+          "collection_x": -8,
+          "collection_z": 72,
+          "weight": 8,
+          "reward": 16
+        },
+        {
+          "id": 22,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 72,
+          "collection_x": 8,
+          "collection_z": 72,
+          "weight": 8,
+          "reward": 16
+        },
+        {
+          "id": 23,
+          "type": 4,
+          "world_x": -12,
+          "world_z": 78,
+          "collection_x": -8,
+          "collection_z": 78,
+          "weight": 8,
+          "reward": 16
+        },
+        {
+          "id": 24,
+          "type": 4,
+          "world_x": 12,
+          "world_z": 78,
+          "collection_x": 8,
+          "collection_z": 78,
+          "weight": 8,
+          "reward": 16
+        },
+        {
+          "id": 25,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 84,
+          "collection_x": -8,
+          "collection_z": 84,
+          "weight": 10,
+          "reward": 24
+        },
+        {
+          "id": 26,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 84,
+          "collection_x": 8,
+          "collection_z": 84,
+          "weight": 10,
+          "reward": 24
+        },
+        {
+          "id": 27,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 90,
+          "collection_x": -8,
+          "collection_z": 90,
+          "weight": 10,
+          "reward": 24
+        },
+        {
+          "id": 28,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 90,
+          "collection_x": 8,
+          "collection_z": 90,
+          "weight": 10,
+          "reward": 24
+        },
+        {
+          "id": 29,
+          "type": 5,
+          "world_x": -12,
+          "world_z": 96,
+          "collection_x": -8,
+          "collection_z": 96,
+          "weight": 10,
+          "reward": 24
+        },
+        {
+          "id": 30,
+          "type": 5,
+          "world_x": 12,
+          "world_z": 96,
+          "collection_x": 8,
+          "collection_z": 96,
+          "weight": 10,
+          "reward": 24
+        },
+        {
+          "id": 31,
+          "type": "special",
+          "world_x": 0,
+          "world_z": 114,
+          "collection_x": 0,
+          "collection_z": 110,
+          "weight": 14,
+          "reward": 55
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "stage": 1,
+      "capacity": 10,
+      "limit": 180,
+      "policy": "near",
+      "result": {
+        "count": 30,
+        "reward": 162,
+        "time": 142.99,
+        "trips": 10,
+        "special": false,
+        "routes": [
+          {
+            "ids": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11,
+              6
+            ],
+            "weight": 10,
+            "seconds": 11.98,
+            "banked": 17
+          },
+          {
+            "ids": [
+              2,
+              4,
+              8,
+              10,
+              12
+            ],
+            "weight": 8,
+            "seconds": 10.35,
+            "banked": 13
+          },
+          {
+            "ids": [
+              13,
+              15,
+              17
+            ],
+            "weight": 9,
+            "seconds": 12.58,
+            "banked": 15
+          },
+          {
+            "ids": [
+              14,
+              16,
+              18
+            ],
+            "weight": 9,
+            "seconds": 12.58,
+            "banked": 15
+          },
+          {
+            "ids": [
+              19,
+              21
+            ],
+            "weight": 8,
+            "seconds": 13.67,
+            "banked": 14
+          },
+          {
+            "ids": [
+              20,
+              22
+            ],
+            "weight": 8,
+            "seconds": 13.67,
+            "banked": 14
+          },
+          {
+            "ids": [
+              23,
+              25
+            ],
+            "weight": 9,
+            "seconds": 15.86,
+            "banked": 17
+          },
+          {
+            "ids": [
+              24,
+              26
+            ],
+            "weight": 9,
+            "seconds": 15.86,
+            "banked": 17
+          },
+          {
+            "ids": [
+              27,
+              29
+            ],
+            "weight": 10,
+            "seconds": 18.23,
+            "banked": 20
+          },
+          {
+            "ids": [
+              28,
+              30
+            ],
+            "weight": 10,
+            "seconds": 18.23,
+            "banked": 20
+          }
+        ]
+      },
+      "full_clear_seconds": 142.99
+    },
+    {
+      "stage": 1,
+      "capacity": 10,
+      "limit": 180,
+      "policy": "value",
+      "result": {
+        "count": 30,
+        "reward": 162,
+        "time": 140.24,
+        "trips": 9,
+        "special": false,
+        "routes": [
+          {
+            "ids": [
+              25,
+              27
+            ],
+            "weight": 10,
+            "seconds": 17.28,
+            "banked": 20
+          },
+          {
+            "ids": [
+              26,
+              28
+            ],
+            "weight": 10,
+            "seconds": 17.28,
+            "banked": 20
+          },
+          {
+            "ids": [
+              29,
+              30
+            ],
+            "weight": 10,
+            "seconds": 19.36,
+            "banked": 20
+          },
+          {
+            "ids": [
+              19,
+              21,
+              7
+            ],
+            "weight": 10,
+            "seconds": 14.37,
+            "banked": 17
+          },
+          {
+            "ids": [
+              20,
+              22,
+              8
+            ],
+            "weight": 10,
+            "seconds": 14.37,
+            "banked": 17
+          },
+          {
+            "ids": [
+              1,
+              3,
+              13,
+              15,
+              9
+            ],
+            "weight": 10,
+            "seconds": 12.57,
+            "banked": 17
+          },
+          {
+            "ids": [
+              2,
+              4,
+              14,
+              16,
+              10
+            ],
+            "weight": 10,
+            "seconds": 12.57,
+            "banked": 17
+          },
+          {
+            "ids": [
+              23,
+              24,
+              12
+            ],
+            "weight": 10,
+            "seconds": 16.45,
+            "banked": 17
+          },
+          {
+            "ids": [
+              17,
+              18,
+              11,
+              5,
+              6
+            ],
+            "weight": 10,
+            "seconds": 16.0,
+            "banked": 17
+          }
+        ]
+      },
+      "full_clear_seconds": 140.24
+    },
+    {
+      "stage": 1,
+      "capacity": 10,
+      "limit": 180,
+      "policy": "ratio",
+      "result": {
+        "count": 30,
+        "reward": 162,
+        "time": 150.84,
+        "trips": 10,
+        "special": false,
+        "routes": [
+          {
+            "ids": [
+              1,
+              3,
+              5,
+              6,
+              4,
+              2,
+              20
+            ],
+            "weight": 10,
+            "seconds": 18.68,
+            "banked": 19
+          },
+          {
+            "ids": [
+              25,
+              27
+            ],
+            "weight": 10,
+            "seconds": 17.28,
+            "banked": 20
+          },
+          {
+            "ids": [
+              26,
+              28
+            ],
+            "weight": 10,
+            "seconds": 17.28,
+            "banked": 20
+          },
+          {
+            "ids": [
+              29,
+              30
+            ],
+            "weight": 10,
+            "seconds": 19.36,
+            "banked": 20
+          },
+          {
+            "ids": [
+              19,
+              21,
+              11
+            ],
+            "weight": 10,
+            "seconds": 14.46,
+            "banked": 17
+          },
+          {
+            "ids": [
+              22,
+              24,
+              12
+            ],
+            "weight": 10,
+            "seconds": 15.35,
+            "banked": 17
+          },
+          {
+            "ids": [
+              23,
+              17,
+              15
+            ],
+            "weight": 10,
+            "seconds": 15.11,
+            "banked": 17
+          },
+          {
+            "ids": [
+              13,
+              14,
+              16
+            ],
+            "weight": 9,
+            "seconds": 12.73,
+            "banked": 15
+          },
+          {
+            "ids": [
+              18,
+              10,
+              8,
+              7
+            ],
+            "weight": 9,
+            "seconds": 13.48,
+            "banked": 14
+          },
+          {
+            "ids": [
+              9
+            ],
+            "weight": 2,
+            "seconds": 7.1,
+            "banked": 3
+          }
+        ]
+      },
+      "full_clear_seconds": 150.84
+    },
+    {
+      "stage": 2,
+      "capacity": 14,
+      "limit": 135,
+      "policy": "near",
+      "result": {
+        "count": 27,
+        "reward": 222,
+        "time": 132.19,
+        "trips": 10,
+        "special": false,
+        "routes": [
+          {
+            "ids": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              6
+            ],
+            "weight": 14,
+            "seconds": 10.84,
+            "banked": 22
+          },
+          {
+            "ids": [
+              2,
+              4,
+              8,
+              10,
+              12
+            ],
+            "weight": 13,
+            "seconds": 10.72,
+            "banked": 21
+          },
+          {
+            "ids": [
+              11,
+              13,
+              15
+            ],
+            "weight": 11,
+            "seconds": 11.31,
+            "banked": 21
+          },
+          {
+            "ids": [
+              14,
+              16,
+              18
+            ],
+            "weight": 12,
+            "seconds": 12.43,
+            "banked": 24
+          },
+          {
+            "ids": [
+              17,
+              19
+            ],
+            "weight": 10,
+            "seconds": 12.5,
+            "banked": 20
+          },
+          {
+            "ids": [
+              20,
+              22
+            ],
+            "weight": 12,
+            "seconds": 13.87,
+            "banked": 24
+          },
+          {
+            "ids": [
+              21,
+              23
+            ],
+            "weight": 12,
+            "seconds": 14.78,
+            "banked": 24
+          },
+          {
+            "ids": [
+              24,
+              26
+            ],
+            "weight": 14,
+            "seconds": 16.32,
+            "banked": 30
+          },
+          {
+            "ids": [
+              25
+            ],
+            "weight": 8,
+            "seconds": 14.29,
+            "banked": 18
+          },
+          {
+            "ids": [
+              27
+            ],
+            "weight": 8,
+            "seconds": 15.13,
+            "banked": 18
+          }
+        ]
+      },
+      "full_clear_seconds": 179.25
+    },
+    {
+      "stage": 2,
+      "capacity": 14,
+      "limit": 135,
+      "policy": "value",
+      "result": {
+        "count": 21,
+        "reward": 231,
+        "time": 127.24,
+        "trips": 8,
+        "special": false,
+        "routes": [
+          {
+            "ids": [
+              25,
+              19
+            ],
+            "weight": 14,
+            "seconds": 15.93,
+            "banked": 30
+          },
+          {
+            "ids": [
+              26,
+              20
+            ],
+            "weight": 14,
+            "seconds": 15.93,
+            "banked": 30
+          },
+          {
+            "ids": [
+              27,
+              21
+            ],
+            "weight": 14,
+            "seconds": 16.88,
+            "banked": 30
+          },
+          {
+            "ids": [
+              28,
+              22
+            ],
+            "weight": 14,
+            "seconds": 16.88,
+            "banked": 30
+          },
+          {
+            "ids": [
+              29,
+              23
+            ],
+            "weight": 14,
+            "seconds": 17.83,
+            "banked": 30
+          },
+          {
+            "ids": [
+              30,
+              24
+            ],
+            "weight": 14,
+            "seconds": 17.83,
+            "banked": 30
+          },
+          {
+            "ids": [
+              13,
+              15,
+              14,
+              2
+            ],
+            "weight": 14,
+            "seconds": 12.77,
+            "banked": 27
+          },
+          {
+            "ids": [
+              1,
+              7,
+              9,
+              16,
+              4
+            ],
+            "weight": 14,
+            "seconds": 13.17,
+            "banked": 24
+          }
+        ]
+      },
+      "full_clear_seconds": 155.27
+    },
+    {
+      "stage": 2,
+      "capacity": 14,
+      "limit": 135,
+      "policy": "ratio",
+      "result": {
+        "count": 20,
+        "reward": 234,
+        "time": 127.31,
+        "trips": 8,
+        "special": false,
+        "routes": [
+          {
+            "ids": [
+              25,
+              23
+            ],
+            "weight": 14,
+            "seconds": 16.15,
+            "banked": 30
+          },
+          {
+            "ids": [
+              26,
+              24
+            ],
+            "weight": 14,
+            "seconds": 16.15,
+            "banked": 30
+          },
+          {
+            "ids": [
+              27,
+              21
+            ],
+            "weight": 14,
+            "seconds": 16.88,
+            "banked": 30
+          },
+          {
+            "ids": [
+              28,
+              22
+            ],
+            "weight": 14,
+            "seconds": 16.88,
+            "banked": 30
+          },
+          {
+            "ids": [
+              29,
+              19
+            ],
+            "weight": 14,
+            "seconds": 17.62,
+            "banked": 30
+          },
+          {
+            "ids": [
+              30,
+              20
+            ],
+            "weight": 14,
+            "seconds": 17.62,
+            "banked": 30
+          },
+          {
+            "ids": [
+              13,
+              15,
+              17,
+              5
+            ],
+            "weight": 14,
+            "seconds": 13.01,
+            "banked": 27
+          },
+          {
+            "ids": [
+              14,
+              16,
+              18,
+              6
+            ],
+            "weight": 14,
+            "seconds": 13.01,
+            "banked": 27
+          }
+        ]
+      },
+      "full_clear_seconds": 150.41
+    },
+    {
+      "stage": 3,
+      "capacity": 18,
+      "limit": 100,
+      "policy": "near",
+      "result": {
+        "count": 24,
+        "reward": 234,
+        "time": 98.02,
+        "trips": 8,
+        "special": false,
+        "routes": [
+          {
+            "ids": [
+              1,
+              3,
+              5,
+              7,
+              9
+            ],
+            "weight": 17,
+            "seconds": 9.8,
+            "banked": 29
+          },
+          {
+            "ids": [
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "weight": 17,
+            "seconds": 9.8,
+            "banked": 29
+          },
+          {
+            "ids": [
+              11,
+              13,
+              15
+            ],
+            "weight": 16,
+            "seconds": 11.61,
+            "banked": 29
+          },
+          {
+            "ids": [
+              12,
+              14,
+              16
+            ],
+            "weight": 16,
+            "seconds": 11.61,
+            "banked": 29
+          },
+          {
+            "ids": [
+              17,
+              19
+            ],
+            "weight": 14,
+            "seconds": 12.7,
+            "banked": 27
+          },
+          {
+            "ids": [
+              18,
+              20
+            ],
+            "weight": 14,
+            "seconds": 12.7,
+            "banked": 27
+          },
+          {
+            "ids": [
+              21,
+              23
+            ],
+            "weight": 16,
+            "seconds": 14.91,
+            "banked": 32
+          },
+          {
+            "ids": [
+              22,
+              24
+            ],
+            "weight": 16,
+            "seconds": 14.91,
+            "banked": 32
+          }
+        ]
+      },
+      "full_clear_seconds": 207.27
+    },
+    {
+      "stage": 3,
+      "capacity": 18,
+      "limit": 100,
+      "policy": "value",
+      "result": {
+        "count": 15,
+        "reward": 249,
+        "time": 95.62,
+        "trips": 6,
+        "special": true,
+        "routes": [
+          {
+            "ids": [
+              31,
+              7
+            ],
+            "weight": 18,
+            "seconds": 19.61,
+            "banked": 62
+          },
+          {
+            "ids": [
+              25,
+              19
+            ],
+            "weight": 18,
+            "seconds": 15.93,
+            "banked": 40
+          },
+          {
+            "ids": [
+              26,
+              20
+            ],
+            "weight": 18,
+            "seconds": 15.93,
+            "banked": 40
+          },
+          {
+            "ids": [
+              27,
+              21
+            ],
+            "weight": 18,
+            "seconds": 16.87,
+            "banked": 40
+          },
+          {
+            "ids": [
+              28,
+              22
+            ],
+            "weight": 18,
+            "seconds": 16.87,
+            "banked": 40
+          },
+          {
+            "ids": [
+              1,
+              3,
+              2,
+              4,
+              8
+            ],
+            "weight": 16,
+            "seconds": 10.41,
+            "banked": 27
+          }
+        ]
+      },
+      "full_clear_seconds": 176.88
+    },
+    {
+      "stage": 3,
+      "capacity": 18,
+      "limit": 100,
+      "policy": "ratio",
+      "result": {
+        "count": 10,
+        "reward": 222,
+        "time": 85.75,
+        "trips": 5,
+        "special": true,
+        "routes": [
+          {
+            "ids": [
+              31,
+              11
+            ],
+            "weight": 18,
+            "seconds": 19.72,
+            "banked": 62
+          },
+          {
+            "ids": [
+              25,
+              23
+            ],
+            "weight": 18,
+            "seconds": 16.14,
+            "banked": 40
+          },
+          {
+            "ids": [
+              26,
+              24
+            ],
+            "weight": 18,
+            "seconds": 16.14,
+            "banked": 40
+          },
+          {
+            "ids": [
+              27,
+              21
+            ],
+            "weight": 18,
+            "seconds": 16.87,
+            "banked": 40
+          },
+          {
+            "ids": [
+              28,
+              22
+            ],
+            "weight": 18,
+            "seconds": 16.87,
+            "banked": 40
+          }
+        ]
+      },
+      "full_clear_seconds": 174.17
+    },
+    {
+      "stage": 3,
+      "policy": "special_alone",
+      "result": {
+        "count": 1,
+        "reward": 55,
+        "time": 18.81,
+        "trips": 1,
+        "special": true,
+        "routes": [
+          {
+            "ids": [
+              31
+            ],
+            "weight": 14,
+            "seconds": 18.81,
+            "banked": 55
+          }
+        ]
+      }
+    }
+  ]
+}

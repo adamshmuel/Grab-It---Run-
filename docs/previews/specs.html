@@ -9,53 +9,70 @@ table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1
 a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 .preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
 
-.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1>מפת הגדרות המשחק</h1>
-<p>מסמכי <bdi dir="ltr" lang="en">spec</bdi> מתארים מה השחקן רואה ועושה ולמה. <bdi dir="ltr" lang="en">implementation plan</bdi> נכתב רק לאחר אישור המסמך המתאים; קוד דורש בקשה מפורשת נוספת.</p>
-<p><strong>מצב בתאריך 25/10/2026:</strong> <a href="v1-design-failure-review.html">אבחון הכשל של <bdi dir="ltr" lang="en">V1</bdi></a> אושר. נדרש תיקון תכנון מול המטרות; השיפורים טרם הוסכמו.</p>
-<h2>מטרות וגרסה ראשונה</h2>
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1>מפת הגדרות המשחק</h1>
+<p><strong>מצב, 25/10/2026: הגדרות שיפורי <bdi dir="ltr" lang="en">V1</bdi> הושלמו לבדיקה של אדם; המימוש הישן נכשל במטרות והחדש טרם נבנה.</strong></p>
+<p><bdi dir="ltr" lang="en">spec</bdi> מתאר מה השחקן רואה ועושה ולמה. הסדר הוא הגדרות, אישור אדם, תוכנית ובקשה מפורשת לקוד. סיום כתיבה אינו הרשאת מימוש.</p>
+<h2>מטרות והגרסה הנוכחית</h2>
 <ul>
-<li><a href="project-goals.html">מטרות הפרויקט</a> — הכיוון שהוסכם בתאריך 22/10/2026.</li>
-<li><a href="v1/index.html"><bdi dir="ltr" lang="en">V1</bdi> — הגדרות המשחק</a> — המסמך המקשר, גבולות הגרסה ומסמכים נפרדים לכל נושא. <bdi dir="ltr" lang="en">gameplay</bdi> אושר בתאריך 21/10/2026; אדם אישר את הגדרות <bdi dir="ltr" lang="en">V1</bdi> וביקש להתחיל בבנייה בתאריך 22/10/2026. קבלת המימוש עדיין מחייבת ראיות.</li>
+<li><a href="project-goals.html">מטרות הפרויקט</a> — הכיוון שהוסכם ב־22/10/2026; אינו הבטחת רווח או מדד הצלחה שכבר נצפה.</li>
+<li><a href="v1/index.html">מפת <bdi dir="ltr" lang="en">V1</bdi></a> — היקף, הבסיס ההיסטורי והשינויים.</li>
+<li><a href="v1/improvements.html">מפת שיפורי <bdi dir="ltr" lang="en">V1</bdi></a> — נקודת הכניסה לחבילת ההגדרות ולכיסוי שבעת הסעיפים.</li>
+<li><a href="v1-required-improvements.html">האבחון והחלטות השיפורים</a> — טבלת מרכיב, מצב, צורך ושינוי; החלטות המוצר שנסגרו.</li>
+<li><a href="game-experience-validation.html">חוק בדיקת החוויה</a> — תהליך מחייב לרף, תרחישים מפריכים וראיות לפני תוכנית ולאחר מימוש.</li>
 </ul>
-<h2>מסמכים להמשך מחוץ לגרסה המאושרת</h2>
-<p>הרשימה היא תיעוד של נושאים בלבד. היא אינה התחייבות לבנות אותם או אישור לכתוב עבורם תוכנית.</p>
+<h2>עבודה מאוחרת שמחוץ למקצה השיפורים</h2>
+<p>הרשימה מגדירה גבול ופעולה כאשר אדם יבחר לפתוח נושא. היא אינה הרשאה להתחיל כעת. בכל שורה אדם אחראי לאישור ההיקף והשיחה הראשית אחראית למחקר ולכתיבת ההגדרות שיבקש.</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
-<th>מסמך עתידי</th>
-<th>מה יוגדר בנפרד</th>
+<th>נושא</th>
+<th>הפעולה לאחר בקשה של אדם</th>
+<th>תנאי סיום להגדרות</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><bdi dir="ltr" lang="en">Gamepad</bdi> ו־<bdi dir="ltr" lang="en">VR</bdi></td>
-<td>קלט ותצוגה למכשירים נוספים</td>
+<td>לבדוק קלט ותצוגה במכשירים הנבחרים ולכתוב <bdi dir="ltr" lang="en">spec</bdi> מתאים</td>
+<td>אמצעי קלט, מסכים, היתכנות וקריטריוני בדיקה מוגדרים ומאושרים</td>
 </tr>
 <tr>
-<td>הרחבת ההתקדמות</td>
-<td>שדרוגים, תוכן ארוך יותר ופתיחת אזורים</td>
+<td>תוכן מעבר לשלושה שלבים</td>
+<td>להגדיר תוכן ואתגר לאחר מיצוי <bdi dir="ltr" lang="en">V1</bdi> מתוך תוצאות המשחק</td>
+<td>רצף מלא, ערכי התחלה, תגמול ותרחישי מיצוי מוגדרים</td>
 </tr>
 <tr>
 <td><bdi dir="ltr" lang="en">Social features</bdi></td>
-<td>פעולות משותפות מעבר לשהות באותו מחסן</td>
+<td>להגדיר פעולה משותפת מעבר לנוכחות באותו מחסן</td>
+<td>תפקיד כל משתתף, הוגנות, הצטרפות וכשל ניתנים לבדיקה</td>
 </tr>
 <tr>
-<td><bdi dir="ltr" lang="en">Cosmetics and monetization</bdi></td>
-<td>בחירת מראה, חנות ומוצרים בתשלום</td>
+<td>מוצרים בתשלום ומודל הכנסות</td>
+<td>לבדוק כללי <bdi dir="ltr" lang="en">Roblox</bdi> עדכניים והיתכנות ולכתוב מודל נפרד</td>
+<td>מוצר, מחיר, הוגנות, הרשאות ותנאי אימות מוגדרים; אין הכללת <bdi dir="ltr" lang="en">Robux</bdi> בחנות המטבעות הנוכחית</td>
 </tr>
 <tr>
 <td>הרחבת המחסן</td>
-<td>מפות, מכשולים ותוכן חדש</td>
+<td>להגדיר מפה או מכשולים חדשים על בסיס צורך שנמצא</td>
+<td>פריסה, מצלמה, קלט, עלות ורף חזותי נבדקו כתכנון</td>
 </tr>
 <tr>
-<td>השקה לציבור</td>
-<td>קהל, מכשירים, דרישות פרסום וקריטריוני השקה עדכניים</td>
+<td>השקה לציבור ולנייד פיזי</td>
+<td>לבדוק דרישות פרסום וגישה עדכניות ומכשירים אמיתיים שייבחרו</td>
+<td>היקף השקה מאושר וראיות נדרשות לתאימות, גישה ויציבות</td>
 </tr>
 <tr>
 <td>מדידת חזרה והכנסות</td>
-<td>יעדים, תקופת מדידה ונתונים שיאפשרו לבחון את מטרות המוצר</td>
+<td>להגדיר אירועי מדידה, תקופה ואוכלוסייה לאחר החלטת היקף</td>
+<td>יעד ודרך איסוף מוגדרים, עם מגבלות מדגם ופרטיות; תוצאה אינה מובטחת</td>
+</tr>
+<tr>
+<td>שם ציבורי למשחק</td>
+<td>לחקור שמות וזמינות לפני בחירה</td>
+<td>שם שהיתכנותו נבדקה ואדם אישר; שם ה־<bdi dir="ltr" lang="en">repo</bdi> נשאר מזהה מקומי</td>
 </tr>
 </tbody>
 </table></div>
-<p>נושאי מפה, <bdi dir="ltr" lang="en">Controls</bdi>, התקדמות ושמירה מוגדרים במסמכים מאושרים בתוך <bdi dir="ltr" lang="en">V1</bdi>. <a href="v1/acceptance.html">קריטריוני הקבלה</a> מחייבים לבדוק התאמה גם למטרות הפרויקט וגם למפה הזאת.</p>
+<h2>עבודת הקבלה שתחכה למימוש</h2>
+<p>השיחה הראשית אחראית לבדיקות העצמאיות ולהשוואה מול הרפרנסים לפני בקשת <bdi dir="ltr" lang="en">QA</bdi> מאדם. אדם יבצע תחילה בדיקה ידנית, ורק אחריה יבחר אם לפתוח סבב חמישה שחקנים. לפני שיתוף נדרשת בדיקת היתכנות לגישה במשחק הפרטי ואישור נפרד; אין זימון משתתפים כעת. העבודה מסתיימת בתוצאה מתועדת לכל דרישה, ולא בהנחת הצלחה כשחסרה ראיה. <a href="v1/improvement-acceptance.html">קבלת השיפורים</a> מחזיקה את הדרישות המפורטות.</p>
 </main></body></html>
