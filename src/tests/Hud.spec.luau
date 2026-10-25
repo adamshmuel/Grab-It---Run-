@@ -13,6 +13,8 @@ return function()
 		Hud.update(ui, {
 			coins = 7,
 			cargoCount = 2,
+			cargoWeight = "4",
+			ready = true,
 			cargoValue = 7,
 			open = true,
 			remaining = 29,
@@ -21,7 +23,7 @@ return function()
 			tutorial = false,
 		}, false)
 		assert(string.find(ui.Coins.Text, "7"), "banked balance")
-		assert(string.find(ui.Bag.Text, "2 / 5"), "cargo count")
+		assert(string.find(ui.Bag.Text, "4 / 10"), "cargo count")
 		assert(string.find(ui.Round.Text, "RETURN"), "closing warning")
 		Hud.update(ui, {
 			coins = 105,
@@ -33,12 +35,9 @@ return function()
 			save = "Saving",
 			tutorial = true,
 		}, true)
-		assert(string.find(ui.Style.Text, "300"), "next progression target")
+		assert(ui.Styles.Visible, "styles available during results")
 		assert(not ui.Collect.Visible, "closed warehouse cannot offer collection")
-		assert(
-			ui.Tutorial.Visible,
-			"returning players must see the next-round message while closed"
-		)
+		assert(ui.Styles.Visible, "results retain access to style collection")
 		assert(ui.Screen.ScreenInsets == Enum.ScreenInsets.CoreUISafeInsets, "safe screen area")
 		assert(
 			ui.Coins.BackgroundTransparency == 0

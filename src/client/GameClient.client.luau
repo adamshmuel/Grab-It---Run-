@@ -7,6 +7,9 @@ assert(root, "GrabIt content was not replicated")
 local Hud = require(root.ClientModules.Hud)
 local TargetPrompt = require(root.ClientModules.TargetPrompt)
 local ItemVisibility = require(root.ClientModules.ItemVisibility)
+local Results = require(root.ClientModules.Results)
+local Styles = require(root.ClientModules.Styles)
+local Catalog = require(root.Shared.Catalog)
 local player = Players.LocalPlayer
 local ui = Hud.create()
 ui.Screen.Parent = player:WaitForChild("PlayerGui", 20)
@@ -16,12 +19,21 @@ player.CameraMaxZoomDistance = 20
 player.CameraMode = Enum.CameraMode.Classic
 local View = require(root.Shared.Presentation)
 local Wire = require(root.Shared.NetworkState)
-local Rules = require(root.Shared.GameRules)
 local RunService = game:GetService("RunService")
 local state = nil
 local connections = {}
 local sounds = {}
 local displayedTarget = nil
+local results = Results.create(ui.Screen)
+local collection = Styles.create(ui.Screen, function(action, id)
+	root.Action:FireServer(action, id)
+end)
+local board = nil
+local visibilityFolder = nil
+local visibilityConnection = nil
+local visibilityDirty = true
+local visibilityMask = -1
+local visibilityRound = -1
 local function currentTarget()
 	local character = player.Character
 	local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
@@ -29,7 +41,7 @@ local function currentTarget()
 	if not state or not center or not humanoid or humanoid.Health <= 0 then
 		return nil
 	end
-	return View.collectionTarget(Rules.items, state, center.Position)
+	return View.collectionTarget(Catalog.items(state.stage), state, center.Position)
 end
 local function orientCamera(character)
 	local center = character:WaitForChild("HumanoidRootPart", 10)
@@ -115,7 +127,38 @@ table.insert(
 		end
 	end)
 )
+table.insert(
+	connections,
+	ui.Next.Activated:Connect(function()
+		root.Action:FireServer("next")
+	end)
+)
+table.insert(
+	connections,
+	ui.Styles.Activated:Connect(function()
+		collection.Panel.Visible = not collection.Panel.Visible
+	end)
+)
+table.insert(
+	connections,
+	results.Styles.Activated:Connect(function()
+		collection.Panel.Visible = true
+	end)
+)
+table.insert(
+	connections,
+	results.Replay.Activated:Connect(function()
+		root.Action:FireServer("again")
+	end)
+)
+table.insert(
+	connections,
+	results.Tab.Activated:Connect(function()
+		results.showStage = not results.showStage
+	end)
+)
 local previousWarning = false
+local previousRemaining = nil
 local previousOpen = nil
 local function render()
 	if not state then
@@ -124,14 +167,64 @@ local function render()
 	displayedTarget = currentTarget()
 	local display = table.clone(state)
 	display.target = displayedTarget
+	local center = if player.Character
+		then player.Character:FindFirstChild("HumanoidRootPart")
+		else nil
+	display.inBase = center ~= nil and center.Position.Z <= 0
+	local item = if displayedTarget then Catalog.items(state.stage)[displayedTarget] else nil
+	display.tooHeavy = state.tooHeavy and displayedTarget == state.target
+	if item then
+		display.targetInfo = if item.special
+			then "Weight ? | Value ?"
+			else "Weight " .. item.weight .. " | Value " .. item.value
+	end
 	Hud.update(ui, display, UserInputService.TouchEnabled)
+	Styles.update(collection, display)
+	Results.update(results, state, tostring(player.UserId))
+	results.Panel.Visible = results.Panel.Visible and not collection.Panel.Visible
 	local world = workspace:FindFirstChild("GrabItWorld")
-	TargetPrompt.update(
-		targetPrompt,
-		display,
-		if world then world:FindFirstChild("Items") else nil,
-		UserInputService.TouchEnabled
-	)
+	local items = if world and world:GetAttribute("Stage") == state.stage
+		then world:FindFirstChild("Items")
+		else nil
+	TargetPrompt.update(targetPrompt, display, items, UserInputService.TouchEnabled)
+	if items then
+		if visibilityFolder ~= items then
+			if visibilityConnection then
+				visibilityConnection:Disconnect()
+			end
+			visibilityFolder = items
+			visibilityDirty = true
+			visibilityConnection = items.DescendantAdded:Connect(function()
+				visibilityDirty = true
+			end)
+		end
+		local mask = 0
+		for id, value in state.collected do
+			if value then
+				mask += 2 ^ id
+			end
+		end
+		if visibilityDirty or visibilityMask ~= mask or visibilityRound ~= state.roundId then
+			for _, part in items:GetChildren() do
+				if part:IsA("BasePart") then
+					ItemVisibility.set(part, state.collected[part:GetAttribute("ItemId")] == true)
+				end
+			end
+			visibilityMask = mask
+			visibilityRound = state.roundId
+			visibilityDirty = false
+		end
+	end
+	local boardPart = if world then world:FindFirstChild("LiveResults") else nil
+	if boardPart and (not board or board.Gui.Adornee ~= boardPart) then
+		if board then
+			board.Gui:Destroy()
+		end
+		board = Results.board(ui.Screen.Parent, boardPart)
+	end
+	if board then
+		Results.fill(board, state.rows or {}, tostring(player.UserId), false)
+	end
 end
 local renderElapsed = 0
 table.insert(
@@ -140,9 +233,7 @@ table.insert(
 		renderElapsed += dt
 		if renderElapsed >= 0.1 then
 			renderElapsed = 0
-			if currentTarget() ~= displayedTarget then
-				render()
-			end
+			render()
 		end
 	end)
 )
@@ -161,16 +252,15 @@ table.insert(
 		end
 		previousWarning = state.warning
 		previousOpen = state.open
-		local world = workspace:FindFirstChild("GrabItWorld")
-		local items = if world then world:FindFirstChild("Items") else nil
-		if items then
-			for _, part in items:GetChildren() do
-				if part:IsA("BasePart") then
-					local hidden = state.collected[part:GetAttribute("ItemId")] == true
-					ItemVisibility.set(part, hidden)
-				end
-			end
+		if
+			state.open
+			and state.remaining <= 5
+			and previousRemaining
+			and state.remaining < previousRemaining
+		then
+			play("warning")
 		end
+		previousRemaining = state.remaining
 		render()
 	end)
 )
@@ -179,7 +269,7 @@ ui.Coins.Text = "Loading progress"
 ui.Tutorial.Text = "Connecting to warehouse"
 ui.Round.Text = "GRAB IT & RUN"
 ui.Style.Text = ""
-ui.Bag.Text = "BAG 0 / 5"
+ui.Bag.Text = "Weight 0 / 10"
 root.Action:FireServer("ready")
 table.insert(
 	connections,
@@ -189,6 +279,13 @@ table.insert(
 		end
 		for _, sound in sounds do
 			sound:Destroy()
+		end
+		if visibilityConnection then
+			visibilityConnection:Disconnect()
+		end
+		Styles.destroy(collection)
+		if board then
+			board.Gui:Destroy()
 		end
 		ui.Screen:Destroy()
 		targetPrompt.Gui:Destroy()

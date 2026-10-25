@@ -1,25 +1,5 @@
 --!strict
 local View = {}
-local tiers = {
-	{ threshold = 30, name = "Copper", color = { 184, 115, 51 } },
-	{ threshold = 100, name = "Silver", color = { 195, 211, 220 } },
-	{ threshold = 300, name = "Gold", color = { 255, 201, 63 } },
-}
-function View.style(coins: number)
-	local tier = 0
-	for id, entry in tiers do
-		if coins >= entry.threshold then
-			tier = id
-		end
-	end
-	return {
-		tier = tier,
-		name = if tier == 0 then "Starter" else tiers[tier].name,
-		color = if tier == 0 then { 90, 125, 140 } else tiers[tier].color,
-		target = if tier < #tiers then tiers[tier + 1].threshold else nil,
-		nextName = if tier < #tiers then tiers[tier + 1].name else nil,
-	}
-end
 function View.inWarehouse(x: number, y: number, z: number): boolean
 	return math.abs(x) <= 24 and y >= 0 and y <= 20 and z > 0 and z <= 120
 end

@@ -5,129 +5,243 @@ local HttpService = game:GetService("HttpService")
 local DataStoreService = game:GetService("DataStoreService")
 local root = game:GetService("ReplicatedStorage"):WaitForChild("GrabIt")
 local Rules = require(root.Shared.GameRules)
+local Catalog = require(root.Shared.Catalog)
+local Cosmetics = require(root.Shared.Cosmetics)
 local View = require(root.Shared.Presentation)
 local Wire = require(root.Shared.NetworkState)
 local Session = require(root.Shared.Session)
 local Persistence = require(root.Shared.Persistence)
+local Profile = require(root.Shared.Profile)
+local LoadProgress = require(root.Shared.LoadProgress)
 local World = require(script.Parent.GrabItModules.World)
 local Appearance = require(script.Parent.GrabItModules.Appearance)
 local StorageMode = require(script.Parent.GrabItModules.StorageMode)
-local world = World.build()
-local start = workspace:GetServerTimeNow()
 local session = Session.new(function()
-	return workspace:GetServerTimeNow() - start
+	return workspace:GetServerTimeNow()
 end)
+local world = World.build()
 local studio = RunService:IsStudio()
 local storage = StorageMode.select(
 	studio,
 	if studio then game:GetService("ServerStorage"):GetAttribute("GrabItQACloudRun") else nil
 )
-local memoryOnly = storage.memory
-local memory = {}
-local dataStore = if memoryOnly
+local dataStore = if storage.memory
 	then nil
-	else DataStoreService:GetDataStore(
-		assert(storage.name, "cloud storage requires a store name"),
-		"global"
-	)
+	else DataStoreService:GetDataStore(assert(storage.name, "Store name missing"), "global")
+local memory = {}
 local function update(key, transform)
-	if memoryOnly then
-		local result = transform(memory[key])
-		if result then
-			memory[key] = result
+	if storage.memory then
+		local value = transform(memory[key])
+		if value then
+			memory[key] = value
 		end
-		return result
+		return value
 	end
-	assert(dataStore, "cloud storage must be selected before updating")
+	assert(dataStore, "Store missing")
 	return dataStore:UpdateAsync(key, function(old)
-		local result = transform(old)
-		if result then
-			if studio then
-				return result
-			end
-			return result, { tonumber(string.sub(key, 6)) }
+		local value = transform(old)
+		if value and not studio then
+			return value, { tonumber(string.sub(key, 6)) }
 		end
-		return nil
+		return value
 	end)
 end
 local entries = {}
 local stopping = false
-local function notice(player, text, kind)
-	root.Notice:FireClient(player, text, kind)
+local snapshot = Profile.capture
+local function notice(player, text: string, kind: string): ()
+	if player.Parent then
+		root.Notice:FireClient(player, text, kind)
+	end
 end
-local function resetPosition(entry, character)
+local function resetPosition(entry, character: Model): ()
 	local destination = CFrame.new(0, 4, -18) * CFrame.Angles(0, math.pi, 0)
 	character:PivotTo(destination)
 	entry.lastPosition = destination.Position
 	entry.budget = 6
 	entry.lastMovement = os.clock()
 end
-local function movement(entry, position)
+local function movement(entry, position: Vector3): boolean
+	if
+		position.X ~= position.X
+		or position.Y ~= position.Y
+		or position.Z ~= position.Z
+		or position.Magnitude == math.huge
+	then
+		return false
+	end
 	local now = os.clock()
-	local p = session:get(entry.sessionId)
+	local p = entry.p
 	entry.budget =
 		math.min(6, entry.budget + (now - entry.lastMovement) * (if p then Rules.speed(p) else 16))
 	entry.lastMovement = now
-	local traveled = (position - entry.lastPosition).Magnitude
-	if traveled > entry.budget + 1 or position.Y ~= position.Y then
+	local distance = (position - entry.lastPosition).Magnitude
+	if distance > entry.budget + 1 then
 		return false
 	end
-	entry.budget = math.max(0, entry.budget - traveled)
+	entry.budget = math.max(0, entry.budget - distance)
 	entry.lastPosition = position
 	return true
 end
-local function appearance(player)
-	local entry = entries[player]
-	local p = if entry then session:get(entry.sessionId) else nil
-	local character = player.Character
-	if p and character then
-		Appearance.update(character, p)
+local function appearance(player, entry): ()
+	if entry.p and player.Character then
+		Appearance.update(player.Character, entry.p)
 	end
 end
-local function send(player, entry)
+local function dirty(entry): ()
+	entry.dirtyAt = entry.dirtyAt or os.clock()
+end
+local function save(entry, release: boolean): boolean
+	if not entry.p or entry.saving or entry.pending then
+		return false
+	end
+	entry.saving = true
+	local data = snapshot(entry.p)
+	local ok = if release
+		then entry.store:releaseProfile(entry.key, data)
+		else entry.store:saveProfile(entry.key, data)
+	entry.saving = false
+	entry.nextSaveAt = os.clock() + 5
+	if ok then
+		entry.lastSaved = os.clock()
+		if entry.p.revision == data.revision then
+			entry.dirtyAt = nil
+			entry.status = "Saved"
+		end
+	end
+	return ok
+end
+local function purchase(player, entry, id: string): ()
+	if entry.pending or entry.p.owned[id] then
+		return
+	end
+	local style = Cosmetics.get(id)
+	if not style or entry.p.coins < style.price then
+		notice(player, "Not enough Coins", "warning")
+		return
+	end
+	local pending =
+		{ id = HttpService:GenerateGUID(false), style = id, started = os.clock(), snapshot = nil }
+	entry.pending = pending
+	task.spawn(function()
+		local delaySeconds = 1
+		while entry.pending == pending do
+			if entry.saving then
+				task.wait(0.2)
+				continue
+			end
+			if not pending.snapshot then
+				pending.snapshot = snapshot(entry.p)
+			end
+			entry.saving = true
+			local status, confirmed =
+				entry.store:purchase(entry.key, id, pending.snapshot, pending.id)
+			entry.saving = false
+			if status == "confirmed" then
+				local p = entry.p
+				if Profile.confirmPurchase(p, pending.snapshot, confirmed) then
+					dirty(entry)
+				else
+					entry.dirtyAt = nil
+					entry.status = "Saved"
+				end
+				entry.pending = nil
+				entry.lastSaved = os.clock()
+				entry.nextSaveAt = os.clock() + 5
+				appearance(player, entry)
+				notice(player, "Purchased " .. style.name, "style")
+				return
+			elseif status ~= "pending" then
+				entry.pending = nil
+				notice(player, "Purchase unavailable. Try again", "warning")
+				return
+			end
+			-- An error may follow a committed write. Retry the same transaction, never a new debit.
+			if stopping and os.clock() - pending.started > 24 then
+				return
+			end
+			if not player.Parent and os.clock() - pending.started > 20 then
+				return
+			end
+			task.wait(delaySeconds)
+			delaySeconds = math.min(4, delaySeconds * 2)
+		end
+	end)
+end
+local function send(player, entry, r, rows): ()
 	if not player.Parent then
 		return
 	end
-	local p = session:get(entry.sessionId)
-	local round = Rules.round(workspace:GetServerTimeNow() - start)
-	local character = player.Character
-	local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
-	local collected = if p and p.roundId == round.id then p.collected else {}
+	local p = entry.p
+	local center = if player.Character
+		then player.Character:FindFirstChild("HumanoidRootPart")
+		else nil
+	local collected = if p then p.collected else {}
+	local items = Catalog.items(r.stage)
 	local target = if p
 			and center
-			and round.open
+			and r.open
 			and View.inWarehouse(center.Position.X, center.Position.Y, center.Position.Z)
 		then View.nearest(
-			Rules.items,
+			items,
 			collected,
-			round.id,
+			r.id,
 			center.Position.X,
 			center.Position.Y,
 			center.Position.Z
 		)
 		else nil
-	local save = entry.status
+	local display = if p then Rules.cargoDisplay(p) else { weight = "0", value = "0" }
+	local saveStatus = entry.status
 	if p and entry.dirtyAt then
-		save = if os.clock() - entry.dirtyAt >= 10
+		saveStatus = if os.clock() - entry.dirtyAt >= 10
 			then "Not saved yet. Rejoining may lose recent progress."
 			else "Saving"
 	end
-	if memoryOnly and p and not entry.dirtyAt then
-		save = "Studio session only"
+	if storage.memory and p and not entry.dirtyAt then
+		saveStatus = "Studio session only"
 	end
+	local pending = entry.pending
+	local purchaseStatus = if pending
+		then (if os.clock() - pending.started >= 10
+			then "Purchase pending. Rejoining may delay confirmation."
+			else "Purchase pending")
+		else ""
 	local state = {
 		coins = if p then p.coins else 0,
 		cargoCount = if p then #p.cargo else 0,
-		cargoValue = if p then Rules.value(p) else 0,
-		open = round.open,
-		remaining = round.remaining,
-		warning = round.warning,
-		roundId = round.id,
+		cargoWeight = display.weight,
+		cargoValue = display.value,
+		capacity = Catalog.stages[r.stage].capacity,
+		stage = r.stage,
+		stageName = Catalog.stages[r.stage].name,
+		totalItems = #items,
+		bankedCount = if p then p.bankedCount else 0,
+		open = r.open,
+		phase = r.phase,
+		mode = r.mode,
+		remaining = r.remaining,
+		warning = r.warning,
+		roundId = r.id,
 		target = target,
 		ready = p ~= nil,
-		save = save,
+		save = saveStatus,
 		tutorial = if p then p.tutorial else false,
 		collected = Wire.packCollected(collected),
+		tooHeavy = p ~= nil
+			and target ~= nil
+			and Rules.weight(p) + items[target].weight > Catalog.stages[r.stage].capacity,
+		inBase = center ~= nil and center.Position.Z <= 0,
+		canNext = r.canNext and p ~= nil,
+		owned = if p then p.owned else { basic = true },
+		selected = if p then p.selected else "basic",
+		purchase = purchaseStatus,
+		rows = rows,
+		matchRows = if r.phase == "summary" then session.matchResults else {},
+		personal = {
+			earnings = if p then p.runEarnings else 0,
+			stages = if p then p.stageEarnings else { 0, 0, 0 },
+		},
 	}
 	local signature = HttpService:JSONEncode(state)
 	if signature ~= entry.lastState then
@@ -135,28 +249,7 @@ local function send(player, entry)
 		root.State:FireClient(player, state)
 	end
 end
-local function save(entry, release)
-	if not session:get(entry.sessionId) or entry.saving then
-		return false
-	end
-	entry.saving = true
-	local p = session:get(entry.sessionId)
-	local coins, tutorial = p.coins, p.tutorial
-	local ok = if release
-		then entry.store:release(entry.key, coins, tutorial)
-		else entry.store:save(entry.key, coins, tutorial)
-	entry.saving = false
-	if ok then
-		entry.lastSaved = os.clock()
-		if p.coins == coins then
-			entry.dirtyAt = nil
-			entry.status = "Saved"
-		end
-	end
-	return ok
-end
 local collision = game:GetService("PhysicsService")
--- Compatibility with the locally verified Studio build; prefer workspace-scoped APIs when available.
 local workspaceGroups = pcall(function()
 	workspace:RegisterCollisionGroup("GrabItPlayers")
 	workspace:CollisionGroupSetCollidable("GrabItPlayers", "GrabItPlayers", false)
@@ -167,7 +260,7 @@ if not workspaceGroups then
 	end
 	collision:CollisionGroupSetCollidable("GrabItPlayers", "GrabItPlayers", false)
 end
-local function characterAdded(player, entry, character)
+local function characterAdded(player, entry, character: Model): ()
 	if entry.characterConnection then
 		entry.characterConnection:Disconnect()
 	end
@@ -185,18 +278,20 @@ local function characterAdded(player, entry, character)
 	if not humanoid or not center or entries[player] ~= entry then
 		return
 	end
-	local p = session:get(entry.sessionId)
-	if p then
-		Rules.lose(p)
+	if entry.p then
+		Rules.lose(entry.p)
 	end
 	if entry.deathConnection then
 		entry.deathConnection:Disconnect()
 	end
 	entry.deathConnection = humanoid.Died:Connect(function()
-		local current = session:get(entry.sessionId)
-		if current then
-			Rules.lose(current)
-			appearance(player)
+		if entry.p then
+			local hadCargo = #entry.p.cargo > 0
+			Rules.lose(entry.p)
+			appearance(player, entry)
+			if hadCargo then
+				notice(player, "Cargo lost. Banked coins kept", "lost")
+			end
 		end
 	end)
 	humanoid.JumpPower = 0
@@ -204,24 +299,26 @@ local function characterAdded(player, entry, character)
 	humanoid.AutoJumpEnabled = false
 	humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
 	resetPosition(entry, character)
-	appearance(player)
+	appearance(player, entry)
 end
-local function joined(player)
+local function joined(player): ()
 	if entries[player] then
 		return
 	end
 	local entry = {
 		key = storage.keyPrefix .. "User_" .. player.UserId,
-		sessionId = HttpService:GenerateGUID(false),
+		sessionId = tostring(player.UserId),
 		store = Persistence.new(update, HttpService:GenerateGUID(false), os.time),
 		status = "Loading progress",
 		lastSaved = os.clock(),
+		nextSaveAt = os.clock() + 5,
 		lastRequest = 0,
 		lastMovement = os.clock(),
 		lastPosition = Vector3.new(0, 4, -18),
 		budget = 6,
 		connections = {},
 	}
+	entry.loadDeadline = os.clock() + 15
 	entries[player] = entry
 	table.insert(
 		entry.connections,
@@ -233,18 +330,25 @@ local function joined(player)
 		task.spawn(characterAdded, player, entry, player.Character)
 	end
 	task.spawn(function()
-		local deadline = os.clock() + 15
+		local deadline = entry.loadDeadline
 		repeat
-			local data = entry.store:load(entry.key)
+			local data, loading = LoadProgress.attempt(entry.store, entry.key, deadline, os.clock)
+			if loading == "expired" then
+				break
+			end
 			if data then
 				if entries[player] ~= entry or stopping then
-					entry.store:release(entry.key, data.coins, data.tutorial)
+					entry.store:releaseProfile(entry.key, data)
 					return
 				end
-				session:add(entry.sessionId, data.coins, data.tutorial)
+				local p =
+					session:add(entry.sessionId, data.coins, data.tutorial, player.DisplayName)
+				p.owned = table.clone(data.owned)
+				p.selected = data.selected
+				p.revision = data.revision
+				entry.p = p
 				entry.status = "Saved"
-				appearance(player)
-				send(player, entry)
+				appearance(player, entry)
 				return
 			end
 			if entries[player] ~= entry or stopping then
@@ -253,29 +357,19 @@ local function joined(player)
 			task.wait(1)
 		until os.clock() >= deadline
 		entry.status = "Progress unavailable. Rejoin to retry"
-		send(player, entry)
 	end)
 end
-root.Action.OnServerEvent:Connect(function(player, action, itemId)
+root.Action.OnServerEvent:Connect(function(player, action, arg)
 	local entry = entries[player]
-	if not entry or os.clock() - entry.lastRequest < 0.12 then
+	if not entry or type(action) ~= "string" or os.clock() - entry.lastRequest < 0.12 then
 		return
 	end
 	entry.lastRequest = os.clock()
 	if action == "ready" then
 		entry.lastState = nil
-		send(player, entry)
 		return
 	end
-	if
-		action ~= "collect"
-		or type(itemId) ~= "number"
-		or itemId % 1 ~= 0
-		or not Rules.items[itemId]
-	then
-		return
-	end
-	local p = session:get(entry.sessionId)
+	local p = entry.p
 	local character = player.Character
 	local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
 	local humanoid = if character then character:FindFirstChildOfClass("Humanoid") else nil
@@ -288,27 +382,66 @@ root.Action.OnServerEvent:Connect(function(player, action, itemId)
 	then
 		return
 	end
+	session:tick()
+	local r = session:state()
+	if action == "next" then
+		session:advance(entry.sessionId)
+		return
+	end
+	if action == "again" then
+		session:playAgain(entry.sessionId)
+		return
+	end
+	if action == "buy" or action == "equip" then
+		if
+			type(arg) ~= "string"
+			or #arg > 16
+			or not Cosmetics.get(arg)
+			or (r.open and not (center.Position.Z <= 0 and math.abs(center.Position.X) <= 24))
+		then
+			return
+		end
+		if action == "buy" then
+			purchase(player, entry, arg)
+		elseif Cosmetics.equip(p, arg) then
+			dirty(entry)
+			appearance(player, entry)
+		end
+		return
+	end
+	local items = Catalog.items(r.stage)
+	if
+		action ~= "collect"
+		or type(arg) ~= "number"
+		or arg % 1 ~= 0
+		or not items[arg]
+		or not r.open
+	then
+		return
+	end
+	local item = items[arg]
 	local params = RaycastParams.new()
 	params.CollisionGroup = "GrabItPlayers"
 	params.FilterType = Enum.RaycastFilterType.Exclude
 	params.FilterDescendantsInstances = { character, world.Items }
-	local point = Vector3.new(Rules.items[itemId].x, 2.5, Rules.items[itemId].z)
+	local point = Vector3.new(item.x, 2.5, item.z)
 	if workspace:Raycast(center.Position, point - center.Position, params) then
 		return
 	end
 	if
 		session:collect(
 			entry.sessionId,
-			itemId,
+			arg,
 			center.Position.X,
 			center.Position.Y,
 			center.Position.Z
 		)
 	then
 		humanoid.WalkSpeed = Rules.speed(p)
-		appearance(player)
-		notice(player, "Collected +" .. Rules.items[itemId].value, "collect")
-		send(player, entry)
+		appearance(player, entry)
+		notice(player, "Collected", "collect")
+	elseif Rules.weight(p) + item.weight > Catalog.stages[p.stage].capacity then
+		notice(player, "Too heavy", "warning")
 	end
 end)
 Players.PlayerAdded:Connect(joined)
@@ -318,6 +451,7 @@ Players.PlayerRemoving:Connect(function(player)
 		return
 	end
 	entries[player] = nil
+	session:remove(entry.sessionId)
 	for _, connection in entry.connections do
 		connection:Disconnect()
 	end
@@ -328,84 +462,107 @@ Players.PlayerRemoving:Connect(function(player)
 		entry.deathConnection:Disconnect()
 	end
 	task.spawn(function()
-		local deadline = os.clock() + 20
+		local deadline = os.clock() + 24
 		repeat
-			if not entry.saving and save(entry, true) then
-				break
+			if not entry.saving and not entry.pending and save(entry, true) then
+				return
 			end
 			task.wait(1)
 		until os.clock() >= deadline
-		session:remove(entry.sessionId)
 	end)
 end)
 for _, player in Players:GetPlayers() do
 	joined(player)
 end
-local previousOpen = nil
 local accumulated = 0
+local previousStage = 1
 RunService.Heartbeat:Connect(function(dt)
 	accumulated += dt
 	if accumulated < 0.1 then
 		return
 	end
 	accumulated = 0
-	local round = Rules.round(workspace:GetServerTimeNow() - start)
-	if previousOpen ~= round.open then
-		World.setOpen(world, round.open)
-		previousOpen = round.open
+	session:tick()
+	local r = session:state()
+	if r.stage ~= previousStage then
+		World.setStage(world, r.stage)
+		previousStage = r.stage
 	end
+	World.setOpen(world, r.open)
 	for player, entry in entries do
-		local p = session:get(entry.sessionId)
+		if not entry.p and os.clock() >= entry.loadDeadline then
+			entry.status = "Progress unavailable. Rejoin to retry"
+		end
+		local p = entry.p
+		if p and p.pendingLoss then
+			notice(player, "Cargo lost. Banked coins kept", "lost")
+			p.pendingLoss = false
+		end
 		local character = player.Character
 		local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
 		local humanoid = if character then character:FindFirstChildOfClass("Humanoid") else nil
 		if center and humanoid then
-			if not p then
-				center.Anchored = true
-			else
-				center.Anchored = false
+			if entry.generation ~= r.generation then
+				resetPosition(entry, character)
+				entry.generation = r.generation
+				appearance(player, entry)
+			end
+			center.Anchored = not p or not r.open
+			if p and r.open and humanoid.Health > 0 then
 				humanoid.WalkSpeed = Rules.speed(p)
 				if not movement(entry, center.Position) then
 					character:PivotTo(CFrame.new(entry.lastPosition))
 				end
 				local pos = center.Position
-				local previousTier = View.style(p.coins).tier
-				local event = session:step(entry.sessionId, pos.X, pos.Y, pos.Z)
 				if
-					event.returnHome
-					or math.abs(pos.X) > 26
+					math.abs(pos.X) > 26
 					or pos.Z > 122
 					or pos.Z < -26
 					or pos.Y < 0
 					or pos.Y > 22
 				then
+					local had = #p.cargo > 0
+					Rules.lose(p)
 					resetPosition(entry, character)
-				end
-				if event.lost then
-					appearance(player)
-					notice(player, "Cargo lost. Banked coins kept", "lost")
-				end
-				if event.banked > 0 then
-					entry.dirtyAt = entry.dirtyAt or os.clock()
-					appearance(player)
-					notice(player, "Banked +" .. event.banked, "bank")
-					local style = View.style(p.coins)
-					if style.tier > previousTier then
-						notice(player, "Style unlocked: " .. style.name, "style")
+					appearance(player, entry)
+					if had then
+						notice(player, "Cargo lost. Banked coins kept", "lost")
 					end
-				end
-				if
-					not entry.saving
-					and (
-						(entry.dirtyAt and os.clock() - entry.lastSaved >= 5)
-						or os.clock() - entry.lastSaved >= 30
-					)
-				then
-					task.spawn(save, entry, false)
+				else
+					local event = session:step(entry.sessionId, pos.X, pos.Y, pos.Z)
+					if event.banked > 0 then
+						dirty(entry)
+						appearance(player, entry)
+						notice(
+							player,
+							"Banked +"
+								.. event.banked
+								.. (
+									if event.special > 0
+										then " | Golden Reactor +" .. event.special
+										else ""
+								),
+							"bank"
+						)
+					end
 				end
 			end
 		end
-		send(player, entry)
+		if
+			p
+			and not entry.saving
+			and not entry.pending
+			and os.clock() >= entry.nextSaveAt
+			and (entry.dirtyAt or os.clock() - entry.lastSaved >= 30)
+		then
+			task.spawn(save, entry, false)
+		end
+	end
+	session:tick()
+	r = session:state()
+	local rows = session:rows()
+	for player, entry in entries do
+		send(player, entry, r, rows)
 	end
 end)
 game:BindToClose(function()
@@ -416,7 +573,7 @@ game:BindToClose(function()
 		task.spawn(function()
 			local deadline = os.clock() + 24
 			repeat
-				if not entry.saving and save(entry, true) then
+				if not entry.saving and not entry.pending and save(entry, true) then
 					break
 				end
 				task.wait(0.5)
@@ -430,9 +587,9 @@ game:BindToClose(function()
 	end
 end)
 print(
-	"GrabIt V1 server ready; persistence:",
-	if memoryOnly
+	"GrabIt V1 improvements server ready; persistence:",
+	if storage.memory
 		then "isolated Studio memory"
-		elseif studio then "isolated QA DataStore"
+		elseif studio then "isolated QA store"
 		else "DataStore"
 )

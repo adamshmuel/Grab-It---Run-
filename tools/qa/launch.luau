@@ -10,6 +10,10 @@ return function(players: number, duration: number, collectionOnly: boolean?, loo
 		players >= 1 and players <= 8 and duration >= 0 and duration <= 900,
 		"bounded QA settings"
 	)
+	assert(
+		not game:GetService("ReplicatedStorage").GrabIt.Shared:FindFirstChild("Catalog"),
+		"Historical QA runner requires adaptation for the approved weight/stage revision; acceptance is paused"
+	)
 	local server = game:GetService("ServerScriptService")
 	local client = game:GetService("StarterPlayer").StarterPlayerScripts
 	assert(

@@ -26,20 +26,65 @@ return function()
 	local data = a:load("player")
 	assert(data and data.coins == 0, "new player defaults")
 	assert(b:load("player") == nil, "active session rejected")
-	assert(a:save("player", 7, true), "deposit saved")
-	assert(a:save("player", 7, true), "repeated save is idempotent")
+	assert(
+		a:saveProfile("player", {
+			coins = 7,
+			tutorial = true,
+			owned = { basic = true },
+			selected = "basic",
+			revision = 1,
+		}),
+		"deposit saved"
+	)
+	assert(
+		a:saveProfile("player", {
+			coins = 7,
+			tutorial = true,
+			owned = { basic = true },
+			selected = "basic",
+			revision = 1,
+		}),
+		"repeated save is idempotent"
+	)
 	assert(records.player.coins == 7, "repeat cannot duplicate")
 	fail = true
 	assert(a:load("other") == nil and records.other == nil, "load failure cannot create defaults")
-	assert(not a:save("player", 30, true), "failed save must not acknowledge")
+	assert(not a:saveProfile("player", {
+		coins = 30,
+		tutorial = true,
+		owned = { basic = true },
+		selected = "basic",
+		revision = 2,
+	}), "failed save must not acknowledge")
 	fail = false
-	assert(a:release("player", 7, true), "release saves final progress")
+	assert(
+		a:releaseProfile("player", {
+			coins = 7,
+			tutorial = true,
+			owned = { basic = true },
+			selected = "basic",
+			revision = 1,
+		}),
+		"release saves final progress"
+	)
 	local joined = b:load("player")
 	assert(joined and joined.coins == 7 and joined.tutorial, "rejoin restores confirmed progress")
-	assert(not a:save("player", 999, true), "old session cannot overwrite")
+	assert(not a:saveProfile("player", {
+		coins = 999,
+		tutorial = true,
+		owned = { basic = true },
+		selected = "basic",
+		revision = 99,
+	}), "old session cannot overwrite")
 	clock += 121
 	assert(a:load("player"), "expired lease may be acquired")
-	assert(not b:save("player", 10, true), "expired old owner cannot overwrite new session")
+	assert(not b:saveProfile("player", {
+		coins = 10,
+		tutorial = true,
+		owned = { basic = true },
+		selected = "basic",
+		revision = 2,
+	}), "expired old owner cannot overwrite new session")
 	records.broken = { version = 1, coins = -1, tutorial = false }
 	assert(a:load("broken") == nil and records.broken.coins == -1, "corrupt records fail closed")
 	print("PASS persistence locks, outages, rejoin, retries and stale sessions")

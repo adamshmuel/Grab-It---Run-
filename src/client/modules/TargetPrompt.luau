@@ -7,6 +7,8 @@ type PromptState = {
 	target: number?,
 	collected: { [number]: boolean },
 	cargoCount: number,
+	tooHeavy: boolean?,
+	targetInfo: string?,
 }
 
 function Prompt.create(parent: Instance): PromptUI
@@ -16,7 +18,7 @@ function Prompt.create(parent: Instance): PromptUI
 	gui.ResetOnSpawn = false
 	gui.AlwaysOnTop = false
 	gui.MaxDistance = 32
-	gui.Size = UDim2.fromOffset(156, 34)
+	gui.Size = UDim2.fromOffset(200, 54)
 	gui.StudsOffsetWorldSpace = Vector3.new(0, 4, 0)
 	local label = Instance.new("TextLabel")
 	label.Name = "Action"
@@ -43,9 +45,11 @@ function Prompt.update(ui: PromptUI, state: PromptState, items: Instance?, touch
 		else nil
 	ui.Gui.Adornee = if target and target:IsA("BasePart") then target else nil
 	ui.Gui.Enabled = ui.Gui.Adornee ~= nil
-	ui.Label.Text = if state.cargoCount >= 5
-		then "Bag full"
-		else (if touch then "Collect" else "Collect [E]")
+	ui.Label.Text = if state.tooHeavy
+		then "Too heavy"
+		else (if touch then "Collect" else "Collect [E]") .. (if state.targetInfo
+			then "\n" .. state.targetInfo
+			else "")
 end
 
 return Prompt

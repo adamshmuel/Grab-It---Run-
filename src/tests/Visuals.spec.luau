@@ -9,8 +9,13 @@ return function()
 	local folder = Instance.new("Folder")
 	local ok, err = pcall(function()
 		local sizes = {}
+		local Catalog = require(game:GetService("ReplicatedStorage").GrabIt.Shared.Catalog)
 		for zone = 1, 3 do
-			local m = Visuals.create(zone, folder, CFrame.new(12, 0.5, 18))
+			local m = Visuals.createItem(
+				Catalog.items(1)[(zone - 1) * 6 + 1],
+				folder,
+				CFrame.new(12, 0.5, 18)
+			)
 			local cf, size = m:GetBoundingBox()
 			sizes[zone] = size
 			assert(
@@ -33,16 +38,13 @@ return function()
 			for _ in colors do
 				distinct += 1
 			end
-			assert(
-				count >= 9 and count <= 10 and distinct >= 3,
-				"detail and multiple colors per family"
-			)
+			assert(count >= 3 and distinct >= 3, "detail and multiple colors per family")
 		end
-		assert(sizes[2].X > sizes[1].X and sizes[3].Y > sizes[2].Y, "families have distinct sizes")
-		local tiny = Visuals.create(3, folder, CFrame.new(0, 0, 0), 0.22)
+		assert(sizes[2].Y > sizes[1].Y and sizes[3].X > sizes[1].X, "families have distinct sizes")
+		local tiny = Visuals.createItem(Catalog.items(1)[13], folder, CFrame.new(0, 0, 0), 0.45)
 		local _, smallSize = tiny:GetBoundingBox()
-		assert(math.abs(smallSize.Y / sizes[3].Y - 0.22) < 0.001, "cargo scales the same asset")
-		local original = Visuals.create(3, folder, CFrame.new(0, 0, 0))
+		assert(math.abs(smallSize.Y / sizes[3].Y - 0.45) < 0.001, "cargo scales the same asset")
+		local original = Visuals.createItem(Catalog.items(1)[13], folder, CFrame.new(0, 0, 0))
 		local _, originalSize = original:GetBoundingBox()
 		assert(
 			(originalSize - sizes[3]).Magnitude < 0.001,

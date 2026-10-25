@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-25",
+  "environment": {
+    "studioId": "99c22846-b4a9-450c-b2ca-48e35dec7419",
+    "placeId": 106986292768692,
+    "universeId": 10772701508,
+    "studioVersion": "0.744.0.7441077",
+    "mode": "Edit",
+    "storage": "no cloud access; injected stores in persistence tests"
+  },
+  "scope": "Development module tests. Not competitive, visual, device, multiplayer, cloud or human acceptance.",
+  "toolResult": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"scope\":\"development module tests only; not acceptance\",\"suites\":{\"18\":{\"suite\":\"Loading.spec\",\"result\":\"2\",\"passed\":true},\"9\":{\"suite\":\"NetworkState.spec\",\"result\":\"4\",\"passed\":true},\"1\":{\"suite\":\"Features.spec\",\"result\":\"6\",\"passed\":true},\"15\":{\"suite\":\"ImprovementPersistence.spec\",\"result\":\"21\",\"passed\":true},\"3\":{\"suite\":\"Hud.spec\",\"result\":\"7\",\"passed\":true},\"2\":{\"suite\":\"Gameplay.spec\",\"result\":\"7\",\"passed\":true},\"5\":{\"suite\":\"Session.spec\",\"result\":\"11\",\"passed\":true},\"4\":{\"suite\":\"Persistence.spec\",\"result\":\"12\",\"passed\":true},\"7\":{\"suite\":\"TargetPrompt.spec\",\"result\":\"4\",\"passed\":true},\"6\":{\"suite\":\"World.spec\",\"result\":\"7\",\"passed\":true},\"14\":{\"suite\":\"ImprovementSession.spec\",\"result\":\"11\",\"passed\":true},\"8\":{\"suite\":\"Appearance.spec\",\"result\":\"5\",\"passed\":true},\"16\":{\"suite\":\"ImprovementVisuals.spec\",\"result\":\"4\",\"passed\":true},\"17\":{\"suite\":\"ImprovementUI.spec\",\"result\":\"5\",\"passed\":true},\"13\":{\"suite\":\"ImprovementRules.spec\",\"result\":\"5\",\"passed\":true},\"12\":{\"suite\":\"StorageMode.spec\",\"result\":\"5\",\"passed\":true},\"11\":{\"suite\":\"ItemVisibility.spec\",\"result\":\"4\",\"passed\":true},\"10\":{\"suite\":\"Visuals.spec\",\"result\":\"5\",\"passed\":true}},\"failed\":0,\"count\":18}"
+      }
+    ],
+    "isError": false
+  }
+}

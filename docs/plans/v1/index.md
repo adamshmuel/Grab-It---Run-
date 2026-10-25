@@ -1,12 +1,14 @@
 # מימוש V1
 
-אדם אישר את הגדרות V1 וביקש להתחיל לבנות בתאריך 22/10/2026. אלו תוכניות המימוש שנכתבו לאחר האישור.
+[מקצה השיפורים המאושר — סדר העבודה והעצירה](improvements.md) הוא נקודת הכניסה למימוש הנוכחי.
 
-- [כללי המשחק](gameplay.md)
-- [המחסן](warehouse.md)
-- [קלט וממשק](controls-feedback.md)
-- [התקדמות](progression.md)
-- [שמירה](saving.md)
-- [קבלה ואינטגרציה](acceptance.md)
+- [קטלוג ודגמים](item-catalog.md)
+- [נשיאה לפי משקל](carrying-weight.md)
+- [שלבים ודירוג](stage-progression.md)
+- [קנייה ובחירה](cosmetics.md)
+- [שמירה ורכישה אטומית](saving.md)
+- [סביבת השלבים](stage-content.md)
+- [מידע, דירוג וקלט](controls-feedback.md)
+- [הכנת שלב הקבלה ועצירה](improvement-acceptance.md)
 
-המקור להיקף הוא [מפת ההגדרות](../../specs/v1/index.md). דוח התוצאות יבדיל בין מימוש, בדיקות ואישור קבלה.
+תוכניות gameplay, warehouse, progression וכן acceptance מתעדות את הבסיס הישן; אין להשתמש בהן כדי להחזיר התנהגות שהוחלפה בהגדרות המאושרות.

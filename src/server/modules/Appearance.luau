@@ -1,72 +1,77 @@
 --!strict
-local Rules = require(game:GetService("ReplicatedStorage").GrabIt.Shared.GameRules)
-local View = require(game:GetService("ReplicatedStorage").GrabIt.Shared.Presentation)
+local shared = game:GetService("ReplicatedStorage").GrabIt.Shared
+local Catalog = require(shared.Catalog)
+local Gear = require(shared.Gear)
 local Visuals = require(script.Parent.Visuals)
 local Appearance = {}
-function Appearance.update(character: Model, p: { coins: number, cargo: { number } }): Model?
+function Appearance.update(character: Model, p): Model?
 	local center = character:FindFirstChild("HumanoidRootPart")
 	if not center or not center:IsA("BasePart") then
-		return
+		return nil
 	end
-	local previous = character:FindFirstChild("GrabItCargo")
-	if previous then
-		previous:Destroy()
+	local old = character:FindFirstChild("GrabItCargo")
+	if old then
+		old:Destroy()
 	end
 	local model = Instance.new("Model")
 	model.Name = "GrabItCargo"
-	local function piece(name: string, size: Vector3, offset: Vector3, color: Color3)
-		local part = Instance.new("Part")
-		part.Name = name
-		part.Size = size
-		part.Color = color
-		part.Material = Enum.Material.SmoothPlastic
-		part.CanCollide = false
-		part.CanTouch = false
-		part.CanQuery = false
-		part.Massless = true
-		part.CFrame = center.CFrame * CFrame.new(offset)
-		part.Parent = model
-		local weld = Instance.new("WeldConstraint")
-		weld.Part0 = center
-		weld.Part1 = part
-		weld.Parent = part
-	end
-	local bottom, rowHeight = -1.4, 0
-	for index, id in p.cargo do
-		local cargo = Visuals.create(
-			Rules.items[id].zone,
-			model,
-			center.CFrame * CFrame.new(if index % 2 == 1 then 1.5 else 2.65, bottom, 1.5),
-			0.4
-		)
-		local _, size = cargo:GetBoundingBox()
-		rowHeight = math.max(rowHeight, size.Y)
-		if index % 2 == 0 then
-			bottom += rowHeight + 0.08
-			rowHeight = 0
-		end
-		for _, detail in cargo:GetDescendants() do
-			if detail:IsA("BasePart") then
-				detail.Anchored = false
-				detail.Massless = true
-				local weld = Instance.new("WeldConstraint")
-				weld.Part0 = center
-				weld.Part1 = detail
-				weld.Parent = detail
-			end
+	local equipment = Gear.create(p.selected)
+	equipment:PivotTo(center.CFrame * CFrame.new(0, 0, 1))
+	equipment.Parent = model
+	local shown = {}
+	local special = nil
+	local items = Catalog.items(p.stage)
+	for _, id in p.cargo do
+		if items[id].special then
+			special = id
 		end
 	end
-	local style = View.style(p.coins)
-	if style.tier > 0 then
-		local color = Color3.fromRGB(table.unpack(style.color))
-		for _, x in { 0.9, 3.25 } do
-			piece("Frame", Vector3.new(0.08, 3.8, 0.08), Vector3.new(x, 0.45, 1.5), color)
+	if special then
+		table.insert(shown, special)
+	end
+	for i = #p.cargo, 1, -1 do
+		if #shown >= 3 then
+			break
 		end
-		for _, y in { -1.45, 2.35 } do
-			piece("Frame", Vector3.new(2.35, 0.08, 0.08), Vector3.new(2.075, y, 1.5), color)
+		if p.cargo[i] ~= special then
+			table.insert(shown, p.cargo[i])
 		end
+	end
+	for index, id in shown do
+		local offset = if index == 3
+			then Vector3.new(0, 0.25, 1.65)
+			else Vector3.new(if index == 1 then -0.68 else 0.68, -1.3, 1.7)
+		Visuals.createItem(items[id], model, center.CFrame * CFrame.new(offset), 0.45)
+	end
+	for _, part in model:GetDescendants() do
+		if part:IsA("BasePart") then
+			part.Anchored = false
+			part.Massless = true
+			local weld = Instance.new("WeldConstraint")
+			weld.Part0 = center
+			weld.Part1 = part
+			weld.Parent = part
+		end
+	end
+	if #p.cargo > #shown then
+		local count = Instance.new("BillboardGui")
+		count.Name = "ExtraCargo"
+		count.Adornee = center
+		count.Size = UDim2.fromOffset(70, 32)
+		count.StudsOffset = Vector3.new(1.8, 0.3, 0)
+		count.MaxDistance = 40
+		local label = Instance.new("TextLabel")
+		label.Size = UDim2.fromScale(1, 1)
+		label.BackgroundTransparency = 0.2
+		label.BackgroundColor3 = Color3.fromRGB(24, 32, 51)
+		label.TextColor3 = Color3.new(1, 1, 1)
+		label.Font = Enum.Font.GothamBold
+		label.TextSize = 22
+		label.Text = "+" .. (#p.cargo - #shown)
+		label.Parent = count
+		count.Parent = model
 	end
 	model.Parent = character
 	return model
 end
-return Appearance
+return table.freeze(Appearance)

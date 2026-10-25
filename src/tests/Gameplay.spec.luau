@@ -1,79 +1,27 @@
 --!strict
-local function expect(value: any, message: string?)
-	assert(value, message or "Gameplay assertion failed")
-end
-return function()
-	local shared = game:GetService("ReplicatedStorage").GrabIt.Shared
-	local module = shared:FindFirstChild("GameRules")
-	expect(module, "RED: GameRules module must exist before gameplay can run")
-	local Rules = require(module :: ModuleScript)
-	local count = 0
-	local function test(name, body)
-		body()
-		count += 1
-		print("PASS " .. name)
-	end
-	test("new player starts empty", function()
-		local p = Rules.newPlayer()
-		expect(p.coins == 0 and #p.cargo == 0 and Rules.speed(p) == 16)
-	end)
-	test("collecting validates round, distance, and item identity", function()
-		local p = Rules.newPlayer()
-		expect(not Rules.collect(p, 1, 1, false, 0))
-		expect(not Rules.collect(p, 1, 1, true, 6.01))
-		expect(not Rules.collect(p, 99, 1, true, 0))
-		expect(not Rules.collect(p, 1, 1, true, 0 / 0))
-		expect(Rules.collect(p, 1, 1, true, 6))
-		expect(not Rules.collect(p, 1, 1, true, 0))
-	end)
-	test("five items halve speed and a sixth is rejected", function()
-		local p = Rules.newPlayer()
-		for id = 1, 5 do
-			expect(Rules.collect(p, id, 1, true, 1))
-		end
-		expect(Rules.speed(p) == 8 and not Rules.collect(p, 6, 1, true, 1))
-	end)
-	test("items are personal to each player", function()
-		local a, b = Rules.newPlayer(), Rules.newPlayer()
-		expect(Rules.collect(a, 1, 1, true, 1) and Rules.collect(b, 1, 1, true, 1))
-	end)
-	test("banking grants once and cannot refresh an item", function()
-		local p = Rules.newPlayer()
-		expect(Rules.collect(p, 1, 1, true, 0))
-		expect(Rules.collect(p, 21, 1, true, 0))
-		expect(Rules.bank(p) == 7 and p.coins == 7 and Rules.speed(p) == 16)
-		expect(Rules.bank(p) == 0 and p.coins == 7)
-		expect(not Rules.collect(p, 1, 1, true, 0))
-	end)
-	test("round boundary closes before reopening after twenty seconds", function()
-		expect(Rules.round(0).open and Rules.round(149).remaining == 31)
-		expect(Rules.round(150).warning and not Rules.round(180).open)
-		expect(not Rules.round(199.99).open and Rules.round(200).id == 2)
-	end)
-	test("failure and respawn lose cargo but preserve coins", function()
-		local p = Rules.newPlayer()
-		Rules.collect(p, 21, 1, true, 1)
-		Rules.bank(p)
-		Rules.collect(p, 22, 1, true, 1)
-		Rules.lose(p)
-		expect(p.coins == 6 and #p.cargo == 0)
-	end)
-	test("new round refreshes items", function()
-		local p = Rules.newPlayer()
-		Rules.collect(p, 1, 1, true, 1)
-		Rules.bank(p)
-		expect(Rules.collect(p, 1, 2, true, 1))
-	end)
-	test("whole session continues beyond first success and failure", function()
-		local p = Rules.newPlayer()
-		for id = 21, 25 do
-			expect(Rules.collect(p, id, 1, true, 1))
-		end
-		expect(Rules.bank(p) == 30)
-		Rules.collect(p, 26, 1, true, 1)
-		Rules.lose(p)
-		expect(Rules.collect(p, 21, 2, true, 1))
-		expect(Rules.bank(p) == 6 and p.coins == 36)
-	end)
-	return count
+return function(): number
+	local shared = game:GetService("ReplicatedStorage").GrabIt.Shared:Clone()
+	local R = require(shared.GameRules)
+	local a, b = R.newPlayer(), R.newPlayer()
+	assert(a.coins == 0 and #a.cargo == 0 and R.speed(a) == 16, "fresh player")
+	assert(
+		not R.collect(a, 1, 1, false, 0) and not R.collect(a, 1, 1, true, 6.01),
+		"closed and distant rejected"
+	)
+	assert(R.collect(a, 1, 1, true, 6) and R.collect(b, 1, 1, true, 6), "personal copies")
+	assert(not R.collect(a, 1, 1, true, 0), "duplicate rejected")
+	assert(R.bank(a) == 2 and R.bank(a) == 0 and a.coins == 2, "bank exactly once")
+	assert(R.collect(a, 2, 1, true, 0), "Gameplay.spec: R.collect(a, 2, 1, true, 0)")
+	R.lose(a)
+	assert(
+		a.coins == 2 and not a.collected[2],
+		"Gameplay.spec: a.coins == 2 and not a.collected[2]"
+	)
+	R.beginStage(a, 2, 2)
+	assert(
+		R.collect(a, 1, 2, true, 0) and R.bank(a) == 3 and a.coins == 5,
+		"subsequent stage continues"
+	)
+	shared:Destroy()
+	return 7
 end

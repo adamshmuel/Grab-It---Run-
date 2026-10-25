@@ -1,5 +1,5 @@
 --!strict
-local Rules = require(game:GetService("ReplicatedStorage").GrabIt.Shared.GameRules)
+local Catalog = require(game:GetService("ReplicatedStorage").GrabIt.Shared.Catalog)
 local Visuals = require(script.Parent.Visuals)
 local World = {}
 local function part(
@@ -21,16 +21,7 @@ local function part(
 	p.Parent = parent
 	return p
 end
-local cameraGeometry = {
-	WallPanel = true,
-	WallPost = true,
-	Shelf = true,
-	ShelfSupport = true,
-	ShelfLip = true,
-	RoofBeam = true,
-	BluePillar = true,
-	TopBeam = true,
-}
+local cameraGeometry = { BluePillar = true, TopBeam = true }
 local function decoration(
 	parent: Instance,
 	name: string,
@@ -39,13 +30,11 @@ local function decoration(
 	color: Color3
 ): Part
 	local detail = part(parent, name, size, position, color)
-	detail.CanCollide = name == "Shelf" or name == "ShelfSupport"
+	detail.CanCollide = false
 	detail.CanTouch = false
 	detail.CanQuery = cameraGeometry[name] == true
 	return detail
 end
-local accents =
-	{ Color3.fromRGB(237, 159, 69), Color3.fromRGB(34, 184, 187), Color3.fromRGB(139, 110, 224) }
 local frameColor = Color3.fromRGB(35, 68, 91)
 local function label(parent: BasePart, text: string, color: Color3)
 	local isItem = parent:GetAttribute("ItemId") ~= nil
@@ -258,141 +247,18 @@ function World.build(name: string?): Model
 			arrow.CanCollide = false
 		end
 	end
-	for zone = 1, 3 do
-		local z = (zone - 1) * 36 + 6
-		local accent = Instance.new("Model")
-		accent.Name = "ZoneAccent" .. zone
-		accent.Parent = root
-		for _, side in { -1, 1 } do
-			decoration(
-				accent,
-				"FloorBand",
-				Vector3.new(7.5, 0.03, 33),
-				Vector3.new(side * 12, 0.52, z + 15),
-				accents[zone]
-			)
-			decoration(
-				accent,
-				"WallPanel",
-				Vector3.new(0.12, 7, 32),
-				Vector3.new(side * 23.95, 8, z + 15),
-				Color3.fromRGB(228, 237, 234)
-			)
-			decoration(
-				accent,
-				"WallStripe",
-				Vector3.new(0.16, 0.55, 32),
-				Vector3.new(side * 23.85, 11.7, z + 15),
-				accents[zone]
-			)
-			for _, dz in { 0, 33 } do
-				decoration(
-					accent,
-					"WallPost",
-					Vector3.new(0.35, 18, 0.65),
-					Vector3.new(side * 23.7, 9.5, z + dz),
-					frameColor
-				)
-			end
-		end
-		local marker = part(
-			root,
-			"ZoneMarker" .. zone,
-			Vector3.new(4, 0.03, 4),
-			Vector3.new(5.5, 0.58, z),
-			Color3.fromRGB(52, 70, 83)
-		)
-		marker.CanCollide = false
-		marker.CanQuery = false
-		marker:SetAttribute("FloorMarker", true)
-		label(marker, tostring(zone), Color3.fromRGB(255, 235, 173))
-		local sign = part(
-			root,
-			"ZoneSign",
-			Vector3.new(8, 3, 0.3),
-			Vector3.new(-19, 7, z),
-			Color3.fromRGB(47, 62, 76)
-		)
-		sign.CanCollide = false
-		label(
-			sign,
-			"ZONE " .. zone .. "  /  " .. ({ 1, 3, 6 })[zone] .. " COINS",
-			Color3.fromRGB(255, 235, 173)
-		)
-		for _, x in { -21, 21 } do
-			local blocker = part(
-				root,
-				"ShelfBlocker",
-				Vector3.new(4.2, 8, 24.2),
-				Vector3.new(x, 4.5, z + 13),
-				frameColor
-			)
-			blocker.Transparency = 1
-			blocker.CanTouch = false
-			for _, y in { 2.2, 5, 7.8 } do
-				decoration(
-					root,
-					"Shelf",
-					Vector3.new(3.8, 0.25, 24),
-					Vector3.new(x, y, z + 13),
-					frameColor
-				)
-				decoration(
-					root,
-					"ShelfLip",
-					Vector3.new(0.12, 0.25, 24),
-					Vector3.new(x - math.sign(x) * 1.9, y, z + 13),
-					accents[zone]
-				)
-			end
-			for _, dx in { -1.5, 1.5 } do
-				for _, dz in { 2, 24 } do
-					decoration(
-						root,
-						"ShelfSupport",
-						Vector3.new(0.2, 8, 0.3),
-						Vector3.new(x + dx, 4.5, z + dz),
-						frameColor
-					)
-				end
-			end
-		end
-		decoration(
-			root,
-			"RoofBeam",
-			Vector3.new(47, 0.45, 0.6),
-			Vector3.new(0, 19.5, z + 1),
-			frameColor
-		)
-
-		local light = part(
-			root,
-			"CeilingStrip",
-			Vector3.new(16, 0.2, 1),
-			Vector3.new(0, 19.7, z + 12),
-			Color3.fromRGB(255, 249, 224)
-		)
-		light.Material = Enum.Material.Neon
-	end
+	local board = part(
+		root,
+		"LiveResults",
+		Vector3.new(12, 8, 0.2),
+		Vector3.new(-16, 6.5, 0.7),
+		Color3.fromRGB(24, 32, 51)
+	)
+	board.CanCollide = false
 	local folder = Instance.new("Folder")
 	folder.Name = "Items"
 	folder.Parent = root
-	for _, item in Rules.items do
-		local color = Color3.fromRGB(255, 255, 255)
-		local crate = part(
-			folder,
-			tostring(item.id),
-			Vector3.new(3, 3, 3),
-			Vector3.new(item.x, 2.5, item.z),
-			color
-		)
-		crate.Transparency = 1
-		crate.CanQuery = false
-		Visuals.create(item.zone, crate, CFrame.new(item.x, 0.5, item.z))
-		crate.CanCollide = false
-		crate:SetAttribute("ItemId", item.id)
-		label(crate, tostring(item.value), Color3.fromRGB(255, 244, 202))
-	end
+	World.setStage(root, 1)
 	local spawn = Instance.new("SpawnLocation")
 	spawn.Name = "Spawn"
 	spawn.Anchored = true
@@ -406,6 +272,186 @@ function World.build(name: string?): Model
 	root.Parent = workspace
 	World.setOpen(root, true)
 	return root
+end
+function World.setStage(root: Model, stage: number)
+	local items = root:FindFirstChild("Items")
+	assert(items, "Managed item folder missing")
+	items:ClearAllChildren()
+	local old = root:FindFirstChild("StageDecor")
+	if old then
+		old:Destroy()
+	end
+	local oldStand = root:FindFirstChild("SpecialDisplay")
+	if oldStand then
+		oldStand:Destroy()
+	end
+	local decor = Instance.new("Model")
+	decor.Name = "StageDecor"
+	decor.Parent = root
+	local palettes = {
+		{
+			Color3.fromRGB(37, 160, 203),
+			Color3.fromRGB(255, 204, 64),
+			Color3.fromRGB(239, 83, 102),
+		},
+		{
+			Color3.fromRGB(30, 186, 177),
+			Color3.fromRGB(255, 139, 58),
+			Color3.fromRGB(165, 196, 225),
+		},
+		{
+			Color3.fromRGB(136, 78, 199),
+			Color3.fromRGB(255, 198, 60),
+			Color3.fromRGB(52, 215, 204),
+		},
+	}
+	local palette = palettes[stage]
+	for row = 1, 15 do
+		local z = 12 + (row - 1) * 6
+		for _, x in { -12, 12 } do
+			local marker = decoration(
+				decor,
+				"CargoMarker",
+				Vector3.new(4.8, 0.025, 4.8),
+				Vector3.new(x, 0.525, z),
+				palette[(math.ceil(row / 3) - 1) % 3 + 1]
+			)
+			if stage == 1 then
+				marker.Shape = Enum.PartType.Cylinder
+				marker.Size = Vector3.new(0.025, 4.8, 4.8)
+				marker.CFrame *= CFrame.Angles(0, 0, math.pi / 2)
+			elseif stage == 3 then
+				marker.CFrame *= CFrame.Angles(0, math.pi / 4, 0)
+			end
+		end
+	end
+	for _, x in { -23.9, 23.9 } do
+		for _, z in { 20, 44, 68, 92, 114 } do
+			decoration(
+				decor,
+				"WallRibbon",
+				Vector3.new(0.08, 0.4, 18),
+				Vector3.new(x, 11, z),
+				palette[2]
+			)
+			for n = 1, 3 do
+				local tile = decoration(
+					decor,
+					if stage == 1 then "ToyCircle" elseif stage == 2 then "Circuit" else "Diamond",
+					Vector3.new(0.1, 1.4, 1.4),
+					Vector3.new(x, 8, z - 4 + n * 2),
+					palette[n]
+				)
+				if stage == 1 and n == 2 then
+					tile:Destroy()
+					local star = Instance.new("Model")
+					star.Name = "ToyStar"
+					star.Parent = decor
+					for point = 1, 5 do
+						local angle = (point - 1) * 2 * math.pi / 5
+						local wedge = Instance.new("WedgePart")
+						wedge.Name = "StarPoint"
+						wedge.Size = Vector3.new(0.1, 0.8, 0.7)
+						wedge.CFrame = CFrame.new(
+							x,
+							8 + math.cos(angle) * 0.4,
+							z - 4 + n * 2 + math.sin(angle) * 0.4
+						) * CFrame.Angles(angle, 0, 0)
+						wedge.Color = palette[1]
+						wedge.Anchored = true
+						wedge.CanCollide = false
+						wedge.CanQuery = false
+						wedge.CanTouch = false
+						wedge.Parent = star
+					end
+				elseif stage == 1 then
+					tile.Shape = Enum.PartType.Ball
+				elseif stage == 3 then
+					tile.CFrame *= CFrame.Angles(math.pi / 4, 0, 0)
+				end
+				if stage == 2 then
+					decoration(
+						decor,
+						"CircuitTrace",
+						Vector3.new(0.12, 0.12, 5),
+						Vector3.new(x, 8 + n * 0.7, z),
+						palette[n]
+					)
+				end
+			end
+		end
+	end
+	if stage == 3 then
+		local stand = Instance.new("Model")
+		stand.Name = "SpecialDisplay"
+		stand.Parent = root
+		part(
+			stand,
+			"Base",
+			Vector3.new(4.8, 0.6, 4.8),
+			Vector3.new(0, 0.8, 114),
+			Color3.fromRGB(66, 37, 105)
+		)
+		part(
+			stand,
+			"LowerGoldFrame",
+			Vector3.new(4.6, 0.15, 4.6),
+			Vector3.new(0, 1.15, 114),
+			palette[2]
+		)
+		part(
+			stand,
+			"UpperPlatform",
+			Vector3.new(4.3, 0.35, 4.3),
+			Vector3.new(0, 1.4, 114),
+			Color3.fromRGB(66, 37, 105)
+		)
+		part(
+			stand,
+			"UpperGoldFrame",
+			Vector3.new(4.5, 0.1, 4.5),
+			Vector3.new(0, 1.625, 114),
+			palette[2]
+		)
+		for _, x in { -2.25, 2.25 } do
+			decoration(
+				stand,
+				"TurquoiseTrim",
+				Vector3.new(0.08, 0.15, 4.5),
+				Vector3.new(x, 1.3, 114),
+				palette[3]
+			)
+		end
+	end
+	for _, item in Catalog.items(stage) do
+		local anchor = part(
+			items,
+			tostring(item.id),
+			Vector3.new(1, 1, 1),
+			Vector3.new(item.x, 2.5, item.z),
+			Color3.new(1, 1, 1)
+		)
+		anchor.Transparency = 1
+		anchor.CanCollide = false
+		anchor.CanQuery = false
+		anchor.CanTouch = false
+		anchor:SetAttribute("ItemId", item.id)
+		Visuals.createItem(
+			item,
+			anchor,
+			CFrame.new(item.x, if item.special then 1.7 else 0.5, item.z)
+		)
+		label(
+			anchor,
+			if item.special
+				then "MYSTERY"
+				else item.name .. "\nWeight " .. item.weight .. " | Value " .. item.value,
+			Color3.fromRGB(255, 244, 202)
+		)
+		anchor.ValueLabel.Size = UDim2.fromOffset(140, 52)
+	end
+	root:SetAttribute("Stage", stage)
+	root.Floor.Color = Color3.fromRGB(67, 80, 99)
 end
 function World.setOpen(root: Model, open: boolean)
 	local door = root:FindFirstChild("Door") :: Part

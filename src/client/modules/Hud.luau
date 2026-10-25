@@ -1,5 +1,4 @@
 --!strict
-local View = require(script.Parent.Parent.Shared.Presentation)
 local Hud = {}
 local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): TextLabel
 	local v = Instance.new("TextLabel")
@@ -20,7 +19,7 @@ local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): Tex
 	padding.PaddingRight = UDim.new(0, 8)
 	padding.Parent = v
 	local constraint = Instance.new("UITextSizeConstraint")
-	constraint.MinTextSize = 11
+	constraint.MinTextSize = 18
 	constraint.MaxTextSize = 21
 	constraint.Parent = v
 	v.Parent = parent
@@ -38,14 +37,14 @@ function Hud.create()
 	root.Size = UDim2.fromScale(1, 1)
 	root.BackgroundTransparency = 1
 	root.Parent = screen
-	local coins = box(root, "Coins", UDim2.fromScale(0.02, 0.02), UDim2.fromScale(0.27, 0.13))
-	local round = box(root, "Round", UDim2.fromScale(0.32, 0.02), UDim2.fromScale(0.36, 0.13))
-	local style = box(root, "Style", UDim2.fromScale(0.71, 0.02), UDim2.fromScale(0.27, 0.13))
+	local coins = box(root, "Coins", UDim2.fromScale(0.02, 0.02), UDim2.new(0.27, 0, 0, 54))
+	local round = box(root, "Round", UDim2.fromScale(0.32, 0.02), UDim2.new(0.36, 0, 0, 66))
+	local style = box(root, "Style", UDim2.fromScale(0.71, 0.02), UDim2.new(0.27, 0, 0, 54))
 	for _, field in { coins, round, style } do
 		field.BackgroundTransparency = 0
 	end
-	local bag = box(root, "Bag", UDim2.fromScale(0.29, 0.72), UDim2.fromScale(0.42, 0.10))
-	local message = box(root, "Message", UDim2.fromScale(0.21, 0.18), UDim2.fromScale(0.58, 0.13))
+	local bag = box(root, "Bag", UDim2.fromScale(0.23, 0.67), UDim2.new(0.54, 0, 0, 54))
+	local message = box(root, "Message", UDim2.fromScale(0.21, 0.33), UDim2.new(0.58, 0, 0, 34))
 	message.BackgroundTransparency = 0.2
 	message.Visible = false
 	local tutorial = box(root, "Tutorial", UDim2.fromScale(0.22, 0.85), UDim2.fromScale(0.52, 0.09))
@@ -64,7 +63,41 @@ function Hud.create()
 	local corner = Instance.new("UICorner")
 	corner.Parent = button
 	corner.CornerRadius = UDim.new(0, 12)
+	local function action(name: string, text: string, pos: UDim2, size: UDim2): TextButton
+		local actionButton = Instance.new("TextButton")
+		actionButton.Name = name
+		actionButton.Text = text
+		actionButton.Position = pos
+		actionButton.Size = size
+		actionButton.TextSize = 20
+		actionButton.Font = Enum.Font.GothamBold
+		actionButton.TextColor3 = Color3.fromRGB(25, 38, 47)
+		actionButton.BackgroundColor3 = Color3.fromRGB(240, 189, 75)
+		actionButton.Visible = false
+		actionButton.Parent = root
+		local actionCorner = Instance.new("UICorner")
+		actionCorner.CornerRadius = UDim.new(0, 10)
+		actionCorner.Parent = actionButton
+		return actionButton
+	end
+	style.Visible = false
+	local styles =
+		action("Styles", "Styles", UDim2.fromScale(0.73, 0.02), UDim2.new(0.25, 0, 0, 48))
+	local nextButton =
+		action("Next", "Next", UDim2.fromScale(0.31, 0.45), UDim2.new(0.38, 0, 0, 48))
+	local urgent = Instance.new("UIStroke")
+	urgent.Name = "Urgency"
+	urgent.Thickness = 3
+	urgent.Color = Color3.fromRGB(255, 70, 70)
+	urgent.Enabled = false
+	urgent.Parent = round
+	local stagePath = box(root, "StagePath", UDim2.new(0.08, 0, 0, 76), UDim2.new(0.84, 0, 0, 22))
+	stagePath.Text = "Toy Dash > Tech Run > Golden Rush"
 	return {
+		StagePath = stagePath,
+		Next = nextButton,
+		Styles = styles,
+		Urgency = urgent,
 		Screen = screen,
 		Root = root,
 		Coins = coins,
@@ -77,35 +110,46 @@ function Hud.create()
 	}
 end
 function Hud.update(ui, state, touch: boolean)
-	local savingWarning = string.sub(state.save, 1, 13) == "Not saved yet"
+	local warning = string.sub(state.save, 1, 13) == "Not saved yet"
 	ui.Coins.Text = "COINS "
 		.. state.coins
 		.. "\n"
-		.. (if savingWarning then "Not saved yet" else state.save)
+		.. (if warning then "Not saved yet" else state.save)
 	local seconds = math.max(0, state.remaining)
-	ui.Round.Text = (
-		if state.open
+	ui.Round.Text = (state.stageName or "Toy Dash")
+		.. " | "
+		.. (state.stage or 1)
+		.. " / 3\n"
+		.. (if state.open
 			then (if state.warning then "RETURN TO BASE" else "WAREHOUSE OPEN")
-			else "WAREHOUSE CLOSED"
-	) .. string.format("\n%d:%02d", math.floor(seconds / 60), seconds % 60)
-	ui.Round.TextColor3 = if state.warning
-		then Color3.fromRGB(255, 188, 111)
-		else Color3.fromRGB(236, 247, 240)
-	ui.Bag.Text = string.format("BAG  %d / 5     VALUE  %d", state.cargoCount, state.cargoValue)
-	local style = View.style(state.coins)
-	ui.Style.Text = if style.target
-		then "NEXT: " .. string.upper(style.nextName) .. "\n" .. state.coins .. " / " .. style.target
-		else "ALL STYLES\nUNLOCKED"
-	ui.Collect.Visible = touch and state.open and state.target ~= nil and state.ready == true
-	ui.Collect.Text = if state.cargoCount >= 5
-		then "Bag full"
-		else (if touch then "Collect" else "Collect [E]")
-	ui.Tutorial.Visible = not state.tutorial or not state.ready or not state.open or savingWarning
-	ui.Tutorial.Text = if savingWarning
+			else string.upper(state.phase or "Loading"))
+		.. string.format("  %d:%02d", math.floor(seconds / 60), seconds % 60)
+	ui.Bag.Text = "Weight "
+		.. tostring(state.cargoWeight or 0)
+		.. " / "
+		.. (state.capacity or 10)
+		.. "   Cargo value "
+		.. tostring(state.cargoValue or 0)
+		.. "\nBanked "
+		.. (state.bankedCount or 0)
+		.. " / "
+		.. (state.totalItems or 30)
+	ui.Collect.Visible = touch and state.open and state.target ~= nil and state.ready
+	ui.Collect.Text = if state.tooHeavy then "Too heavy" else "Collect"
+	ui.Styles.Visible = state.ready and (state.inBase or not state.open)
+	ui.Next.Visible = state.canNext == true
+	ui.Next.Text = if state.stage == 3
+		then "Finish match"
+		else "Next: " .. (if state.stage == 1 then "Tech Run" else "Golden Rush")
+	ui.Tutorial.Visible = not state.tutorial or not state.ready or warning or state.warning
+	ui.Tutorial.Text = if not state.ready
 		then state.save
-		elseif not state.ready then state.save
-		elseif not state.open then "Next round in " .. state.remaining .. "s"
-		elseif state.cargoCount > 0 then "Return before closing"
+		elseif warning then state.save
+		elseif state.warning or state.cargoCount > 0 then "Return before closing"
 		else "Collect items. Return here to bank them."
+	ui.Urgency.Enabled = state.warning == true
+	ui.Urgency.Transparency = if state.warning
+		then 0.35 + 0.3 * math.cos(os.clock() * math.pi * 2)
+		else 0
 end
 return Hud

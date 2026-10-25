@@ -50,13 +50,13 @@ return function()
 		Prompt.update(ui, state, nil, false)
 		assert(not ui.Gui.Enabled, "missing map is safe")
 		state.target = 1
-		state.cargoCount = 5
+		state.tooHeavy = true
 		Prompt.update(ui, state, items, true)
 		assert(
-			ui.Gui.Enabled and ui.Label.Text == "Bag full",
-			"full bag explains unavailable action"
+			ui.Gui.Enabled and ui.Label.Text == "Too heavy",
+			"overweight explains unavailable action"
 		)
-		state.cargoCount = 0
+		state.tooHeavy = false
 		Prompt.update(ui, state, items, true)
 		assert(ui.Label.Text == "Collect", "touch prompt does not ask for a keyboard")
 	end)
