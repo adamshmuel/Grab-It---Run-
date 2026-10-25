@@ -27,3 +27,5 @@ Never use a code on its own that Adam has to decode. Give everything a name a pe
 ## Check before handing over
 
 Before a document goes to a review or a gate, re-read it as Adam would. If a line needs knowledge he doesn't have, rewrite it.
+
+For specifications, also apply the complete-specification handoff gate in `sdd.md`: resolve decisions during authoring with evidence-based recommendations, then check the whole package before presenting it as ready for Adam's review.

@@ -26,6 +26,7 @@ He is not a fast coder, and he cannot read long answers.
   ask about the blocker immediately. Do not first lay out the rest of the plan
   that depends on the answer — the steps after an unanswered question are
   unrequested extras until it is answered.
+- **המשך לאחר החלטה.** אישור או תיקון של אדם הם המשך המשימה המאושרת. אחרי תיעוד ההחלטה ממשיכים לבדוק ולהשלים את ההגדרות עד לשאלה מהותית שדורשת את אדם או עד השלמת התוצר. אין לסיים תור רק בהודעת ״תועד״ כשנותרה עבודה עצמאית מורשית. לא שואלים על פרט שניתן לגזור מהחלטות קודמות; משתמשים בשיקול דעת לפרטי כתיבה וערכי התחלה מנומקים. כשנדרשת הכרעה, מסיימים בשאלה הממוקדת ובהמלצה. אין להבטיח עבודה ברקע אחרי סיום תור ללא מנגנון פעיל מתאים.
 - **Every question ends with a recommendation.** When you ask Adam to decide
   something, say which option you would pick and why, in one line. Never leave
   him to choose from a list with no steer.
