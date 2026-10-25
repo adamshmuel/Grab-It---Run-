@@ -19,11 +19,13 @@ Keep the source rules in `rules/`. This root file makes reading them mandatory; 
 The latest explicit instruction from Adam takes precedence over older project preferences. Communicate with Adam in Hebrew, at least for the current phase. Use short answers. Keep technical terms, identifiers, and product names in English; explain unfamiliar terms in simple Hebrew without replacing the English term with a translation.
 
 
-## Current phase and permission — 2026-10-25
+## Current phase and permission — 2026-10-26
 
 Adam approved the complete V1 improvement specifications and explicitly requested feasibility checks followed by coding on 2026-10-25. The revision is implemented in local sources on `codex/v1-improvements`, based on the approved specification commit (the required dependency was not yet on main; main was left untouched). Entry point: `docs/specs/v1/improvements.md`; implementation order: `docs/plans/v1/improvements.md`; current evidence and exact limits: `docs/research/v1-improvement-implementation.md`.
 
-CURRENT PAUSE: implementation/development checks are complete within the recorded scope. Stop BEFORE the separate post-implementation validation stage so Adam can raise the model strength. Do not run competitive/experience acceptance gates, route benchmarks, broad multiplayer/device/cloud acceptance or human tests until he resumes. This is an explicit user pause, not V1 acceptance. No publishing, installations, spending or player invitations. The historical QA runner requires adaptation to the new rules before it is used; its guard blocks accidental baseline-only acceptance runs.
+Adam raised the model strength and explicitly resumed work on 2026-10-26. The requested pause before validation is over. Review the implemented revision and verify competitive visuals and experience first, then proceed to the remaining route, multiplayer, device and isolated QA persistence acceptance checks only after that gate passes. Fix implementation defects within the approved scope using TDD. No publishing, installations, spending or player invitations. The historical QA runner requires adaptation to the new rules before it is used; its guard blocks accidental baseline-only acceptance runs. Current validation evidence belongs in `docs/research/v1-improvement-validation.md`; missing evidence is not a pass.
+
+Known gate failure on 2026-10-26: the eight-row wall board is too small and partly covered by the HUD in the smallest mobile profile. Focused presentation fixes passed 23 module suites but do not pass this gate. A temporary, removed native UI prototype demonstrated a readable Scores dialog; adding it during active collection changes the approved presentation rules and requires Adam's decision before production implementation. The concrete recommendation and evidence are in the validation report. Do not silently replace the wall-board acceptance requirement or start expensive downstream acceptance while this remains unresolved.
 
 Adam requested local commits for the pending approved work and implementation; do not push. Preserve the untracked `sourcemap.json`, Adam's root manual save `GrabItV1_DesktopMobile.rbxlx.rbxl`, and unmanaged Studio content. Do not rebuild over the saved Studio file to insert sources: Rojo is the source-sync path. Studio was returned to Edit with the same project window. No delegation is required or authorized here. Sleep/display prevention was enabled at Adam's request and remained active at the pause; record its current state rather than assuming it in a later session. Adam alone pushes.
 
@@ -47,7 +49,7 @@ Gameplay was approved on 2026-10-21; V1 specifications and implementation were a
 
 The revised visual review on 2026-10-24 passed only its recorded scenes and limits, before the later goal failure. Twelve suites, two/eight-client sessions, local performance and both phone touch profiles were tested within the limits in `docs/research/v1-validation.md`. Isolated QA cloud saving/rejoin was verified in this game's approved environment. These results do not cover the new weight, stages, models, leaderboard or purchases. See `docs/research/v1-acceptance-status.md` and `docs/research/project-readiness.md` for evidence; update readiness only when actual evidence changes.
 
-Earlier authorizations do not override the explicit pause before post-implementation validation. Adam will manually inspect after independent authorized verification; later human testing requires his coordination and verified access, not assumed feasibility.
+The pause before post-implementation validation was honored and Adam resumed that work on 2026-10-26. Adam will manually inspect after independent authorized verification; later human testing requires his coordination and verified access, not assumed feasibility.
 
 ## Tooling and Studio protection
 

@@ -37,21 +37,14 @@ local function decoration(
 end
 local frameColor = Color3.fromRGB(35, 68, 91)
 local function label(parent: BasePart, text: string, color: Color3)
-	local isItem = parent:GetAttribute("ItemId") ~= nil
-	local gui = if isItem then Instance.new("BillboardGui") else Instance.new("SurfaceGui")
+	local gui = Instance.new("SurfaceGui")
 	gui.Name = "ValueLabel"
-	if gui:IsA("BillboardGui") then
-		gui.Size = UDim2.fromOffset(70, 44)
-		gui.StudsOffset = Vector3.new(0, 3, 0)
-		gui.MaxDistance = 32
-	else
-		gui.Face = if parent.Name == "Deposit" or parent:GetAttribute("FloorMarker")
-			then Enum.NormalId.Top
-			else Enum.NormalId.Front
-		gui.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
-		gui.PixelsPerStud = 35
-		gui.LightInfluence = 0
-	end
+	gui.Face = if parent.Name == "Deposit" or parent:GetAttribute("FloorMarker")
+		then Enum.NormalId.Top
+		else Enum.NormalId.Front
+	gui.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
+	gui.PixelsPerStud = 35
+	gui.LightInfluence = 0
 	gui.AlwaysOnTop = false
 	local title = Instance.new("TextLabel")
 	title.Size = UDim2.fromScale(1, 1)
@@ -60,12 +53,10 @@ local function label(parent: BasePart, text: string, color: Color3)
 	title.TextSize = 23
 	title.TextScaled = true
 	title.TextWrapped = true
-	if not isItem then
-		local size = Instance.new("UITextSizeConstraint")
-		size.MaxTextSize = if parent:GetAttribute("FloorMarker") then 96 else 32
-		size.MinTextSize = 16
-		size.Parent = title
-	end
+	local size = Instance.new("UITextSizeConstraint")
+	size.MaxTextSize = if parent:GetAttribute("FloorMarker") then 96 else 32
+	size.MinTextSize = 16
+	size.Parent = title
 	title.TextColor3 = color
 	title.TextStrokeTransparency = 0.4
 	title.Text = text
@@ -441,14 +432,6 @@ function World.setStage(root: Model, stage: number)
 			anchor,
 			CFrame.new(item.x, if item.special then 1.7 else 0.5, item.z)
 		)
-		label(
-			anchor,
-			if item.special
-				then "MYSTERY"
-				else item.name .. "\nWeight " .. item.weight .. " | Value " .. item.value,
-			Color3.fromRGB(255, 244, 202)
-		)
-		anchor.ValueLabel.Size = UDim2.fromOffset(140, 52)
 	end
 	root:SetAttribute("Stage", stage)
 	root.Floor.Color = Color3.fromRGB(67, 80, 99)

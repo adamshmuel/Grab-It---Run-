@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>שיפורי V1 — בדיקת המימוש והחוויה</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1>שיפורי <bdi dir="ltr" lang="en">V1</bdi> — בדיקת המימוש והחוויה</h1>
+<p><strong>תאריך התחלה: 26/10/2026. מצב: שער הקריאות בנייד נכשל; אין אישור קבלה לגרסה. תיקוני המימוש המפורטים להלן עברו בדיקות ממוקדות.</strong></p>
+<p>אדם העלה את חוזק המודל וביקש להמשיך לאחר העצירה המתועדת בתוך <a href="v1-improvement-implementation.html">דוח המימוש</a>. המקור המחייב הוא <a href="v1/improvement-acceptance.html">תנאי קבלת השיפורים</a>. השיחה הראשית מבצעת תחילה השוואת מראה וחוויה, מתקנת סטיות מימוש בגבולות ההגדרות, ורק אחרי מעבר השער ממשיכה לבדיקות הקבלה האחרות. אין פרסום, הזמנת שחקנים או <bdi dir="ltr" lang="en">push</bdi>.</p>
+<h2>סביבה שאומתה מחדש</h2>
+<ul>
+<li>חלון הפרויקט המאומת: <bdi dir="ltr" lang="en">place</bdi> מספר 106986292768692; <bdi dir="ltr" lang="en">universe</bdi> מספר 10772701508. גרסת <bdi dir="ltr" lang="en">Studio</bdi> היא 0.744.0.7441077.</li>
+<li>הפעלת המשחק, קריאת מצב שרת ולקוח, הליכה, צילום וסיום דרך <bdi dir="ltr" lang="en">MCP</bdi> פועלים באותו חלון. התקדמות <bdi dir="ltr" lang="en">Studio</bdi> נשמרת בזיכרון מבודד; לא הופעלה בדיקת ענן בהרצות אלה.</li>
+<li>מניעת שינת מערכת ומסך אומתה מחדש. התהליך הקיים נשאר פעיל; לא נפתח תהליך נוסף ולא שונו הגדרות מערכת קבועות.</li>
+<li>נבדק תיעוד עדכני של <bdi dir="ltr" lang="en">StudioDeviceSimulatorService</bdi>, והפעלתו דרך <bdi dir="ltr" lang="en">MCP</bdi> הצליחה. פרופיל <bdi dir="ltr" lang="en">Samsung Galaxy A06</bdi> הוגדר לרוחב, 800 על 360. הלקוח דיווח על <bdi dir="ltr" lang="en">touch</bdi> פעיל, <bdi dir="ltr" lang="en">viewport</bdi> של 706 על 339, ושטח <bdi dir="ltr" lang="en">GUI</bdi> בטוח בגובה 281. גודל המסך המדומה אינו זהה לשטח הזמין לממשק.</li>
+<li>ניסיון לקרוא את חלון התוכנה בערוץ שליטה כללי לא הושלם; לא שונו הרשאות מערכת. הבדיקה ממשיכה דרך כלי <bdi dir="ltr" lang="en">Studio</bdi> הייעודיים.</li>
+</ul>
+<h2>תקלות שנמצאו בבדיקה בפועל</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ממצא</th>
+<th>ראיה ותנאי הדחייה</th>
+<th>תיקון ובדיקה</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>כפתור <bdi dir="ltr" lang="en">Collect</bdi> קטן מדי</td>
+<td>גובה מדוד של 45.3 פיקסלים בתוך שטח מצומצם, בניגוד למינימום 48</td>
+<td>נוספה מגבלת גודל. בדיקת נסיגה נכשלה לפני התיקון ועברה אחריו; בהדמיה הפעילה נמדדו 48 פיקסלים</td>
+</tr>
+<tr>
+<td>הדרכה ומידע מטען חופפים</td>
+<td>מדידת מלבני הממשק וצילום נייד חשפו חפיפה</td>
+<td>אזורי ההדרכה והמטען הופרדו והמידע חולק לשתי שורות; בדיקת פריסה ממוקדת עברה</td>
+</tr>
+<tr>
+<td>תוויות רבות מסתירות את הדמות</td>
+<td><a href="../research/evidence/v1-improvements/images/mobile-clutter-before.jpg">צילום הכשל</a> מציג מידע מכמה חפצים יחד</td>
+<td>המידע מרוכז בחפץ המסומן: שם, משקל, תגמול ופעולת איסוף. בדיקת נסיגה מאמתת שאין תוויות חפצים לא מסומנים ושמידע המסומן נשמר. <a href="../research/evidence/v1-improvements/images/readable-selected-mobile.jpg">צילום נייד לאחר התיקון</a> מציג את המידע לצד הדמות, ללא חיתוך בקיר</td>
+</tr>
+<tr>
+<td>שמונה שורות חופפות למידע השלב הבא</td>
+<td>בדיקת פריסה בתוך השטח הבטוח נכשלה</td>
+<td>במסך נמוך הפעולות עוברות לצד הטבלה. גובה השורות נשמר. <a href="../research/evidence/v1-improvements/images/eight-rows-mobile-fixture.jpg">צילום לאחר התיקון</a> משתמש בשמונה שורות מדומות, לא בשמונה <bdi dir="ltr" lang="en">clients</bdi></td>
+</tr>
+<tr>
+<td>שמות השלבים חופפים לטיימר במחשב</td>
+<td>במידה 1920 על 1080, השורה הסתיימה בגובה 64.44 בעוד שמות השלבים התחילו בגובה 56</td>
+<td>העיגון העליון הוחלף למרחק קבוע. בדיקת הפריסה הורחבה למחשב ועברה לאחר תיקון</td>
+</tr>
+<tr>
+<td>אזהרת הסיום מדגישה את האותיות במקום את המסגרת</td>
+<td>צילום סוף שלב גילה את ברירת המחדל של <bdi dir="ltr" lang="en">UIStroke</bdi> על טקסט</td>
+<td>נקבע מצב <bdi dir="ltr" lang="en">Border</bdi>, בהתאם להגדרה. בדיקה נכשלה לפני התיקון ועברה אחריו</td>
+</tr>
+<tr>
+<td>פעולה באוסף העיצובים חופפת לאזור המגע</td>
+<td>כפתור העיצוב הראשון הופיע על אזור <bdi dir="ltr" lang="en">joystick</bdi> בנייד</td>
+<td><a href="../research/evidence/v1-improvements/images/styles-mobile-fixed.jpg">החלונית הוזזה מהאזור</a>, בלי להקטין את הכפתורים. הרקע של הדגמים הובהר כדי להבחין בציוד הכהה. בדיקת נסיגה למיקום ולקריאות עברה</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="../research/evidence/v1-improvements/layout-regressions.json">פלט בדיקות הנסיגה</a> נשמר בנפרד. בדיקת מידות של <bdi dir="ltr" lang="en">Frame</bdi> אינה בדיקת מחוות <bdi dir="ltr" lang="en">touch</bdi>. בדיקת טבלה מדומה אינה מוכיחה סנכרון דירוג בין משתתפים. צילום ההשוואה משתמש בסדר הציור של ממשק המשחק; תצוגת עזר ראשונה עם סדר ציור שונה הוחלפה ולא נחשבת ממצא במשחק.</p>
+<h2>תצפית ראשונית במשחק</h2>
+<p>הליכה רגילה ובקשות איסוף בערוץ המשחק אפשרו לשאת שישה חפצים רגילים בהרכב שמשקלו 10 בשלב 1. נמדדה מהירות 10.4, והחזרה לאזור ההפקדה העניקה <bdi dir="ltr" lang="en">17 Coins</bdi> עבור המטען. <a href="../research/evidence/v1-improvements/images/toy-mixed-full.jpg">צילום המטען</a> נעשה לפני תיקוני הפריסה; הוא אינו צילום המראה הסופי. אין כאן ריקון מחסן או מעבר של רף המסעות.</p>
+<p>הלוח הציג לאחר ההפקדה את הניקוד ואת שיעור ההפקדה הנכונים. <a href="../research/evidence/v1-improvements/images/wall-board-before.jpg">צילום הלוח</a> מראה שהכתב קטן במבט ממרחק; הופעת הנתון הנכון אינה הוכחת קריאות. בדיקת הקריאות במחשב ובנייד ממשיכה לפני מעבר השער.</p>
+<p><a href="../research/evidence/v1-improvements/images/special-display-mobile.jpg">המיוחד על המתקן</a> נצפה בשלב 3 בהדמיית הנייד. הליכה רגילה עד המתקן הסתיימה בתוך כ־7.82 שניות; לחיצה דרך קלט <bdi dir="ltr" lang="en">MCP</bdi> על <bdi dir="ltr" lang="en">Collect</bdi> אספה אותו, וחזרה בהליכה לאזור ההפקדה העלתה את היתרה ל־55 לפני הסגירה. זמן ההליכה מתחיל מהמיקום שבו בוצע הניסוי, ואינו מסלול איזון מדוד לכל השלב. התמונה קודמת לתיקון האחרון של חלונית המידע. אין טענה שנבדקו כאן שני מגעים במקביל.</p>
+<p>תיקון החלונית משתמש במיקום המוקרן של החפץ על המסך ובגבולות הממשק. בדיקת קיר מפורשת מסתירה מידע מאחורי קיר אטום, ומאפשרת קיר שהמצלמה מעמעמת מקומית. ההגנה של השרת על איסוף דרך קיר לא השתנתה. בדיקות הגאומטריה כוללות קיר אטום, שקיפות מקומית מלאה ועמעום חלקי; הניסיון הראשון שחסם גם עמעום חלקי תוקן. בשיחה הראשית נבדקו גם גבולות המסך, הסתרת הראש, שימור נתוני המיוחד וניקוי החלונית. בדיקות קוד ו־<bdi dir="ltr" lang="en">StyLua</bdi> ו־<bdi dir="ltr" lang="en">Selene</bdi> עברו בהיקף זה; האימות החזותי הרחב עדיין נמשך.</p>
+<p><a href="../research/evidence/v1-improvements/current-module-tests.json">פלט מודולי הבדיקה</a> כולל 20 מודולים שהורצו במצב <bdi dir="ltr" lang="en">Edit</bdi> ושלוש בדיקות פריסה נוספות בלקוח; כולם עברו. אלה בדיקות פיתוח ממוקדות. אין להסיק מכך שכל תנאי הקבלה עברו.</p>
+<p>בשיחה הראשית בוצע <bdi dir="ltr" lang="en">code review</bdi> נוסף של השינויים ושל הקוד המושפע: התאמה להגדרות, מיקום ותצוגה במחשב ובנייד, מקור נתוני המטען והדירוג, הסתרת המיוחד, בדיקת קיר, ניקוי משאבי הממשק ותסריטי הנסיגה. כללי המשחק, המשקלים, הזמנים, הנתונים השמורים והגנות השרת לא שונו במסגרת תיקוני התצוגה. <bdi dir="ltr" lang="en">StyLua</bdi>, <bdi dir="ltr" lang="en">Selene</bdi> ובדיקת תקינות השינויים עברו; לא הורץ <bdi dir="ltr" lang="en">type analyzer</bdi> נפרד.</p>
+<h2>צילומי נשיאה בארבעת פרופילי המסך</h2>
+<ul>
+<li>שלב הטכנולוגיה: <a href="../research/evidence/v1-improvements/images/tech-full-800.jpg">800 על 360</a>, <a href="../research/evidence/v1-improvements/images/tech-full-844.jpg">844 על 390</a>, <a href="../research/evidence/v1-improvements/images/tech-full-1280.jpg">1280 על 720</a>. בששת הפריטים נמדד משקל 14 וערך 22; שלוש מיניאטורות ומונה התוספת נראים בלי לכסות את הראש. נראים גם חמשת סוגי הסחורה בחדר.</li>
+<li>מטען עם מיוחד ורגיל בשלב 3: <a href="../research/evidence/v1-improvements/images/mystery-full-1920.jpg">1920 על 1080</a>, <a href="../research/evidence/v1-improvements/images/mystery-full-844.jpg">844 על 390</a>, <a href="../research/evidence/v1-improvements/images/mystery-full-800.jpg">800 על 360</a>, <a href="../research/evidence/v1-improvements/images/mystery-return-1280.jpg">חזרה במחשב 1280 על 720</a>. הממשק מציג רק 4 ועוד סימן שאלה במשקל, ו־7 ועוד סימן שאלה בערך. המיוחד נשאר מיוצג על הדמות. לאחר החזרה וההפקדה נצפתה יתרה של 62 גם במקצה הבא.</li>
+</ul>
+<p>מעבר בין הפרופילים לא איפס את המטען באותן סצנות. המידות בכותרות הן הגדרות ההדמיה; תמונות הכלי עשויות להיות מוצגות בקנה מידה אחר. אין להציג את צילומי הטכנולוגיה כאילו הם מכסים את כל סצנות שלב הצעצועים, או את בדיקת שני סוגי המטען כאילו הושלם רף מסעות האיזון. אחד מניסיונות ההליכה הזמניים השתמש בסף הגעה קטן מדי ונכשל; כלי התצפית תוקן לסף סביר ללא שינוי במהירות או במנגנוני המשחק.</p>
+<h2>חסם הקבלה שנותר: קריאת טבלת הקיר בנייד</h2>
+<p><strong>הכרעה: נכשל.</strong> גם אחרי הגדלת כתב הגוף מ־18 ל־32 על בד המשטח, <a href="../research/evidence/v1-improvements/images/wall-board-eight-mobile-failure.jpg">צילום שמונה השורות</a> מראה כתב קטן ושורות תחתונות מאחורי המידע הקבוע. הנתונים בתמונה הם תצוגת עזר מדומה, ולא שמונה משתתפים מחוברים.</p>
+<p>הדמות הלכה לאזור הצפייה: מיקום בקירוב מינוס 7.96 בציר הרוחב, גובה 3.72 ועומק 6.01. מצלמת הבדיקה הייתה במיקום מינוס 8, גובה 7 ועומק 14, בטווח המרחק המותר מהדמות. זהו צילום בתוך המשחק בהדמיית 800 על 360, עם <bdi dir="ltr" lang="en">viewport</bdi> של 706 על 339; לא צילום עריכה. בחירת זווית אחרת עשויה לשפר חלק מהקריאה, אך אינה הוכחה שכל שמונה השורות קריאות באזור שנדרש. מצלמת הבדיקה הוחזרה לאחר מכן למצב הרגיל ותצוגת העזר הוסרה.</p>
+<p>בדיקת ההיתכנות המוקדמת לא כיסתה את צפיפות שמונה השורות מול השטח הבטוח והמידע הקבוע. התקלה נרשמת ככשל בשער המראה, ואינה מועברת לאדם כמשימת גילוי בבדיקה הידנית. בדיקות קבלה יקרות אינן מתחילות על בסיס 23 מודולי הקוד שעברו.</p>
+<h3>הפתרון שאני מבקש לאשר</h3>
+<p>להשאיר את הלוח החי על הקיר, ולהוסיף כפתור <bdi dir="ltr" lang="en">Scores</bdi> ליד <bdi dir="ltr" lang="en">Styles</bdi>. הכפתור יפתח טבלה גדולה עם אותם נתוני הפקדות מהשרת ושמונה שורות בגודל הקריא שכבר נבדק. <bdi dir="ltr" lang="en">Close</bdi> יסגור אותה; השעון ימשיך לפעול, ולפתיחה או לסגירה לא תהיה השפעה על מטען, ניקוד או זכאות. במעבר לתוצאות היא תיסגר ותפנה מקום למסך הסיום הרגיל. חלונית העיצובים וטבלת הצפייה לא יוצגו יחד. הטבלה אינה מוסיפה מידע על מטען שלא הופקד או על המיוחד.</p>
+<p>נבדקה היתכנות מקומית וזמנית: פתיחה בכפתור במחשב ובקלט <bdi dir="ltr" lang="en">Touch</bdi> בנייד הציגה <a href="../research/evidence/v1-improvements/images/scores-dialog-desktop-prototype.jpg">טבלה קריאה במחשב</a> ו<a href="../research/evidence/v1-improvements/images/scores-dialog-mobile-prototype.jpg">טבלה קריאה בנייד</a>, והשעון המשיך להתקדם. סגירה בכפתור אומתה במחשב. סגירה במגע בנייד לא אומתה בניסיון הזה לפני ניקוי התוצר; בדיקתה נדרשת במימוש אם הפתרון יאושר. הנתונים בדוגמה מדומים, אין כאן בדיקת סנכרון חי של הפתרון המוצע. כל רכיבי ההיתכנות הוסרו, ואין כפתור חדש במקורות המשחק.</p>
+<p><strong>הפעולה של אדם:</strong> לאשר או לדחות את הוספת חלונית הצפייה. לאחר אישור, השיחה הראשית תעדכן את כלל 6 וכלל 7 בתוך <a href="v1/controls-feedback.html"><bdi dir="ltr" lang="en">Controls</bdi></a>, את בדיקת הקריאות בתוך <a href="v1/improvement-acceptance.html">תנאי הקבלה</a>, ואת תוכנית המימוש, ואז תממש ותבדוק. נדרש שינוי הגדרה מפורש: ההגדרות הנוכחיות דורשות קריאה מהלוח שעל הקיר ואינן מאפשרות הצגת טבלת מסך באמצע איסוף פעיל. החלונית נשארת הצעה להחלטה הזאת, ולא שינוי מאושר.</p>
+<p>המקור להשוואת המראה הוא <a href="visual-benchmark.html">שלושת הרפרנסים שנשמרו</a>. בדיקת צילומי המתחרים תבחן הבחנה בין צלליות, ניגוד לרקע, נשיאה, סימון בסיס, תוויות ותגמול נראה. התמונות אינן מוכיחות הכנסות, זמני מעבר, הנאה או רצון לחזור. עדיין אין הכרעת מעבר לשער החזותי והחווייתי.</p>
+<h2>המשך העבודה שבאחריות השיחה הראשית</h2>
+<ol>
+<li>להשלים תיקוני מיקום וקריאות, לבדוק את שלושת הנושאים, המטען, הלוח, התוצאות והעיצובים בארבעת פרופילי הקבלה, ולתעד הכרעה מול הרפרנסים.</li>
+<li>אחרי מעבר השער לבצע את מסעות האיזון ורצפי המקצה, להתאים את כלי <bdi dir="ltr" lang="en">QA</bdi> למשקל ולשלבים, ולהריץ בדיקות קלט, <bdi dir="ltr" lang="en">multiplayer</bdi>, שמירה מבודדת וביצועים לפי ההגדרות.</li>
+<li>לברר את שגיאת הנכס 203785492, שממשיכה להופיע ב־<bdi dir="ltr" lang="en">Output</bdi>, לפני מסירה. סריקת <bdi dir="ltr" lang="en">Sound</bdi> ו־<bdi dir="ltr" lang="en">Decal</bdi> בלקוח לא מצאה את מקורה; אין טענה שהלוג נקי.</li>
+<li>לתעד <bdi dir="ltr" lang="en">code review</bdi> ותוצאות, לנקות תוצרי בדיקה זמניים ולבצע קומיט מקומי של העבודה המוכנה. הבדיקה הידנית של אדם באה לאחר הבדיקות העצמאיות; משתתפים אנושיים דורשים תיאום נפרד.</li>
+</ol>
+<h2>תיעוד טכני שנבדק</h2>
+<ul>
+<li><a href="https://create.roblox.com/docs/studio/device-simulator"><bdi dir="ltr" lang="en">Device Simulator</bdi></a></li>
+<li><a href="https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService"><bdi dir="ltr" lang="en">StudioDeviceSimulatorService</bdi></a></li>
+<li><a href="https://create.roblox.com/docs/reference/engine/classes/StudioTestService"><bdi dir="ltr" lang="en">StudioTestService</bdi></a></li>
+<li><a href="https://create.roblox.com/docs/reference/engine/classes/UISizeConstraint"><bdi dir="ltr" lang="en">UISizeConstraint</bdi></a></li>
+<li><a href="https://create.roblox.com/docs/reference/engine/classes/BillboardGui"><bdi dir="ltr" lang="en">BillboardGui</bdi></a></li>
+<li><a href="https://create.roblox.com/docs/reference/engine/classes/Camera"><bdi dir="ltr" lang="en">Camera</bdi></a></li>
+<li><a href="https://create.roblox.com/docs/reference/engine/classes/GuiService"><bdi dir="ltr" lang="en">GuiService</bdi></a></li>
+</ul>
+</main></body></html>

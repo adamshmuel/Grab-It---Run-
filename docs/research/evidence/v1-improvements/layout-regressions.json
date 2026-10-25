@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-26",
+  "kind": "focused layout regression, not complete acceptance",
+  "touch_button_red": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"ReplicatedStorage.GrabItLayoutValidation:25: ReplicatedStorage.GrabItLayoutValidation:13: Collect must retain a 48px touch target inside the safe area\",\"passed\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "touch_button_green": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"1\",\"passed\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "tutorial_overlap_red": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"ReplicatedStorage.GrabItLayoutValidation:30: ReplicatedStorage.GrabItLayoutValidation:21: Tutorial and cargo information must not overlap in the mobile safe area\",\"passed\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "results_overlap_red": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"ReplicatedStorage.GrabItResultsValidation:62: ReplicatedStorage.GrabItResultsValidation:47: Eight-player rows must not overlap next-stage information\",\"passed\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "results_overlap_green": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"1\",\"passed\":true}"
+      }
+    ],
+    "isError": false
+  }
+}

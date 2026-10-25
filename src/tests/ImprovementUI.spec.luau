@@ -30,6 +30,10 @@ return function(): number
 		}
 		H.update(ui, state, true)
 		assert(
+			ui.Urgency.ApplyStrokeMode == Enum.ApplyStrokeMode.Border,
+			"Urgency outlines the timer panel, not its digits"
+		)
+		assert(
 			string.find(ui.Bag.Text, "4 + ?", 1, true)
 				and not string.find(ui.Bag.Text, "/ 5", 1, true),
 			"RED: HUD must show masked total weight"

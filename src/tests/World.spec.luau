@@ -18,10 +18,7 @@ return function()
 		assert(home and #home:GetChildren() == 5, "base needs a geometric home symbol")
 		for _, item in root.Items:GetChildren() do
 			assert(item:IsA("BasePart") and not item.CanCollide, "collectibles do not block")
-			assert(
-				item:GetAttribute("ItemId") and item:FindFirstChild("ValueLabel"),
-				"identifiable value"
-			)
+			assert(item:GetAttribute("ItemId"), "item identity supports the selected-item prompt")
 			local visual = item:FindFirstChildWhichIsA("Model")
 			assert(
 				visual and item.Transparency == 1,

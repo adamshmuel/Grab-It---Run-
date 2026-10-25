@@ -8,9 +8,9 @@ return function()
 	local ok, err = pcall(function()
 		local Prompt = require(fresh :: ModuleScript)
 		local ui = Prompt.create(owner)
-		assert(ui.Gui:IsA("BillboardGui") and ui.Gui.Parent == owner, "player-owned world prompt")
-		assert(not ui.Gui.Enabled and ui.Gui.Adornee == nil, "no selection while loading")
-		assert(not ui.Gui.AlwaysOnTop, "prompt cannot show through walls")
+		assert(ui.Gui:IsA("ScreenGui") and ui.Gui.Parent == owner, "player-owned projected prompt")
+		assert(not ui.Gui.Enabled and ui.Adornee == nil, "no selection while loading")
+		assert(Prompt.lineOfSight, "opaque-wall visibility is checked explicitly")
 		local items = Instance.new("Folder")
 		items.Parent = owner
 		for id = 1, 2 do
@@ -20,21 +20,21 @@ return function()
 		end
 		local state = { ready = true, open = true, target = 1, cargoCount = 0, collected = {} }
 		Prompt.update(ui, state, items, false)
-		assert(ui.Gui.Enabled and ui.Gui.Adornee == items["1"], "mark selected item")
+		assert(ui.Gui.Enabled and ui.Adornee == items["1"], "mark selected item")
 		assert(ui.Label.Text == "Collect [E]", "desktop key shown over item")
 		state.target = 2
 		Prompt.update(ui, state, items, false)
-		assert(ui.Gui.Adornee == items["2"], "move one prompt to the new selected item")
+		assert(ui.Adornee == items["2"], "move one prompt to the new selected item")
 		local prompts = 0
 		for _, child in owner:GetChildren() do
-			if child:IsA("BillboardGui") then
+			if child:IsA("ScreenGui") then
 				prompts += 1
 			end
 		end
 		assert(prompts == 1, "only one item is marked")
 		state.open = false
 		Prompt.update(ui, state, items, false)
-		assert(not ui.Gui.Enabled and ui.Gui.Adornee == nil, "closed warehouse clears selection")
+		assert(not ui.Gui.Enabled and ui.Adornee == nil, "closed warehouse clears selection")
 		state.open = true
 		state.ready = false
 		Prompt.update(ui, state, items, false)

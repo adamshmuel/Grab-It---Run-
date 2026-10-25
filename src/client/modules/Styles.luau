@@ -42,7 +42,8 @@ function Styles.create(parent: Instance, request: (string, string) -> ())
 		local preview = Instance.new("ViewportFrame")
 		preview.Size = UDim2.new(1, 0, 1, -80)
 		preview.Position = UDim2.fromOffset(0, 28)
-		preview.BackgroundTransparency = 1
+		preview.BackgroundColor3 = Color3.fromRGB(85, 106, 127)
+		preview.BackgroundTransparency = 0
 		preview.Ambient = Color3.new(0.8, 0.8, 0.8)
 		preview.LightColor = Color3.new(1, 1, 1)
 		preview.Parent = card
@@ -75,6 +76,9 @@ function Styles.create(parent: Instance, request: (string, string) -> ())
 end
 function Styles.update(ui, state)
 	ui.state = state
+	local compact = ui.Panel.Parent.AbsoluteSize.Y < 400
+	ui.Panel.Size = UDim2.fromScale(if compact then 0.78 else 0.96, 0.96)
+	ui.Panel.Position = UDim2.fromScale(if compact then 0.59 else 0.5, 0.5)
 	if not state.ready or (state.open and not state.inBase) then
 		ui.Panel.Visible = false
 	end

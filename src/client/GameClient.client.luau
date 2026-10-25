@@ -2,6 +2,7 @@
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local SoundService = game:GetService("SoundService")
+local GuiService = game:GetService("GuiService")
 local root = game:GetService("ReplicatedStorage"):WaitForChild("GrabIt", 20)
 assert(root, "GrabIt content was not replicated")
 local Hud = require(root.ClientModules.Hud)
@@ -174,6 +175,7 @@ local function render()
 	local item = if displayedTarget then Catalog.items(state.stage)[displayedTarget] else nil
 	display.tooHeavy = state.tooHeavy and displayedTarget == state.target
 	if item then
+		display.targetName = if item.special then "MYSTERY" else item.name
 		display.targetInfo = if item.special
 			then "Weight ? | Value ?"
 			else "Weight " .. item.weight .. " | Value " .. item.value
@@ -187,6 +189,22 @@ local function render()
 		then world:FindFirstChild("Items")
 		else nil
 	TargetPrompt.update(targetPrompt, display, items, UserInputService.TouchEnabled)
+	local camera = workspace.CurrentCamera
+	if camera then
+		local inset = GuiService:GetGuiInset()
+		local head = if player.Character then player.Character:FindFirstChild("Head") else nil
+		TargetPrompt.place(targetPrompt, camera, {
+			left = 0,
+			right = camera.ViewportSize.X,
+			top = inset.Y + ui.StagePath.AbsolutePosition.Y + ui.StagePath.AbsoluteSize.Y,
+			bottom = inset.Y + (if ui.Tutorial.Visible
+				then ui.Tutorial.AbsolutePosition.Y
+				else ui.Bag.AbsolutePosition.Y),
+			headX = if head
+				then camera:WorldToViewportPoint(head.Position).X
+				else camera.ViewportSize.X / 2,
+		})
+	end
 	if items then
 		if visibilityFolder ~= items then
 			if visibilityConnection then

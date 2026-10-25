@@ -37,17 +37,17 @@ function Hud.create()
 	root.Size = UDim2.fromScale(1, 1)
 	root.BackgroundTransparency = 1
 	root.Parent = screen
-	local coins = box(root, "Coins", UDim2.fromScale(0.02, 0.02), UDim2.new(0.27, 0, 0, 54))
-	local round = box(root, "Round", UDim2.fromScale(0.32, 0.02), UDim2.new(0.36, 0, 0, 66))
-	local style = box(root, "Style", UDim2.fromScale(0.71, 0.02), UDim2.new(0.27, 0, 0, 54))
+	local coins = box(root, "Coins", UDim2.new(0.02, 0, 0, 6), UDim2.new(0.27, 0, 0, 44))
+	local round = box(root, "Round", UDim2.new(0.32, 0, 0, 6), UDim2.new(0.36, 0, 0, 44))
+	local style = box(root, "Style", UDim2.new(0.71, 0, 0, 6), UDim2.new(0.27, 0, 0, 54))
 	for _, field in { coins, round, style } do
 		field.BackgroundTransparency = 0
 	end
-	local bag = box(root, "Bag", UDim2.fromScale(0.23, 0.67), UDim2.new(0.54, 0, 0, 54))
+	local bag = box(root, "Bag", UDim2.new(0.23, 0, 1, -48), UDim2.new(0.54, 0, 0, 44))
 	local message = box(root, "Message", UDim2.fromScale(0.21, 0.33), UDim2.new(0.58, 0, 0, 34))
 	message.BackgroundTransparency = 0.2
 	message.Visible = false
-	local tutorial = box(root, "Tutorial", UDim2.fromScale(0.22, 0.85), UDim2.fromScale(0.52, 0.09))
+	local tutorial = box(root, "Tutorial", UDim2.new(0.22, 0, 1, -96), UDim2.new(0.52, 0, 0, 44))
 	local button = Instance.new("TextButton")
 	button.Name = "Collect"
 	button.AnchorPoint = Vector2.new(1, 1)
@@ -60,6 +60,9 @@ function Hud.create()
 	button.Text = "Collect"
 	button.Visible = false
 	button.Parent = root
+	local touchSize = Instance.new("UISizeConstraint")
+	touchSize.MinSize = Vector2.new(48, 48)
+	touchSize.Parent = button
 	local corner = Instance.new("UICorner")
 	corner.Parent = button
 	corner.CornerRadius = UDim.new(0, 12)
@@ -81,17 +84,17 @@ function Hud.create()
 		return actionButton
 	end
 	style.Visible = false
-	local styles =
-		action("Styles", "Styles", UDim2.fromScale(0.73, 0.02), UDim2.new(0.25, 0, 0, 48))
+	local styles = action("Styles", "Styles", UDim2.new(0.73, 0, 0, 6), UDim2.new(0.25, 0, 0, 48))
 	local nextButton =
 		action("Next", "Next", UDim2.fromScale(0.31, 0.45), UDim2.new(0.38, 0, 0, 48))
 	local urgent = Instance.new("UIStroke")
 	urgent.Name = "Urgency"
 	urgent.Thickness = 3
+	urgent.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 	urgent.Color = Color3.fromRGB(255, 70, 70)
 	urgent.Enabled = false
 	urgent.Parent = round
-	local stagePath = box(root, "StagePath", UDim2.new(0.08, 0, 0, 76), UDim2.new(0.84, 0, 0, 22))
+	local stagePath = box(root, "StagePath", UDim2.new(0.08, 0, 0, 56), UDim2.new(0.84, 0, 0, 22))
 	stagePath.Text = "Toy Dash > Tech Run > Golden Rush"
 	return {
 		StagePath = stagePath,
@@ -128,9 +131,9 @@ function Hud.update(ui, state, touch: boolean)
 		.. tostring(state.cargoWeight or 0)
 		.. " / "
 		.. (state.capacity or 10)
-		.. "   Cargo value "
+		.. "\nCargo value "
 		.. tostring(state.cargoValue or 0)
-		.. "\nBanked "
+		.. " | Banked "
 		.. (state.bankedCount or 0)
 		.. " / "
 		.. (state.totalItems or 30)
