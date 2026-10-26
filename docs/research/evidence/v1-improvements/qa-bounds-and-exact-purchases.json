@@ -1,0 +1,22 @@
+{
+  "bounds": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"1\":{\"passed\":true},\"3\":{\"passed\":true},\"2\":{\"passed\":true},\"5\":{\"passed\":true},\"4\":{\"passed\":true},\"7\":{\"passed\":true},\"6\":{\"passed\":true}}"
+      }
+    ],
+    "isError": false
+  },
+  "exactPurchases": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"24\",\"passed\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "date": "2026-10-26",
+  "scope": "Invalid QA settings rejected before mutation. Existing persistence suite expanded to exact100/350/900-to-zero purchase, retry, stale-write rejection and rejoin with fake backend. No cloud claim."
+}

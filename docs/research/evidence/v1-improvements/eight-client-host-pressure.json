@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-27",
+  "observedAfterFailedEightClientRun": true,
+  "loadAverages": [
+    94.71,
+    126.96,
+    65.28
+  ],
+  "swapUsedMiB": 1909.75,
+  "swapTotalMiB": 3072,
+  "hardware": {
+    "model": "MacBookPro13,2",
+    "cpu": "Intel Core i5-6267U @2.90GHz",
+    "memoryBytes": 17179869184
+  },
+  "studioVersion": "0.744.0.7441077",
+  "cleanup": "Only primary Studio PID7983 remained; QA false and claim restored.",
+  "interpretation": "Severe host saturation observed. Does not by itself rule out a gameplay defect or turn the failed eight-client acceptance into a pass."
+}

@@ -1,0 +1,207 @@
+{
+  "ok": true,
+  "collectionOnly": false,
+  "duration": 0,
+  "result": {
+    "reports": {
+      "-1": {
+        "result": {
+          "minimumFPS": 10.484306940584954,
+          "touch": false,
+          "cargo": 0,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "quality": "Enum.SavedQualitySetting.Automatic",
+          "rows": [
+            {
+              "banked": 1,
+              "ranked": true,
+              "score": 3,
+              "place": 1,
+              "id": "-1",
+              "percent": 3,
+              "name": "Player1"
+            },
+            {
+              "banked": 1,
+              "ranked": true,
+              "score": 3,
+              "place": 1,
+              "id": "-2",
+              "percent": 3,
+              "name": "Player2"
+            }
+          ],
+          "frames": 2793,
+          "coins": 21,
+          "slowSamples": 181,
+          "mode": "multi",
+          "sampleCount": 181,
+          "joining": {
+            "mode": "solo",
+            "remaining": 178,
+            "ranked": true,
+            "original": true
+          },
+          "viewport": "923, 591",
+          "sampleSeconds": 187.6617794856429,
+          "stage": 2,
+          "slowFrames": 2793
+        },
+        "passed": true
+      },
+      "-2": {
+        "result": {
+          "minimumFPS": 1.530193257946953,
+          "touch": false,
+          "cargo": 0,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "quality": "Enum.SavedQualitySetting.Automatic",
+          "rows": [
+            {
+              "banked": 1,
+              "ranked": true,
+              "score": 3,
+              "place": 1,
+              "id": "-1",
+              "percent": 3,
+              "name": "Player1"
+            },
+            {
+              "banked": 1,
+              "ranked": true,
+              "score": 3,
+              "place": 1,
+              "id": "-2",
+              "percent": 3,
+              "name": "Player2"
+            }
+          ],
+          "frames": 7304,
+          "coins": 21,
+          "slowSamples": 2,
+          "mode": "multi",
+          "sampleCount": 168,
+          "joining": {
+            "mode": "solo",
+            "remaining": 165,
+            "ranked": false,
+            "original": false
+          },
+          "viewport": "923, 591",
+          "sampleSeconds": 171.30590497003868,
+          "stage": 2,
+          "slowFrames": 1656
+        },
+        "passed": true
+      }
+    },
+    "joined": 2,
+    "suites": {
+      "Persistence.spec": {
+        "result": "12",
+        "passed": true
+      },
+      "NetworkState.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "ImprovementPersistence.spec": {
+        "result": "24",
+        "passed": true
+      },
+      "ImprovementUI.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "ImprovementSession.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "ItemVisibility.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "Gameplay.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "TargetPrompt.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "WallFinish.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "StorageMode.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "World.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "CargoVisibility.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "BoardTypography.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Features.spec": {
+        "result": "6",
+        "passed": true
+      },
+      "Session.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "Appearance.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "EquipmentFacing.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "CollectibleShapes.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Hud.spec": {
+        "result": "8",
+        "passed": true
+      },
+      "ImprovementRules.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "Loading.spec": {
+        "result": "2",
+        "passed": true
+      },
+      "SelectedItemInformation.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Visuals.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "ImprovementVisuals.spec": {
+        "result": "4",
+        "passed": true
+      }
+    },
+    "passed": true,
+    "leaveChecks": {
+      "-1": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 21
+      }
+    }
+  },
+  "players": 2
+}

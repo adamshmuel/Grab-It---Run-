@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-26",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ok\":true,\"collectionOnly\":false,\"duration\":450,\"players\":1}"
+      }
+    ],
+    "isError": false
+  },
+  "verdict": "Not a pass: server never entered Play; parent result omitted result after owned failed QA process was terminated.",
+  "diagnosis": "StartServer child PID8622 parent7983, exact project build path and studiotestservicemode flags verified. Read-only Edit copy remained; no Server DataModel or QA runner. TERM did not exit; killed only this owned child. Parent cleanup completed; qa false. No work file saved or primary window closed.",
+  "sleepPulse": "Bounded caffeinate -u -t5 diagnostic activity did not repair startup; standing -di continued."
+}

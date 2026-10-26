@@ -1,0 +1,862 @@
+{
+  "ok": true,
+  "collectionOnly": false,
+  "duration": 0,
+  "result": {
+    "reports": {
+      "-3": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 91,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 90,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 90,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 89,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 89,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 88,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 87,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 87,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 86,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            }
+          ],
+          "error": "Players.Player3.PlayerScripts.GrabItQA_Client:96: walking timed out: 0,8",
+          "position": "-6.202753866091371e-10, 3.7248401641845703, -13.978204727172852"
+        },
+        "passed": false
+      },
+      "-8": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 55,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 55,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 54,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 54,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 53,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 52,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 51,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 50,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 49,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 48,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 47,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 46,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            }
+          ],
+          "error": "Players.Player8.PlayerScripts.GrabItQA_Client:96: walking timed out: 0,8",
+          "position": "-6.511982064694166e-10, 3.724827766418457, -15.044870376586914"
+        },
+        "passed": false
+      },
+      "-1": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 5,
+              "cargo": 0,
+              "round": 1,
+              "collected": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true
+              },
+              "coins": 18
+            },
+            {
+              "remaining": 4,
+              "cargo": 0,
+              "round": 1,
+              "collected": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true
+              },
+              "coins": 18
+            },
+            {
+              "remaining": 3,
+              "cargo": 0,
+              "round": 1,
+              "collected": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true
+              },
+              "coins": 18
+            },
+            {
+              "remaining": 2,
+              "cargo": 0,
+              "round": 1,
+              "collected": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true
+              },
+              "coins": 18
+            },
+            {
+              "remaining": 1,
+              "cargo": 0,
+              "round": 1,
+              "collected": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true
+              },
+              "coins": 18
+            },
+            {
+              "remaining": 135,
+              "cargo": 0,
+              "round": 2,
+              "collected": [],
+              "coins": 18
+            },
+            {
+              "remaining": 134,
+              "cargo": 0,
+              "round": 2,
+              "collected": [],
+              "coins": 18
+            },
+            {
+              "remaining": 133,
+              "cargo": 0,
+              "round": 2,
+              "collected": [],
+              "coins": 18
+            },
+            {
+              "remaining": 132,
+              "cargo": 0,
+              "round": 2,
+              "collected": [],
+              "coins": 18
+            },
+            {
+              "remaining": 131,
+              "cargo": 0,
+              "round": 2,
+              "collected": [],
+              "coins": 18
+            },
+            {
+              "remaining": 130,
+              "cargo": 0,
+              "round": 2,
+              "collected": [],
+              "coins": 18
+            },
+            {
+              "remaining": 129,
+              "cargo": 0,
+              "round": 2,
+              "collected": [],
+              "coins": 18
+            }
+          ],
+          "position": "-0.23227287828922272, 3.7248411178588867, -13.36906623840332",
+          "error": "Players.Player1.PlayerScripts.GrabItQA_Client:78: no collectible target",
+          "lastAttempt": {
+            "remaining": 143,
+            "cargo": 0,
+            "position": "12.020360946655273, 3.724841594696045, 36.047611236572266",
+            "target": 10,
+            "round": 1,
+            "collected": {
+              "1": true,
+              "2": true,
+              "3": true,
+              "4": true,
+              "5": true,
+              "6": true,
+              "7": true,
+              "8": true
+            },
+            "coins": 18
+          }
+        },
+        "passed": false
+      },
+      "-2": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 99,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 98,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 98,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 97,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 97,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 96,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 96,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 95,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 94,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 93,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 92,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 91,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            }
+          ],
+          "error": "Players.Player2.PlayerScripts.GrabItQA_Client:96: walking timed out: 0,8",
+          "position": "0.006861661560833454, 3.7248411178588867, -9.436383247375488"
+        },
+        "passed": false
+      },
+      "-4": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 90,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 89,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 88,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 87,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 87,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 86,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            }
+          ],
+          "error": "Players.Player4.PlayerScripts.GrabItQA_Client:78: character did not finish loading",
+          "position": "0, 3.4754374027252197, -18"
+        },
+        "passed": false
+      },
+      "-5": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 80,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 79,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 78,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 77,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 76,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 75,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 74,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 73,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 72,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 71,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 70,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 69,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            }
+          ],
+          "error": "Players.Player5.PlayerScripts.GrabItQA_Client:96: walking timed out: 0,8",
+          "position": "-0.01180803682655096, 3.717311382293701, -17.201173782348633"
+        },
+        "passed": false
+      },
+      "-6": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 75,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 74,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 73,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 72,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 71,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 70,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 69,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 68,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 67,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 67,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 66,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 65,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            }
+          ],
+          "error": "Players.Player6.PlayerScripts.GrabItQA_Client:96: walking timed out: 0,8",
+          "position": "-6.475602276623249e-10, 3.7248411178588867, -12.076281547546387"
+        },
+        "passed": false
+      },
+      "-7": {
+        "result": {
+          "cargo": 0,
+          "snapshots": [
+            {
+              "remaining": 63,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 63,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 63,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 62,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 61,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 60,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 59,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 58,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 57,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 56,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 55,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            },
+            {
+              "remaining": 54,
+              "cargo": 0,
+              "round": 1,
+              "collected": [],
+              "coins": 0
+            }
+          ],
+          "error": "Players.Player7.PlayerScripts.GrabItQA_Client:96: walking timed out: 0,8",
+          "position": "-6.018581188982353e-10, 3.7248411178588867, -12.911539077758789"
+        },
+        "passed": false
+      }
+    },
+    "suites": {
+      "Persistence.spec": {
+        "result": "12",
+        "passed": true
+      },
+      "NetworkState.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "ImprovementPersistence.spec": {
+        "result": "24",
+        "passed": true
+      },
+      "ImprovementUI.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "ImprovementSession.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "ItemVisibility.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "Gameplay.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "TargetPrompt.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "WallFinish.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "StorageMode.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "World.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "CargoVisibility.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "BoardTypography.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Features.spec": {
+        "result": "6",
+        "passed": true
+      },
+      "Session.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "Appearance.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "EquipmentFacing.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "CollectibleShapes.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Hud.spec": {
+        "result": "8",
+        "passed": true
+      },
+      "ImprovementRules.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "Loading.spec": {
+        "result": "2",
+        "passed": true
+      },
+      "SelectedItemInformation.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Visuals.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "ImprovementVisuals.spec": {
+        "result": "4",
+        "passed": true
+      }
+    },
+    "passed": false,
+    "joined": 8
+  },
+  "players": 8
+}

@@ -196,6 +196,41 @@ return function(): number
 			player.stageScore == 70 and player.runEarnings == 100,
 			"purchase cannot change earned competitive score"
 		)
+		for _, style in require(shared.Cosmetics).list do
+			if style.price == 0 then
+				continue
+			end
+			local key = "exact-" .. style.id
+			assert(a:load(key), "new isolated purchase profile")
+			local funded = {
+				coins = style.price,
+				tutorial = true,
+				owned = { basic = true },
+				selected = "basic",
+				revision = 1,
+			}
+			assert(a:saveProfile(key, funded), "fund exact price in fake backend")
+			local exactStatus, bought = a:purchase(key, style.id, funded, "exact-purchase")
+			assert(
+				exactStatus == "confirmed" and bought.coins == 0 and bought.owned[style.id],
+				"exact purchase persists debit and ownership together"
+			)
+			local repeated, same = a:purchase(key, style.id, funded, "exact-purchase")
+			assert(
+				repeated == "confirmed" and same.coins == 0,
+				"repeated transaction does not charge twice"
+			)
+			assert(
+				not a:saveProfile(key, funded),
+				"old funded snapshot cannot restore spent balance"
+			)
+			assert(a:releaseProfile(key, bought), "release exact purchase")
+			local rejoined = b:load(key)
+			assert(
+				rejoined and rejoined.coins == 0 and rejoined.owned[style.id],
+				"zero balance and ownership survive new session"
+			)
+		end
 		records.corruptTransaction = {
 			version = 2,
 			coins = 100,
@@ -206,7 +241,7 @@ return function(): number
 			lastTransaction = true,
 		}
 		assert(a:load("corruptTransaction") == nil, "invalid transaction metadata fails closed")
-		return 21
+		return 24
 	end)
 	shared:Destroy()
 	assert(ok, result)

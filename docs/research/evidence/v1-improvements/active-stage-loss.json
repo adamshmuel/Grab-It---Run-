@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-27",
+  "scope": "Native single-player active-stage loss in verified local work-file window; memory storage. First item banked, second carried. Controlled server Humanoid.Health=0 exercises real Died/respawn handlers, not a natural hazard or PvP. No clock, speed, currency or cargo/profile edits.",
+  "before": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"item3\":true,\"remaining\":130,\"banked\":1,\"coins\":2,\"phase\":\"active\",\"models\":{\"1\":{\"attributes\":{\"ItemId\":26},\"name\":\"26\"},\"3\":{\"attributes\":{\"ItemId\":3},\"name\":\"3\"},\"2\":{\"attributes\":{\"ItemId\":22},\"name\":\"22\"}},\"cargo\":1,\"item1\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "after": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"banked\":1,\"phase\":\"active\",\"coins\":2,\"item3\":false,\"remaining\":116,\"health\":100,\"item1\":true,\"cargo\":0,\"parts\":{\"1\":{\"fade\":0,\"transparency\":1,\"name\":\"3\",\"position\":\"-12, 2.5, 18\"}}}"
+      }
+    ],
+    "isError": false
+  },
+  "visible": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"target\":3,\"visibleGeometryParts\":7,\"originalPosition\":\"-12, 2.5, 18\"}"
+      }
+    ],
+    "isError": false
+  },
+  "nativeERecollection": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"item3\":true,\"banked\":1,\"phase\":\"active\",\"coins\":2,\"cargo\":1,\"item1\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "deposit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"item3\":true,\"banked\":2,\"phase\":\"active\",\"coins\":4,\"cargo\":0,\"item1\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "verdict": "Passed scoped active-stage loss/return: banked item stayed collected, coins2 preserved, unbanked item3 returned visibly at(-12,2.5,18), native E recollected, second deposit yielded coins4/banked2. Root part Transparency1 is its intentional invisible target; seven visible geometry parts verified separately.",
+  "cleanup": "Observer disconnected, Play stopped. No source/work-file mutation."
+}

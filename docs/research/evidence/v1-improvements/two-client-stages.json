@@ -1,0 +1,151 @@
+{
+  "ok": true,
+  "collectionOnly": false,
+  "duration": 0,
+  "result": {
+    "reports": {
+      "-1": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 2723,
+          "coins": 21,
+          "slowSamples": 178,
+          "quality": "Enum.SavedQualitySetting.Automatic",
+          "sampleSeconds": 185.71907760575414,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "923, 591",
+          "sampleCount": 178,
+          "minimumFPS": 0.924139885722268,
+          "slowFrames": 2722
+        },
+        "passed": true
+      },
+      "-2": {
+        "result": {
+          "touch": false,
+          "cargo": 0,
+          "frames": 7820,
+          "coins": 21,
+          "slowSamples": 2,
+          "quality": "Enum.SavedQualitySetting.Automatic",
+          "sampleSeconds": 183.95712850801647,
+          "input": "Humanoid MoveTo and real client RemoteEvent requests",
+          "viewport": "923, 591",
+          "sampleCount": 179,
+          "minimumFPS": 0.724177584557851,
+          "slowFrames": 1634
+        },
+        "passed": true
+      }
+    },
+    "joined": 2,
+    "suites": {
+      "Persistence.spec": {
+        "result": "12",
+        "passed": true
+      },
+      "NetworkState.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "ImprovementPersistence.spec": {
+        "result": "21",
+        "passed": true
+      },
+      "ImprovementUI.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "ImprovementSession.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "ItemVisibility.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "Gameplay.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "TargetPrompt.spec": {
+        "result": "4",
+        "passed": true
+      },
+      "WallFinish.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "StorageMode.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "World.spec": {
+        "result": "7",
+        "passed": true
+      },
+      "CargoVisibility.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "BoardTypography.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Features.spec": {
+        "result": "6",
+        "passed": true
+      },
+      "Session.spec": {
+        "result": "11",
+        "passed": true
+      },
+      "Appearance.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "EquipmentFacing.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "CollectibleShapes.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Hud.spec": {
+        "result": "8",
+        "passed": true
+      },
+      "ImprovementRules.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "Loading.spec": {
+        "result": "2",
+        "passed": true
+      },
+      "SelectedItemInformation.spec": {
+        "result": "1",
+        "passed": true
+      },
+      "Visuals.spec": {
+        "result": "5",
+        "passed": true
+      },
+      "ImprovementVisuals.spec": {
+        "result": "4",
+        "passed": true
+      }
+    },
+    "passed": true,
+    "leaveChecks": {
+      "-1": {
+        "passed": true,
+        "stage": "after-leave",
+        "coins": 21
+      }
+    }
+  },
+  "players": 2
+}

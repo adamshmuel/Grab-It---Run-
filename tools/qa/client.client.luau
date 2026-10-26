@@ -10,14 +10,15 @@ local channel = game:GetService("ReplicatedStorage"):WaitForChild("GrabItQAChann
 assert(root and channel, "QA replication timed out")
 local View = require(root.Shared.Presentation)
 local Wire = require(root.Shared.NetworkState)
-local Rules = require(root.Shared.GameRules)
-assert(channel:GetAttribute("Marker") == "GrabItV1.AutomatedQA", "wrong QA channel")
+local Catalog = require(root.Shared.Catalog)
+assert(channel:GetAttribute("Marker") == "GrabItV1.ImprovementsQA", "wrong QA channel")
 local duration = channel:GetAttribute("Duration")
 local qualitySettings = UserSettings():GetService("UserGameSettings")
 script:SetAttribute("Stage", "loading")
 local state = nil
 local snapshots = {}
 local lastAttempt = nil
+local joining = nil
 local stateConnection = root.State.OnClientEvent:Connect(function(value)
 	value.collected = Wire.unpackCollected(value.collected)
 	state = value
@@ -76,7 +77,7 @@ local function awaitCondition(check, timeout: number, message: string)
 	until os.clock() >= deadline
 	error(message)
 end
-local function walk(x: number, z: number)
+local function walk(x: number, z: number, tolerance: number?)
 	local character = player.Character
 	assert(character, "missing character")
 	local center = character:FindFirstChild("HumanoidRootPart")
@@ -84,7 +85,9 @@ local function walk(x: number, z: number)
 	assert(center and humanoid, "missing humanoid")
 	local deadline = os.clock() + 18
 	repeat
-		if (Vector3.new(x, center.Position.Y, z) - center.Position).Magnitude < 2 then
+		if
+			(Vector3.new(x, center.Position.Y, z) - center.Position).Magnitude < (tolerance or 2)
+		then
 			return
 		end
 		humanoid:MoveTo(Vector3.new(x, center.Position.Y, z))
@@ -97,7 +100,9 @@ local function collect(expected: number, optional: boolean?)
 	local function target()
 		local character = player.Character
 		local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
-		return if center then View.collectionTarget(Rules.items, state, center.Position) else nil
+		return if center
+			then View.collectionTarget(Catalog.items(state.stage), state, center.Position)
+			else nil
 	end
 	if optional and not target() then
 		return
@@ -147,22 +152,89 @@ local ok, result = pcall(function()
 			and player.Character:FindFirstChild("HumanoidRootPart")
 			and player.Character:FindFirstChildOfClass("Humanoid")
 	end, 15, "character did not finish loading")
+	if channel:GetAttribute("Staggered") then
+		awaitCondition(function()
+			return state.open
+		end, 10, "first solo stage did not open")
+		channel:FireServer({
+			stage = "started-active",
+			round = state.roundId,
+			remaining = state.remaining,
+		})
+		awaitCondition(function()
+			return channel:GetAttribute("OriginalPlayer") ~= nil
+		end, 5, "staggered identity missing")
+		local original = player.UserId == channel:GetAttribute("OriginalPlayer")
+		local ownRow = nil
+		for _, row in state.rows do
+			if row.id == tostring(player.UserId) then
+				ownRow = row
+			end
+		end
+		assert(
+			state.mode == "solo"
+				and state.stage == 1
+				and state.roundId == channel:GetAttribute("OriginalRound"),
+			"join cannot reset active solo stage"
+		)
+		assert(
+			ownRow and ownRow.ranked == original,
+			"late joiners remain Unranked until next stage"
+		)
+		assert(
+			state.remaining <= channel:GetAttribute("OriginalRemaining"),
+			"join cannot extend clock"
+		)
+		joining = {
+			original = original,
+			mode = state.mode,
+			remaining = state.remaining,
+			ranked = ownRow.ranked,
+		}
+	end
+	local encodedRoutes = channel:GetAttribute("RoutePlan")
+	if encodedRoutes then
+		return require(channel:WaitForChild("routes"))(encodedRoutes, duration, {
+			root = root,
+			player = player,
+			getState = function()
+				return state
+			end,
+			walk = walk,
+			collect = collect,
+			awaitCondition = awaitCondition,
+			runner = script,
+		})
+	end
 	local began = os.clock()
 	sampling = true
 	script:SetAttribute("Stage", "first-trip")
 	walk(0, 8)
-	local initialCount = if channel:GetAttribute("LoopSmoke") then 1 else 5
-	for index, z in { 12, 18, 24, 30, 36 } do
-		if index > initialCount then
-			break
-		end
-		walk(-12, z)
+	local smoke = channel:GetAttribute("LoopSmoke") == true
+	local firstTrip = if smoke
+		then { { -12, 12 } }
+		else {
+			{ -12, 12 },
+			{ -12, 18 },
+			{ -12, 24 },
+			{ -12, 30 },
+			{ 12, 30 },
+			{ 12, 24 },
+			{ 12, 18 },
+			{ 12, 12 },
+		}
+	local initialCount = #firstTrip
+	local expectedWeight = if smoke then 1 else 10
+	local expectedCoins = if smoke then 2 else 18
+	for index, point in firstTrip do
+		walk(point[1], point[2])
 		collect(index)
 	end
-	assert(state.cargoValue == initialCount, "near objects worth one coin each")
+	assert(tonumber(state.cargoValue) == expectedCoins, "catalog cargo reward")
+	assert(tonumber(state.cargoWeight) == expectedWeight, "weight capacity supports eight items")
 	assert(
-		math.abs(player.Character.Humanoid.WalkSpeed - 16 * (1 - initialCount * 0.1)) < 0.01,
-		"cargo reduces movement speed"
+		math.abs(player.Character.Humanoid.WalkSpeed - 16 * (1 - 0.35 * expectedWeight / 10)) < 0.01,
+		"cargo slows by weight, not item count"
 	)
 	script:SetAttribute("Stage", "full-cargo")
 	task.wait(8)
@@ -175,12 +247,12 @@ local ok, result = pcall(function()
 	walk(0, 8)
 	walk(0, -8)
 	awaitCondition(function()
-		return state.coins == initialCount and state.cargoCount == 0 and state.tutorial
+		return state.coins == expectedCoins and state.cargoCount == 0 and state.tutorial
 	end, 4, "first deposit")
 	script:SetAttribute("Stage", "first-bank")
 	if not channel:GetAttribute("LoopSmoke") then
 		walk(0, 8)
-		walk(12, 12)
+		walk(12, 36)
 		collect(1)
 		script:SetAttribute("Stage", "waiting-for-closure")
 		awaitCondition(function()
@@ -189,7 +261,7 @@ local ok, result = pcall(function()
 		awaitCondition(function()
 			return player.Character.HumanoidRootPart.Position.Z < 0 and state.cargoCount == 0
 		end, 4, "closure did not return player and clear cargo")
-		assert(state.coins == 5, "closure preserves banked progress")
+		assert(state.coins == expectedCoins, "closure preserves banked progress")
 		script:SetAttribute("Stage", "closed")
 		awaitCondition(function()
 			return state.open
@@ -200,23 +272,51 @@ local ok, result = pcall(function()
 		walk(0, 8)
 		walk(0, -8)
 		awaitCondition(function()
-			return state.coins == 6 and state.cargoCount == 0
+			return state.coins == expectedCoins + 3 and state.cargoCount == 0
 		end, 4, "next round refresh and second deposit")
+		if joining then
+			awaitCondition(
+				function()
+					if
+						state.mode ~= "multi"
+						or #state.rows ~= channel:GetAttribute("ExpectedPlayers")
+					then
+						return false
+					end
+					for _, row in state.rows do
+						if not row.ranked or row.score ~= 3 or row.place ~= 1 then
+							return false
+						end
+					end
+					return true
+				end,
+				12,
+				"next stage must recount multiplayer, rank every ready player and share tied place"
+			)
+		end
 	end
 	script:SetAttribute("Stage", "load-loop")
-	local routes = { 18, 24, 30, 36 }
-	local route = 0
-	while os.clock() - began < duration and (duration < 600 or not measuring or seconds < 600) do
+	while os.clock() - began < duration or (duration >= 600 and seconds < 600) do
 		if state.open and state.remaining > 35 then
-			route = route % #routes + 1
-			walk(0, 8)
-			walk(12, routes[route])
-			collect(1, true)
-			walk(0, 8)
-			walk(0, -8)
-			awaitCondition(function()
-				return state.cargoCount == 0
-			end, 4, "load-loop deposit was not confirmed")
+			local nextItem = nil
+			for _, item in Catalog.items(state.stage) do
+				if not state.collected[item.id] then
+					nextItem = item
+					break
+				end
+			end
+			if nextItem then
+				walk(0, 8)
+				walk(nextItem.x, nextItem.z)
+				collect(1, true)
+				walk(0, 8)
+				walk(0, -8)
+				awaitCondition(function()
+					return state.cargoCount == 0
+				end, 4, "load-loop deposit was not confirmed")
+			else
+				task.wait(0.5)
+			end
 		else
 			task.wait(0.5)
 		end
@@ -228,6 +328,10 @@ local ok, result = pcall(function()
 	return {
 		coins = state.coins,
 		cargo = state.cargoCount,
+		stage = state.stage,
+		joining = joining,
+		mode = state.mode,
+		rows = state.rows,
 		frames = frames,
 		slowFrames = slowFrames,
 		sampleSeconds = seconds,
@@ -258,6 +362,12 @@ channel:FireServer({
 			position = player.Character and tostring(player.Character:GetPivot().Position),
 			lastAttempt = lastAttempt,
 			snapshots = snapshots,
+			joining = joining,
+			frames = frames,
+			sampleSeconds = seconds,
+			viewport = tostring(workspace.CurrentCamera.ViewportSize),
+			quality = tostring(qualitySettings.SavedQualityLevel),
+			routeJournal = script:GetAttribute("RouteJournal"),
 		},
 })
 if not ok or channel:GetAttribute("CollectionOnly") then
