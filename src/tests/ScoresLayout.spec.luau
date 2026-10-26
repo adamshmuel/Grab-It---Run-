@@ -78,6 +78,16 @@ return function(): number
 			)
 			assert(scores.Rows[8][1].TextFits, "Unranked must fit")
 			assert(
+				scores.Rows[8][1].AbsoluteSize.X >= scores.Rows[8][1].TextBounds.X + 8,
+				"Unranked needs visible spacing before the player name"
+			)
+			if size.Y < 350 then
+				assert(
+					scores.Rows[8][1].AbsolutePosition.X >= ui.Root.AbsolutePosition.X + 130,
+					"Lower score rows must stay outside the active joystick area"
+				)
+			end
+			assert(
 				cell.AbsolutePosition.Y + cell.AbsoluteSize.Y
 					<= scores.Panel.AbsolutePosition.Y + scores.Panel.AbsoluteSize.Y,
 				"Eighth row stays inside panel"
@@ -87,9 +97,13 @@ return function(): number
 				"Close target >= 48px"
 			)
 			local separateX = cell.AbsolutePosition.X + cell.AbsoluteSize.X
-				<= scores.Close.AbsolutePosition.X
+					<= scores.Close.AbsolutePosition.X
+				or scores.Close.AbsolutePosition.X + scores.Close.AbsoluteSize.X
+					<= cell.AbsolutePosition.X
 			local separateY = cell.AbsolutePosition.Y + cell.AbsoluteSize.Y
-				<= scores.Close.AbsolutePosition.Y
+					<= scores.Close.AbsolutePosition.Y
+				or scores.Close.AbsolutePosition.Y + scores.Close.AbsoluteSize.Y
+					<= cell.AbsolutePosition.Y
 			assert(separateX or separateY, "Close must not cover the eighth row")
 		end
 		S.toggle(scores)

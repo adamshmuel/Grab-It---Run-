@@ -33,10 +33,13 @@ function Scores.update(ui, state, localId: string)
 	if not ui.available then
 		ui.Panel.Visible = false
 	end
-	local compact = ui.Panel.AbsoluteSize.Y < 310
-	ui.Container.Size = UDim2.fromScale(if compact then 0.76 else 1, 1)
-	ui.Title.Size = UDim2.new(if compact then 0.76 else 1, 0, 0, 22)
-	ui.Close.Position = if compact then UDim2.new(0.78, 0, 0, 6) else UDim2.new(0.78, 0, 1, -48)
+	local compact = ui.Panel.AbsoluteSize.Y < 350
+	ui.Container.Position = UDim2.fromScale(if compact then 0.18 else 0, 0)
+	ui.Container.Size = UDim2.fromScale(if compact then 0.82 else 1, 1)
+	ui.Title.Position = ui.Container.Position
+	ui.Title.Size = UDim2.new(if compact then 0.82 else 1, 0, 0, 22)
+	ui.Close.Position = if compact then UDim2.fromOffset(0, 6) else UDim2.new(0.78, 0, 1, -48)
+	ui.Close.Size = UDim2.new(if compact then 0.16 else 0.22, 0, 0, 48)
 	local seconds = math.max(0, state.remaining)
 	ui.Title.Text = string.format(
 		"LIVE RESULTS | %d / 3 | %d:%02d",
