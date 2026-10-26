@@ -59,6 +59,8 @@ The pause before post-implementation validation was honored and Adam resumed tha
 
 ## Tooling and Studio protection
 
+Adam requires the computer and display to remain awake across chat turns while work is resumed. Keep one owned `caffeinate -di` process running between responses; do not stop it merely because a turn or work batch ends. Stop it on Adam's explicit pause/stop request, and verify assertions again on resumption. This is separate from Rojo, which still stops at every work boundary. Current owned sleep-prevention process: PID `7198`, started on 2026-10-26 and verified with `pmset -g assertions`; recheck ownership and liveness before relying on this historical PID.
+
 Follow the mandatory Rojo start/stop lifecycle in `rules/studio.md`: shut down this project’s Rojo server at every pause or end of work, verify shutdown, and recheck the correct server and actual Studio sync at every authorized resumption before code or tests. Documentation or commits during a pause do not resume syncing.
 
 Local Luau sources are the source of truth for Rojo-managed code. Do not edit that code through Studio, MCP or Script Sync. MCP is the Studio connection; Rojo syncs local sources. Do not assume every map object is represented in Git.
