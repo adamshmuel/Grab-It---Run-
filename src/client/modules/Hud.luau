@@ -84,7 +84,8 @@ function Hud.create()
 		return actionButton
 	end
 	style.Visible = false
-	local styles = action("Styles", "Styles", UDim2.new(0.73, 0, 0, 6), UDim2.new(0.25, 0, 0, 48))
+	local scores = action("Scores", "Scores", UDim2.new(0.73, 0, 0, 6), UDim2.new(0.12, 0, 0, 48))
+	local styles = action("Styles", "Styles", UDim2.new(0.86, 0, 0, 6), UDim2.new(0.12, 0, 0, 48))
 	local nextButton =
 		action("Next", "Next", UDim2.fromScale(0.31, 0.45), UDim2.new(0.38, 0, 0, 48))
 	local urgent = Instance.new("UIStroke")
@@ -100,6 +101,7 @@ function Hud.create()
 		StagePath = stagePath,
 		Next = nextButton,
 		Styles = styles,
+		Scores = scores,
 		Urgency = urgent,
 		Screen = screen,
 		Root = root,
@@ -140,6 +142,7 @@ function Hud.update(ui, state, touch: boolean)
 	ui.Collect.Visible = touch and state.open and state.target ~= nil and state.ready
 	ui.Collect.Text = if state.tooHeavy then "Too heavy" else "Collect"
 	ui.Styles.Visible = state.ready and (state.inBase or not state.open)
+	ui.Scores.Visible = state.ready and state.phase == "active"
 	ui.Next.Visible = state.canNext == true
 	ui.Next.Text = if state.stage == 3
 		then "Finish match"

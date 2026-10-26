@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-26",
+  "placeId": 106986292768692,
+  "red": "ScoresLayout failed: Scores dialog must exist",
+  "green": {
+    "edit_suites": 20,
+    "client_suites": 4,
+    "client_names": [
+      "TouchButtonLayout.spec",
+      "ResultsLayout.spec",
+      "StylesLayout.spec",
+      "ScoresLayout.spec"
+    ]
+  },
+  "observed": {
+    "samsungCloseInput": "Touch",
+    "desktopOpenClose": true,
+    "iphoneOpenClose": true,
+    "liveBankScore": [
+      0,
+      2
+    ],
+    "naturalStageTransitionClosed": true
+  },
+  "limits": [
+    "eight rows were fixture data, not eight clients",
+    "not full visual or version acceptance"
+  ],
+  "audioDiagnostic": {
+    "asset": 203785492,
+    "rawString": "Failure",
+    "SoundInstance": "Success",
+    "pluginUnchanged": true
+  }
+}

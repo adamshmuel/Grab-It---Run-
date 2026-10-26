@@ -9,6 +9,7 @@ local Hud = require(root.ClientModules.Hud)
 local TargetPrompt = require(root.ClientModules.TargetPrompt)
 local ItemVisibility = require(root.ClientModules.ItemVisibility)
 local Results = require(root.ClientModules.Results)
+local Scores = require(root.ClientModules.Scores)
 local Styles = require(root.ClientModules.Styles)
 local Catalog = require(root.Shared.Catalog)
 local player = Players.LocalPlayer
@@ -26,6 +27,7 @@ local connections = {}
 local sounds = {}
 local displayedTarget = nil
 local results = Results.create(ui.Screen)
+local scores = Scores.create(ui.Screen)
 local collection = Styles.create(ui.Screen, function(action, id)
 	root.Action:FireServer(action, id)
 end)
@@ -137,12 +139,14 @@ table.insert(
 table.insert(
 	connections,
 	ui.Styles.Activated:Connect(function()
+		scores.Panel.Visible = false
 		collection.Panel.Visible = not collection.Panel.Visible
 	end)
 )
 table.insert(
 	connections,
 	results.Styles.Activated:Connect(function()
+		scores.Panel.Visible = false
 		collection.Panel.Visible = true
 	end)
 )
@@ -156,6 +160,13 @@ table.insert(
 	connections,
 	results.Tab.Activated:Connect(function()
 		results.showStage = not results.showStage
+	end)
+)
+table.insert(
+	connections,
+	ui.Scores.Activated:Connect(function()
+		collection.Panel.Visible = false
+		Scores.toggle(scores)
 	end)
 )
 local previousWarning = false
@@ -183,6 +194,7 @@ local function render()
 	Hud.update(ui, display, UserInputService.TouchEnabled)
 	Styles.update(collection, display)
 	Results.update(results, state, tostring(player.UserId))
+	Scores.update(scores, state, tostring(player.UserId))
 	results.Panel.Visible = results.Panel.Visible and not collection.Panel.Visible
 	local world = workspace:FindFirstChild("GrabItWorld")
 	local items = if world and world:GetAttribute("Stage") == state.stage
@@ -302,6 +314,7 @@ table.insert(
 			visibilityConnection:Disconnect()
 		end
 		Styles.destroy(collection)
+		Scores.destroy(scores)
 		if board then
 			board.Gui:Destroy()
 		end
