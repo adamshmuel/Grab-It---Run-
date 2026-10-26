@@ -57,6 +57,8 @@ The pause before post-implementation validation was honored and Adam resumed tha
 
 ## Tooling and Studio protection
 
+Follow the mandatory Rojo start/stop lifecycle in `rules/studio.md`: shut down this project’s Rojo server at every pause or end of work, verify shutdown, and recheck the correct server and actual Studio sync at every authorized resumption before code or tests. Documentation or commits during a pause do not resume syncing.
+
 Local Luau sources are the source of truth for Rojo-managed code. Do not edit that code through Studio, MCP or Script Sync. MCP is the Studio connection; Rojo syncs local sources. Do not assume every map object is represented in Git.
 
 For future authorized operations, verify the exact target under `rules/studio.md` before each mutation/run group and pass explicit studio_id. Approved historical identity: place `106986292768692`, universe `10772701508`, expected GrabIt hierarchy. Recheck it; no other open Place1/Baseplate or project is a fallback. Use one project Studio window; temporary clients/files only when necessary, identify them and clean them afterward without losing unsaved work. Do not request sensitive computer-control permissions when existing dedicated tools suffice.
