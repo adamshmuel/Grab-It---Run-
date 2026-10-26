@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-10-22T13:10:41.418740+00:00",
+  "details_source": "https://games.roblox.com/v1/games?universeIds=7709344486,9649298941",
+  "images": [
+    {
+      "file": "environment/carry-and-base.jpg",
+      "original_media_url": "https://progameguides.com/wp-content/uploads/2025/06/Steal-A-Brainrot-Stolen-Character.jpg?resize=1200%2C675",
+      "source_page": "https://progameguides.com/roblox/how-to-steal-and-defend-in-steal-a-brainrot-pvp-base-protection-tips/",
+      "creator_or_credit": "Vignesh Raja / Pro Game Guides",
+      "publisher_updated": "2025-07-17",
+      "capture_date": "unknown",
+      "game_version": "unknown",
+      "retrieved_utc": "2026-10-22T13:08:59.048797+00:00",
+      "scene_and_purpose": "נשיאה בין בסיסים, מרחב פתוח וסימון בסיס",
+      "size": [
+        1200,
+        675
+      ],
+      "bytes": 41278,
+      "sha256": "7e17f6d307a732945288797bb5a155f0761ad9dc658cec00e0e903ffc077da06"
+    },
+    {
+      "file": "ui/collection-labels.jpg",
+      "original_media_url": "https://progameguides.com/wp-content/uploads/2025/06/Featured-How-to-Steal-and-Defend-in-Steal-a-Brainrot-PvP-Base-Protection-Tips.jpg?fit=900%2C506",
+      "source_page": "https://progameguides.com/roblox/how-to-steal-and-defend-in-steal-a-brainrot-pvp-base-protection-tips/",
+      "creator_or_credit": "Vignesh Raja / Pro Game Guides",
+      "publisher_updated": "2025-07-17",
+      "capture_date": "unknown",
+      "game_version": "unknown",
+      "retrieved_utc": "2026-10-22T13:09:02.238713+00:00",
+      "scene_and_purpose": "משטחי הפקדה ותוויות ערך בתוך בסיס",
+      "size": [
+        900,
+        506
+      ],
+      "bytes": 27444,
+      "sha256": "c941b2bde2072c840806d7c2a8363032fd6474bc989039cb59f3edcb066c38c5"
+    }
+  ]
+}

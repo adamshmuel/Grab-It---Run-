@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-10-22T13:10:41.418740+00:00",
+  "details_source": "https://games.roblox.com/v1/games?universeIds=7709344486,9649298941",
+  "images": [
+    {
+      "file": "ui/value-and-rarity.jpg",
+      "original_media_url": "https://static.beebom.com/wp-content/uploads/2026/02/Gold-Mutation.jpg?w=1024",
+      "source_page": "https://beebom.com/survive-lava-for-brainrots-mutations-guide/",
+      "creator_or_credit": "Bipradeep Biswas / Beebom; credited to Survive LAVA for Brainrots / Roblox",
+      "publisher_updated": "2026-02-20",
+      "capture_date": "unknown",
+      "game_version": "unknown",
+      "retrieved_utc": "2026-10-22T13:09:26.117742+00:00",
+      "scene_and_purpose": "צבע, תווית נדירות, ערך וכפתור שדרוג בצילום קרוב",
+      "size": [
+        1024,
+        576
+      ],
+      "bytes": 90089,
+      "sha256": "7bd793d6597bc5bd52bdd14e0f2efbf26ad08dd4430e8f4ae26ce78a25622a95"
+    },
+    {
+      "file": "environment/moon-event-overview.jpg",
+      "original_media_url": "https://static.beebom.com/wp-content/uploads/2026/02/What-Happens-During-Moon-Event-in-Survive-LAVA-for-Brainrots.jpg?w=1024",
+      "source_page": "https://beebom.com/survive-lava-for-brainrots-moon-event-guide/",
+      "creator_or_credit": "Bipradeep Biswas / Beebom; credited to Survive LAVA for Brainrots / Roblox",
+      "publisher_updated": "2026-02-20",
+      "capture_date": "unknown",
+      "game_version": "unknown",
+      "retrieved_utc": "2026-10-22T13:10:15.520476+00:00",
+      "scene_and_purpose": "מבט סביבתי בזמן אירוע Moon; אינו מצב התאורה הרגיל",
+      "size": [
+        1024,
+        576
+      ],
+      "bytes": 83978,
+      "sha256": "9ea65469b565c36603e288625b7ea6b1c66dd4203d597862b86e8fbe0bd8b1aa"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": 9649298941,
+  "rootPlaceId": 119987266683883,
+  "name": "Survive LAVA for Brainrots!",
+  "description": "Welcome to Survive LAVA For Brainrots! 🔥\n\nRun fast and grab Brainrots! 🏃\nAvoid the rising lava! 🌋\nRebirth to upgrade your jump height!⚡\nUpgrade your Brainrots to earn more money! 💸\nUpgrade your base to unlock more slots and place extra Brainrots! 🏗️\n\nLike the game and join the group for a MORE AWESOME UPDATES! 👍🔥",
+  "sourceName": null,
+  "sourceDescription": null,
+  "creator": {
+    "id": 876852426,
+    "name": "Johnny Lava",
+    "type": "Group",
+    "isRNVAccount": false,
+    "hasVerifiedBadge": true
+  },
+  "price": null,
+  "allowedGearGenres": [
+    "All"
+  ],
+  "allowedGearCategories": [],
+  "isGenreEnforced": false,
+  "copyingAllowed": false,
+  "playing": 713,
+  "visits": 753496335,
+  "maxPlayers": 5,
+  "created": "2026-01-30T22:53:24.267Z",
+  "updated": "2026-10-21T22:39:46.577Z",
+  "studioAccessToApisAllowed": false,
+  "createVipServersAllowed": false,
+  "universeAvatarType": "MorphToR15",
+  "genre": "All",
+  "genre_l1": "Simulation",
+  "genre_l2": "Tycoon",
+  "untranslated_genre_l1": "simulation",
+  "isAllGenre": true,
+  "isFavoritedByUser": false,
+  "favoritedCount": 5564402,
+  "canonicalUrlPath": "/games/119987266683883/Survive-LAVA-for-Brainrots",
+  "isContentRestricted": false
+}

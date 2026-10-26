@@ -1,0 +1,41 @@
+[
+  {
+    "file": "environment/base-carry.jpg",
+    "original_media_url": "https://res.ldrescdn.com/rms/ldplayer/process/img/457719a7e02b4cd592dfde23f170d4ba1769391197.jpg",
+    "source_page": "https://www.ldplayer.net/blog/escape-tsunami-for-brainrots-roblox-guide.html?n=60000",
+    "publisher_credit": "LDPlayer / Nipun Gimhan",
+    "page_publication_or_update_date": "2026-01-26",
+    "capture_date": "unknown",
+    "game_version": "unknown",
+    "retrieved_at_utc": "2026-10-22T10:58:01.683154+00:00",
+    "bytes": 610630,
+    "sha256": "47afc7ec54a1905a41f00347036b95823518dd78c02d6b80c51d9dc940bc6f26",
+    "purpose": "Base, carried box, upgrade signage and UI; original capture author/date/version unknown."
+  },
+  {
+    "file": "environment/safe-zone.jpg",
+    "original_media_url": "https://res.ldrescdn.com/rms/ldplayer/process/img/c0105f48183a4059a6609d5b38f212531769391197.jpg",
+    "source_page": "https://www.ldplayer.net/blog/escape-tsunami-for-brainrots-roblox-guide.html?n=60000",
+    "publisher_credit": "LDPlayer / Nipun Gimhan",
+    "page_publication_or_update_date": "2026-01-26",
+    "capture_date": "unknown",
+    "game_version": "unknown",
+    "retrieved_at_utc": "2026-10-22T10:58:08.896712+00:00",
+    "bytes": 595456,
+    "sha256": "cf643369a4473afb1f6f24f470583e7b384258695a69d44bff2f6b18bd34ef03",
+    "purpose": "Purple wave, floor trench, collectible labels; exact safe-zone behavior not verified. Original capture author/date/version unknown."
+  },
+  {
+    "file": "ui/spawn-machine.png",
+    "original_media_url": "https://static.allthings.how/content/images/2026/02/image-395-1-1.png",
+    "source_page": "https://allthings.how/escape-tsunami-for-brainrots-all-events-and-spawn-mechanics/",
+    "publisher_credit": "All Things How / Pallav Pathak; credit Roblox via YouTube/@ViewSIM",
+    "page_publication_or_update_date": "2026-02-05",
+    "capture_date": "unknown",
+    "game_version": "unknown",
+    "retrieved_at_utc": "2026-10-22T10:58:11.523947+00:00",
+    "bytes": 1405740,
+    "sha256": "098ef7b0409d9a5efbd31f47bc85076ff6da76ad8aa7b431b9da77b02f6e5ca2",
+    "purpose": "Spawn machine, luck bar and leaderboards; source video not watched, capture timestamp and version unknown."
+  }
+]

@@ -12,13 +12,13 @@
 
 ## מה נראה בפועל
 
-![נשיאה בחוץ בין בסיסים](https://progameguides.com/wp-content/uploads/2025/06/Steal-A-Brainrot-Stolen-Character.jpg?resize=1200%2C675)
+![נשיאה בחוץ בין בסיסים](../../references/competitors/steal-a-brainrot/environment/carry-and-base.jpg)
 
 **תצפית:** בסיסים חוזרים בצורתם, רצפה ירוקה, נתיב אדום, שלט בסיס אישי ודמות נושאת פריט גדול. התנועה עצמה אינה מוכחת בצילום.
 
 **משמעות עבורנו:** דרך החזרה והבסיס צריכים להיות מזוהים מתוך זווית המשחק. המטען צריך להיות נראה בלי להסתיר את הנתיב.
 
-![איסוף וערכים בתוך בסיס](https://progameguides.com/wp-content/uploads/2025/06/Featured-How-to-Steal-and-Defend-in-Steal-a-Brainrot-PvP-Base-Protection-Tips.jpg?fit=900%2C506)
+![איסוף וערכים בתוך בסיס](../../references/competitors/steal-a-brainrot/ui/collection-labels.jpg)
 
 **תצפית:** לכל דמות מקום נפרד, משטח ירוק ותוויות ערך. הצורות פשוטות, והתוויות בולטות באמצעות ניגוד צבע וגבול כהה.
 
@@ -28,6 +28,6 @@
 
 ## מגבלות ושמירה
 
-לא נראה HUD מלא בכל צילום. אין ראיה מכאן לאיכות touch, אנימציה, ביצועים או מראה עדכני. אלו שתי תמונות של מפרסם אחד, לא שתי עדויות עצמאיות. הרפרנסים נשמרו תחת references/competitors/steal-a-brainrot עם manifest ותגובות נתונים; התיקייה מוחרגת מ־Git. אלו חומרי מחקר בלבד.
+לא נראה HUD מלא בכל צילום. אין ראיה מכאן לאיכות touch, אנימציה, ביצועים או מראה עדכני. אלו שתי תמונות של מפרסם אחד, לא שתי עדויות עצמאיות. הרפרנסים נשמרו תחת references/competitors/steal-a-brainrot עם manifest ותגובות נתונים; התיקייה נכללת כעת ב־Git באישור אדם מתאריך 26/10/2026. אלו חומרי מחקר בלבד.
 
 [חזרה למפת ההשוואה החזותית](visual-benchmark.md).

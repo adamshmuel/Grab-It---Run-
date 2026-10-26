@@ -12,7 +12,7 @@
 
 ## צבע ותוויות
 
-![תוויות ערך ונדירות מול דמויות בבסיס](https://static.beebom.com/wp-content/uploads/2026/02/Gold-Mutation.jpg?w=1024)
+![תוויות ערך ונדירות מול דמויות בבסיס](../../references/competitors/survive-lava-for-brainrots/ui/value-and-rarity.jpg)
 
 **תצפית:** דמות צהובה מול קיר כהה, שם נדירות בצבע אחר, ערך ירוק וכפתור שדרוג סגול. האותיות גדולות ביחס לדמויות. התמונה קרובה וחתוכה; אין בה HUD מלא או דרך חזרה.
 
@@ -22,7 +22,7 @@
 
 ## סביבה ומצלמה בזמן אירוע
 
-![סביבת Moon ופריסה גאומטרית](https://static.beebom.com/wp-content/uploads/2026/02/What-Happens-During-Moon-Event-in-Survive-LAVA-for-Brainrots.jpg?w=1024)
+![סביבת Moon ופריסה גאומטרית](../../references/competitors/survive-lava-for-brainrots/environment/moon-event-overview.jpg)
 
 **תצפית:** דמות קטנה יחסית למרחב, משטחים מדורגים, ירח בהיר, timer ומשטח אדום רווי. הפרטים הגאומטריים חוזרים על עצמם. הצילום הוא בזמן אירוע Moon, ולא עדות לתאורה הרגילה.
 
@@ -32,6 +32,6 @@
 
 ## מגבלות ושמירה
 
-תאריך הצילום וגרסת המשחק אינם ידועים. לא נבדקו אנימציה, קצב, הנאה, קול או ביצועים. התמונות והמקורות נשמרו תחת references/competitors/survive-lava-for-brainrots עם manifest ונתוני מקור; התיקייה מוחרגת מ־Git. החומר אינו assets למשחק.
+תאריך הצילום וגרסת המשחק אינם ידועים. לא נבדקו אנימציה, קצב, הנאה, קול או ביצועים. התמונות והמקורות נשמרו תחת references/competitors/survive-lava-for-brainrots עם manifest ונתוני מקור; התיקייה נכללת כעת ב־Git באישור אדם מתאריך 26/10/2026. החומר אינו assets למשחק.
 
 [חזרה למפת ההשוואה החזותית](visual-benchmark.md).

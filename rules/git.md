@@ -33,7 +33,12 @@ How work gets into git. The main chat makes the commits. Adam pushes.
 - Push, or force-push.
 - Rewrite commits that already exist: no `--amend` on an earlier task's commit, no rebase, no `reset --hard`.
 - Run `git restore`, `git checkout -- <file>` or `git stash` on someone's work without asking.
-- Commit `docs/handoff.md`, `docs/action-items.md` or `references/`. They are in `.gitignore` on purpose.
+- Commit `docs/handoff.md` or `docs/action-items.md`. They are in `.gitignore` on purpose.
+
+## Research and validation dependencies — Adam approved, 2026-10-26
+
+- Commit the reference images, metadata and indexes needed to reproduce research and visual acceptance. Root `references/` is not excluded as a whole. Keep disposable downloads and caches under the explicitly ignored `references/tmp/` or `references/cache/`.
+- A required research or test dependency must not exist only in an ignored folder or on one computer. Before handoff or migration, verify that referenced local evidence is tracked and that its paths resolve from a fresh checkout. Preserve source credits, capture dates and uncertainty. Manual Studio backups remain separate unless Adam authorizes adding a specific backup.
 
 ## No AI attribution
 

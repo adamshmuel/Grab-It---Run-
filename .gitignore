@@ -1,7 +1,8 @@
 .DS_Store
 docs/handoff.md
 docs/action-items.md
-/references/
+/references/tmp/
+/references/cache/
 
 /build/*
 !/build/GrabItV1_DesktopMobile.rbxlx
