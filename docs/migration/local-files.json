@@ -10,22 +10,7 @@
   "projectSkills": 14,
   "trackedHookFiles": 2,
   "rules": 9,
-  "manualTransferFiles": [
-    {
-      "path": "GrabItV1_DesktopMobile.rbxl",
-      "size": 124483,
-      "sha256": "d2709dbd7a878db6f1fce2fc61a93f7d1db46ce1d87913eb53eb1097cd54088d",
-      "transfer": "copy-separately",
-      "purpose": "protected manual Studio backup; not opened or compared in Studio"
-    },
-    {
-      "path": "GrabItV1_DesktopMobile.rbxlx.rbxl",
-      "size": 124483,
-      "sha256": "d2709dbd7a878db6f1fce2fc61a93f7d1db46ce1d87913eb53eb1097cd54088d",
-      "transfer": "copy-separately",
-      "purpose": "protected manual Studio backup; not opened or compared in Studio"
-    }
-  ],
+  "manualTransferFiles": [],
   "excludedGeneratedFile": "sourcemap.json",
   "limits": [
     "No Studio or Rojo launch; no game inspection through MCP.",
@@ -169,5 +154,29 @@
     }
   ],
   "referencePolicy": "Required research and visual-validation dependencies are tracked; Adam approved 2026-10-26.",
-  "remoteHeadsCheckScope": "Historical check before the migration commits; not refreshed after user pushes."
+  "remoteHeadsCheckScope": "Historical check before the migration commits; not refreshed after user pushes.",
+  "originalLocalBackupCopies": [
+    {
+      "path": "GrabItV1_DesktopMobile.rbxl",
+      "size": 124483,
+      "sha256": "d2709dbd7a878db6f1fce2fc61a93f7d1db46ce1d87913eb53eb1097cd54088d",
+      "transfer": "not-required; identical tracked backup preserves the bytes",
+      "purpose": "protected manual Studio backup; not opened or compared in Studio"
+    },
+    {
+      "path": "GrabItV1_DesktopMobile.rbxlx.rbxl",
+      "size": 124483,
+      "sha256": "d2709dbd7a878db6f1fce2fc61a93f7d1db46ce1d87913eb53eb1097cd54088d",
+      "transfer": "not-required; identical tracked backup preserves the bytes",
+      "purpose": "protected manual Studio backup; not opened or compared in Studio"
+    }
+  ],
+  "trackedManualBackup": {
+    "path": "backups/manual/2026-10-26/GrabItV1_DesktopMobile.rbxl",
+    "size": 124483,
+    "sha256": "d2709dbd7a878db6f1fce2fc61a93f7d1db46ce1d87913eb53eb1097cd54088d",
+    "transfer": "git",
+    "purpose": "approved recovery snapshot; not the working place",
+    "approved": "2026-10-26"
+  }
 }

@@ -48,7 +48,7 @@ a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 </tr>
 <tr>
 <td>שמירות ידניות</td>
-<td>שני קובצי <bdi dir="ltr" lang="en">rbxl</bdi> בשורש אינם ב־<bdi dir="ltr" lang="en">Git</bdi>. בבדיקה הנוכחית הם זהים לפי <bdi dir="ltr" lang="en">SHA256</bdi>. מעתיקים אותם בנפרד כגיבוי, בלי להחליף את קובץ העבודה ובלי למחוק מקור</td>
+<td>שני המקוריים בשורש זהים לפי <bdi dir="ltr" lang="en">SHA256</bdi>. באישור אדם נשמר עותק יחיד בתוך <bdi dir="ltr" lang="en">backups</bdi>/<bdi dir="ltr" lang="en">manual</bdi>/2026-10-26/<bdi dir="ltr" lang="en">GrabItV1</bdi>_<bdi dir="ltr" lang="en">DesktopMobile</bdi>.<bdi dir="ltr" lang="en">rbxl</bdi> והוא מגיע דרך <bdi dir="ltr" lang="en">Git</bdi>. המקוריים וקובץ העבודה לא שונו; אין צורך בהעתקה נפרדת</td>
 </tr>
 <tr>
 <td>רפרנסים</td>
@@ -68,20 +68,18 @@ a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 <h2>במחשב הנוכחי, לפני המעבר</h2>
 <ol>
 <li><strong>לדחוף את <bdi dir="ltr" lang="en">branch</bdi> העבודה.</strong> לאחר קומיטי ההעברה, אדם מבצע <bdi dir="ltr" lang="en">push</bdi> של <code>codex/v1-improvements</code> אל <bdi dir="ltr" lang="en">origin</bdi> ומוודא שהוא מופיע ב־<bdi dir="ltr" lang="en">GitHub</bdi>. השיחה אינה מבצעת <bdi dir="ltr" lang="en">push</bdi>.</li>
-<li><strong>להעתיק את הקבצים שאינם ב־<bdi dir="ltr" lang="en">Git</bdi>.</strong> להעתיק את שתי השמירות הידניות למקום העברה פרטי. הרפרנסים מגיעים כעת דרך <bdi dir="ltr" lang="en">Git</bdi>. <a href="../migration/local-files.json">רשימת הקבצים והחתימות</a> מאפשרת לוודא שההעתקה שלמה. במחשב השני מחזירים אותם לאותם מיקומים יחסיים בתוך הפרויקט.</li>
+<li><strong>לוודא שקומיט הגיבוי נדחף.</strong> הרפרנסים ועותק הגיבוי הידני מגיעים כעת דרך <bdi dir="ltr" lang="en">Git</bdi>. <a href="../migration/local-files.json">רשימת הקבצים והחתימות</a> מאפשרת לוודא שהם הגיעו שלמים. אין צורך להעתיק את שתי השמירות שבשורש בנפרד.</li>
 <li><strong>לשמור את המחשב הישן עד שההעברה אומתה.</strong> קובצי הגיבוי לא נפתחו במהלך הבדיקה, ולכן לא נקבע שהתוכן הידני שלהם זהה לתוכן קובץ העבודה. שמירה לענן אינה מחליפה את העברת המקורות והרפרנסים.</li>
 </ol>
-<p>הקבצים הידניים להעתקה:</p>
-<ul>
-<li><code>GrabItV1_DesktopMobile.rbxl</code></li>
-<li><code>GrabItV1_DesktopMobile.rbxlx.rbxl</code></li>
-</ul>
+<p>עותק הגיבוי שנכלל ב־<bdi dir="ltr" lang="en">Git</bdi>:</p>
+<p><code>backups/manual/2026-10-26/GrabItV1_DesktopMobile.rbxl</code></p>
+<p><a href="../../backups/README.md">תיעוד הגיבוי</a> מפרט את מקורו ואת מגבלות השימוש בו. אין לפתוח אותו במקום קובץ העבודה בדרך רגילה.</p>
 <p><code>sourcemap.json</code> הוא קובץ מיפוי שנוצר מקומית. אינו מקור הקוד ואינו נדרש להעברה. קובצי <code>.DS_Store</code>, שרתי תצוגה, תהליכים ומצב חיבור אינם הגדרות פרויקט להעברה.</p>
 <h2>במחשב החדש — צעדים לפי הסדר</h2>
 <ol>
 <li><strong>להתקין <bdi dir="ltr" lang="en">Git</bdi> ולהתחבר ל־<bdi dir="ltr" lang="en">GitHub</bdi>.</strong> לבחור <bdi dir="ltr" lang="en">Mac</bdi> או <bdi dir="ltr" lang="en">Windows</bdi> מתוך <a href="https://git-scm.com/install/">אתר <bdi dir="ltr" lang="en">Git</bdi></a>. לוודא שלחשבון יש גישה למאגר. אפשר לבצע <bdi dir="ltr" lang="en">clone</bdi> דרך ממשק <bdi dir="ltr" lang="en">Git</bdi> קיים; התחברות לחשבון אינה עוברת יחד עם התיקייה.</li>
 <li><strong>להוריד דווקא את <bdi dir="ltr" lang="en">branch</bdi> העבודה.</strong> לבצע <bdi dir="ltr" lang="en">clone</bdi> של המאגר ולבחור <code>codex/v1-improvements</code>. אפשר לבחור שם תיקייה פשוט כמו <bdi dir="ltr" lang="en">GrabItRun</bdi>; אין דרישה לשחזר את נתיב המשתמש מהמחשב הישן. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">הוראות <bdi dir="ltr" lang="en">clone</bdi> הרשמיות</a> מסבירות גם שימוש בממשק גרפי.</li>
-<li><strong>להחזיר את הקבצים הנפרדים.</strong> להעתיק רק את שתי השמירות הידניות לתיקיית הפרויקט, לפי הרשימה לעיל. לוודא שתיקיית <bdi dir="ltr" lang="en">references</bdi> כבר הגיעה באמצעות <bdi dir="ltr" lang="en">Git</bdi>. לא להחליף אוטומטית את קובץ <bdi dir="ltr" lang="en">build</bdi> בשמירה ידנית. להשוות חתימות אם כלי ההעתקה אינו מאמת אותן.</li>
+<li><strong>לוודא שהחומר הגיע.</strong> לבדוק שתיקיית <bdi dir="ltr" lang="en">references</bdi> וקובץ הגיבוי המתועד קיימים אחרי המשיכה. אין צורך בשתי השמירות המקוריות שבשורש המחשב הישן. לא להחליף את קובץ <bdi dir="ltr" lang="en">build</bdi> בגיבוי; הוא מיועד לשחזור בלבד.</li>
 <li><strong>להתקין את אפליקציית <bdi dir="ltr" lang="en">OpenAI</bdi> שבה תעבוד.</strong> להיכנס לאותו חשבון ולפתוח את תיקיית הפרויקט במצב <bdi dir="ltr" lang="en">Codex</bdi>. להשתמש ב<a href="https://learn.chatgpt.com/docs/app">הוראות האפליקציה הרשמיות</a>. לתת גישה לתיקיית הפרויקט, ולוודא שנקראו <bdi dir="ltr" lang="en">AGENTS</bdi> ו־<bdi dir="ltr" lang="en">rules</bdi> ושהמיומנויות המקומיות מופיעות. לפי <a href="https://learn.chatgpt.com/docs/build-skills">תיעוד המיומנויות</a>, <bdi dir="ltr" lang="en">Codex</bdi> סורק את <code>.agents/skills</code> מתוך המאגר. אין צורך להתקין את 14 המיומנויות שוב ברמת המשתמש.</li>
 <li><strong>להתקין <bdi dir="ltr" lang="en">Roblox Studio</bdi>.</strong> להוריד מתוך <a href="https://create.roblox.com/docs/studio/setup">ההוראות הרשמיות</a> ולהיכנס לאותו חשבון <bdi dir="ltr" lang="en">Roblox</bdi>. בשלב ההכנה אין צורך להפעיל משחק. האימות של החיבור והסנכרון בהמשך ייעשה רק כשהפרויקט הזה הוא יעד העבודה המורשה.</li>
 <li><strong>להתקין <bdi dir="ltr" lang="en">Rokit</bdi>.</strong> לבחור את הוראות <bdi dir="ltr" lang="en">Mac</bdi> או <bdi dir="ltr" lang="en">Windows</bdi> בתוך <a href="https://github.com/rojo-rbx/rokit#installation">המאגר הרשמי</a>, ואז לפתוח <bdi dir="ltr" lang="en">Terminal</bdi> חדש. מתוך תיקיית הפרויקט להריץ <bdi dir="ltr" lang="en">rokit install</bdi>. הקובץ <bdi dir="ltr" lang="en">rokit</bdi>.<bdi dir="ltr" lang="en">toml</bdi> יקבע את הגרסאות: <bdi dir="ltr" lang="en">Rojo</bdi> מספר 7.7.1, <bdi dir="ltr" lang="en">StyLua</bdi> מספר 2.5.2 ו־<bdi dir="ltr" lang="en">Selene</bdi> מספר 0.32.0. אין להריץ <bdi dir="ltr" lang="en">rokit update</bdi> או <bdi dir="ltr" lang="en">rokit init</bdi> לצורך המעבר; אין צורך לשנות את הגרסאות.</li>
@@ -118,7 +116,7 @@ rojo serve default.project.json --port 34872
 <h2>מתי ההעברה הושלמה</h2>
 <ul>
 <li><bdi dir="ltr" lang="en">branch</bdi> העבודה וכל קומיטי ההעברה הגיעו למחשב החדש; החוקים, 14 המיומנויות וקובץ העבודה קיימים.</li>
-<li>שתי השמירות הידניות הועתקו ונבדקו מול הרשימה. הרפרנסים הגיעו באמצעות <bdi dir="ltr" lang="en">Git</bdi> ונפתחים מתוך מסמכי המחקר. היעדר גיבוי ידני אינו היעדר של הגדרות המשחק; מדווחים מה חסר בפועל.</li>
+<li>עותק הגיבוי המתועד והרפרנסים הגיעו באמצעות <bdi dir="ltr" lang="en">Git</bdi> ונבדקו מול החתימות. התמונות נפתחות מתוך מסמכי המחקר. שני המקוריים בשורש אינם נדרשים במחשב החדש.</li>
 <li>הכלים נמצאו בגרסאות המוגדרות, והאפליקציה קוראת את הוראות הפרויקט.</li>
 <li>בחידוש המורשה אומתו זהות המשחק, חיבור <bdi dir="ltr" lang="en">MCP</bdi> וסנכרון <bdi dir="ltr" lang="en">Rojo</bdi> בפועל. עד אז הסביבה החדשה מוכנה להתקנה, אך אינה סביבה שעברה אימות הרצה.</li>
 </ul>

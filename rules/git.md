@@ -38,7 +38,7 @@ How work gets into git. The main chat makes the commits. Adam pushes.
 ## Research and validation dependencies — Adam approved, 2026-10-26
 
 - Commit the reference images, metadata and indexes needed to reproduce research and visual acceptance. Root `references/` is not excluded as a whole. Keep disposable downloads and caches under the explicitly ignored `references/tmp/` or `references/cache/`.
-- A required research or test dependency must not exist only in an ignored folder or on one computer. Before handoff or migration, verify that referenced local evidence is tracked and that its paths resolve from a fresh checkout. Preserve source credits, capture dates and uncertainty. Manual Studio backups remain separate unless Adam authorizes adding a specific backup.
+- A required research or test dependency must not exist only in an ignored folder or on one computer. Before handoff or migration, verify that referenced local evidence is tracked and that its paths resolve from a fresh checkout. Preserve source credits, capture dates and uncertainty. Manual Studio backups require explicit authorization. Adam approved one deduplicated snapshot at `backups/manual/2026-10-26/GrabItV1_DesktopMobile.rbxl` on 2026-10-26; preserve the original root copies and working file unchanged. This does not authorize automatically tracking every future build or backup.
 
 ## No AI attribution
 
