@@ -110,9 +110,11 @@ table.insert(
 	end)
 )
 local messageToken = 0
-local function message(text, duration)
+local messageKind = nil
+local function message(text, duration, kind)
 	messageToken += 1
 	local token = messageToken
+	messageKind = kind
 	ui.Message.Text = text
 	ui.Message.Visible = true
 	task.delay(duration, function()
@@ -126,7 +128,7 @@ table.insert(
 	root.Notice.OnClientEvent:Connect(function(text, kind)
 		play(kind)
 		if kind ~= "collect" then
-			message(text, if kind == "lost" or kind == "style" then 3 else 2)
+			message(text, if kind == "lost" or kind == "style" then 3 else 2, kind)
 		end
 	end)
 )
@@ -193,7 +195,12 @@ local function render()
 	end
 	Hud.update(ui, display, UserInputService.TouchEnabled)
 	Styles.update(collection, display)
-	Results.update(results, state, tostring(player.UserId))
+	Results.update(
+		results,
+		state,
+		tostring(player.UserId),
+		if messageKind == "lost" and ui.Message.Visible then ui.Message.Text else nil
+	)
 	Scores.update(scores, state, tostring(player.UserId))
 	results.Panel.Visible = results.Panel.Visible and not collection.Panel.Visible
 	local world = workspace:FindFirstChild("GrabItWorld")

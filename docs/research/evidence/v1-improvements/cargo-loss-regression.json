@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-26",
+  "red": {
+    "passed": false,
+    "result": "ReplicatedStorage.ResultsLossNotice.spec:59: ReplicatedStorage.ResultsLossNotice.spec:35: Cargo loss must remain visible inside results and match summary"
+  },
+  "green": [
+    {
+      "suite": "ResultsLossNotice.spec",
+      "passed": true,
+      "result": "16"
+    },
+    {
+      "suite": "ResultsLayout.spec",
+      "passed": true,
+      "result": "1"
+    }
+  ],
+  "scope": "Client layout fixtures: four screen safe areas; stage 1/2 results, multiplayer and solo summary; eight rows; notice visible, fits, does not overlap data/actions, clears on expiry. Native timer separately observed."
+}

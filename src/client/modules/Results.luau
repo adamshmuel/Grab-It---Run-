@@ -120,11 +120,11 @@ function Results.create(parent: Instance)
 	}
 end
 local function layout(ui)
-	local compact = ui.Panel.AbsoluteSize.Y < 310
+	local compact = ui.Panel.AbsoluteSize.Y < 350
 	ui.Container.Size = UDim2.fromScale(if compact then 0.76 else 1, 1)
 	ui.Title.Size = UDim2.new(if compact then 0.76 else 1, 0, 0, 22)
-	ui.Footer.TextWrapped = compact
-	ui.Footer.TextTruncate = if compact then Enum.TextTruncate.None else Enum.TextTruncate.AtEnd
+	ui.Footer.TextWrapped = true
+	ui.Footer.TextTruncate = Enum.TextTruncate.None
 	if compact then
 		ui.Footer.Position = UDim2.new(0.78, 0, 0, 30)
 		ui.Footer.Size = UDim2.new(0.22, 0, 0, 110)
@@ -136,7 +136,11 @@ local function layout(ui)
 		end
 	else
 		ui.Footer.Position = UDim2.new(0, 0, 1, -48)
-		ui.Footer.Size = UDim2.new(0.65, 0, 0, 48)
+		ui.Footer.Size = UDim2.new(0.64, 0, 0, 48)
+		if ui.summary then
+			ui.Footer.Position = UDim2.fromOffset(0, 258)
+			ui.Footer.Size = UDim2.new(1, 0, 0, 40)
+		end
 		ui.Replay.Position = UDim2.new(0.65, 0, 1, -48)
 		ui.Replay.Size = UDim2.new(0.35, 0, 0, 48)
 		ui.Tab.Position = UDim2.new(0, 0, 1, -48)
@@ -147,7 +151,7 @@ local function layout(ui)
 		ui.Styles.Size = UDim2.new(if ui.summary then 0.32 else 0.35, 0, 0, 48)
 	end
 end
-function Results.update(ui, state, localId: string)
+function Results.update(ui, state, localId: string, lossNotice: string?)
 	ui.Panel.Visible = state.phase == "results" or state.phase == "summary"
 	if not ui.Panel.Visible then
 		ui.showStage = false
@@ -166,9 +170,15 @@ function Results.update(ui, state, localId: string)
 	ui.Replay.Visible = summary and state.mode == "solo"
 	ui.Tab.Visible = summary and state.mode ~= "solo"
 	ui.Styles.Visible = true
-	ui.Footer.Visible = not summary
-	ui.Footer.Text = "Next: "
-		.. (if state.stage == 1 then "Tech Run | Capacity 14" else "Golden Rush | Capacity 18")
+	ui.Footer.Visible = not summary or lossNotice ~= nil
+	local nextStage = if summary
+		then ""
+		else "Next: " .. (if state.stage == 1
+			then "Tech Run | Capacity 14"
+			else "Golden Rush | Capacity 18")
+	ui.Footer.Text = (lossNotice or "")
+		.. (if lossNotice and not summary then "\n" else "")
+		.. nextStage
 	if summary and state.mode == "solo" and not ui.showStage then
 		for i, h in ui.Header do
 			h.Text = ({ "Stage", "Name", "Earned", "", "" })[i]

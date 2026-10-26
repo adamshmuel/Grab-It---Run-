@@ -1,0 +1,450 @@
+{
+  "date": "2026-10-26",
+  "studioId": "2e54c95a-7728-46bd-93d2-77e28eefc86a",
+  "placeId": 0,
+  "universeId": 0,
+  "workingFile": "build/GrabItV1_DesktopMobile.rbxlx",
+  "profile": "samsung_galaxy_a06",
+  "safeSize": "705, 280",
+  "method": "Native E collection after movement at speed 1; unchanged timer; switched to landscape Samsung before expiry",
+  "limits": "One local Studio player in memory. Does not cover multiplayer, cloud, balance or physical phone.",
+  "records": [
+    {
+      "at": 150.03434806199948,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "Root",
+        "Column3",
+        "ResultTable",
+        "Frame"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.14917358300045,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.26022104999902,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.37871175500004,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.4835873989996,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.5940061149995,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.70313193000038,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.81003315899943,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 150.93013310800052,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.0330296810007,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.14252829900033,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.24269425300008,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.34582385499925,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.4599235379992,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.5674932689999,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.66832980000072,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.77614768199965,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 151.8929110249992,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.01455838400034,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.1260819449999,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.2265266659997,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.34056815300028,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.44125178300055,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.5437170490004,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.6594044199992,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.75950716999978,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.8920975029996,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 152.99390323199987,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": true,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    },
+    {
+      "at": 153.11146353299955,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        "TouchControlFrame",
+        "NextStage",
+        "StageResults",
+        "Root"
+      ],
+      "messageVisible": false,
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:02",
+      "text": "Cargo lost. Banked coins kept\nNext: Tech Run | Capacity 14",
+      "fits": true,
+      "visible": true
+    }
+  ],
+  "running": false
+}

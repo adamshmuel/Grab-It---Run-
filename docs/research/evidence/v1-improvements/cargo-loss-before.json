@@ -1,0 +1,837 @@
+{
+  "date": "2026-10-26",
+  "sourceCommit": "63ce16e",
+  "studioId": "2e54c95a-7728-46bd-93d2-77e28eefc86a",
+  "placeId": 0,
+  "universeId": 0,
+  "workingFile": "build/GrabItV1_DesktopMobile.rbxlx",
+  "method": "Native E collection after navigation at speed 1; unchanged timer; client GUI stack sampled every 0.1s",
+  "claim": "Opaque StageResults covers loss message while Message.Visible is true",
+  "records": [
+    {
+      "at": 144.96597612200094,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.07648450799934,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.17697044499982,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.29278481300025,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.41469798700018,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.53426015900004,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.64359133700054,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.75953096600097,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.86039820500082,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 145.97667260799972,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:05",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.09283597000103,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.19312603800063,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.29416108499936,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.40992840299987,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.5102798299995,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.6263963929996,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.74234686599993,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.84340654100015,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 146.96341656000004,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:04",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.07627977999982,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.192789136001,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.29433765999966,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.41014218800046,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.5257882019996,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.62633389499933,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.7281783519993,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.850309544001,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    },
+    {
+      "at": 147.95925334000094,
+      "bag": "Weight 0 / 10\nCargo value 0 | Banked 0 / 30",
+      "stack": [
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults.ResultTable",
+          "z": 1
+        },
+        {
+          "background": 0,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.StageResults",
+          "z": 20
+        },
+        {
+          "background": 0.20000000298023224,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root.Message",
+          "z": 1
+        },
+        {
+          "background": 1,
+          "name": "Players.talia_adam13.PlayerGui.GrabItHUD.Root",
+          "z": 1
+        }
+      ],
+      "message": "Cargo lost. Banked coins kept",
+      "round": "Toy Dash | 1 / 3\nRESULTS  0:03",
+      "visible": true,
+      "results": true
+    }
+  ]
+}
