@@ -1,0 +1,577 @@
+{
+  "date": "2026-10-26",
+  "workingFile": "build/GrabItV1_DesktopMobile.rbxlx",
+  "placeId": 0,
+  "universeId": 0,
+  "scope": "Results touch-controls regression, native phase transition and touch movement restoration; native camera yaw and scroll at normal movement speed. Eight-row screenshot uses synthetic rows during real results, not eight players.",
+  "camera": [
+    {
+      "camera": "-16.108877182006836, 8.848307609558105, -8.93647575378418",
+      "scene": "front-wall",
+      "position": "-16.108877182006836, 3.724841356277466, 4.586485862731934",
+      "distance": 14,
+      "parts": [
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.FrontWall",
+          "fade": 0.7937005162239075
+        },
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.LiveResults",
+          "fade": 0.7937005162239075
+        }
+      ]
+    },
+    {
+      "camera": "34.13540267944336, 8.848307609558105, 59.4212646484375",
+      "scene": "right-wall",
+      "position": "20.61244010925293, 3.724841356277466, 59.4212646484375",
+      "distance": 14.000000953674316,
+      "parts": [
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.Wall",
+          "fade": 0.75
+        },
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.WallFinish.LowerPanel",
+          "fade": 0.75
+        }
+      ]
+    },
+    {
+      "camera": "-9.198619181916001e-07, 8.848307609558105, 128.98001098632812",
+      "scene": "back-wall",
+      "position": "-4.251660357112996e-09, 3.7248411178588867, 115.45704650878906",
+      "distance": 14.00000286102295,
+      "parts": [
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.BackWall",
+          "fade": 0.7937005162239075
+        },
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.WallFinish.BackRail",
+          "fade": 0.7937005162239075
+        },
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.WallFinish.BackPanel",
+          "fade": 0.7937005162239075
+        }
+      ]
+    },
+    {
+      "scene": "native-scroll-limits",
+      "measurements": [
+        {
+          "distance": 8.00000286102295,
+          "wheel": 8
+        },
+        {
+          "distance": 20.000003814697266,
+          "wheel": -16
+        }
+      ]
+    },
+    {
+      "camera": "-39.704376220703125, 10.401223182678223, 23.399137496948242",
+      "scene": "left-wall-maximum-zoom",
+      "position": "-20.3858585357666, 3.724841833114624, 23.39913558959961",
+      "distance": 20.000001907348633,
+      "parts": [
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.Wall",
+          "fade": 0.75
+        },
+        {
+          "base": 0,
+          "name": "Workspace.GrabItWorld.WallFinish.LowerPanel",
+          "fade": 0.75
+        }
+      ]
+    },
+    {
+      "distance": 8.000000953674316,
+      "scene": "left-wall-minimum-zoom-mobile",
+      "parts": [
+        {
+          "name": "Workspace.GrabItWorld.Wall",
+          "fade": 0.75
+        },
+        {
+          "name": "Workspace.GrabItWorld.WallFinish.LowerPanel",
+          "fade": 0.75
+        }
+      ]
+    }
+  ],
+  "touch": [
+    {
+      "at": 0.000014424997061723843,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.11288897399936104,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.21325660099682864,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.32985332499811193,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.4478976269965642,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.5623669919987151,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.6634493669989752,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.7794141459999082,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.8811154989998613,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 0.9957041859997844,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.0962224129980314,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.1969386339987977,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.2973781719992985,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.4144476239998767,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.5304051999992225,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.6479758379973646,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.7634621139986848,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.8806135049999284,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 1.9965393089987629,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.1130895459973544,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.2147095969994552,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.3295951889995195,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.430384602997947,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.530794206999417,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.647104652998678,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.7630491359996086,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.8640263019988197,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 2.9788630259972706,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.079191765998985,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.179539221997402,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.280581071998313,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.3961163239982852,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.496527192997746,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.596724891998747,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.7130185489986616,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.813815513996815,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 3.9307398639975872,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.046277273999294,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.146444895999593,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.263116086996888,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.3632667399979255,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.479183997998916,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.5810356229994795,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.681611398998939,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.797083497996937,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 4.914071538998542,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 5.015548809999018,
+      "results": true,
+      "controls": false,
+      "touchGui": false
+    },
+    {
+      "at": 5.129443443998753,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.229546336999192,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.330303913997341,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.447833659996832,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.5636387769991416,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.664265624996915,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.779983743999765,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.881087999998272,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 5.99620094799684,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.097630484997353,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.214422301000013,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.329879171997163,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.431177046997618,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.546238648999861,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.6479354449984385,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.764397280996491,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.864549105997867,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 6.981965071998275,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    },
+    {
+      "at": 7.097264403997542,
+      "results": false,
+      "controls": true,
+      "touchGui": true
+    }
+  ],
+  "input": {
+    "events": [
+      {
+        "kind": "Enum.UserInputState.Begin",
+        "move": "0, 0, 0",
+        "position": "19, 224, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.Change",
+        "move": "0, 0, 0",
+        "position": "19, 224.00003051757812, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.Change",
+        "move": "0, 0, 0",
+        "position": "24.586441040039062, 226.83047485351562, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.Change",
+        "move": "0.9245868921279907, 0, 0.38097119331359863",
+        "position": "30.119766235351562, 229.634033203125, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.Change",
+        "move": "0.9245870113372803, 0, 0.38097089529037476",
+        "position": "35.60343933105469, 232.41241455078125, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.Change",
+        "move": "0.9245873689651489, 0, 0.38096994161605835",
+        "position": "41.34526062011719, 235.32159423828125, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.Change",
+        "move": "0.9141265153884888, 0, 0.40542906522750854",
+        "position": "44, 236.66668701171875, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.Change",
+        "move": "0.7503045201301575, 0, 0.6610924005508423",
+        "position": "44, 237, 0"
+      },
+      {
+        "kind": "Enum.UserInputState.End",
+        "move": "0.7503045201301575, 0, 0.6610924005508423",
+        "position": "44, 237, 0"
+      }
+    ],
+    "controls": true
+  },
+  "fixture": {
+    "realResults": true,
+    "touchControls": false,
+    "unrankedFits": true,
+    "lastScoreFits": true,
+    "footerFits": true,
+    "touchGui": false
+  },
+  "red": {
+    "passed": false,
+    "result": "ServerStorage.Hud.spec:88: ServerStorage.Hud.spec:80: Movement controls must not cover results; restore them during active play"
+  },
+  "green": {
+    "passed": true,
+    "result": "8"
+  }
+}

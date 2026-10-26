@@ -1,0 +1,253 @@
+{
+  "date": "2026-10-26",
+  "sourceCommit": "9b437d4",
+  "studioId": "2e54c95a-7728-46bd-93d2-77e28eefc86a",
+  "workingFile": "build/GrabItV1_DesktopMobile.rbxlx",
+  "placeId": 0,
+  "universeId": 0,
+  "layoutMethod": "Production Results module; eight synthetic rows; original HUD temporarily hidden; active single-player session. Not eight-client acceptance.",
+  "layout": [
+    {
+      "profile": "samsung_galaxy_a06",
+      "overflow": [
+        "Row1Column2",
+        "Row2Column2",
+        "Row3Column2",
+        "Row4Column2",
+        "Row5Column2",
+        "Row6Column2",
+        "Row7Column2",
+        "Row8Column2"
+      ],
+      "footer": "Cargo lost. Banked coins kept\nNext: Golden Rush | Capacity 18",
+      "panelSize": "676.799988, 280"
+    },
+    {
+      "profile": "iphone_13",
+      "footerFits": true,
+      "unrankedFits": true,
+      "panelSize": "719.039978, 330"
+    },
+    {
+      "profile": "hd_720",
+      "footerFits": true,
+      "unrankedFits": true,
+      "panelSize": "1227.83997, 662"
+    },
+    {
+      "profile": "hd_1080",
+      "footerFits": true,
+      "unrankedFits": true,
+      "panelSize": "1842.23999, 1021"
+    }
+  ],
+  "finding": "Samsung native joystick covers lower rows; long player names are intentionally truncated.",
+  "expiryMethod": "Native E collection, unchanged timer, one player; actual production Results state observed separately from synthetic table.",
+  "columns": [
+    "secondsSinceResults",
+    "lossMessageVisible",
+    "lossInResultsFooter",
+    "touchControlsEnabled"
+  ],
+  "expirySamples": [
+    [
+      0.00001196100129163824,
+      true,
+      true,
+      true
+    ],
+    [
+      0.11611490400173352,
+      true,
+      true,
+      true
+    ],
+    [
+      0.21652548400015803,
+      true,
+      true,
+      true
+    ],
+    [
+      0.31750883900167537,
+      true,
+      true,
+      true
+    ],
+    [
+      0.43272989699835307,
+      true,
+      true,
+      true
+    ],
+    [
+      0.5510054299993499,
+      true,
+      true,
+      true
+    ],
+    [
+      0.6677500469995721,
+      true,
+      true,
+      true
+    ],
+    [
+      0.7822629709989997,
+      true,
+      true,
+      true
+    ],
+    [
+      0.8846517279998807,
+      true,
+      true,
+      true
+    ],
+    [
+      0.9997183779996703,
+      true,
+      true,
+      true
+    ],
+    [
+      1.1163499530011904,
+      true,
+      true,
+      true
+    ],
+    [
+      1.2333515430000261,
+      true,
+      true,
+      true
+    ],
+    [
+      1.3504586269991705,
+      true,
+      true,
+      true
+    ],
+    [
+      1.4672345709986985,
+      true,
+      true,
+      true
+    ],
+    [
+      1.5830547039986413,
+      true,
+      true,
+      true
+    ],
+    [
+      1.6992140030015435,
+      true,
+      true,
+      true
+    ],
+    [
+      1.816925466999237,
+      true,
+      true,
+      true
+    ],
+    [
+      1.932659550999233,
+      true,
+      true,
+      true
+    ],
+    [
+      2.048653622998245,
+      true,
+      true,
+      true
+    ],
+    [
+      2.1496728810016066,
+      true,
+      true,
+      true
+    ],
+    [
+      2.2661157319998892,
+      true,
+      true,
+      true
+    ],
+    [
+      2.366435910000291,
+      true,
+      true,
+      true
+    ],
+    [
+      2.48232193000149,
+      true,
+      true,
+      true
+    ],
+    [
+      2.60050020700146,
+      true,
+      true,
+      true
+    ],
+    [
+      2.7152287809985864,
+      true,
+      true,
+      true
+    ],
+    [
+      2.816713690001052,
+      true,
+      true,
+      true
+    ],
+    [
+      2.933528188001219,
+      false,
+      true,
+      true
+    ],
+    [
+      3.050520709999546,
+      false,
+      false,
+      true
+    ],
+    [
+      3.1658283969991317,
+      false,
+      false,
+      true
+    ],
+    [
+      3.2835665460006567,
+      false,
+      false,
+      true
+    ],
+    [
+      3.3991800360017805,
+      false,
+      false,
+      true
+    ],
+    [
+      3.499473553001735,
+      false,
+      false,
+      true
+    ],
+    [
+      3.6160286480007926,
+      false,
+      false,
+      true
+    ]
+  ],
+  "limits": "Desktop layout is readable. Mobile gate remains open for joystick occlusion; no overall acceptance."
+}

@@ -1,4 +1,5 @@
 --!strict
+local GuiService = game:GetService("GuiService")
 local Hud = {}
 local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): TextLabel
 	local v = Instance.new("TextLabel")
@@ -32,6 +33,10 @@ function Hud.create()
 	screen.ScreenInsets = Enum.ScreenInsets.CoreUISafeInsets
 	screen.ClipToDeviceSafeArea = true
 	screen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	local initialTouchControls = GuiService.TouchControlsEnabled
+	screen.Destroying:Connect(function()
+		GuiService.TouchControlsEnabled = initialTouchControls
+	end)
 	local root = Instance.new("Frame")
 	root.Name = "Root"
 	root.Size = UDim2.fromScale(1, 1)
@@ -98,6 +103,7 @@ function Hud.create()
 	local stagePath = box(root, "StagePath", UDim2.new(0.08, 0, 0, 56), UDim2.new(0.84, 0, 0, 22))
 	stagePath.Text = "Toy Dash > Tech Run > Golden Rush"
 	return {
+		InitialTouchControls = initialTouchControls,
 		StagePath = stagePath,
 		Next = nextButton,
 		Styles = styles,
@@ -115,6 +121,9 @@ function Hud.create()
 	}
 end
 function Hud.update(ui, state, touch: boolean)
+	GuiService.TouchControlsEnabled = ui.InitialTouchControls
+		and state.phase ~= "results"
+		and state.phase ~= "summary"
 	local warning = string.sub(state.save, 1, 13) == "Not saved yet"
 	ui.Coins.Text = "COINS "
 		.. state.coins

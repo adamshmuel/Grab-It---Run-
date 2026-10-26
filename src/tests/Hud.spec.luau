@@ -1,5 +1,8 @@
 --!strict
 return function()
+	local guiService = game:GetService("GuiService")
+	local originalControls = guiService.TouchControlsEnabled
+	guiService.TouchControlsEnabled = true
 	local modules = game:GetService("ReplicatedStorage").GrabIt.ClientModules
 	local entry = modules:FindFirstChild("Hud")
 	assert(entry, "RED: shared desktop/mobile HUD must exist")
@@ -72,9 +75,22 @@ return function()
 			ui.Collect.Visible and ui.Collect.Text == "Collect",
 			"touch keeps its collection button"
 		)
+		for _, phase in { "results", "summary", "active" } do
+			available.phase = phase
+			Hud.update(ui, available, true)
+			assert(
+				guiService.TouchControlsEnabled == (phase == "active"),
+				"Movement controls must not cover results; restore them during active play"
+			)
+		end
+		available.phase = "summary"
+		Hud.update(ui, available, true)
 	end)
 	ui.Screen:Destroy()
+	local controlsRestored = guiService.TouchControlsEnabled
+	guiService.TouchControlsEnabled = originalControls
+	assert(controlsRestored, "Restore controls on HUD cleanup")
 	assert(ok, tostring(err))
 	print("PASS HUD balance, cargo, warnings, progression and safe area")
-	return 7
+	return 8
 end
