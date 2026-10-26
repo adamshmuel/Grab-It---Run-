@@ -2,7 +2,7 @@
 
 ## Read these rules first
 
-Before any project task, read all nine files below. They apply to this whole project, not only to the `rules/` folder:
+Before starting project work in a conversation, read all nine files below. They apply to this whole project, not only to the `rules/` folder. Reuse instructions already read and still available in context; do not reread unchanged files at every turn. After a pull, instruction change or missing context, reread the affected instructions before relying on them:
 
 1. `rules/communication.md` — short, beginner-friendly communication in Hebrew for now.
 2. `rules/readable-docs.md` — readable documents and clear names.
@@ -88,6 +88,8 @@ One owner per rule; link to canonical data rather than duplicating it. Preserve 
 `hebrew-document-generator` is for DOCX/PDF/PPTX; NLP and accessibility skills apply only when those topics are in scope. `.codex/hooks/luau-check.sh` is an imported Claude-style hook retained for future adaptation, not connected or enabled; see its README and do not execute it here. Required root `references/` evidence and skill-bundled references must be tracked under `rules/research.md` and `rules/git.md`; only disposable `references/tmp/` and `references/cache/` are ignored. Adam approved this change on 2026-10-26 after migration exposed missing visual-review dependencies. Never replace Roblox-native assets and actual Studio evidence with generated illustrations for this project.
 
 ## Maintenance
+
+Adam requires cost-effective work without reducing development quality (2026-10-26). Follow the efficiency rules in `rules/research.md`: reuse checked context and existing code, keep changes small and tools/output focused, and preserve every required quality gate. Efficiency is a standing requirement, not permission to skip evidence, TDD, code review or acceptance.
 
 Research current technical/platform facts and recommendation feasibility before relying on them, across every capability area Adam requested. Use primary technical sources, multiple appropriate research sources for product/competitor work, and label inference, dates and limits. Do not infer revenues from visits or images, or game progression from a still frame.
 
