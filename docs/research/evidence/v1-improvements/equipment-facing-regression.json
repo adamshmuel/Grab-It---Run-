@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-26",
+  "scope": "Equipment outward-facing regression and related module suites; not full acceptance",
+  "red": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"EquipmentFacing.spec:32: EquipmentFacing.spec:23: Equipped canvas details must face outward from the avatar back\",\"passed\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "green": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"24\":{\"passed\":true,\"name\":\"EquipmentFacing.spec\",\"result\":\"1\"},\"23\":{\"passed\":true,\"name\":\"CollectibleShapes.spec\",\"result\":\"1\"},\"22\":{\"passed\":true,\"name\":\"CargoVisibility.spec\",\"result\":\"1\"},\"21\":{\"passed\":true,\"name\":\"WallFinish.spec\",\"result\":\"1\"},\"20\":{\"passed\":true,\"name\":\"BoardTypography.spec\",\"result\":\"1\"},\"19\":{\"passed\":true,\"name\":\"SelectedItemInformation.spec\",\"result\":\"1\"},\"18\":{\"passed\":true,\"name\":\"Loading.spec\",\"result\":\"2\"},\"9\":{\"passed\":true,\"name\":\"NetworkState.spec\",\"result\":\"4\"},\"1\":{\"passed\":true,\"name\":\"Features.spec\",\"result\":\"6\"},\"15\":{\"passed\":true,\"name\":\"ImprovementPersistence.spec\",\"result\":\"21\"},\"3\":{\"passed\":true,\"name\":\"Hud.spec\",\"result\":\"7\"},\"2\":{\"passed\":true,\"name\":\"Gameplay.spec\",\"result\":\"7\"},\"5\":{\"passed\":true,\"name\":\"Session.spec\",\"result\":\"11\"},\"4\":{\"passed\":true,\"name\":\"Persistence.spec\",\"result\":\"12\"},\"7\":{\"passed\":true,\"name\":\"TargetPrompt.spec\",\"result\":\"4\"},\"6\":{\"passed\":true,\"name\":\"World.spec\",\"result\":\"7\"},\"14\":{\"passed\":true,\"name\":\"ImprovementSession.spec\",\"result\":\"11\"},\"8\":{\"passed\":true,\"name\":\"Appearance.spec\",\"result\":\"5\"},\"16\":{\"passed\":true,\"name\":\"ImprovementVisuals.spec\",\"result\":\"4\"},\"17\":{\"passed\":true,\"name\":\"ImprovementUI.spec\",\"result\":\"5\"},\"13\":{\"passed\":true,\"name\":\"ImprovementRules.spec\",\"result\":\"5\"},\"12\":{\"passed\":true,\"name\":\"StorageMode.spec\",\"result\":\"5\"},\"11\":{\"passed\":true,\"name\":\"ItemVisibility.spec\",\"result\":\"4\"},\"10\":{\"passed\":true,\"name\":\"Visuals.spec\",\"result\":\"5\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "purchaseBeforeFix": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"visible\":true,\"gear\":\"ShoulderStrap\",\"canvas\":\"Equip\",\"coins\":\"COINS 4\\nStudio session only\"}"
+      }
+    ],
+    "isError": false
+  },
+  "selectionBeforeFix": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"gear\":{\"1\":\"ShoulderStrap\",\"3\":\"SoftBag\",\"2\":\"ShoulderStrap\",\"5\":\"Buckle\",\"4\":\"Opening\",\"7\":\"CanvasTrim\",\"6\":\"CanvasTrim\"},\"round\":\"Tech Run | 2 / 3\\nWAREHOUSE OPEN  0:39\",\"canvas\":\"Equipped\",\"coins\":\"COINS 4\\nSaving\"}"
+      }
+    ],
+    "isError": false
+  }
+}

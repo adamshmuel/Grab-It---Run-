@@ -16,7 +16,7 @@ function Appearance.update(character: Model, p): Model?
 	local model = Instance.new("Model")
 	model.Name = "GrabItCargo"
 	local equipment = Gear.create(p.selected)
-	equipment:PivotTo(center.CFrame * CFrame.new(0, 0, 1))
+	equipment:PivotTo(center.CFrame * CFrame.new(0, 0, 1) * CFrame.Angles(0, math.pi, 0))
 	equipment.Parent = model
 	local shown = {}
 	local special = nil
