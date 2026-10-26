@@ -88,6 +88,55 @@ local function homeSymbol(parent: Instance, x: number, z: number, scale: number)
 	end
 	symbol.Parent = parent
 end
+local function wallFinish(root: Model)
+	local finish = Instance.new("Model")
+	finish.Name = "WallFinish"
+	local blue = Color3.fromRGB(45, 114, 147)
+	local function panel(name: string, size: Vector3, position: Vector3, color: Color3)
+		local detail = decoration(finish, name, size, position, color)
+		-- A camera behind this opaque surface must fade it together with the wall.
+		detail.CanQuery = true
+	end
+	for _, x in { -23.9, 23.9 } do
+		panel("LowerPanel", Vector3.new(0.08, 5.5, 119.8), Vector3.new(x, 3.25, 60), blue)
+		panel("PanelRail", Vector3.new(0.1, 0.3, 119.8), Vector3.new(x, 6.2, 60), frameColor)
+		panel("UpperBand", Vector3.new(0.08, 3, 119.8), Vector3.new(x, 17.8, 60), blue)
+		for _, z in { 1, 24, 48, 72, 96, 119 } do
+			panel("Upright", Vector3.new(0.1, 18.5, 0.45), Vector3.new(x, 10, z), frameColor)
+		end
+	end
+	panel("BackPanel", Vector3.new(47.8, 5.5, 0.08), Vector3.new(0, 3.25, 119.9), blue)
+	panel("BackRail", Vector3.new(47.8, 0.3, 0.1), Vector3.new(0, 6.2, 119.9), frameColor)
+	panel("BackUpperBand", Vector3.new(47.8, 3, 0.08), Vector3.new(0, 17.8, 119.9), blue)
+	finish.Parent = root
+end
+
+local function facade(root: Model)
+	local exterior = Instance.new("Model")
+	exterior.Name = "Facade"
+	for _, x in { -16.25, 16.25 } do
+		local frame = decoration(
+			exterior,
+			"Frame",
+			Vector3.new(12.4, 4.6, 0.08),
+			Vector3.new(x, 3.3, -0.58),
+			Color3.fromRGB(45, 114, 147)
+		)
+		frame.CanQuery = true
+		local sign = decoration(
+			exterior,
+			"Sign",
+			Vector3.new(12, 4.2, 0.08),
+			Vector3.new(x, 3.3, -0.67),
+			frameColor
+		)
+		sign.CanQuery = true
+		label(sign, if x > 0 then "COLLECT" else "BANK", Color3.fromRGB(245, 246, 230))
+		sign.ValueLabel.TextLabel.UITextSizeConstraint.MaxTextSize = 96
+	end
+	exterior.Parent = root
+end
+
 function World.build(name: string?): Model
 	local root = Instance.new("Model")
 	root.Name = name or "GrabItWorld"
@@ -260,6 +309,8 @@ function World.build(name: string?): Model
 	spawn.Neutral = true
 	spawn.Duration = 0
 	spawn.Parent = root
+	wallFinish(root)
+	facade(root)
 	root.Parent = workspace
 	World.setOpen(root, true)
 	return root

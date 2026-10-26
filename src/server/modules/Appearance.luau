@@ -38,10 +38,17 @@ function Appearance.update(character: Model, p): Model?
 		end
 	end
 	for index, id in shown do
+		local item = items[id]
+		local scale = Visuals.carryScale(item)
 		local offset = if index == 3
-			then Vector3.new(0, 0.25, 1.65)
-			else Vector3.new(if index == 1 then -0.68 else 0.68, -1.3, 1.7)
-		Visuals.createItem(items[id], model, center.CFrame * CFrame.new(offset), 0.45)
+			then Vector3.new(0, math.min(0.25, 0.9 - item.size[2] * scale), 1.65)
+			else Vector3.new(if index == 1 then -0.9 else 0.9, -1.3, 1.7)
+		Visuals.createItem(
+			item,
+			model,
+			center.CFrame * CFrame.new(offset) * CFrame.Angles(0, math.pi, 0),
+			scale
+		)
 	end
 	for _, part in model:GetDescendants() do
 		if part:IsA("BasePart") then

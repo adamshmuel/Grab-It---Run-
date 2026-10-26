@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-26",
+  "placeId": 106986292768692,
+  "universeId": 10772701508,
+  "scope": "23 Edit suites and 4 client layout suites; not gameplay, human or full acceptance",
+  "edit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"23\":{\"passed\":true,\"name\":\"World.spec\",\"result\":\"7\"},\"22\":{\"passed\":true,\"name\":\"WallFinish.spec\",\"result\":\"1\"},\"21\":{\"passed\":true,\"name\":\"Visuals.spec\",\"result\":\"5\"},\"20\":{\"passed\":true,\"name\":\"TargetPrompt.spec\",\"result\":\"4\"},\"19\":{\"passed\":true,\"name\":\"StorageMode.spec\",\"result\":\"5\"},\"18\":{\"passed\":true,\"name\":\"Session.spec\",\"result\":\"11\"},\"9\":{\"passed\":true,\"name\":\"ImprovementRules.spec\",\"result\":\"5\"},\"1\":{\"passed\":true,\"name\":\"Appearance.spec\",\"result\":\"5\"},\"15\":{\"passed\":true,\"name\":\"NetworkState.spec\",\"result\":\"4\"},\"3\":{\"passed\":true,\"name\":\"CargoVisibility.spec\",\"result\":\"1\"},\"2\":{\"passed\":true,\"name\":\"BoardTypography.spec\",\"result\":\"1\"},\"5\":{\"passed\":true,\"name\":\"Features.spec\",\"result\":\"6\"},\"4\":{\"passed\":true,\"name\":\"CollectibleShapes.spec\",\"result\":\"1\"},\"7\":{\"passed\":true,\"name\":\"Hud.spec\",\"result\":\"7\"},\"6\":{\"passed\":true,\"name\":\"Gameplay.spec\",\"result\":\"7\"},\"14\":{\"passed\":true,\"name\":\"Loading.spec\",\"result\":\"2\"},\"8\":{\"passed\":true,\"name\":\"ImprovementPersistence.spec\",\"result\":\"21\"},\"16\":{\"passed\":true,\"name\":\"Persistence.spec\",\"result\":\"12\"},\"17\":{\"passed\":true,\"name\":\"SelectedItemInformation.spec\",\"result\":\"1\"},\"13\":{\"passed\":true,\"name\":\"ItemVisibility.spec\",\"result\":\"4\"},\"12\":{\"passed\":true,\"name\":\"ImprovementVisuals.spec\",\"result\":\"4\"},\"11\":{\"passed\":true,\"name\":\"ImprovementUI.spec\",\"result\":\"5\"},\"10\":{\"passed\":true,\"name\":\"ImprovementSession.spec\",\"result\":\"11\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "client": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"1\":{\"passed\":true,\"name\":\"ResultsLayout.spec\",\"result\":\"1\"},\"4\":{\"passed\":true,\"name\":\"ScoresLayout.spec\",\"result\":\"1\"},\"3\":{\"passed\":true,\"name\":\"StylesLayout.spec\",\"result\":\"1\"},\"2\":{\"passed\":true,\"name\":\"TouchButtonLayout.spec\",\"result\":\"1\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "wallCamera": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"camera\":\"32.21714782714844, 9.933549880981445, 3.6961441040039062\",\"distance\":14.000000953674317,\"hidden\":{\"1\":{\"alpha\":0.6123724579811096,\"name\":\"PanelRail\"},\"2\":{\"alpha\":0.75,\"name\":\"LowerPanel\"}},\"position\":\"21.964834213256836, 3.7248411178588867, 11.985785484313965\"}"
+      }
+    ],
+    "isError": false
+  }
+}

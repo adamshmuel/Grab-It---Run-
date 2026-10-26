@@ -1,5 +1,8 @@
 --!strict
 local Visuals = {}
+function Visuals.carryScale(item): number
+	return math.max(0.45, 1.2 / math.max(table.unpack(item.size)))
+end
 local colors = {
 	yellow = Color3.fromRGB(255, 205, 54),
 	orange = Color3.fromRGB(255, 124, 46),
@@ -32,7 +35,7 @@ local function build(index: number): Model
 			mesh.Parent = p
 		end
 		p.Name = name
-		p.Size = if shape == "cylinder" then Vector3.new(size.Y, size.X, size.Z) else size
+		p.Size = size
 		p.Color = assert(colors[color], "Unknown model color")
 		p.Anchored = true
 		p.CanCollide = false
@@ -41,9 +44,7 @@ local function build(index: number): Model
 		p.Material = if color == "gold" or color == "silver"
 			then Enum.Material.Metal
 			else Enum.Material.SmoothPlastic
-		p.CFrame = CFrame.new(pos)
-			* (rotation or CFrame.identity)
-			* (if shape == "cylinder" then CFrame.Angles(0, 0, math.pi / 2) else CFrame.identity)
+		p.CFrame = CFrame.new(pos) * (rotation or CFrame.identity)
 		p.Parent = m
 		return p
 	end
