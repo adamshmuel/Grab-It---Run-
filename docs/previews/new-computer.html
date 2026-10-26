@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>העברת הפרויקט למחשב אחר</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}
+.table-wrap{overflow-x:auto}main{max-inline-size:1050px}code{direction:ltr;unicode-bidi:isolate;display:inline-block;overflow-wrap:anywhere}pre{direction:ltr;text-align:left;overflow:auto}pre code{display:block}td{vertical-align:top}a{overflow-wrap:anywhere}</style></head><body><main><h1>העברת הפרויקט למחשב אחר</h1>
+<p><strong>נבדק בתאריך 26/10/2026. בדיקת קבצים, הגדרות ו־<bdi dir="ltr" lang="en">Git</bdi> בלבד. <bdi dir="ltr" lang="en">Studio</bdi> ו־<bdi dir="ltr" lang="en">Rojo</bdi> לא הופעלו, ולא בוצע <bdi dir="ltr" lang="en">push</bdi>.</strong></p>
+<p>הפיתוח ובדיקות המשחק נשארים בהפסקה. מטרת המסמך היא להעביר את העבודה וההנחיות, ואז להכין את המחשב החדש לחידוש מורשה. ההתקנה במחשב השני עדיין לא בוצעה; הוראות הכלים נבדקו מול המקורות הרשמיים.</p>
+<h2>מה נמצא בבדיקה</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>רכיב</th>
+<th>מה נשמר ומה צריך לעשות</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>העבודה הנוכחית</td>
+<td>נמצאת בתוך <bdi dir="ltr" lang="en">branch</bdi> בשם <code>codex/v1-improvements</code>. בבדיקת <bdi dir="ltr" lang="en">GitHub</bdi> נמצא רק <bdi dir="ltr" lang="en">main</bdi> בקומיט הראשון, <code>7515300</code>. בזמן הבדיקה היו 40 <bdi dir="ltr" lang="en">commits</bdi> מקומיים מעבר אליו; קומיטי ההעברה נוספים אחריהם. דחיפת <bdi dir="ltr" lang="en">main</bdi> בלבד לא תעביר את העבודה</td>
+</tr>
+<tr>
+<td>החוקים וההנחיות</td>
+<td><bdi dir="ltr" lang="en">AGENTS</bdi> וכל תשעת קובצי <bdi dir="ltr" lang="en">rules</bdi> נמצאים במעקב. כלל הכיבוי של <bdi dir="ltr" lang="en">Rojo</bdi> נשמר בקומיט <code>173e7d4</code></td>
+</tr>
+<tr>
+<td>המיומנויות</td>
+<td>כל 14 המיומנויות המקומיות ו־72 הקבצים שלהן נמצאים במעקב בתוך <code>.agents</code>. אין קישור לתיקייה חיצונית שצריך לשחזר</td>
+</tr>
+<tr>
+<td><bdi dir="ltr" lang="en">hooks</bdi></td>
+<td>שני הקבצים בתוך <code>.codex/hooks</code> נמצאים במעקב. ה־<bdi dir="ltr" lang="en">hook</bdi> המיובא אינו פעיל ואינו דרוש להפעלת הפרויקט; אין להפעילו במחשב החדש</td>
+</tr>
+<tr>
+<td>קוד, דגמים וכלי פיתוח</td>
+<td>המקורות, הדגמים, קובצי <bdi dir="ltr" lang="en">Rojo</bdi>, הגדרות <bdi dir="ltr" lang="en">StyLua</bdi> ו־<bdi dir="ltr" lang="en">Selene</bdi> וקובץ גרסאות הכלים נמצאים במעקב. כל נתיבי המקור בקובצי <bdi dir="ltr" lang="en">Rojo</bdi> קיימים ונכללים ב־<bdi dir="ltr" lang="en">Git</bdi></td>
+</tr>
+<tr>
+<td>קובץ העבודה</td>
+<td><code>build/GrabItV1_DesktopMobile.rbxlx</code> נמצא במעקב. הוא מכיל גם עותקים ישנים של <bdi dir="ltr" lang="en">scripts</bdi>; קבצי <bdi dir="ltr" lang="en">src</bdi> הם המקור העדכני. לפני <bdi dir="ltr" lang="en">Play</bdi> במחשב החדש חייבים לאמת סנכרון, ולא לבנות מחדש מעל השמירה</td>
+</tr>
+<tr>
+<td>שמירות ידניות</td>
+<td>שני קובצי <bdi dir="ltr" lang="en">rbxl</bdi> בשורש אינם ב־<bdi dir="ltr" lang="en">Git</bdi>. בבדיקה הנוכחית הם זהים לפי <bdi dir="ltr" lang="en">SHA256</bdi>. מעתיקים אותם בנפרד כגיבוי, בלי להחליף את קובץ העבודה ובלי למחוק מקור</td>
+</tr>
+<tr>
+<td>רפרנסים</td>
+<td>19 קבצים בתוך <bdi dir="ltr" lang="en">references</bdi> נשארים מחוץ ל־<bdi dir="ltr" lang="en">Git</bdi> לפי הכללים הקיימים. יש ביניהם תמונות מתחרים שאליהן מפנה המחקר. מעתיקים את התיקייה בנפרד</td>
+</tr>
+<tr>
+<td>הגדרות <bdi dir="ltr" lang="en">MCP</bdi></td>
+<td>חיבור <bdi dir="ltr" lang="en">Roblox</bdi>_<bdi dir="ltr" lang="en">Studio</bdi> נמצא בהגדרות המשתמש של המחשב, ולא בפרויקט. צריך להגדירו במחשב החדש. אין בפרויקט <code>.codex/config.toml</code></td>
+</tr>
+<tr>
+<td>מצב ההמשך</td>
+<td><a href="../research/v1-improvement-checkpoint.md">נקודת העצירה</a>, דוחות הבדיקה וראיות הצילום נשמרים ב־<bdi dir="ltr" lang="en">Git</bdi>. אין להניח שהיסטוריית השיחה עצמה עוברת באמצעות <bdi dir="ltr" lang="en">Git</bdi></td>
+</tr>
+</tbody>
+</table></div>
+<p>כל ה־<bdi dir="ltr" lang="en">branches</bdi> המקומיים הקיימים כלולים בהיסטוריה של <bdi dir="ltr" lang="en">branch</bdi> העבודה. לצורך העברת המצב הנוכחי מספיק לדחוף אותו; אין צורך למזג לתוך <bdi dir="ltr" lang="en">main</bdi> או לדחוף את כל ה־<bdi dir="ltr" lang="en">branches</bdi>.</p>
+<h2>במחשב הנוכחי, לפני המעבר</h2>
+<ol>
+<li><strong>לדחוף את <bdi dir="ltr" lang="en">branch</bdi> העבודה.</strong> לאחר קומיטי ההעברה, אדם מבצע <bdi dir="ltr" lang="en">push</bdi> של <code>codex/v1-improvements</code> אל <bdi dir="ltr" lang="en">origin</bdi> ומוודא שהוא מופיע ב־<bdi dir="ltr" lang="en">GitHub</bdi>. השיחה אינה מבצעת <bdi dir="ltr" lang="en">push</bdi>.</li>
+<li><strong>להעתיק את הקבצים שאינם ב־<bdi dir="ltr" lang="en">Git</bdi>.</strong> להעתיק את כל <bdi dir="ltr" lang="en">references</bdi> ואת שתי השמירות הידניות למקום העברה פרטי. <a href="../migration/local-files.json">רשימת הקבצים והחתימות</a> מאפשרת לוודא שההעתקה שלמה. במחשב השני מחזירים אותם לאותם מיקומים יחסיים בתוך הפרויקט.</li>
+<li><strong>לשמור את המחשב הישן עד שההעברה אומתה.</strong> קובצי הגיבוי לא נפתחו במהלך הבדיקה, ולכן לא נקבע שהתוכן הידני שלהם זהה לתוכן קובץ העבודה. שמירה לענן אינה מחליפה את העברת המקורות והרפרנסים.</li>
+</ol>
+<p>הקבצים הידניים להעתקה:</p>
+<ul>
+<li><code>GrabItV1_DesktopMobile.rbxl</code></li>
+<li><code>GrabItV1_DesktopMobile.rbxlx.rbxl</code></li>
+<li>התיקייה <code>references</code></li>
+</ul>
+<p><code>sourcemap.json</code> הוא קובץ מיפוי שנוצר מקומית. אינו מקור הקוד ואינו נדרש להעברה. קובצי <code>.DS_Store</code>, שרתי תצוגה, תהליכים ומצב חיבור אינם הגדרות פרויקט להעברה.</p>
+<h2>במחשב החדש — צעדים לפי הסדר</h2>
+<ol>
+<li><strong>להתקין <bdi dir="ltr" lang="en">Git</bdi> ולהתחבר ל־<bdi dir="ltr" lang="en">GitHub</bdi>.</strong> לבחור <bdi dir="ltr" lang="en">Mac</bdi> או <bdi dir="ltr" lang="en">Windows</bdi> מתוך <a href="https://git-scm.com/install/">אתר <bdi dir="ltr" lang="en">Git</bdi></a>. לוודא שלחשבון יש גישה למאגר. אפשר לבצע <bdi dir="ltr" lang="en">clone</bdi> דרך ממשק <bdi dir="ltr" lang="en">Git</bdi> קיים; התחברות לחשבון אינה עוברת יחד עם התיקייה.</li>
+<li><strong>להוריד דווקא את <bdi dir="ltr" lang="en">branch</bdi> העבודה.</strong> לבצע <bdi dir="ltr" lang="en">clone</bdi> של המאגר ולבחור <code>codex/v1-improvements</code>. אפשר לבחור שם תיקייה פשוט כמו <bdi dir="ltr" lang="en">GrabItRun</bdi>; אין דרישה לשחזר את נתיב המשתמש מהמחשב הישן. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">הוראות <bdi dir="ltr" lang="en">clone</bdi> הרשמיות</a> מסבירות גם שימוש בממשק גרפי.</li>
+<li><strong>להחזיר את הקבצים הנפרדים.</strong> להעתיק <bdi dir="ltr" lang="en">references</bdi> ושתי השמירות הידניות לתיקיית הפרויקט, לפי הרשימה לעיל. לא להחליף אוטומטית את קובץ <bdi dir="ltr" lang="en">build</bdi> בשמירה ידנית. להשוות חתימות אם כלי ההעתקה אינו מאמת אותן.</li>
+<li><strong>להתקין את אפליקציית <bdi dir="ltr" lang="en">OpenAI</bdi> שבה תעבוד.</strong> להיכנס לאותו חשבון ולפתוח את תיקיית הפרויקט במצב <bdi dir="ltr" lang="en">Codex</bdi>. להשתמש ב<a href="https://learn.chatgpt.com/docs/app">הוראות האפליקציה הרשמיות</a>. לתת גישה לתיקיית הפרויקט, ולוודא שנקראו <bdi dir="ltr" lang="en">AGENTS</bdi> ו־<bdi dir="ltr" lang="en">rules</bdi> ושהמיומנויות המקומיות מופיעות. לפי <a href="https://learn.chatgpt.com/docs/build-skills">תיעוד המיומנויות</a>, <bdi dir="ltr" lang="en">Codex</bdi> סורק את <code>.agents/skills</code> מתוך המאגר. אין צורך להתקין את 14 המיומנויות שוב ברמת המשתמש.</li>
+<li><strong>להתקין <bdi dir="ltr" lang="en">Roblox Studio</bdi>.</strong> להוריד מתוך <a href="https://create.roblox.com/docs/studio/setup">ההוראות הרשמיות</a> ולהיכנס לאותו חשבון <bdi dir="ltr" lang="en">Roblox</bdi>. בשלב ההכנה אין צורך להפעיל משחק. האימות של החיבור והסנכרון בהמשך ייעשה רק כשהפרויקט הזה הוא יעד העבודה המורשה.</li>
+<li><strong>להתקין <bdi dir="ltr" lang="en">Rokit</bdi>.</strong> לבחור את הוראות <bdi dir="ltr" lang="en">Mac</bdi> או <bdi dir="ltr" lang="en">Windows</bdi> בתוך <a href="https://github.com/rojo-rbx/rokit#installation">המאגר הרשמי</a>, ואז לפתוח <bdi dir="ltr" lang="en">Terminal</bdi> חדש. מתוך תיקיית הפרויקט להריץ <bdi dir="ltr" lang="en">rokit install</bdi>. הקובץ <bdi dir="ltr" lang="en">rokit</bdi>.<bdi dir="ltr" lang="en">toml</bdi> יקבע את הגרסאות: <bdi dir="ltr" lang="en">Rojo</bdi> מספר 7.7.1, <bdi dir="ltr" lang="en">StyLua</bdi> מספר 2.5.2 ו־<bdi dir="ltr" lang="en">Selene</bdi> מספר 0.32.0. אין להריץ <bdi dir="ltr" lang="en">rokit update</bdi> או <bdi dir="ltr" lang="en">rokit init</bdi> לצורך המעבר; אין צורך לשנות את הגרסאות.</li>
+<li><strong>להתקין את <bdi dir="ltr" lang="en">Rojo plugin</bdi>.</strong> אחרי התקנת <bdi dir="ltr" lang="en">Studio</bdi> והכלים, להריץ <bdi dir="ltr" lang="en">rojo plugin install</bdi> מתוך תיקיית הפרויקט, או להתקין את <bdi dir="ltr" lang="en">plugin</bdi> הרשמי התואם ל־<bdi dir="ltr" lang="en">Rojo</bdi> 7. ה־<bdi dir="ltr" lang="en">CLI</bdi> וה־<bdi dir="ltr" lang="en">plugin</bdi> הם שני רכיבים נפרדים, לפי <a href="https://rojo.space/docs/v7/getting-started/installation/">הוראות <bdi dir="ltr" lang="en">Rojo</bdi></a>. התקנת <bdi dir="ltr" lang="en">plugin</bdi> אינה הפעלת שרת סנכרון.</li>
+<li><strong>להגדיר מחדש את <bdi dir="ltr" lang="en">Studio MCP</bdi>.</strong> כשהעבודה במשחק הזה תחודש, לפתוח רק את קובץ העבודה שלו בחלון <bdi dir="ltr" lang="en">Studio</bdi> אחד. ב־<bdi dir="ltr" lang="en">Assistant</bdi> לפתוח <bdi dir="ltr" lang="en">Manage MCP Servers</bdi>, להפעיל <bdi dir="ltr" lang="en">Enable Studio as MCP server</bdi> ולבחור את לקוח <bdi dir="ltr" lang="en">Codex</bdi> בתוך <bdi dir="ltr" lang="en">Quick connect</bdi>. אם הוא אינו מופיע, לפעול לפי <bdi dir="ltr" lang="en">Setup instructions</bdi> ולא להעתיק נתיב <bdi dir="ltr" lang="en">Mac</bdi> למחשב <bdi dir="ltr" lang="en">Windows</bdi>. נדרש חיווי של לקוח מחובר; מתג מסומן לבדו אינו מספיק. <a href="https://create.roblox.com/docs/studio/mcp">הוראות <bdi dir="ltr" lang="en">MCP</bdi> הרשמיות</a>.</li>
+<li><strong>לבצע אימות קצר לפני המשך הפיתוח.</strong> לבקש מהשיחה החדשה לקרוא תחילה את מסמך המעבר ואת נקודת העצירה. לוודא שזהות המשחק היא <bdi dir="ltr" lang="en">place</bdi> מספר 106986292768692 ו־<bdi dir="ltr" lang="en">universe</bdi> מספר 10772701508, ושמבנה הפרויקט תואם. לא להשתמש במשחק אחר לצורך בדיקת החיבור. לאחר אישור חידוש העבודה מפעילים שרת <bdi dir="ltr" lang="en">Rojo</bdi> אחד בפורט 34872, מחברים אליו את החלון הנכון ומאמתים שהקוד העדכני מתוך <bdi dir="ltr" lang="en">src</bdi> הגיע אליו לפני <bdi dir="ltr" lang="en">Play</bdi>. לא יוצרים מקום חדש ולא מריצים <bdi dir="ltr" lang="en">build</bdi> מעל קובץ העבודה.</li>
+<li><strong>להמשיך מנקודת העצירה.</strong> שער התצוגה ויתר הקבלה עדיין לא הסתיימו. כלי <bdi dir="ltr" lang="en">QA</bdi> ההיסטוריים מחייבים התאמה לפני שימוש, כמפורט בנקודת העצירה. בכל עצירה מכבים את שרת <bdi dir="ltr" lang="en">Rojo</bdi> של הפרויקט ומאמתים שהוא נסגר.</li>
+</ol>
+<h2>פקודות לשימוש בזמן ההעברה בלבד</h2>
+<p>כל קבוצה מיועדת למחשב המצוין מעליה. אין להריץ את כולן ברצף במחשב אחד. פקודות התקנת <bdi dir="ltr" lang="en">Rokit</bdi> תלויות במערכת ההפעלה ונמצאות בקישור בשלב 6. הפקודות שלהלן לא הופעלו במסגרת הכנת המסמך.</p>
+<pre><code class="language-sh"># Current computer: run from the existing repository; Adam pushes.
+git push --set-upstream origin codex/v1-improvements
+
+# New computer: run from the parent folder chosen for the project.
+git clone --branch codex/v1-improvements https://github.com/adamshmuel/Grab-It---Run-.git GrabItRun
+cd GrabItRun
+git branch --show-current
+git log -1 --oneline
+
+# New computer: after installing Studio and Rokit.
+rokit install
+rojo --version
+stylua --version
+selene --version
+rojo plugin install
+
+# Only after authorized resumption in the verified game window.
+rojo serve default.project.json --port 34872
+</code></pre>
+<p>אין חובה להתקין כרגע <bdi dir="ltr" lang="en">VS Code</bdi>, <bdi dir="ltr" lang="en">Node</bdi>.<bdi dir="ltr" lang="en">js</bdi>, <bdi dir="ltr" lang="en">Python</bdi>, <bdi dir="ltr" lang="en">Wally</bdi> או <bdi dir="ltr" lang="en">JestRobloxRunner</bdi> כדי להפעיל את קוד המשחק והבדיקות המקומיות הקיימות. קובצי הבדיקה משתמשים ב־<bdi dir="ltr" lang="en">assertions</bdi> בתוך <bdi dir="ltr" lang="en">Studio</bdi>; ה־<bdi dir="ltr" lang="en">hook</bdi> המיובא אינו פעיל. אם עבודה עתידית תדרוש כלי נוסף, מאמתים צורך ותאימות לפני התקנתו. לקריאת המסמכים אפשר לפתוח את קובצי <bdi dir="ltr" lang="en">HTML</bdi> השמורים בתוך <bdi dir="ltr" lang="en">docs</bdi>/<bdi dir="ltr" lang="en">previews</bdi> בדפדפן, גם בלי שרת <bdi dir="ltr" lang="en">localhost</bdi> הישן.</p>
+<h2>הגדרות שנשארות ברמת המחשב</h2>
+<p>חיבור <bdi dir="ltr" lang="en">MCP</bdi> המקומי הקיים מפנה לקובץ <bdi dir="ltr" lang="en">StudioMCP</bdi> בתוך התקנת <bdi dir="ltr" lang="en">Studio</bdi> במחשב <bdi dir="ltr" lang="en">Mac</bdi>. אין להעתיק את כל הגדרות המשתמש של <bdi dir="ltr" lang="en">Codex</bdi> או נתיבי יישומים למחשב השני. רושמים מחדש את חיבור <bdi dir="ltr" lang="en">Studio</bdi> לפי מערכת ההפעלה. <a href="https://learn.chatgpt.com/docs/config-file/config-basic">תיעוד ההגדרות של <bdi dir="ltr" lang="en">OpenAI</bdi></a> מבדיל בין הגדרות משתמש לבין הגדרות פרויקט.</p>
+<p>התחברות לחשבונות, אישורי מערכת, בחירת מודל, הגדרות אפליקציה וחיבורים של <bdi dir="ltr" lang="en">plugins</bdi> חיצוניים אינם חלק מ־<bdi dir="ltr" lang="en">Git</bdi>. מאמתים אותם במחשב החדש לפי הצורך. אין להעביר סיסמאות או מפתחות פרטיים אל המאגר. אין צורך בהרשאות שליטה כללית במחשב לשם פעולות <bdi dir="ltr" lang="en">Studio</bdi> שה־<bdi dir="ltr" lang="en">MCP</bdi> מספק. אישור <bdi dir="ltr" lang="en">API Services</bdi> הקודם מוגבל למשחק הזה; אינו היתר לשנות סביבה או נתונים של משחק אחר.</p>
+<h2>מתי ההעברה הושלמה</h2>
+<ul>
+<li><bdi dir="ltr" lang="en">branch</bdi> העבודה וכל קומיטי ההעברה הגיעו למחשב החדש; החוקים, 14 המיומנויות וקובץ העבודה קיימים.</li>
+<li>הקבצים הנפרדים הועתקו ונבדקו מול הרשימה, והרפרנסים נפתחים מתוך מסמכי המחקר.</li>
+<li>הכלים נמצאו בגרסאות המוגדרות, והאפליקציה קוראת את הוראות הפרויקט.</li>
+<li>בחידוש המורשה אומתו זהות המשחק, חיבור <bdi dir="ltr" lang="en">MCP</bdi> וסנכרון <bdi dir="ltr" lang="en">Rojo</bdi> בפועל. עד אז הסביבה החדשה מוכנה להתקנה, אך אינה סביבה שעברה אימות הרצה.</li>
+</ul>
+</main></body></html>

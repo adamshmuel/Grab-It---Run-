@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-26",
+  "branch": "codex/v1-improvements",
+  "sourceCommit": "897bedf",
+  "ruleCommit": "173e7d4",
+  "remoteHeadsChecked": {
+    "main": "751530063c75d2178c665b983e602628a6133a0a"
+  },
+  "trackedSkillFiles": 72,
+  "projectSkills": 14,
+  "trackedHookFiles": 2,
+  "rules": 9,
+  "manualTransferFiles": [
+    {
+      "path": "references/competitors/escape-tsunami-for-brainrots/data/game-details.json",
+      "size": 1244,
+      "sha256": "59b1b302905f5e550da3a2cc5c55c6b2e7ba2b92142118fde3beb05f4ccec51b",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/escape-tsunami-for-brainrots/data/game-passes.json",
+      "size": 4898,
+      "sha256": "afe01ff370a802d1d2a3051c5b577b4190ee0c5e70d77d0b1597c0baf104bd66",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/escape-tsunami-for-brainrots/environment/base-carry.jpg",
+      "size": 610630,
+      "sha256": "47afc7ec54a1905a41f00347036b95823518dd78c02d6b80c51d9dc940bc6f26",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/escape-tsunami-for-brainrots/environment/safe-zone.jpg",
+      "size": 595456,
+      "sha256": "cf643369a4473afb1f6f24f470583e7b384258695a69d44bff2f6b18bd34ef03",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/escape-tsunami-for-brainrots/index.md",
+      "size": 2428,
+      "sha256": "4c6a69d6d816978cadf7772fcb3b880e5e6ba07545c8ec220261f2b0b4803b02",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/escape-tsunami-for-brainrots/manifest.json",
+      "size": 2229,
+      "sha256": "36c215ddf43fad63dfb26b0544163b1a6f6a427ef65c99450e880f2b33d0dbc0",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/escape-tsunami-for-brainrots/ui/spawn-machine.png",
+      "size": 1405740,
+      "sha256": "098ef7b0409d9a5efbd31f47bc85076ff6da76ad8aa7b431b9da77b02f6e5ca2",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/steal-a-brainrot/data/game-details.json",
+      "size": 1425,
+      "sha256": "c62214b23ce3d94a628181e2ee29b1d52aef2cd0cafb702672154cbbdd449ec1",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/steal-a-brainrot/environment/carry-and-base.jpg",
+      "size": 41278,
+      "sha256": "7e17f6d307a732945288797bb5a155f0761ad9dc658cec00e0e903ffc077da06",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/steal-a-brainrot/index.md",
+      "size": 1291,
+      "sha256": "fd87455c6b4f0c29f3f9d2c7449188dc10f75879f5e42cead2b33e78c613b12f",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/steal-a-brainrot/manifest.json",
+      "size": 1815,
+      "sha256": "7d6884ca537a1ff238865953b83c3e045c05d71ee1ed14b52c03787535a74596",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/steal-a-brainrot/ui/collection-labels.jpg",
+      "size": 27444,
+      "sha256": "c941b2bde2072c840806d7c2a8363032fd6474bc989039cb59f3edcb066c38c5",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/survive-lava-for-brainrots/data/game-details.json",
+      "size": 1358,
+      "sha256": "a9d6948c660f0e68e9b5a93daa5845c0347cbb2763bd1d3d6d26cc28339c8185",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/survive-lava-for-brainrots/environment/moon-event-overview.jpg",
+      "size": 83978,
+      "sha256": "9ea65469b565c36603e288625b7ea6b1c66dd4203d597862b86e8fbe0bd8b1aa",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/survive-lava-for-brainrots/index.md",
+      "size": 1287,
+      "sha256": "54e47a8dd42abf569989c7340480a103547c2a0ab1bd0d9f55dbff3e5dfab49d",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/survive-lava-for-brainrots/manifest.json",
+      "size": 1812,
+      "sha256": "d299bd55ebe3296ea36ddb72b52de5ff173ff1724140fa2bd547442e81eeb9d9",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/competitors/survive-lava-for-brainrots/ui/value-and-rarity.jpg",
+      "size": 90089,
+      "sha256": "7bd793d6597bc5bd52bdd14e0f2efbf26ad08dd4430e8f4ae26ce78a25622a95",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/qa/v1/2026-10-23/desktop-collect.png",
+      "size": 211329,
+      "sha256": "3f6de80c0b80eea38e4d3edc97d233cc41cf8544a544ece68407f7234d1cdfb1",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "references/qa/v1/2026-10-23/desktop-full-before.png",
+      "size": 192582,
+      "sha256": "804cdc87230bfd031483a0e4b8c615ac918535a1d2e3fbe41cb0ad45f94f92ac",
+      "transfer": "copy-separately",
+      "purpose": "saved research reference"
+    },
+    {
+      "path": "GrabItV1_DesktopMobile.rbxl",
+      "size": 124483,
+      "sha256": "d2709dbd7a878db6f1fce2fc61a93f7d1db46ce1d87913eb53eb1097cd54088d",
+      "transfer": "copy-separately",
+      "purpose": "protected manual Studio backup; not opened or compared in Studio"
+    },
+    {
+      "path": "GrabItV1_DesktopMobile.rbxlx.rbxl",
+      "size": 124483,
+      "sha256": "d2709dbd7a878db6f1fce2fc61a93f7d1db46ce1d87913eb53eb1097cd54088d",
+      "transfer": "copy-separately",
+      "purpose": "protected manual Studio backup; not opened or compared in Studio"
+    }
+  ],
+  "excludedGeneratedFile": "sourcemap.json",
+  "limits": [
+    "No Studio or Rojo launch; no game inspection through MCP.",
+    "Remote heads queried read-only; no push.",
+    "Identical manual backups by SHA256; no assertion that their world content equals the tracked XML save.",
+    "Credentials and full user configuration are not exported."
+  ]
+}
