@@ -9,14 +9,15 @@ table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1
 a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 .preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
 
-.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a></nav><h1>בדיקת גרפיקה והשוואה חזותית</h1>
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><nav><a href="index.html">מפת הגרסה</a></nav><h1>בדיקת גרפיקה והשוואה חזותית</h1>
 <p><strong>מצב: נוספה לדרישות הקבלה לבקשת אדם בתאריך 22/10/2026.</strong></p>
 <h2>המטרה והמקורות</h2>
 <p>לבדוק את איכות ההצגה בפועל מול משחקים דומים, כחלק ממטרה 2 במסמך <a href="../project-goals.html">מטרות הפרויקט</a>. הבדיקה מתבססת על <a href="../competitor-research.html">מחקר <bdi dir="ltr" lang="en">Escape Tsunami</bdi></a> ועל <a href="../visual-benchmark.html">מפת ההשוואה לשלושה משחקים</a>.</p>
 <h2>כלל 4: שתי נקודות בדיקה מחייבות</h2>
 <p>החלטת אדם מתאריך 23/10/2026: ההשוואה למתחרים מתבצעת כבר בזמן התכנון, ושוב בסיום המימוש לפני בדיקות עם שחקנים ושאר בדיקות הקבלה.</p>
 <p>בתכנון בוחרים צילומי <bdi dir="ltr" lang="en">gameplay</bdi> רלוונטיים ומגדירים באמצעותם רף ברור: מגוון צבעים וצורות, רמת פירוט החפצים, סביבה, <bdi dir="ltr" lang="en">UI</bdi>, מצלמה ותגובות. בודקים שהכיוון ישים בכלים ובהיקף הפרויקט. בהירות וגאומטריה פשוטה לבדן אינן הוכחה לרמה מספקת מול המתחרים.</p>
-<p>בסיום בודקים את המשחק בפועל מול אותו רף במחשב ובנייד מדומה. אם המראה אינו עובר, לא מתקדמים לבדיקות עם אנשים ולשאר קבלת הגרסה. מתקנים את ההגדרה החזותית, מקבלים אישור אדם לשינוי ומממשים לפני בדיקה חוזרת. <bdi dir="ltr" lang="en">tests</bdi> ממוקדים שנדרשים למימוש ולבדיקת השינוי עצמו נשארים חלק מתהליך <bdi dir="ltr" lang="en">TDD</bdi>.</p>
+<p>בסיום בודקים את המשחק בפועל מול אותו רף במחשב ובנייד מדומה. אם המראה אינו עובר, לא מתקדמים לבדיקות עם אנשים ולשאר קבלת הגרסה. לפי ההרשאה הקבועה של אדם מ־26/10/2026, מתקנים ליקוי עיצוב או גרפיקה בתוך הרף המוסכם בלי לבקש אישור לכל תיקון; מעדכנים את ההגדרה והתוכנית ומממשים לפני בדיקה חוזרת. <bdi dir="ltr" lang="en">tests</bdi> ממוקדים שנדרשים למימוש ולבדיקת השינוי עצמו נשארים חלק מתהליך <bdi dir="ltr" lang="en">TDD</bdi>.</p>
+<p>בכל אחת משתי נקודות הבדיקה בוחנים תחילה את רמת העיצוב והגימור מול המתחרים. רק לאחר סגירת הפערים מתקדמים לבדיקות מפורטות של קריאות, חפיפה, הסתרה והתאמה למסכים. שינוי עיצוב מאוחר מחייב חזרה לבדיקה שהושפעה ממנו. הצלחה טכנית מוקדמת אינה מחליפה את ההשוואה הזאת.</p>
 <p><strong>תוצאת המראה הקודם, 23/10/2026: לא עבר.</strong> אדם זיהה מחסור בגיוון צבעים וצורות. התיקונים והבדיקה העצמאית שבוצעה בתאריך 24/10/2026 מתועדים בתוך <a href="../v1-visual-review.html">דוח ההשוואה</a>. השער החזותי עבר בהיקף הסצנות והמדידות המתועדות; קבלת הגרסה והעדפה אנושית הן תנאים נפרדים.</p>
 <h2>כלל 1: משווים <bdi dir="ltr" lang="en">gameplay</bdi> אמיתי</h2>
 <p>אוספים צילומים שלנו בבסיס, באיסוף, בחזרה עם מטען מלא ובאזהרת סגירה. כל מצב נבדק במחשב ובנייד מדומה, לפי גדלי המסך בתוך <a href="acceptance.html">קריטריוני הקבלה</a>.</p>

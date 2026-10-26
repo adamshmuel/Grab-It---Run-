@@ -50,7 +50,7 @@ waits.
 
 ## Competitive visual standard before and after implementation
 
-Follow the two gates in `research.md`: establish the reference-based visual standard during planning, then verify the implemented game against it before human player tests and the remaining acceptance tests. An approved technical plan or passing code tests is not approval of competitive visual quality. A failed visual gate returns to the relevant specification before a revised implementation plan or code.
+Follow the two gates in `research.md`: establish the reference-based visual standard during planning, then verify the implemented game against it before human player tests and the remaining acceptance tests. An approved technical plan or passing code tests is not approval of competitive visual quality. A failed visual gate returns to the relevant specification before a revised implementation plan or code. Adam's standing authorization of 2026-10-26 covers in-scope design/graphics corrections needed to meet the agreed threshold; do not ask him to re-approve each such correction. Keep spec → plan → TDD implementation → visual verification, with the two gate points and art-before-layout order defined in `research.md`. Gameplay/economy and unrelated scope changes are not covered.
 
 ## Goal and gameplay continuity gates — Adam's decision, 2026-10-25
 
