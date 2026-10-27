@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-27",
+  "players": 8,
+  "durationRequested": 700,
+  "measurementSecondsRequested": 600,
+  "loadBeforeLaunch": [
+    1.9,
+    2.8,
+    2.53
+  ],
+  "aborted": true,
+  "passed": false,
+  "performanceMeasured": false,
+  "reason": "Adam warned of host crash risk; inadequate hardware-capacity preflight despite known prior overload. Low idle load was insufficient evidence.",
+  "cleanup": {
+    "onlyWorkingEditorPID": 7983,
+    "temporaryServerRunner": false,
+    "temporaryClientRunner": false,
+    "runClaimRestored": true,
+    "rojoPort34872Listening": false
+  },
+  "standingRule": "Do not repeat eight local player windows on this Mac; follow rules/studio.md hardware-capacity gate."
+}

@@ -4,7 +4,11 @@
     "place": 106986292768692,
     "universe": 10772701508
   },
-  "preflight": {
+  "scope": "Actual Studio solo player3345343071 with isolated QA DataStore in the approved cloud development copy. Six normal walking trips and game remotes, no synthetic currency or time/speed changes; purchase/equip via normal game remotes. No Publish, access or production-data changes. Initial appearance-name probe used the wrong model name; actual reloaded GrabItCargo contains Canvas parts.",
+  "started": true,
+  "createdKeys": true,
+  "status": "passed: actual GameServer native TestArgs, earned 100, purchase to zero, Canvas selection, release and second server reload, transient reset, QA cleanup verified",
+  "earlierUnstartedPreflight": {
     "content": [
       {
         "type": "text",
@@ -13,9 +17,101 @@
     ],
     "isError": false
   },
-  "scope": "Only this new QA prefix and the two preflighted candidate test-player keys; no Editor marker.",
-  "started": false,
-  "createdKeys": false,
-  "status": "pending explicit approval and working Rojo sync",
-  "reason": "Automatic approval rejected Rojo while Team Create window was open because source synchronization could edit cloud code; no cloud sync or player E2E run occurred. The temporary cloud process9206 was closed after verifying no Editor marker/source changes and all earlier backend QA keys had been cleaned."
+  "current": {
+    "syncHashes": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"check\":\"34247b20374cd2ae7c6cf7d0eecd857c97afeabbbfb76f9d776cbd411035de23\",\"mode\":\"771a3f1288b91fc64a6ace9bf117b6ad6b5be3c342d8064f2a09fefb52557c4f\",\"test\":\"533cd00dcc1f545213e19b17d43999c716b41141a442b0a89985bd14b1737661\",\"server\":\"a0d9ca4ea1e4c829a825bc74667474ebab47fa2da91fae2af0151141ed9f7b6e\"}"
+        }
+      ],
+      "isError": false
+    },
+    "preflight": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"keys\":{\"1\":\"User_3345343071\",\"2\":\"User_-1\"},\"empty\":true,\"prefix\":\"QA_e27_6677b53b83d8_\",\"runId\":\"e27_6677b53b83d8\"}"
+        }
+      ],
+      "isError": false
+    },
+    "startup": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"tutorial\":false,\"version\":2,\"owned\":{\"basic\":true},\"selected\":\"basic\",\"locked\":true,\"coins\":0}"
+        }
+      ],
+      "isError": false
+    },
+    "routeCommand": "local q=_G.GrabItCloudE2E; assert(q and q.state and q.state.stage==1 and q.state.coins==0)\nlocal root=game.ReplicatedStorage.GrabIt\nlocal player=game.Players.LocalPlayer\nlocal items=require(root.Shared.Catalog).items(1)\nlocal function await(check,seconds,message)\n local deadline=os.clock()+seconds\n repeat if check() then return end; task.wait(.1) until os.clock()>=deadline\n error(message)\nend\nlocal function walk(x,z)\n local character=assert(player.Character); local center=assert(character:FindFirstChild('HumanoidRootPart')); local h=assert(character:FindFirstChildOfClass('Humanoid'))\n local deadline=os.clock()+20\n repeat\n  if (Vector3.new(x,center.Position.Y,z)-center.Position).Magnitude<2 then return end\n  h:MoveTo(Vector3.new(x,center.Position.Y,z));task.wait(.15)\n until os.clock()>=deadline\n error('walking timed out')\nend\nq.started=os.clock()\ntask.spawn(function()\n local ok,err=pcall(function()\n  for _,trip in {{25,27},{26,28},{29,30},{19,21,7},{20,22,8},{1,3,2}} do\n   local expected=q.state.coins\n   walk(0,6)\n   for n,id in trip do\n    assert(q.state.stage==1 and q.state.open,'route exceeded real stage time')\n    local item=items[id];walk(item.x,item.z);task.wait(.25)\n    await(function() return q.state.target==id end,3,'wrong collection target')\n    root.Action:FireServer('collect',id)\n    await(function() return q.state.cargoCount==n end,4,'collection rejected')\n    expected+=item.value\n   end\n   walk(0,6);walk(0,-8)\n   await(function() return q.state.coins==expected and q.state.cargoCount==0 end,5,'deposit not confirmed')\n   table.insert(q.trips,{items=trip,coins=q.state.coins,remaining=q.state.remaining,elapsed=os.clock()-q.started,save=q.state.save})\n  end\n  assert(q.state.coins==100,'must earn exactly 100 without grants')\n  await(function() return q.state.save=='Saved' end,15,'earned coins not saved')\n  q.earned100=true\n end)\n q.routePassed=ok;q.error=if ok then nil else tostring(err);q.finished=true\nend)\nreturn {started=true,remaining=q.state.remaining,route='normal walking and game collect remote; no synthetic coins'}\n"
+  },
+  "results": {
+    "earned": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"state\":{\"remaining\":31,\"cargo\":0,\"save\":\"Saved\",\"stage\":1,\"coins\":100},\"trips\":{\"1\":{\"items\":{\"1\":25,\"2\":27},\"remaining\":118,\"elapsed\":16.980167187997723,\"save\":\"Saving\",\"coins\":20},\"3\":{\"items\":{\"1\":29,\"2\":30},\"remaining\":82,\"elapsed\":52.696552932000489,\"save\":\"Saving\",\"coins\":60},\"2\":{\"items\":{\"1\":26,\"2\":28},\"remaining\":101,\"elapsed\":33.382757875995597,\"save\":\"Saving\",\"coins\":40},\"5\":{\"items\":{\"1\":20,\"3\":8,\"2\":22},\"remaining\":55,\"elapsed\":80.06135092000477,\"save\":\"Saving\",\"coins\":94},\"4\":{\"items\":{\"1\":19,\"3\":7,\"2\":21},\"remaining\":69,\"elapsed\":66.29568378199474,\"save\":\"Saving\",\"coins\":77},\"6\":{\"items\":{\"1\":1,\"3\":2,\"2\":3},\"remaining\":48,\"elapsed\":86.77765664599429,\"save\":\"Saving\",\"coins\":100}},\"passed\":true,\"finished\":true}"
+        }
+      ],
+      "isError": false
+    },
+    "purchaseCloud": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"canvas\":true,\"basic\":true},\"locked\":true,\"selected\":\"canvas\",\"key\":\"QA_e27_6677b53b83d8_User_3345343071\",\"coins\":0}"
+        }
+      ],
+      "isError": false
+    },
+    "clientPhase1": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"purchasePassed\":true,\"banked\":0,\"owned\":{\"canvas\":true,\"basic\":true},\"save\":\"Saved\",\"coins\":0,\"models\":{\"1\":{\"name\":\"LongRedHair\",\"parts\":6},\"2\":{\"name\":\"GrabItCargo\",\"parts\":16}},\"trips\":{\"1\":{\"items\":{\"1\":25,\"2\":27},\"remaining\":118,\"elapsed\":16.980167187997723,\"save\":\"Saving\",\"coins\":20},\"3\":{\"items\":{\"1\":29,\"2\":30},\"remaining\":82,\"elapsed\":52.696552932000489,\"save\":\"Saving\",\"coins\":60},\"2\":{\"items\":{\"1\":26,\"2\":28},\"remaining\":101,\"elapsed\":33.382757875995597,\"save\":\"Saving\",\"coins\":40},\"5\":{\"items\":{\"1\":20,\"3\":8,\"2\":22},\"remaining\":55,\"elapsed\":80.06135092000477,\"save\":\"Saving\",\"coins\":94},\"4\":{\"items\":{\"1\":19,\"3\":7,\"2\":21},\"remaining\":69,\"elapsed\":66.29568378199474,\"save\":\"Saving\",\"coins\":77},\"6\":{\"items\":{\"1\":1,\"3\":2,\"2\":3},\"remaining\":48,\"elapsed\":86.77765664599429,\"save\":\"Saving\",\"coins\":100}},\"cargo\":0,\"selected\":\"canvas\",\"stage\":2,\"equipPassed\":true}"
+        }
+      ],
+      "isError": false
+    },
+    "reloadedCloud": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"canvas\":true,\"basic\":true},\"locked\":true,\"selected\":\"canvas\",\"key\":\"QA_e27_6677b53b83d8_User_3345343071\",\"coins\":0}"
+        }
+      ],
+      "isError": false
+    },
+    "reloadedClient": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"cargo\":0,\"owned\":{\"canvas\":true,\"basic\":true},\"save\":\"Saved\",\"userId\":3345343071,\"coins\":0,\"earnings\":0,\"passed\":true,\"gearParts\":{\"1\":\"ShoulderStrap\",\"3\":\"SoftBag\",\"2\":\"ShoulderStrap\",\"5\":\"Buckle\",\"4\":\"Opening\",\"7\":\"CanvasTrim\",\"6\":\"CanvasTrim\"},\"selected\":\"canvas\",\"stage\":1,\"banked\":0}"
+        }
+      ],
+      "isError": false
+    },
+    "cleanup": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"uncachedNil\":true,\"editorCloudMarker\":false,\"released\":true,\"unusedKeyEmpty\":true,\"key\":\"QA_e27_6677b53b83d8_User_3345343071\",\"removed\":true}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "remainingKeys": 0,
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "talia_adam13 joined live editing session.\nContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type\nGrabIt V1 improvements server ready; persistence: isolated QA store\nContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type\nContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type\nContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type\nGrabIt V1 improvements server ready; persistence: isolated QA store\nContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type\nContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type\nContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type\n[Rojo-Warn] Disconnected from an error: WebSocket error: 400 - Failed ws recv - err: 0 \"No error\", curlErrBuf: \"\""
+      }
+    ],
+    "isError": false
+  },
+  "consoleInterpretation": "Both sessions logged isolated QA persistence. Asset203785492 warning belongs to the known Rojo sound asset; Rojo disconnected when stopped. No game error was logged in these two sessions."
 }
