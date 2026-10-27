@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "branch": "codex/v1-improvements",
   "sourceCommit": "897bedf",
   "ruleCommit": "173e7d4",
@@ -13,10 +13,10 @@
   "manualTransferFiles": [],
   "excludedGeneratedFile": "sourcemap.json",
   "limits": [
-    "No Studio or Rojo launch; no game inspection through MCP.",
-    "Remote heads queried read-only; no push.",
-    "Identical manual backups by SHA256; no assertion that their world content equals the tracked XML save.",
-    "Credentials and full user configuration are not exported."
+    "File/Git audit only for this snapshot; no Studio mutation, Rojo launch or gameplay tests.",
+    "Local snapshot is not available to other computers until Adam pushes the branch.",
+    "The tracked manual backup is a separate historical recovery copy, not the working file.",
+    "Credentials, accounts, installed binaries and per-computer MCP settings are not exported."
   ],
   "trackedReferences": [
     {
@@ -178,5 +178,24 @@
     "transfer": "git",
     "purpose": "approved recovery snapshot; not the working place",
     "approved": "2026-10-26"
+  },
+  "workingFile": {
+    "path": "build/GrabItV1_DesktopMobile.rbxlx",
+    "size": 430932,
+    "sha256": "860765deb1da1f0372d1bd464c55b4d13891904845db6c757d36a054ff698ee3",
+    "transfer": "git",
+    "purpose": "current saved working place; preserve unmanaged Studio content",
+    "sourceMatches": 58,
+    "sourceComparison": "All58 Rojo-mapped Luau sources in this XML match the current local files exactly. No active temporary QA runners in the saved file."
+  },
+  "portableSnapshot": {
+    "date": "2026-10-27",
+    "baseCommit": "5850a151c6028d96c06eea3e24f3b57401826a0d",
+    "branch": "codex/v1-improvements",
+    "requiredRojoSourcesTracked": true,
+    "referenceFilesVerified": 19,
+    "backupVerified": true,
+    "pushBy": "Adam",
+    "machineSetup": "Studio, pinned tools, account sign-in and MCP connection must be set up per computer; do not commit credentials or machine-specific tool binaries."
   }
 }
