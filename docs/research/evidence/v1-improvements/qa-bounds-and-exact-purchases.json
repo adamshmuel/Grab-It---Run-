@@ -18,5 +18,15 @@
     "isError": false
   },
   "date": "2026-10-26",
-  "scope": "Invalid QA settings rejected before mutation. Existing persistence suite expanded to exact100/350/900-to-zero purchase, retry, stale-write rejection and rejoin with fake backend. No cloud claim."
+  "scope": "Invalid QA settings rejected before mutation. Existing persistence suite expanded to exact100/350/900-to-zero purchase, retry, stale-write rejection and rejoin with fake backend. No cloud claim.",
+  "additionalBoundsDate": "2026-10-27",
+  "additionalBounds": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"1\":{\"error\":\"ServerStorage.launch:24: bounded route plan\",\"passed\":true},\"4\":{\"error\":\"ServerStorage.launch:20: staggered QA needs 2-8 players without a solo route plan\",\"passed\":true},\"3\":{\"error\":\"ServerStorage.launch:20: staggered QA needs 2-8 players without a solo route plan\",\"passed\":true},\"2\":{\"error\":\"ServerStorage.launch:24: bounded route plan\",\"passed\":true}}"
+      }
+    ],
+    "isError": false
+  }
 }

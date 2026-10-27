@@ -2,9 +2,16 @@
 local Mode = {}
 export type Selection = { memory: boolean, name: string?, keyPrefix: string }
 
-function Mode.select(isStudio: boolean, runId: any): Selection
+function Mode.select(isStudio: boolean, runId: any, testArgs: any?): Selection
 	if not isStudio then
 		return { memory = false, name = "GrabItV1_PlayerData", keyPrefix = "" }
+	end
+	if
+		runId == nil
+		and type(testArgs) == "table"
+		and testArgs.marker == "GrabItV1.IsolatedCloudQA"
+	then
+		runId = testArgs.runId
 	end
 	if type(runId) == "string" and #runId > 0 and #runId <= 20 and runId:match("^[%w_%-]+$") then
 		return {

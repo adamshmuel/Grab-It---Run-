@@ -21,9 +21,19 @@ local session = Session.new(function()
 end)
 local world = World.build()
 local studio = RunService:IsStudio()
+local testArgs: any = nil
+if studio then
+	local success, args = pcall(function()
+		return game:GetService("StudioTestService"):GetTestArgs()
+	end)
+	if success then
+		testArgs = args
+	end
+end
 local storage = StorageMode.select(
 	studio,
-	if studio then game:GetService("ServerStorage"):GetAttribute("GrabItQACloudRun") else nil
+	if studio then game:GetService("ServerStorage"):GetAttribute("GrabItQACloudRun") else nil,
+	testArgs
 )
 local dataStore = if storage.memory
 	then nil

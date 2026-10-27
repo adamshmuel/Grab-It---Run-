@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-27",
+  "target": {
+    "place": 106986292768692,
+    "universe": 10772701508,
+    "studio": "060713df-7607-40fd-bcd4-4ecd4c2af1df"
+  },
+  "preflight": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"keys\":{\"1\":\"User_100\",\"3\":\"User_900\",\"2\":\"User_350\"},\"phase\":\"ready\",\"prefix\":\"QA_n261027_556ca82f64_\",\"runId\":\"n261027_556ca82f64\"}"
+      }
+    ],
+    "isError": false
+  },
+  "started": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"prefix\":\"QA_n261027_556ca82f64_\",\"keys\":{\"1\":\"User_100\",\"3\":\"User_900\",\"2\":\"User_350\"},\"runId\":\"n261027_556ca82f64\",\"store\":\"GrabItV1_QA_Verification\",\"phase\":\"preflight\"}"
+      }
+    ],
+    "isError": false
+  },
+  "scope": "Only these fresh QA keys in GrabItV1_QA_Verification/global are authorized for this run. No Editor marker, source mutation or production datastore access.",
+  "phase1": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"prefix\":\"QA_n261027_556ca82f64_\",\"keys\":{\"1\":\"User_100\",\"3\":\"User_900\",\"2\":\"User_350\"},\"progress\":{\"1\":{\"repeatedTransaction\":true,\"id\":\"canvas\",\"staleWriteRejected\":true,\"coins\":0,\"version\":2,\"owned\":{\"canvas\":true,\"basic\":true},\"locked\":false,\"selected\":\"canvas\",\"price\":100,\"key\":\"QA_n261027_556ca82f64_User_100\"},\"3\":{\"repeatedTransaction\":true,\"id\":\"royal\",\"staleWriteRejected\":true,\"coins\":0,\"version\":2,\"owned\":{\"royal\":true,\"basic\":true},\"locked\":false,\"selected\":\"royal\",\"price\":900,\"key\":\"QA_n261027_556ca82f64_User_900\"},\"2\":{\"repeatedTransaction\":true,\"id\":\"field\",\"staleWriteRejected\":true,\"coins\":0,\"version\":2,\"owned\":{\"field\":true,\"basic\":true},\"locked\":false,\"selected\":\"field\",\"price\":350,\"key\":\"QA_n261027_556ca82f64_User_350\"}},\"phase\":\"written\",\"runId\":\"n261027_556ca82f64\",\"editorMarkerAbsent\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "checkerRed": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"ServerStorage.GrabItQA.cloud-check:15: cloud record uses the current schema\",\"passed\":false,\"available\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "checkerGreen": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"1\":{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"canvas\":true,\"basic\":true},\"locked\":false,\"selected\":\"canvas\",\"key\":\"QA_n261027_556ca82f64_User_100\",\"coins\":0},\"3\":{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"royal\":true,\"basic\":true},\"locked\":false,\"selected\":\"royal\",\"key\":\"QA_n261027_556ca82f64_User_900\",\"coins\":0},\"2\":{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"field\":true,\"basic\":true},\"locked\":false,\"selected\":\"field\",\"key\":\"QA_n261027_556ca82f64_User_350\",\"coins\":0}}"
+      }
+    ],
+    "isError": false
+  },
+  "method": "Synthetic isolated backend profiles, not live player profiles. Every cloud write confined to the three fresh per-run QA keys. No Editor marker or managed-source edits; ordinary Studio game persistence stays memory-only.",
+  "phase2Reloaded": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"phase\":\"reloaded\",\"progress\":{\"1\":{\"key\":\"QA_n261027_556ca82f64_User_100\",\"id\":\"canvas\",\"selected\":\"canvas\",\"owned\":{\"canvas\":true,\"basic\":true},\"coins\":0},\"3\":{\"key\":\"QA_n261027_556ca82f64_User_900\",\"id\":\"royal\",\"selected\":\"royal\",\"owned\":{\"royal\":true,\"basic\":true},\"coins\":0},\"2\":{\"key\":\"QA_n261027_556ca82f64_User_350\",\"id\":\"field\",\"selected\":\"field\",\"owned\":{\"field\":true,\"basic\":true},\"coins\":0}},\"freshContext\":true,\"lockConflictRejected\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "lateAck": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"lateAck\":{\"locksReleased\":true,\"pendingAfterCommit\":true,\"retryConfirmedOneDebit\":true,\"committedCoins\":0,\"syntheticConcurrentCoins\":20,\"selected\":\"canvas\",\"restoredCoins\":20,\"oldSnapshotRejected\":true},\"progress\":{\"1\":{\"key\":\"QA_n261027_556ca82f64_User_100\",\"id\":\"canvas\",\"selected\":\"canvas\",\"owned\":{\"basic\":true,\"canvas\":true,\"field\":true},\"coins\":0},\"3\":{\"key\":\"QA_n261027_556ca82f64_User_900\",\"id\":\"royal\",\"selected\":\"royal\",\"owned\":{\"royal\":true,\"basic\":true},\"coins\":0},\"2\":{\"key\":\"QA_n261027_556ca82f64_User_350\",\"id\":\"field\",\"selected\":\"field\",\"owned\":{\"field\":true,\"basic\":true},\"coins\":0}},\"phase\":\"verified\",\"lockConflictRejected\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "finalUncachedChecker": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"1\":{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"field\":true,\"canvas\":true,\"basic\":true},\"locked\":false,\"selected\":\"canvas\",\"key\":\"QA_n261027_556ca82f64_User_100\",\"coins\":20},\"3\":{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"royal\":true,\"basic\":true},\"locked\":false,\"selected\":\"royal\",\"key\":\"QA_n261027_556ca82f64_User_900\",\"coins\":0},\"2\":{\"version\":2,\"uncached\":true,\"tutorial\":true,\"owned\":{\"field\":true,\"basic\":true},\"locked\":false,\"selected\":\"field\",\"key\":\"QA_n261027_556ca82f64_User_350\",\"coins\":0}}"
+      }
+    ],
+    "isError": false
+  },
+  "lateAckNote": "The progress.owned field in the late-ack diagnostic refers to a live table, so it includes the subsequent synthetic Field purchase. The immutable phase2Reloaded snapshot is the evidence for initial zero-balance restoration. Late-ack summary and finalUncachedChecker are the final state evidence.",
+  "executedPreflight": "assert(game:GetService(\"RunService\"):IsStudio() and game.PlaceId==106986292768692 and game.GameId==10772701508,\"approved QA target required\")\nassert(game.ServerStorage:GetAttribute(\"GrabItQACloudRun\")==nil,\"Editor marker must remain absent\")\nlocal runId=\"n261027_\"..game:GetService(\"HttpService\"):GenerateGUID(false):gsub(\"-\",\"\"):sub(1,10)\nlocal mode=require(game.ServerScriptService.GrabItModules.StorageMode).select(true,runId)\nassert(mode.name==\"GrabItV1_QA_Verification\" and not mode.memory)\nlocal q={runId=runId,prefix=mode.keyPrefix,keys={\"User_100\",\"User_350\",\"User_900\"},phase=\"preflight\"}\nq.store=game:GetService(\"DataStoreService\"):GetDataStore(mode.name,\"global\")\nq.options=Instance.new(\"DataStoreGetOptions\");q.options.UseCache=false\n_G.CloudBackendQA=q\ntask.spawn(function()\n local ok,err=pcall(function()\n  for _,key in q.keys do assert(q.store:GetAsync(q.prefix..key,q.options)==nil,\"QA key already exists; do not overwrite\")end\n end)\n q.phase=if ok then \"ready\" else \"failed\";q.error=not ok and tostring(err)or nil\nend)\nreturn {runId=runId,prefix=q.prefix,keys=q.keys,store=mode.name,phase=q.phase}",
+  "executedPhase1": "local q=_G.CloudBackendQA\nassert(q and q.phase==\"ready\" and game.PlaceId==106986292768692 and game.GameId==10772701508,\"verified fresh QA scope required\")\nlocal allowed={};for _,key in q.keys do allowed[key]=true end\nlocal function update(key,transform) assert(allowed[key],\"outside fresh QA scope\");return q.store:UpdateAsync(q.prefix..key,transform)end\nlocal P=require(game.ReplicatedStorage.GrabIt.Shared.Persistence)\nlocal C=require(game.ReplicatedStorage.GrabIt.Shared.Cosmetics)\nq.a=P.new(update,\"qa_a_\"..q.runId,os.time);q.progress={};q.phase=\"writing\"\ntask.spawn(function()\n local ok,err=pcall(function()\n  for _,style in C.list do\n   if style.price==0 then continue end\n   local key=\"User_\"..style.price;assert(allowed[key])\n   assert(q.a:load(key),\"fresh QA profile load failed\")\n   local funded={coins=style.price,tutorial=true,owned={basic=true},selected=\"basic\",revision=1}\n   assert(q.a:saveProfile(key,funded),\"QA funding fixture save failed\")\n   local status,bought=q.a:purchase(key,style.id,funded,\"tx_\"..q.runId..\"_\"..style.id)\n   assert(status==\"confirmed\" and bought.coins==0 and bought.owned[style.id],\"exact debit/ownership failed\")\n   local retry,again=q.a:purchase(key,style.id,funded,\"tx_\"..q.runId..\"_\"..style.id)\n   assert(retry==\"confirmed\" and again.coins==0,\"repeated transaction changed debit\")\n   assert(not q.a:saveProfile(key,funded),\"stale funded snapshot restored spent balance\")\n   assert(C.equip(bought,style.id),\"owned choice failed\")\n   assert(q.a:saveProfile(key,bought),\"choice save failed\")\n   assert(q.a:releaseProfile(key,bought),\"QA lease release failed\")\n   local record=q.store:GetAsync(q.prefix..key,q.options)\n   assert(record.version==2 and record.coins==0 and record.owned[style.id] and record.selected==style.id and record.owner==nil,\"uncached record mismatch\")\n   table.insert(q.progress,{price=style.price,id=style.id,key=q.prefix..key,coins=record.coins,selected=record.selected,owned=record.owned,version=record.version,locked=false,repeatedTransaction=true,staleWriteRejected=true})\n  end\n end)\n q.phase=if ok then \"written\" else \"failed\";q.error=not ok and tostring(err)or nil\nend)\nreturn {phase=q.phase,runId=q.runId,prefix=q.prefix,keys=q.keys}",
+  "executedPhase2": "assert(_G.CloudBackendQA==nil,\"fresh Play server required\")\nassert(game.PlaceId==106986292768692 and game.GameId==10772701508 and game:GetService(\"RunService\"):IsStudio())\nlocal q={runId=\"n261027_556ca82f64\",prefix=\"QA_n261027_556ca82f64_\",keys={\"User_100\",\"User_350\",\"User_900\"},phase=\"reloading\",progress={},profiles={}}\nq.store=game:GetService(\"DataStoreService\"):GetDataStore(\"GrabItV1_QA_Verification\",\"global\")\nq.options=Instance.new(\"DataStoreGetOptions\");q.options.UseCache=false\nlocal allowed={User_100=true,User_350=true,User_900=true}\nq.update=function(key,transform)\n assert(allowed[key],\"outside this QA run\")\n local result=q.store:UpdateAsync(q.prefix..key,transform)\n if q.dropNextAcknowledgement then q.dropNextAcknowledgement=false;error(\"QA deliberately withheld acknowledgement after actual cloud commit\")end\n return result\nend\nlocal P=require(game.ReplicatedStorage.GrabIt.Shared.Persistence)\nq.b=P.new(q.update,\"qa_b2_\"..q.runId,os.time)\nq.c=P.new(q.update,\"qa_c2_\"..q.runId,os.time)\n_G.CloudBackendQA=q\ntask.spawn(function()\n local ok,err=pcall(function()\n  for _,style in require(game.ReplicatedStorage.GrabIt.Shared.Cosmetics).list do\n   if style.price==0 then continue end\n   local key=\"User_\"..style.price\n   local profile=q.b:load(key)\n   assert(profile and profile.coins==0 and profile.owned[style.id] and profile.selected==style.id,\"zero/ownership/choice lost across Play servers\")\n   assert(profile.stage==nil and profile.cargo==nil,\"cloud must not restore transient stage or cargo\")\n   q.profiles[key]=profile\n   table.insert(q.progress,{key=q.prefix..key,id=style.id,coins=profile.coins,owned=profile.owned,selected=profile.selected})\n  end\n  assert(q.c:load(\"User_100\")==nil,\"another owner acquired a live cloud lease\")\n  q.lockConflictRejected=true\n end)\n q.phase=if ok then \"reloaded\" else \"failed\";q.error=not ok and tostring(err)or nil\nend)\nreturn {phase=q.phase,freshContext=true,runId=q.runId}",
+  "executedLateAck": "local q=_G.CloudBackendQA;assert(q.phase==\"reloaded\")\nq.phase=\"late-ack\"\ntask.spawn(function()\n local ok,err=pcall(function()\n  local p=q.profiles.User_100\n  p.coins=350;p.revision+=1;p.stageScore=10;p.runEarnings=20\n  assert(q.b:saveProfile(\"User_100\",p),\"controlled QA funding failed\")\n  local Profile=require(game.ReplicatedStorage.GrabIt.Shared.Profile)\n  local before=Profile.capture(p)\n  q.dropNextAcknowledgement=true\n  local status=q.b:purchase(\"User_100\",\"field\",before,\"late_\"..q.runId)\n  assert(status==\"pending\",\"withheld commit acknowledgement must remain pending\")\n  local committed=q.store:GetAsync(q.prefix..\"User_100\",q.options)\n  assert(committed.coins==0 and committed.owned.field,\"cloud purchase did not actually commit\")\n  p.coins+=20;p.revision+=1;p.stageScore+=20;p.runEarnings+=20\n  local retry,confirmed=q.b:purchase(\"User_100\",\"field\",before,\"late_\"..q.runId)\n  assert(retry==\"confirmed\" and confirmed.coins==0,\"retry did not confirm one debit\")\n  assert(Profile.confirmPurchase(p,before,confirmed),\"concurrent change must request another save\")\n  assert(p.coins==20 and p.owned.field and p.selected==\"canvas\" and p.stageScore==30 and p.runEarnings==40,\"merge lost synthetic concurrent change\")\n  assert(q.b:saveProfile(\"User_100\",p),\"merged state save failed\")\n  assert(not q.b:saveProfile(\"User_100\",before),\"old snapshot restored spent funds\")\n  assert(q.b:releaseProfile(\"User_100\",p),\"late-ack lease release failed\")\n  local recovered=q.c:load(\"User_100\")\n  assert(recovered and recovered.coins==20 and recovered.owned.canvas and recovered.owned.field and recovered.selected==\"canvas\",\"new owner lost merged state\")\n  assert(recovered.stageScore==nil and recovered.runEarnings==nil,\"transient scores leaked into cloud profile\")\n  assert(q.c:releaseProfile(\"User_100\",recovered),\"replacement owner release failed\")\n  for _,key in {\"User_350\",\"User_900\"}do assert(q.b:releaseProfile(key,q.profiles[key]),\"other QA lease release failed\")end\n  q.lateAck={pendingAfterCommit=true,committedCoins=0,retryConfirmedOneDebit=true,syntheticConcurrentCoins=20,restoredCoins=recovered.coins,selected=recovered.selected,oldSnapshotRejected=true,locksReleased=true}\n end)\n q.phase=if ok then \"verified\" else \"failed\";q.error=not ok and tostring(err)or nil\nend)\nreturn {phase=q.phase}",
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"phase\":\"cleaned\",\"cleanup\":{\"1\":{\"removed\":true,\"uncachedAbsent\":true,\"key\":\"QA_n261027_556ca82f64_User_100\",\"attempts\":1},\"3\":{\"removed\":true,\"uncachedAbsent\":true,\"key\":\"QA_n261027_556ca82f64_User_900\",\"attempts\":1},\"2\":{\"removed\":true,\"uncachedAbsent\":true,\"key\":\"QA_n261027_556ca82f64_User_350\",\"attempts\":1}},\"editorMarkerAbsent\":true,\"runId\":\"n261027_556ca82f64\"}"
+      }
+    ],
+    "isError": false
+  },
+  "executedCleanup": "local q=_G.CloudBackendQA\nassert(q.phase==\"verified\" and q.prefix==\"QA_n261027_556ca82f64_\" and game.PlaceId==106986292768692 and game.GameId==10772701508,\"only this approved QA scope may be cleaned\")\nq.phase=\"cleaning\";q.cleanup={}\ntask.spawn(function()\n local all=true\n for _,suffix in {\"User_100\",\"User_350\",\"User_900\"}do\n  local key=q.prefix..suffix;local done=false;local last=nil;local attempts=0\n  for attempt=1,3 do\n   attempts=attempt\n   local ok,err=pcall(function()q.store:RemoveAsync(key);assert(q.store:GetAsync(key,q.options)==nil,\"uncached QA key still exists\")end)\n   if ok then done=true;break end\n   last=tostring(err);task.wait(attempt)\n  end\n  table.insert(q.cleanup,{key=key,removed=done,uncachedAbsent=done,attempts=attempts,error=not done and last or nil})\n  all=all and done\n end\n if all then q.options:Destroy();q.options=nil end\n q.phase=if all then \"cleaned\" else \"cleanup-failed\"\nend)\nreturn {phase=q.phase}",
+  "cleanupMeaning": "RemoveAsync and uncached GetAsync=nil verified current deletion of exactly three synthetic QA keys; no claim of immediate purge of historical versions."
+}

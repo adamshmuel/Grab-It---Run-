@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-27",
+  "red": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"AssistantCommand:70: AssistantCommand:37: native test args must opt into the same isolated QA store\",\"passed\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "localPureGreen": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"scope\":\"local pure module; live sync pending\",\"result\":\"8\",\"passed\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "staleStudioAttempt": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"AssistantCommand:70: AssistantCommand:37: native test args must opt into the same isolated QA store\",\"passed\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "scope": "The green result executes the canonical local StorageMode via an injected loader only; the validation assertions are unchanged. No Script.Source is edited. Actual Rojo synchronization and GameServer native startup remain unverified because the plugin is stopped at a WebSocket error dialog.",
+  "review": "Studio-only retrieval wrapped in pcall; exact native marker, validated bounded runId, fixed QA store, explicit attribute priority, malformed input fails to memory, live server ignores all QA args. No remote or production persistence behavior change. Native argument arrival timing still needs actual startup verification after authorized sync."
+}

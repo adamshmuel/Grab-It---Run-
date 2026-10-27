@@ -1,0 +1,71 @@
+{
+  "place": 106986292768692,
+  "universe": 10772701508,
+  "sourceHashes": [
+    {
+      "path": "src/shared/Catalog.luau",
+      "matches": true,
+      "actual": "1cf9e4977f924352eade3d6e4c2282749f20ac9e144fa614209dcf39665084ec",
+      "local": "1cf9e4977f924352eade3d6e4c2282749f20ac9e144fa614209dcf39665084ec"
+    },
+    {
+      "path": "src/shared/NetworkState.luau",
+      "matches": true,
+      "actual": "b19e690b9e554f7b5e80572ecb7112723689c96165021879672a2ea908f71567",
+      "local": "b19e690b9e554f7b5e80572ecb7112723689c96165021879672a2ea908f71567"
+    },
+    {
+      "path": "src/shared/Cosmetics.luau",
+      "matches": true,
+      "actual": "844ab373d927d43116b97e008094b8e95cee67d8d363776669fa8f922b9f5ff7",
+      "local": "844ab373d927d43116b97e008094b8e95cee67d8d363776669fa8f922b9f5ff7"
+    },
+    {
+      "path": "src/shared/LoadProgress.luau",
+      "matches": true,
+      "actual": "30d986c80c61ee433cb94c3f7a3f6396ac758964fe965868a3e0ca7849c24fe8",
+      "local": "30d986c80c61ee433cb94c3f7a3f6396ac758964fe965868a3e0ca7849c24fe8"
+    },
+    {
+      "path": "src/shared/GameRules.luau",
+      "matches": true,
+      "actual": "9e675e6834f08c005b4be1ac701cf5a1a30b7a7487fe4489a9a94dbc39fedcef",
+      "local": "9e675e6834f08c005b4be1ac701cf5a1a30b7a7487fe4489a9a94dbc39fedcef"
+    },
+    {
+      "path": "src/shared/Profile.luau",
+      "matches": true,
+      "actual": "6669e4f795386309dfb0e9f6190352ba4d4c35d1e5a184c1a0242d442fdf1c05",
+      "local": "6669e4f795386309dfb0e9f6190352ba4d4c35d1e5a184c1a0242d442fdf1c05"
+    },
+    {
+      "path": "src/server/GameServer.server.luau",
+      "matches": true,
+      "actual": "e16ec3bb581bbabe32193f4a4dc2d91b613c4d13b4cbdb74c6365934f9c2777a",
+      "local": "e16ec3bb581bbabe32193f4a4dc2d91b613c4d13b4cbdb74c6365934f9c2777a"
+    },
+    {
+      "path": "src/shared/Persistence.luau",
+      "matches": true,
+      "actual": "3f047df4c311660531c7b24ae42e029eae8cebfb5798eb74deaab10972c77043",
+      "local": "3f047df4c311660531c7b24ae42e029eae8cebfb5798eb74deaab10972c77043"
+    },
+    {
+      "path": "src/shared/Session.luau",
+      "matches": true,
+      "actual": "507681177442fea84b5026378f2d279006a124f57efad95e663ab812985e3ec2",
+      "local": "507681177442fea84b5026378f2d279006a124f57efad95e663ab812985e3ec2"
+    },
+    {
+      "path": "src/server/modules/StorageMode.luau",
+      "matches": true,
+      "actual": "5afda2a1fd3ee2151ff2ae62ab5e5070428186c5854b7a84b463444c90ae8203",
+      "local": "5afda2a1fd3ee2151ff2ae62ab5e5070428186c5854b7a84b463444c90ae8203"
+    }
+  ],
+  "date": "2026-10-27",
+  "scope": "Only SHA256 digests returned; TeamCreate active; no Editor marker or source mutation.",
+  "teamCreate": true,
+  "editorMarkerAdded": false,
+  "comparisonContext": "Digests matched the local backend at cloud-test time, before the later Studio-only runtime opt-in changes to GameServer and StorageMode. Those later changes have not been synced to cloud."
+}

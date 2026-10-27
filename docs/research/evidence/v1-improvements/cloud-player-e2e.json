@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-27",
+  "target": {
+    "place": 106986292768692,
+    "universe": 10772701508
+  },
+  "preflight": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"phase\":\"ready\",\"keys\":{\"1\":\"User_3345343071\",\"2\":\"User_-1\"},\"prefix\":\"QA_e261027_11e18cfb48_\",\"runId\":\"e261027_11e18cfb48\"}"
+      }
+    ],
+    "isError": false
+  },
+  "scope": "Only this new QA prefix and the two preflighted candidate test-player keys; no Editor marker.",
+  "started": false,
+  "createdKeys": false,
+  "status": "pending explicit approval and working Rojo sync",
+  "reason": "Automatic approval rejected Rojo while Team Create window was open because source synchronization could edit cloud code; no cloud sync or player E2E run occurred. The temporary cloud process9206 was closed after verifying no Editor marker/source changes and all earlier backend QA keys had been cleaned."
+}
