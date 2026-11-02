@@ -5,9 +5,11 @@ local View = require(script.Parent.Presentation)
 local Ranking = require(script.Parent.Ranking)
 local Session = {}
 Session.__index = Session
-function Session.new(clock: () -> number)
+function Session.new(clock: () -> number, random: Random?)
 	return setmetatable({
 		clock = clock,
+		random = random or Random.new(),
+		previousLayouts = {},
 		players = {},
 		phase = "idle",
 		stage = 1,
@@ -36,12 +38,14 @@ function Session.beginRun(self, at: number): ()
 	for _, p in self.players do
 		p.matchPoints = 0
 		p.runEarnings = 0
-		p.stageEarnings = { 0, 0, 0 }
+		p.stageEarnings = table.create(#Catalog.stages, 0)
 		p.eligible = true
 	end
 	self:beginStage(1, at)
 end
 function Session.beginStage(self, stage: number, at: number): ()
+	self.layout = Catalog.nextLayout(stage, self.random, self.previousLayouts[stage])
+	self.previousLayouts[stage] = self.layout
 	self.stage = stage
 	self.roundId += 1
 	self.phase = "active"
@@ -50,7 +54,7 @@ function Session.beginStage(self, stage: number, at: number): ()
 	self.mode = if self:count() == 1 then "solo" else "multi"
 	self.generation += 1
 	for _, p in self.players do
-		Rules.beginStage(p, stage, self.roundId)
+		Rules.beginStage(p, stage, self.roundId, self.layout)
 		p.ranked = true
 	end
 	self.results = {}
@@ -62,7 +66,7 @@ function Session.add(self, id: string, coins: number, tutorial: boolean, name: s
 	p.name = name or id
 	p.eligible = false
 	p.ranked = false
-	Rules.beginStage(p, self.stage, self.roundId)
+	Rules.beginStage(p, self.stage, self.roundId, self.layout)
 	local saved = self.cache[id]
 	if saved and saved.roundId == self.roundId then
 		p.banked = table.clone(saved.banked)
@@ -104,6 +108,7 @@ function Session.remove(self, id: string): ()
 	if self:count() == 0 then
 		self.phase = "idle"
 		self.stage = 1
+		self.layout = nil
 		self.cache = {}
 		self.results = {}
 		self.matchResults = {}
@@ -114,7 +119,7 @@ function Session.allComplete(self): boolean
 		return false
 	end
 	for _, p in self.players do
-		if p.bankedCount < #Catalog.items(self.stage) then
+		if p.bankedCount < #Catalog.items(self.stage, self.layout) then
 			return false
 		end
 	end
@@ -124,7 +129,7 @@ function Session.finish(self, at: number): ()
 	if self.phase ~= "active" then
 		return
 	end
-	self.results = Ranking.stage(self.players, #Catalog.items(self.stage))
+	self.results = Ranking.stage(self.players, #Catalog.items(self.stage, self.layout))
 	for _, row in self.results do
 		local p = self.players[row.id]
 		if row.place then
@@ -135,8 +140,8 @@ function Session.finish(self, at: number): ()
 		end
 		Rules.lose(p)
 	end
-	self.phase = if self.stage == 3 then "summary" else "results"
-	self.deadline = at + (if self.stage == 3 then 10 else 5)
+	self.phase = if self.stage == #Catalog.stages then "summary" else "results"
+	self.deadline = at + (if self.stage == #Catalog.stages then 10 else 5)
 	self.matchResults = Ranking.match(self.players)
 	self.generation += 1
 end
@@ -186,6 +191,7 @@ function Session.state(self)
 		id = self.roundId,
 		roundId = self.roundId,
 		stage = self.stage,
+		layout = self.layout,
 		phase = self.phase,
 		mode = self.mode,
 		open = self.phase == "active",
@@ -202,7 +208,7 @@ function Session.collect(self, id: string, itemId: number, x: number, y: number,
 	if not p or self.phase ~= "active" or not View.inWarehouse(x, y, z) then
 		return false
 	end
-	local items = Catalog.items(self.stage)
+	local items = Catalog.items(self.stage, self.layout)
 	if View.nearest(items, p.collected, self.roundId, x, y, z) ~= itemId then
 		return false
 	end
@@ -237,7 +243,7 @@ function Session.step(self, id: string, x: number, y: number, z: number)
 end
 function Session.rows(self)
 	return if self.phase == "active"
-		then Ranking.stage(self.players, #Catalog.items(self.stage))
+		then Ranking.stage(self.players, #Catalog.items(self.stage, self.layout))
 		else self.results
 end
 return Session

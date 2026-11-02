@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-01",
+  "scope": "Research only; not implementation or acceptance",
+  "userScreenshot": {
+    "file": "docs/snapshots/mobile-playtest-2026-11-01-161136.jpg",
+    "sha256": "862188e3fe54f007700beb7a1dee1b9ad59c4db8371c8feba98f1b12cd8f0fed",
+    "source": "Adam supplied /Users/adamshmuel/Downloads/2026-11-01 16.11.36.jpg",
+    "viewportKnown": false
+  },
+  "countFeasibility": {
+    "method": "Exhaustive permutations of five distinct integers 2..10, sum 30, aggregate weight and value within 10% of six of each type",
+    "stages": [
+      {
+        "stage": 2,
+        "legalVectors": 750,
+        "regularValueRange": [
+          249,
+          303
+        ],
+        "baselineValue": 276
+      },
+      {
+        "stage": 3,
+        "legalVectors": 800,
+        "regularValueRange": [
+          341,
+          415
+        ],
+        "baselineValue": 378
+      }
+    ],
+    "notClaimed": [
+      "Luau implementation",
+      "Travel route timing",
+      "Human enjoyment",
+      "New stage balance"
+    ]
+  },
+  "audio": {
+    "implementationObserved": "Six sounds reuse volume_slider.ogg at different PlaybackSpeed values",
+    "competitorListeningPerformed": false,
+    "blockedSources": [
+      {
+        "url": "https://www.youtube.com/watch?v=i4rjyazVXzc",
+        "result": "Web fetch cache miss"
+      },
+      {
+        "url": "https://stealabrainrot.wiki/wiki/soundtracks/",
+        "result": "HTTP 403"
+      }
+    ]
+  },
+  "pendingProductDecision": null,
+  "sourceCodeChangedForThisRound": false,
+  "userDecision": "New objects for stages 4 and 5, in the same warehouse",
+  "newStageCountFeasibility": {
+    "4": {
+      "legalBeforePartitionCheck": 880,
+      "legalAfterPartitionCheck": 877,
+      "counterexampleRemoved": [
+        2,
+        5,
+        9,
+        10,
+        4
+      ],
+      "lightestEightWeightInCounterexample": 46,
+      "twoTripCapacity": 44
+    },
+    "5": {
+      "legalBeforePartitionCheck": 834,
+      "legalAfterPartitionCheck": 834,
+      "lightestSixFitTwoTrips": true
+    },
+    "scope": "Exhaustive count and two-bin capacity calculations; no live gameplay or proof of enjoyment"
+  }
+}

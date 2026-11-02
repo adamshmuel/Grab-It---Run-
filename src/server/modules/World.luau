@@ -137,6 +137,82 @@ local function facade(root: Model)
 	exterior.Parent = root
 end
 
+local function productPoster(parent: Model, stage: number, item, transform: CFrame, accent: Color3)
+	local poster = Instance.new("Model")
+	poster.Name = "ProductPoster"
+	poster:SetAttribute("ProductModel", item.model)
+	local function panel(name, size, offset, color)
+		local p = decoration(poster, name, size, Vector3.zero, color)
+		p.CFrame = transform * CFrame.new(offset)
+		p.CanQuery = true
+		return p
+	end
+	panel("Frame", Vector3.new(8.5, 5.5, 0.05), Vector3.zero, accent)
+	panel(
+		"Paper",
+		Vector3.new(8.15, 5.15, 0.05),
+		Vector3.new(0, 0, -0.01),
+		Color3.fromRGB(230, 236, 233)
+	)
+	local titles = {
+		"TOY DEPARTMENT",
+		"TECH DEPARTMENT",
+		"TREASURE VAULT",
+		"EXPEDITION SUPPLIES",
+		"SPACE CARGO",
+	}
+	local heading =
+		panel("Department", Vector3.new(7.6, 0.6, 0.05), Vector3.new(0, 2.15, -0.025), frameColor)
+	label(heading, titles[stage], Color3.fromRGB(245, 246, 230))
+	local caption =
+		panel("ProductName", Vector3.new(7.6, 0.6, 0.05), Vector3.new(0, -2.15, -0.025), frameColor)
+	label(caption, item.name, Color3.fromRGB(245, 246, 230))
+	local artwork = Instance.new("Model")
+	artwork.Name = "Artwork"
+	artwork.Parent = poster
+	local copy = table.clone(item)
+	copy.size = { 4.8, 3.2, 4.8 }
+	local product = Visuals.createItem(copy, artwork, CFrame.identity)
+	local bounds, size = product:GetBoundingBox()
+	-- Front projection of the real product, kept inside the flat wall artwork envelope.
+	for _, p in product:GetChildren() do
+		if p:IsA("BasePart") then
+			local cf, v = p.CFrame, p.Size
+			local right, up, look = cf.RightVector, cf.UpVector, cf.LookVector
+			local width = math.abs(right.X) * v.X + math.abs(up.X) * v.Y + math.abs(look.X) * v.Z
+			local height = math.abs(right.Y) * v.X + math.abs(up.Y) * v.Y + math.abs(look.Y) * v.Z
+			local rotation = CFrame.identity
+			local flatSize = Vector3.new(width, height, 0.05)
+			if p:IsA("WedgePart") then
+				flatSize = Vector3.new(0.05, height, width)
+				rotation = CFrame.Angles(0, if right.Z > 0 then -math.pi / 2 else math.pi / 2, 0)
+			elseif p:IsA("Part") and p.Shape == Enum.PartType.Cylinder then
+				if math.abs(right.Z) > 0.99 then
+					flatSize = Vector3.new(0.05, height, width)
+					rotation = CFrame.Angles(0, math.pi / 2, 0)
+				elseif math.abs(right.Y) > 0.99 then
+					flatSize = Vector3.new(height, width, 0.05)
+					rotation = CFrame.Angles(0, 0, math.pi / 2)
+				end
+			elseif math.abs(right.Z) < 0.01 and math.abs(up.Z) < 0.01 then
+				flatSize = Vector3.new(v.X, v.Y, 0.05)
+				rotation = cf.Rotation
+			end
+			p.Size = flatSize
+			p.CFrame = transform
+				* CFrame.new(
+					cf.Position.X,
+					cf.Position.Y - bounds.Position.Y - 0.1,
+					-0.055 + cf.Position.Z / math.max(size.Z, 0.01) * 0.008
+				)
+				* rotation
+			p.CanQuery = true
+			p.Material = Enum.Material.SmoothPlastic
+		end
+	end
+	poster.Parent = parent
+end
+
 function World.build(name: string?): Model
 	local root = Instance.new("Model")
 	root.Name = name or "GrabItWorld"
@@ -315,7 +391,7 @@ function World.build(name: string?): Model
 	World.setOpen(root, true)
 	return root
 end
-function World.setStage(root: Model, stage: number)
+function World.setStage(root: Model, stage: number, layout: Catalog.Layout?)
 	local items = root:FindFirstChild("Items")
 	assert(items, "Managed item folder missing")
 	items:ClearAllChildren()
@@ -347,6 +423,10 @@ function World.setStage(root: Model, stage: number)
 			Color3.fromRGB(52, 215, 204),
 		},
 	}
+	palettes[4] =
+		{ Color3.fromRGB(46, 113, 86), Color3.fromRGB(244, 177, 65), Color3.fromRGB(160, 200, 192) }
+	palettes[5] =
+		{ Color3.fromRGB(47, 69, 127), Color3.fromRGB(68, 212, 229), Color3.fromRGB(226, 235, 246) }
 	local palette = palettes[stage]
 	for row = 1, 15 do
 		local z = 12 + (row - 1) * 6
@@ -367,63 +447,21 @@ function World.setStage(root: Model, stage: number)
 			end
 		end
 	end
-	for _, x in { -23.9, 23.9 } do
-		for _, z in { 20, 44, 68, 92, 114 } do
-			decoration(
+	local posterProducts =
+		{ { 1, 7, 19 }, { 1, 7, 13 }, { 7, 13, 25 }, { 1, 7, 25 }, { 1, 13, 19 } }
+	for _, side in { -1, 1 } do
+		for index, z in { 24, 60, 96 } do
+			productPoster(
 				decor,
-				"WallRibbon",
-				Vector3.new(0.08, 0.4, 18),
-				Vector3.new(x, 11, z),
-				palette[2]
+				stage,
+				Catalog.items(stage)[posterProducts[stage][index]],
+				CFrame.new(side * 23.82, 9.2, z) * CFrame.Angles(0, side * math.pi / 2, 0),
+				palette[1]
 			)
-			for n = 1, 3 do
-				local tile = decoration(
-					decor,
-					if stage == 1 then "ToyCircle" elseif stage == 2 then "Circuit" else "Diamond",
-					Vector3.new(0.1, 1.4, 1.4),
-					Vector3.new(x, 8, z - 4 + n * 2),
-					palette[n]
-				)
-				if stage == 1 and n == 2 then
-					tile:Destroy()
-					local star = Instance.new("Model")
-					star.Name = "ToyStar"
-					star.Parent = decor
-					for point = 1, 5 do
-						local angle = (point - 1) * 2 * math.pi / 5
-						local wedge = Instance.new("WedgePart")
-						wedge.Name = "StarPoint"
-						wedge.Size = Vector3.new(0.1, 0.8, 0.7)
-						wedge.CFrame = CFrame.new(
-							x,
-							8 + math.cos(angle) * 0.4,
-							z - 4 + n * 2 + math.sin(angle) * 0.4
-						) * CFrame.Angles(angle, 0, 0)
-						wedge.Color = palette[1]
-						wedge.Anchored = true
-						wedge.CanCollide = false
-						wedge.CanQuery = false
-						wedge.CanTouch = false
-						wedge.Parent = star
-					end
-				elseif stage == 1 then
-					tile.Shape = Enum.PartType.Ball
-				elseif stage == 3 then
-					tile.CFrame *= CFrame.Angles(math.pi / 4, 0, 0)
-				end
-				if stage == 2 then
-					decoration(
-						decor,
-						"CircuitTrace",
-						Vector3.new(0.12, 0.12, 5),
-						Vector3.new(x, 8 + n * 0.7, z),
-						palette[n]
-					)
-				end
-			end
 		end
 	end
-	if stage == 3 then
+
+	if stage >= 3 then
 		local stand = Instance.new("Model")
 		stand.Name = "SpecialDisplay"
 		stand.Parent = root
@@ -465,7 +503,7 @@ function World.setStage(root: Model, stage: number)
 			)
 		end
 	end
-	for _, item in Catalog.items(stage) do
+	for _, item in Catalog.items(stage, layout) do
 		local anchor = part(
 			items,
 			tostring(item.id),
@@ -484,6 +522,8 @@ function World.setStage(root: Model, stage: number)
 			CFrame.new(item.x, if item.special then 1.7 else 0.5, item.z)
 		)
 	end
+	root:SetAttribute("LayoutVariant", if layout then layout.variant else 0)
+	root:SetAttribute("LayoutFlips", if layout then layout.flips else 0)
 	root:SetAttribute("Stage", stage)
 	root.Floor.Color = Color3.fromRGB(67, 80, 99)
 end

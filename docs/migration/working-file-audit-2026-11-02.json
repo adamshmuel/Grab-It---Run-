@@ -1,0 +1,37 @@
+{
+  "path": "build/GrabItV1_DesktopMobile.rbxlx",
+  "size": 452266,
+  "sha256": "9db76d85a7514610a1fc876d602806b1c2ca1fb075a8541f77568938db85800d",
+  "savedScriptCount": 59,
+  "matchingLocalSources": 35,
+  "differentLocalSources": [
+    "src/tests/Hud.spec.luau",
+    "src/tests/TouchButtonLayout.spec.luau",
+    "src/tests/SelectedItemInformation.spec.luau",
+    "src/tests/ResultsLayout.spec.luau",
+    "src/tests/ResultsLossNotice.spec.luau",
+    "src/tests/TargetPrompt.spec.luau",
+    "src/tests/ImprovementSession.spec.luau",
+    "src/tests/StylesLayout.spec.luau",
+    "src/tests/ImprovementVisuals.spec.luau",
+    "src/tests/ImprovementUI.spec.luau",
+    "src/server/GameServer.server.luau",
+    "src/shared/Session.luau",
+    "src/shared/GameRules.luau",
+    "src/shared/Catalog.luau",
+    "src/client/GameClient.client.luau",
+    "src/client/modules/TargetPrompt.luau",
+    "src/client/modules/Results.luau",
+    "src/client/modules/Styles.luau",
+    "src/client/modules/Hud.luau",
+    "src/server/modules/Visuals.luau",
+    "src/server/modules/Appearance.luau",
+    "src/server/modules/World.luau",
+    "tools/qa/client.client.luau",
+    "tools/qa/routes.luau"
+  ],
+  "missingLocalSources": [
+    "src/tests/StageVariety.spec.luau"
+  ],
+  "comparison": "Read-only XML source-by-name comparison; current local source files are authoritative. No Studio save or rebuild."
+}

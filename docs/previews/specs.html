@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>מפת הגדרות המשחק</title><style>
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>מפת הגדרות המשחק</title><style>
 :root {color-scheme:light dark} *{box-sizing:border-box}
 body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
 main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
@@ -9,70 +8,34 @@ table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1
 a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
 .preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
 
-.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><nav><a href="v1/index.html">מפת הגרסה</a></nav><h1>מפת הגדרות המשחק</h1>
-<p><strong>מצב, 26/10/2026: הגדרות שיפורי <bdi dir="ltr" lang="en">V1</bdi> אושרו והמימוש נבנה. כשלי הבסיס נשמרים באבחון ההיסטורי; הגרסה המתוקנת בבדיקות קבלה, ולא הוכרזה כמוכנה.</strong></p>
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><p class="preview-note">תצוגת קריאה. <a href="../specs/index.md">מסמך המקור</a></p>
+<h1 id="label-D7-9E-D7-A4-D7-AA+-D7-94-D7-92-D7-93-D7-A8-D7-95-D7-AA+-D7-94-D7-9E-D7-A9-D7-97-D7-A7">מפת הגדרות המשחק</h1>
+
+<p><strong>מצב, <bdi dir="ltr" lang="en">26/10/2026</bdi>: הגדרות שיפורי <bdi dir="ltr" lang="en">V1</bdi> אושרו והמימוש נבנה. כשלי הבסיס נשמרים באבחון ההיסטורי; הגרסה המתוקנת בבדיקות קבלה, ולא הוכרזה כמוכנה.</strong></p>
+
 <p><bdi dir="ltr" lang="en">spec</bdi> מתאר מה השחקן רואה ועושה ולמה. הסדר הוא הגדרות, אישור אדם, תוכנית ובקשה מפורשת לקוד. סיום כתיבה אינו הרשאת מימוש.</p>
-<h2>מטרות והגרסה הנוכחית</h2>
-<ul>
-<li><a href="project-goals.html">מטרות הפרויקט</a> — הכיוון שהוסכם ב־22/10/2026; אינו הבטחת רווח או מדד הצלחה שכבר נצפה.</li>
-<li><a href="v1/index.html">מפת <bdi dir="ltr" lang="en">V1</bdi></a> — היקף, הבסיס ההיסטורי והשינויים.</li>
-<li><a href="v1/improvements.html">מפת שיפורי <bdi dir="ltr" lang="en">V1</bdi></a> — נקודת הכניסה לחבילת ההגדרות ולכיסוי שבעת הסעיפים.</li>
-<li><a href="v1-required-improvements.html">האבחון והחלטות השיפורים</a> — טבלת מרכיב, מצב, צורך ושינוי; החלטות המוצר שנסגרו.</li>
-<li><a href="game-experience-validation.html">חוק בדיקת החוויה</a> — תהליך מחייב לרף, תרחישים מפריכים וראיות לפני תוכנית ולאחר מימוש.</li>
-</ul>
-<h2>עבודה מאוחרת שמחוץ למקצה השיפורים</h2>
+
+<p><strong><bdi dir="ltr" lang="en">01/11/2026</bdi> — נפתח מחקר למקצה שיפורים בעקבות בדיקת הנייד.</strong> <a href="v1-mobile-playtest-research.html">משוב, ממצאים והחלטות נדרשות</a>. ההרחבה לחמישה שלבים נכללת כעת בעבודה המבוקשת. אדם אישר חפצים חדשים בשני השלבים הנוספים. <a href="v1/mobile-playtest-improvements.html">הגדרות ההרחבה בעבודה</a>; הן טרם הושלמו או אושרו. אישור שלושת השלבים נשאר היסטוריית הבסיס, והקוד טרם השתנה.</p>
+
+<h2 id="label-D7-9E-D7-98-D7-A8-D7-95-D7-AA+-D7-95-D7-94-D7-92-D7-A8-D7-A1-D7-94+-D7-94-D7-A0-D7-95-D7-9B-D7-97-D7-99-D7-AA">מטרות והגרסה הנוכחית</h2>
+<ul><li>
+<p><a href="../specs/project-goals.md">מטרות הפרויקט</a> — הכיוון שהוסכם ב־<bdi dir="ltr" lang="en">22/10/2026</bdi>; אינו הבטחת רווח או מדד הצלחה שכבר נצפה.</p>
+</li><li>
+<p><a href="v1/index.html">מפת <bdi dir="ltr" lang="en">V1</bdi></a> — היקף, הבסיס ההיסטורי והשינויים.</p>
+</li><li>
+<p><a href="v1/improvements.html">מפת שיפורי <bdi dir="ltr" lang="en">V1</bdi></a> — נקודת הכניסה לחבילת ההגדרות ולכיסוי שבעת הסעיפים.</p>
+</li><li>
+<p><a href="../research/v1-required-improvements.md">האבחון והחלטות השיפורים</a> — טבלת מרכיב, מצב, צורך ושינוי; החלטות המוצר שנסגרו.</p>
+</li><li>
+<p><a href="../../rules/game-experience-validation.md">חוק בדיקת החוויה</a> — תהליך מחייב לרף, תרחישים מפריכים וראיות לפני תוכנית ולאחר מימוש.</p>
+</li></ul>
+
+<h2 id="label-D7-A2-D7-91-D7-95-D7-93-D7-94+-D7-9E-D7-90-D7-95-D7-97-D7-A8-D7-AA+-D7-A9-D7-9E-D7-97-D7-95-D7-A5+-D7-9C-D7-9E-D7-A7-D7-A6-D7-94+-D7-94-D7-A9-D7-99-D7-A4-D7-95-D7-A8-D7-99-D7-9D">עבודה מאוחרת שמחוץ למקצה השיפורים</h2>
+
 <p>הרשימה מגדירה גבול ופעולה כאשר אדם יבחר לפתוח נושא. היא אינה הרשאה להתחיל כעת. בכל שורה אדם אחראי לאישור ההיקף והשיחה הראשית אחראית למחקר ולכתיבת ההגדרות שיבקש.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>נושא</th>
-<th>הפעולה לאחר בקשה של אדם</th>
-<th>תנאי סיום להגדרות</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><bdi dir="ltr" lang="en">Gamepad</bdi> ו־<bdi dir="ltr" lang="en">VR</bdi></td>
-<td>לבדוק קלט ותצוגה במכשירים הנבחרים ולכתוב <bdi dir="ltr" lang="en">spec</bdi> מתאים</td>
-<td>אמצעי קלט, מסכים, היתכנות וקריטריוני בדיקה מוגדרים ומאושרים</td>
-</tr>
-<tr>
-<td>תוכן מעבר לשלושה שלבים</td>
-<td>להגדיר תוכן ואתגר לאחר מיצוי <bdi dir="ltr" lang="en">V1</bdi> מתוך תוצאות המשחק</td>
-<td>רצף מלא, ערכי התחלה, תגמול ותרחישי מיצוי מוגדרים</td>
-</tr>
-<tr>
-<td><bdi dir="ltr" lang="en">Social features</bdi></td>
-<td>להגדיר פעולה משותפת מעבר לנוכחות באותו מחסן</td>
-<td>תפקיד כל משתתף, הוגנות, הצטרפות וכשל ניתנים לבדיקה</td>
-</tr>
-<tr>
-<td>מוצרים בתשלום ומודל הכנסות</td>
-<td>לבדוק כללי <bdi dir="ltr" lang="en">Roblox</bdi> עדכניים והיתכנות ולכתוב מודל נפרד</td>
-<td>מוצר, מחיר, הוגנות, הרשאות ותנאי אימות מוגדרים; אין הכללת <bdi dir="ltr" lang="en">Robux</bdi> בחנות המטבעות הנוכחית</td>
-</tr>
-<tr>
-<td>הרחבת המחסן</td>
-<td>להגדיר מפה או מכשולים חדשים על בסיס צורך שנמצא</td>
-<td>פריסה, מצלמה, קלט, עלות ורף חזותי נבדקו כתכנון</td>
-</tr>
-<tr>
-<td>השקה לציבור ולנייד פיזי</td>
-<td>לבדוק דרישות פרסום וגישה עדכניות ומכשירים אמיתיים שייבחרו</td>
-<td>היקף השקה מאושר וראיות נדרשות לתאימות, גישה ויציבות</td>
-</tr>
-<tr>
-<td>מדידת חזרה והכנסות</td>
-<td>להגדיר אירועי מדידה, תקופה ואוכלוסייה לאחר החלטת היקף</td>
-<td>יעד ודרך איסוף מוגדרים, עם מגבלות מדגם ופרטיות; תוצאה אינה מובטחת</td>
-</tr>
-<tr>
-<td>שם ציבורי למשחק</td>
-<td>לחקור שמות וזמינות לפני בחירה</td>
-<td>שם שהיתכנותו נבדקה ואדם אישר; שם ה־<bdi dir="ltr" lang="en">repo</bdi> נשאר מזהה מקומי</td>
-</tr>
-</tbody>
-</table></div>
-<h2>עבודת הקבלה של המימוש הנוכחי</h2>
+<div class="table-wrap"><table><tr><th>נושא</th><th>הפעולה לאחר בקשה של אדם</th><th>תנאי סיום להגדרות</th></tr><tr><td><bdi dir="ltr" lang="en">Gamepad</bdi> ו־<bdi dir="ltr" lang="en">VR</bdi></td><td>לבדוק קלט ותצוגה במכשירים הנבחרים ולכתוב <bdi dir="ltr" lang="en">spec</bdi> מתאים</td><td>אמצעי קלט, מסכים, היתכנות וקריטריוני בדיקה מוגדרים ומאושרים</td></tr><tr><td><bdi dir="ltr" lang="en">Social features</bdi></td><td>להגדיר פעולה משותפת מעבר לנוכחות באותו מחסן</td><td>תפקיד כל משתתף, הוגנות, הצטרפות וכשל ניתנים לבדיקה</td></tr><tr><td>מוצרים בתשלום ומודל הכנסות</td><td>לבדוק כללי <bdi dir="ltr" lang="en">Roblox</bdi> עדכניים והיתכנות ולכתוב מודל נפרד</td><td>מוצר, מחיר, הוגנות, הרשאות ותנאי אימות מוגדרים; אין הכללת <bdi dir="ltr" lang="en">Robux</bdi> בחנות המטבעות הנוכחית</td></tr><tr><td>הרחבת המחסן</td><td>להגדיר מפה או מכשולים חדשים על בסיס צורך שנמצא</td><td>פריסה, מצלמה, קלט, עלות ורף חזותי נבדקו כתכנון</td></tr><tr><td>השקה לציבור ולנייד פיזי</td><td>לבדוק דרישות פרסום וגישה עדכניות ומכשירים אמיתיים שייבחרו</td><td>היקף השקה מאושר וראיות נדרשות לתאימות, גישה ויציבות</td></tr><tr><td>מדידת חזרה והכנסות</td><td>להגדיר אירועי מדידה, תקופה ואוכלוסייה לאחר החלטת היקף</td><td>יעד ודרך איסוף מוגדרים, עם מגבלות מדגם ופרטיות; תוצאה אינה מובטחת</td></tr><tr><td>שם ציבורי למשחק</td><td>לחקור שמות וזמינות לפני בחירה</td><td>שם שהיתכנותו נבדקה ואדם אישר; שם ה־<bdi dir="ltr" lang="en">repo</bdi> נשאר מזהה מקומי</td></tr></table></div>
+
+<h2 id="label-D7-A2-D7-91-D7-95-D7-93-D7-AA+-D7-94-D7-A7-D7-91-D7-9C-D7-94+-D7-A9-D7-9C+-D7-94-D7-9E-D7-99-D7-9E-D7-95-D7-A9+-D7-94-D7-A0-D7-95-D7-9B-D7-97-D7-99">עבודת הקבלה של המימוש הנוכחי</h2>
+
 <p>השיחה הראשית אחראית לבדיקות העצמאיות ולהשוואה מול הרפרנסים לפני בקשת <bdi dir="ltr" lang="en">QA</bdi> מאדם. אדם יבצע תחילה בדיקה ידנית, ורק אחריה יבחר אם לפתוח סבב חמישה שחקנים. לפני שיתוף נדרשת בדיקת היתכנות לגישה במשחק הפרטי ואישור נפרד; אין זימון משתתפים כעת. העבודה מסתיימת בתוצאה מתועדת לכל דרישה, ולא בהנחת הצלחה כשחסרה ראיה. <a href="v1/improvement-acceptance.html">קבלת השיפורים</a> מחזיקה את הדרישות המפורטות.</p>
 </main></body></html>

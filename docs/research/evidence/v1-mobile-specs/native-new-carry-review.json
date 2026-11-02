@@ -1,0 +1,131 @@
+{
+  "date": "2026-11-01",
+  "scope": "Native avatar-copy art fixtures in one Studio solo, not actual acquisition or player acceptance",
+  "method": "Clone current actual character, restore original Archivable flag, strip cloned scripts, anchor copied body parts, Appearance.update with canonical Catalog items and Basic, maximum three copies simultaneously. Live player inventory and economy remain unchanged.",
+  "positions": [
+    [
+      -4,
+      3.7,
+      500
+    ],
+    [
+      0,
+      3.7,
+      500
+    ],
+    [
+      4,
+      3.7,
+      500
+    ]
+  ],
+  "camera": {
+    "rear": [
+      0,
+      6,
+      510
+    ],
+    "side": [
+      10,
+      6,
+      511
+    ],
+    "look": [
+      0,
+      3,
+      500
+    ]
+  },
+  "singleKinds": {
+    "stage4": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "stage5": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "mixed": {
+    "stage4": {
+      "ids": [
+        [
+          31,
+          1
+        ],
+        [
+          19,
+          13,
+          1
+        ],
+        [
+          25,
+          7,
+          1
+        ]
+      ],
+      "weights": [
+        22,
+        22,
+        22
+      ],
+      "capacity": 22
+    },
+    "stage5": {
+      "ids": [
+        [
+          31
+        ],
+        [
+          25,
+          13
+        ],
+        [
+          19,
+          7,
+          1
+        ]
+      ],
+      "weights": [
+        22,
+        26,
+        25
+      ],
+      "capacity": 26
+    }
+  },
+  "files": [
+    "carry-stage4-kinds1-3.jpg",
+    "carry-stage4-kinds4-6.jpg",
+    "carry-stage5-kinds1-3.jpg",
+    "carry-stage5-kinds4-6.jpg",
+    "carry-stage4-mixed.jpg",
+    "carry-stage5-mixed.jpg",
+    "carry-stage5-mixed-side.jpg"
+  ],
+  "limitations": [
+    "Live HUD belongs to actual stage1/2 player and intentionally does not describe copied rigs.",
+    "Single item back views for all12; mixed back views for both stages; side view for stage5 mixed only.",
+    "Only earlier telescope/lantern/saucer/helmet trials establish real new-stage collection and banking.",
+    "Initial partially replicated screenshots rejected and replaced after waiting for all expected cargo names.",
+    "Initial mixed-fixture command failed to parse; no fixture was created; rejected unchanged screenshot not archived.",
+    "No device, animation, full presentation gate or human-desirability pass."
+  ],
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"cameraFixture\":false,\"previousArt\":false,\"carryFixture\":false,\"testFolder\":false,\"observer\":false}"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -20,7 +20,7 @@ function Appearance.update(character: Model, p): Model?
 	equipment.Parent = model
 	local shown = {}
 	local special = nil
-	local items = Catalog.items(p.stage)
+	local items = Catalog.items(p.stage, p.layout)
 	for _, id in p.cargo do
 		if items[id].special then
 			special = id

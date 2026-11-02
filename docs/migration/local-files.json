@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-27",
+  "date": "2026-11-02",
   "branch": "codex/v1-improvements",
   "sourceCommit": "897bedf",
   "ruleCommit": "173e7d4",
@@ -181,21 +181,23 @@
   },
   "workingFile": {
     "path": "build/GrabItV1_DesktopMobile.rbxlx",
-    "size": 430932,
-    "sha256": "860765deb1da1f0372d1bd464c55b4d13891904845db6c757d36a054ff698ee3",
+    "size": 452266,
+    "sha256": "9db76d85a7514610a1fc876d602806b1c2ca1fb075a8541f77568938db85800d",
     "transfer": "git",
     "purpose": "current saved working place; preserve unmanaged Studio content",
-    "sourceMatches": 58,
-    "sourceComparison": "All58 Rojo-mapped Luau sources in this XML match the current local files exactly. No active temporary QA runners in the saved file."
+    "sourceMatches": 35,
+    "sourceComparison": "35 saved sources match current local files; 24 differ and StageVariety.spec is absent. Preserve saved unmanaged content; sync current sources through Rojo before gameplay. See working-file-audit-2026-11-02.json."
   },
   "portableSnapshot": {
-    "date": "2026-10-27",
-    "baseCommit": "5850a151c6028d96c06eea3e24f3b57401826a0d",
+    "date": "2026-11-02",
+    "baseCommit": "799663d",
     "branch": "codex/v1-improvements",
     "requiredRojoSourcesTracked": true,
     "referenceFilesVerified": 19,
     "backupVerified": true,
     "pushBy": "Adam",
-    "machineSetup": "Studio, pinned tools, account sign-in and MCP connection must be set up per computer; do not commit credentials or machine-specific tool binaries."
-  }
+    "machineSetup": "Studio, pinned tools, account sign-in and MCP connection must be set up per computer; do not commit credentials or machine-specific tool binaries.",
+    "workingSourcesNeedRojoSync": true
+  },
+  "currentWorkingFileAudit": "docs/migration/working-file-audit-2026-11-02.json"
 }

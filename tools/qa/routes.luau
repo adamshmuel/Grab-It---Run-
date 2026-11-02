@@ -9,7 +9,10 @@ return function(encodedRoutes: string, duration: number, context)
 	local plans = config.stages or config
 	local finishCosmetics = config.finishCosmetics == true
 	assert(not finishCosmetics or duration == 900, "bounded full cosmetics run")
-	assert(#plans == 3, "route plan covers all stages")
+	assert(
+		#plans == #Catalog.stages,
+		"Route plan must cover the current five-stage catalog; historical three-stage plans are invalid"
+	)
 	local journal = {}
 	local purchases = {}
 	for cycle = 1, if finishCosmetics then 3 else 1 do
@@ -19,8 +22,24 @@ return function(encodedRoutes: string, duration: number, context)
 			awaitCondition(function()
 				return getState().stage == stage and getState().open
 			end, 200, "route stage did not open")
-			walk(0, -8, 0.9)
 			local startRemaining, initialCoins = getState().remaining, getState().coins
+			local items = Catalog.items(stage, getState().layout)
+			for _, ids in plan do
+				local weight, seen = 0, {}
+				for _, id in ids do
+					assert(
+						items[id] and not seen[id],
+						"Route slot must exist and be unique within a trip"
+					)
+					seen[id] = true
+					weight += items[id].weight
+				end
+				assert(
+					weight <= Catalog.stages[stage].capacity,
+					"Route trip exceeds capacity in the actual randomized layout"
+				)
+			end
+			walk(0, -8, 0.9)
 			local entries = {}
 			for _, ids in plan do
 				local expected = 0
@@ -29,7 +48,7 @@ return function(encodedRoutes: string, duration: number, context)
 						getState().stage == stage and getState().open,
 						"route ran out of stage time"
 					)
-					local item = Catalog.items(stage)[id]
+					local item = items[id]
 					walk(
 						if item.special then 0 else item.x * 2 / 3,
 						if item.special then item.z - 4 else item.z,
@@ -67,7 +86,7 @@ return function(encodedRoutes: string, duration: number, context)
 				end
 			end
 			if not economyOnly then
-				local minimum = ({ 30, 18, 15 })[stage]
+				local minimum = ({ 30, 18, 15, 8, 6 })[stage]
 				assert(getState().bankedCount >= minimum, "required banked item count")
 				if stage == 1 then
 					assert(
@@ -158,7 +177,7 @@ return function(encodedRoutes: string, duration: number, context)
 			getState().owned.canvas and getState().owned.field and getState().owned.royal,
 			"all styles earned and purchased"
 		)
-		for _, item in Catalog.items(getState().stage) do
+		for _, item in Catalog.items(getState().stage, getState().layout) do
 			if not getState().collected[item.id] and not item.special then
 				local before = getState().coins
 				walk(item.x * 2 / 3, item.z, 0.9)

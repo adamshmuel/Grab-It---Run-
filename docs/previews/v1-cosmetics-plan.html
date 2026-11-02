@@ -1,0 +1,55 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>מימוש קנייה ובחירה</title><style>
+:root {color-scheme:light dark} *{box-sizing:border-box}
+body{margin:0;background:light-dark(#f6f5f0,#181a1d);color:light-dark(#222,#eee);font:20px/1.8 Arial,sans-serif;direction:rtl;text-align:start}
+main{max-inline-size:860px;margin-inline:auto;padding:40px 28px 80px}
+h1{font-size:2rem}h2{font-size:1.25rem;margin-block:2rem .6rem;line-height:1.5}
+p{margin-block:.7rem}bdi,code{unicode-bidi:isolate;direction:ltr}
+table{inline-size:100%;border-collapse:collapse;margin-block:1rem}td,th{border:1px solid #888;padding:10px 16px;text-align:start}
+a{color:light-dark(#1762a1,#8fc7ff)}li{margin-block:.6rem}
+.preview-note{font-size:.85rem;border-block-end:1px solid #888;padding-block-end:16px}
+
+.table-wrap{overflow-x:auto}img{max-inline-size:100%;block-size:auto}main{max-inline-size:1000px}nav{margin-block-end:2rem}code{overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate;display:inline-block}td code{white-space:nowrap;font-size:.8em}</style></head><body><main><p class="preview-note">תצוגת קריאה. <a href="../plans/v1/cosmetics.md">מסמך המקור</a></p>
+<h1 id="label-D7-9E-D7-99-D7-9E-D7-95-D7-A9+-D7-A7-D7-A0-D7-99-D7-99-D7-94+-D7-95-D7-91-D7-97-D7-99-D7-A8-D7-94">מימוש קנייה ובחירה<span><a href="#label-D7-9E-D7-99-D7-9E-D7-95-D7-A9+-D7-A7-D7-A0-D7-99-D7-99-D7-94+-D7-95-D7-91-D7-97-D7-99-D7-A8-D7-94">&<bdi dir="ltr" lang="en">para</bdi>;</a> <a href="#top">&<bdi dir="ltr" lang="en">uarr</bdi>;</a></span></h1>
+
+<p>מקור: <a href="v1/cosmetics.html">ההגדרה המאושרת</a>. אדם אישר את ההגדרות וביקש קידוד בתאריך 25/10/2026.</p>
+
+<p>קבצים: <code><bdi dir="ltr" lang="en">src/shared/Cosmetics.luau</bdi>; <bdi dir="ltr" lang="en">src/server/modules/Appearance.luau</bdi>; <bdi dir="ltr" lang="en">src/client/modules/Styles.luau</bdi></code>.</p>
+
+<p>בדיקות נכשלות לבעלות, מחירים, קנייה כפולה ובחירה; יצירת ארבעה דגמים; חיבור חלונית לבקשות מאומתות בצד השרת; אין חיוב או בעלות לפני אישור שמירה.</p>
+
+<p>הסיום כאן הוא מימוש ובדיקות פיתוח, לא אישור קבלה או הוכחת הנאה. אין פרסום או הזמנת שחקנים.</p>
+
+<h2 id="label-D7-AA-D7-99-D7-A7-D7-95-D7-9F+-D7-97-D7-96-D7-99-D7-AA+-D7-94-D7-A6-D7-99-D7-95-D7-93+-D7-94-D7-9C-D7-91-D7-95-D7-A9+-E2-80-94+26-2F10-2F2026">תיקון חזית הציוד הלבוש — 26/10/2026<span><a href="#label-D7-AA-D7-99-D7-A7-D7-95-D7-9F+-D7-97-D7-96-D7-99-D7-AA+-D7-94-D7-A6-D7-99-D7-95-D7-93+-D7-94-D7-9C-D7-91-D7-95-D7-A9+-E2-80-94+26-2F10-2F2026">&<bdi dir="ltr" lang="en">para</bdi>;</a> <a href="#top">&<bdi dir="ltr" lang="en">uarr</bdi>;</a></span></h2>
+
+<p>רכישה ובחירה אמיתיות ב־<bdi dir="ltr" lang="en">Canvas</bdi> הראו שהאבזם פונה אל הדמות. לפני תיקון: <bdi dir="ltr" lang="en">test</bdi> נכשל שלפיו אבזם <bdi dir="ltr" lang="en">Canvas</bdi>, רצועות <bdi dir="ltr" lang="en">Field</bdi> וסוגר <bdi dir="ltr" lang="en">Royal</bdi> נמצאים בצד החיצוני של גוף הציוד כשהוא לבוש. מתקנים ב־<bdi dir="ltr" lang="en">Appearance</bdi> את סיבוב Y של הציוד בלבד, בלי לשנות <bdi dir="ltr" lang="en">Gear</bdi>, משקל או רכישה. אחרי כן בדיקת הדגמים הלבושים מול תצוגת האוסף ומטען, במחשב ובנייד; בדיקת התצוגה המושפעת חוזרת לאחר סגירת הפער העיצובי.</p>
+
+<h2 id="label-D7-AA-D7-99-D7-A7-D7-95-D7-9F+-D7-96-D7-99-D7-94-D7-95-D7-99+-D7-94-D7-AA-D7-99-D7-A7-D7-99-D7-9D+-E2-80-94+01-2F11-2F2026">תיקון זיהוי התיקים — 01/11/2026<span><a href="#label-D7-AA-D7-99-D7-A7-D7-95-D7-9F+-D7-96-D7-99-D7-94-D7-95-D7-99+-D7-94-D7-AA-D7-99-D7-A7-D7-99-D7-9D+-E2-80-94+01-2F11-2F2026">&<bdi dir="ltr" lang="en">para</bdi>;</a> <a href="#top">&<bdi dir="ltr" lang="en">uarr</bdi>;</a></span></h2>
+
+<p>מקור: חידוד העיצוב המורשה בהגדרת העיצובים ודוח <bdi dir="ltr" lang="en">v1-design-rework</bdi>. מתחילים בתיק <bdi dir="ltr" lang="en">Canvas</bdi>, לפני הרחבה לשאר הציוד.</p>
+<ol><li>
+<p>בדיקת ציוד נכשלת על התיק הישן: כיס בעל נפח מחוץ לגוף, רצועות בצד גב התיק עם חיבור חוזר, אין מוטות מעל הגוף, ידית מחוברת וגבולות המעטפת. אלה בדיקות מבנה בלבד.</p>
+</li><li>
+<p>משנים את <bdi dir="ltr" lang="en">Gear</bdi> הקיים, עם בנאי חלקים קטן משותף לפינות המעוגלות ולרצועות; אין מודול ציוד מקביל. שומרים חלקי זיהוי קיימים שהבדיקות התלויות בהם משתמשות בהם. פינות, כיסים, רוכסנים וחיבורים מקבלים צורה בעלת תפקיד.</p>
+</li><li>
+<p>בודקים תצוגת אוסף ולבישה במשחק, מהגב ומהצד, לפני הכללה ל־<bdi dir="ltr" lang="en">Field</bdi>, <bdi dir="ltr" lang="en">Royal</bdi> ו־<bdi dir="ltr" lang="en">Basic</bdi>. לאחריהם בדיקות <bdi dir="ltr" lang="en">EquipmentFacing</bdi> ו־<bdi dir="ltr" lang="en">Appearance</bdi> ומעטפת הראש והמטען. הבדיקות הטכניות אינן אישור גימור.</p>
+</li><li>
+<p>שומרים תמונות השוואה במחשב ובנייד מול הרפרנסים, עם הכרעה לכל דגם. כשל של דגם אחד מחייב עוד תיקון לפני קבלת העיצוב.</p>
+</li></ol>
+
+<p>צילום החנות חשף חיתוך של <bdi dir="ltr" lang="en">Royal</bdi> בכרטיס צר. לפני תיקון: בדיקת <bdi dir="ltr" lang="en">StylesLayout</bdi> מקרינה פינות של חלקי הדגם אל תחום המצלמה אחרי פריסת מחשב ונכשלת על חלקים מחוץ למסך. אחריה התאמת מרחק מצלמה מקומית ב־<bdi dir="ltr" lang="en">Styles</bdi>, לפי מעטפת הדגם ויחס השטח בפועל, וחיבור יחיד לשינוי גודל שמנוקה ב־<bdi dir="ltr" lang="en">destroy</bdi>. אין שינוי ברכישה או בפריסת הכפתורים.</p>
+
+<h2 id="label-D7-A1-D7-93-D7-A8+-D7-94-D7-A2-D7-91-D7-95-D7-93-D7-94+-D7-94-D7-9E-D7-AA-D7-95-D7-A7-D7-9F+-E2-80-94+-D7-A8-D7-A6-D7-95-D7-9F+-D7-9C-D7-94-D7-A9-D7-99-D7-92+-D7-95-D7-A9-D7-99-D7-9E-D7-95-D7-A9+-D7-91-D7-A4-D7-95-D7-A2-D7-9C">סדר העבודה המתוקן — רצון להשיג ושימוש בפועל<span><a href="#label-D7-A1-D7-93-D7-A8+-D7-94-D7-A2-D7-91-D7-95-D7-93-D7-94+-D7-94-D7-9E-D7-AA-D7-95-D7-A7-D7-9F+-E2-80-94+-D7-A8-D7-A6-D7-95-D7-9F+-D7-9C-D7-94-D7-A9-D7-99-D7-92+-D7-95-D7-A9-D7-99-D7-9E-D7-95-D7-A9+-D7-91-D7-A4-D7-95-D7-A2-D7-9C">&<bdi dir="ltr" lang="en">para</bdi>;</a> <a href="#top">&<bdi dir="ltr" lang="en">uarr</bdi>;</a></span></h2>
+
+<p>לפי חידוד אדם מ־01/11/2026, עוצרים הרחבת דגמי הציוד עד לבחינת המשיכה שלהם כפרסים. התיקונים שכבר בוצעו הם אבטיפוס לזיהוי ולגימור, ואינם אישור לערכם כיעד לרכישה.</p>
+<ol><li>
+<p>מנסחים לכל עיצוב סיבה לרצות ללבוש אותו ופער חזותי שעלול למנוע זאת. משווים למקורות המתועדים; מבחינים בין תצפית, השערה והעדפת שחקן שנצפתה.</p>
+</li><li>
+<p>על דמות פעילה יחידה בודקים כל עיצוב בזמן איסוף והפקדה אמיתיים, עם מטען חלקי ומלא. משתמשים ב־<bdi dir="ltr" lang="en">Gear</bdi> הקיים ובחיבור של <bdi dir="ltr" lang="en">Appearance</bdi>; אם משתמשים בהחלפת מראה זמנית היא אינה מעניקה מטבעות, בעלות או שינוי נתוני שרת. מנקים את ההחלפה בסיום. אין מודול <bdi dir="ltr" lang="en">QA</bdi> חדש ואין חלונות נוספים.</p>
+</li><li>
+<p>מתעדים לכל עיצוב בנפרד: מראה מאחור ומהצד, נראות הפרט המרכזי תחת מטען, תנועה וסיבוב, יציבות החיבור, פעולה תקינה של איסוף והפקדה, ומגבלות המכשיר שנבדק. צילום עותק דמות אינו מעבר של סעיף זה.</p>
+</li><li>
+<p>מתקנים רק פער שנצפה; לפני שינוי קוד מוסיפים בדיקה נכשלת מתאימה כאשר הוא ניתן לבדיקה אוטומטית. חוזרים על הסצנות שהושפעו על הדגם הסופי.</p>
+</li><li>
+<p>משאירים העדפת שחקנים ורצון לחסוך כקבלה אנושית פתוחה עד שתיבדק בפועל בתיאום אדם. אין טענה שהעיצוב יימכר על סמך הבדיקה העצמאית.</p>
+</li></ol>
+</main></body></html>

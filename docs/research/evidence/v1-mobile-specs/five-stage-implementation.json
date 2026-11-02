@@ -1,0 +1,198 @@
+{
+  "date": "2026-11-01",
+  "target": {
+    "studio_id": "69762bb5-6312-408f-9f54-1fb8742f02c4",
+    "place": 107553743507220,
+    "universe": 10774185320
+  },
+  "scope": "Five-stage implementation, focused native Studio solo and logical client tests; no phone, production saving, multiplayer or human acceptance",
+  "red": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"ServerStorage.GrabItTests.StageVariety.spec:153: ServerStorage.GrabItTests.StageVariety.spec:7: A match contains five stages\",\"passed\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "catalogGreen": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"3\",\"passed\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "serverAndClient": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"StageVariety\":{\"result\":\"3\",\"passed\":true},\"ImprovementSession\":{\"result\":\"11\",\"passed\":true},\"CollectibleShapes\":{\"result\":\"1\",\"passed\":true},\"ImprovementRules\":{\"result\":\"5\",\"passed\":true},\"ImprovementVisuals\":{\"result\":\"4\",\"passed\":true},\"Appearance\":{\"result\":\"5\",\"passed\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ResultsLossNotice\":{\"result\":\"24\",\"passed\":true},\"ResultsLayout\":{\"result\":\"1\",\"passed\":true},\"TouchButtonLayout\":{\"result\":\"1\",\"passed\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "carryDirect": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"28\",\"passed\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "actualStage2Bank": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"save\":\"Studio session only\",\"cargoCount\":0,\"coins\":3,\"stageName\":\"Tech Run\",\"remaining\":4,\"bankedCount\":1,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":3,\"5\":0,\"4\":0},\"earnings\":3},\"warning\":false,\"rows\":{\"1\":{\"score\":3,\"banked\":1,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":3,\"name\":\"sushi_salmon\"}},\"phase\":\"results\",\"capacity\":14,\"layout\":{\"variant\":372,\"flips\":1918},\"open\":false,\"cargoWeight\":\"0\",\"inBase\":true,\"cargoValue\":\"0\",\"purchase\":\"\",\"mode\":\"solo\",\"totalItems\":30,\"collected\":{\"1\":true},\"stage\":2,\"roundId\":2}"
+      }
+    ],
+    "isError": false
+  },
+  "notes": [
+    "ImprovementSession historical stage-three summary expectation was updated to stage five and passed.",
+    "Edit World test hit a previously cached Catalog; fresh Play server passed new-stage World checks.",
+    "Tests added after Play startup require a fresh execution; direct carry checks cover all 28 models meanwhile.",
+    "Bounded catalog composition caches; original fixed preview retained only for fixtures/poster artwork.",
+    "No audio listening or overall visual-quality pass claimed.",
+    "Final StageVariety extension had a test-only C.cargoItems typo; corrected and passed 5 cases on fresh cloned modules.",
+    "Final native carry checks cover all 28 models; client logical tests passed in Play.",
+    "Both QA guard checks reject before movement after moving weight preflight ahead of the initial walk.",
+    "All five live stage/world identities were observed; actual new regular/special deposits, summary and next-match reset were captured.",
+    "Temporary art, observer, camera and client-test fixtures absent after EndTest; Edit verified."
+  ],
+  "finalRegressionBeforeTestTypoFix": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"StageVariety\":{\"result\":\"StageVariety.spec:200: StageVariety.spec:181: attempt to call a nil value\",\"passed\":false},\"Appearance\":{\"result\":\"5\",\"passed\":true},\"ImprovementVisuals\":{\"result\":\"4\",\"passed\":true},\"ImprovementRules\":{\"result\":\"5\",\"passed\":true},\"ImprovementSession\":{\"result\":\"11\",\"passed\":true},\"CollectibleShapes\":{\"result\":\"1\",\"passed\":true},\"ImprovementPersistence\":{\"result\":\"24\",\"passed\":true},\"CargoVisibility\":{\"result\":\"1\",\"passed\":true},\"Gameplay\":{\"result\":\"7\",\"passed\":true},\"Session\":{\"result\":\"11\",\"passed\":true},\"NetworkState\":{\"result\":\"4\",\"passed\":true}}"
+      }
+    ],
+    "isError": false
+  },
+  "finalStageVarietyGreen": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"5\",\"passed\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "routeGuardRed": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Over-capacity trip\":{\"rejected\":true,\"beforeWalking\":false,\"reason\":\"AssistantCommand:1: Walking must not start\"},\"Historical three-stage plan\":{\"rejected\":true,\"beforeWalking\":true,\"reason\":\"routes:12: Route plan must cover the current five-stage catalog; historical three-stage plans are invalid\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "routeGuardGreen": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Over-capacity trip\":{\"rejected\":true,\"beforeWalking\":true,\"reason\":\"routes:37: Route trip exceeds capacity in the actual randomized layout\"},\"Historical three-stage plan\":{\"rejected\":true,\"beforeWalking\":true,\"reason\":\"routes:12: Route plan must cover the current five-stage catalog; historical three-stage plans are invalid\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "stage4SpecialCollected": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"save\":\"Studio session only\",\"cargoCount\":1,\"coins\":3,\"stageName\":\"Expedition Run\",\"remaining\":65,\"bankedCount\":0,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":3,\"5\":0,\"4\":0},\"earnings\":3},\"warning\":false,\"rows\":{\"1\":{\"score\":0,\"banked\":0,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":0,\"name\":\"sushi_salmon\"}},\"phase\":\"active\",\"capacity\":22,\"layout\":{\"variant\":200,\"flips\":4269},\"open\":true,\"cargoWeight\":\"?\",\"inBase\":false,\"cargoValue\":\"?\",\"purchase\":\"\",\"mode\":\"solo\",\"totalItems\":31,\"collected\":{\"31\":true},\"stage\":4,\"roundId\":4}"
+      }
+    ],
+    "isError": false
+  },
+  "stage4SpecialBank": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"save\":\"Studio session only\",\"cargoCount\":0,\"coins\":83,\"stageName\":\"Expedition Run\",\"remaining\":45,\"bankedCount\":1,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":3,\"5\":0,\"4\":80},\"earnings\":83},\"warning\":false,\"rows\":{\"1\":{\"score\":80,\"banked\":1,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":3,\"name\":\"sushi_salmon\"}},\"phase\":\"active\",\"capacity\":22,\"layout\":{\"variant\":200,\"flips\":4269},\"open\":true,\"cargoWeight\":\"0\",\"inBase\":true,\"cargoValue\":\"0\",\"purchase\":\"\",\"mode\":\"solo\",\"totalItems\":31,\"collected\":{\"31\":true},\"stage\":4,\"roundId\":4}"
+      }
+    ],
+    "isError": false
+  },
+  "stage4RegularBank": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"save\":\"Studio session only\",\"cargoCount\":0,\"coins\":90,\"stageName\":\"Expedition Run\",\"remaining\":26,\"bankedCount\":2,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":3,\"5\":0,\"4\":87},\"earnings\":90},\"warning\":false,\"rows\":{\"1\":{\"score\":87,\"banked\":2,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":6,\"name\":\"sushi_salmon\"}},\"phase\":\"active\",\"capacity\":22,\"layout\":{\"variant\":200,\"flips\":4269},\"open\":true,\"cargoWeight\":\"0\",\"inBase\":true,\"cargoValue\":\"0\",\"purchase\":\"\",\"mode\":\"solo\",\"totalItems\":31,\"collected\":{\"31\":true,\"1\":true},\"stage\":4,\"roundId\":4}"
+      }
+    ],
+    "isError": false
+  },
+  "stage5SpecialCollected": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"save\":\"Studio session only\",\"cargoCount\":1,\"coins\":90,\"stageName\":\"Space Sprint\",\"remaining\":40,\"bankedCount\":0,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":3,\"5\":0,\"4\":87},\"earnings\":90},\"warning\":false,\"rows\":{\"1\":{\"score\":0,\"banked\":0,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":0,\"name\":\"sushi_salmon\"}},\"phase\":\"active\",\"capacity\":26,\"layout\":{\"variant\":737,\"flips\":6773},\"open\":true,\"cargoWeight\":\"?\",\"inBase\":false,\"cargoValue\":\"?\",\"purchase\":\"\",\"mode\":\"solo\",\"totalItems\":31,\"collected\":{\"31\":true},\"stage\":5,\"roundId\":5}"
+      }
+    ],
+    "isError": false
+  },
+  "stage5SpecialBank": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"save\":\"Saving\",\"cargoCount\":0,\"coins\":200,\"stageName\":\"Space Sprint\",\"remaining\":27,\"bankedCount\":1,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":3,\"5\":110,\"4\":87},\"earnings\":200},\"warning\":false,\"rows\":{\"1\":{\"score\":110,\"banked\":1,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":3,\"name\":\"sushi_salmon\"}},\"phase\":\"active\",\"capacity\":26,\"layout\":{\"variant\":737,\"flips\":6773},\"open\":true,\"cargoWeight\":\"0\",\"inBase\":true,\"cargoValue\":\"0\",\"purchase\":\"\",\"mode\":\"solo\",\"totalItems\":31,\"collected\":{\"31\":true},\"stage\":5,\"roundId\":5}"
+      }
+    ],
+    "isError": false
+  },
+  "stage5RegularBank": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"save\":\"Studio session only\",\"cargoCount\":0,\"coins\":210,\"stageName\":\"Space Sprint\",\"remaining\":15,\"bankedCount\":2,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":3,\"5\":120,\"4\":87},\"earnings\":210},\"warning\":true,\"rows\":{\"1\":{\"score\":120,\"banked\":2,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":6,\"name\":\"sushi_salmon\"}},\"phase\":\"active\",\"capacity\":26,\"layout\":{\"variant\":737,\"flips\":6773},\"open\":true,\"cargoWeight\":\"0\",\"inBase\":true,\"cargoValue\":\"0\",\"purchase\":\"\",\"mode\":\"solo\",\"totalItems\":31,\"collected\":{\"31\":true,\"1\":true},\"stage\":5,\"roundId\":5}"
+      }
+    ],
+    "isError": false
+  },
+  "nativeRunEnd": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"state\":{\"tutorial\":true,\"tooHeavy\":false,\"owned\":{\"basic\":true},\"rows\":{\"1\":{\"score\":0,\"banked\":0,\"ranked\":true,\"place\":1,\"id\":\"3345343071\",\"percent\":0,\"name\":\"sushi_salmon\"}},\"cargoCount\":0,\"coins\":210,\"stageName\":\"Toy Dash\",\"remaining\":178,\"canNext\":false,\"selected\":\"basic\",\"matchRows\":[],\"ready\":true,\"personal\":{\"stages\":{\"1\":0,\"3\":0,\"2\":0,\"5\":0,\"4\":0},\"earnings\":0},\"warning\":false,\"bankedCount\":0,\"save\":\"Studio session only\",\"phase\":\"active\",\"mode\":\"solo\",\"open\":true,\"purchase\":\"\",\"inBase\":true,\"cargoValue\":\"0\",\"cargoWeight\":\"0\",\"capacity\":10,\"totalItems\":30,\"collected\":[],\"stage\":1,\"roundId\":6},\"stages\":{\"1\":{\"total\":30,\"worldItems\":30,\"capacity\":10,\"phase\":\"active\",\"name\":\"Toy Dash\"},\"3\":{\"total\":31,\"name\":\"Golden Rush\",\"capacity\":18,\"layout\":{\"variant\":55,\"flips\":24265},\"phase\":\"results\",\"worldItems\":31},\"2\":{\"total\":30,\"name\":\"Tech Run\",\"capacity\":14,\"layout\":{\"variant\":372,\"flips\":1918},\"phase\":\"results\",\"worldItems\":30},\"5\":{\"total\":31,\"name\":\"Space Sprint\",\"capacity\":26,\"layout\":{\"variant\":737,\"flips\":6773},\"phase\":\"summary\",\"worldItems\":31},\"4\":{\"total\":31,\"name\":\"Expedition Run\",\"capacity\":22,\"layout\":{\"variant\":200,\"flips\":4269},\"phase\":\"results\",\"worldItems\":31}}}"
+      }
+    ],
+    "isError": false
+  },
+  "workBoundary": {
+    "studioMode": "Edit",
+    "studioPid": 24336,
+    "rojoSession": 85990,
+    "rojoStopped": true,
+    "ownedPidsAbsent": [
+      29083,
+      29084
+    ],
+    "port34872Listening": false,
+    "caffeinatePid": 24083,
+    "sleepAndDisplayAssertions": true,
+    "push": false,
+    "publish": false,
+    "productionWrites": false
+  }
+}

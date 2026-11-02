@@ -50,8 +50,9 @@ return function(): number
 			"ImprovementUI.spec: ui.Next.Visible and ui.Styles.Visible"
 		)
 		assert(
-			ui.StagePath.Text == "Toy Dash > Tech Run > Golden Rush",
-			"all three stage names visible from the start"
+			string.find(ui.Metadata.Text, "Golden Rush", 1, true)
+				and not ui.Root:FindFirstChild("StagePath"),
+			"Current stage stays visible without a full-width route strip"
 		)
 		local Results = clone.ClientModules:FindFirstChild("Results")
 		assert(Results, "RED: results UI missing")
@@ -99,12 +100,13 @@ return function(): number
 				size.X <= 2.81 and size.Y <= 2.81 and size.Z <= 1.21,
 				"ImprovementUI.spec: size.X <= 2.81 and size.Y <= 2.81 and size.Z <= 1.21"
 			)
-			shapes[id] = #m:GetChildren()
+			shapes[id] = size
 			m:Destroy()
 		end
 		assert(
-			shapes.basic ~= shapes.field and shapes.royal ~= shapes.canvas,
-			"ImprovementUI.spec: shapes.basic ~= shapes.field and shapes.royal ~= shapes.canvas"
+			shapes.field.Y / shapes.field.X > shapes.royal.Y / shapes.royal.X
+				and shapes.canvas.Z > shapes.basic.Z,
+			"Tall pack and wide case have distinct aspect ratios; image review still decides recognition"
 		)
 		return 5
 	end)

@@ -1,0 +1,196 @@
+{
+  "date": "2026-11-01",
+  "target": {
+    "studioId": "281f8f8e-a1d7-415b-826f-18e959bc92e6",
+    "placeId": 0,
+    "universeId": 0,
+    "file": "build/GrabItV1_DesktopMobile.rbxlx"
+  },
+  "method": "One native solo session. Temporary client Gear override on actual character; original model hidden locally then restored. Real navigation and E input. Server selected basic and owned basic only. Memory-only storage. Camera Custom, viewport 923x592.",
+  "observedTrials": [
+    {
+      "appearance": "canvas",
+      "stage": 1,
+      "fullWeight": 10,
+      "capacity": 10,
+      "cargoCount": 2,
+      "bankedAfter": 2,
+      "coinsAfter": 20
+    },
+    {
+      "appearance": "field",
+      "stage": 1,
+      "fullWeight": 10,
+      "capacity": 10,
+      "cargoCount": 2,
+      "bankedAfter": 4,
+      "coinsAfter": 40
+    },
+    {
+      "appearance": "royal",
+      "stage": 1,
+      "fullWeight": 10,
+      "capacity": 10,
+      "cargoCount": 2,
+      "bankedAfter": 6,
+      "coinsAfter": 60
+    },
+    {
+      "appearance": "basic",
+      "stage": 2,
+      "fullWeight": 14,
+      "capacity": 14,
+      "cargoCount": 2,
+      "bankedAfter": 2,
+      "coinsAfter": 90
+    }
+  ],
+  "sharedThreeItemTrial": {
+    "stage": 2,
+    "weight": 14,
+    "capacity": 14,
+    "items": [
+      "Headphones",
+      "Speaker",
+      "Generator"
+    ],
+    "appearances": [
+      "canvas",
+      "field",
+      "royal",
+      "basic"
+    ],
+    "bankedAfter": 5,
+    "coinsAfter": 119
+  },
+  "fullCargoSpeedObserved": 10.399999618530273,
+  "cleanupObserved": {
+    "temporaryModelRemoved": true,
+    "originalGearVisible": true,
+    "studioMode": "Edit"
+  },
+  "notCovered": [
+    "Real equip/purchase/save with final models",
+    "Mobile",
+    "All cargo compositions",
+    "All body/camera angles",
+    "Human desirability or willingness to buy"
+  ],
+  "images": [
+    {
+      "file": "basic-active-full.jpg",
+      "sha256": "34b35feb2fa78d6f9067526314c90b3aa43c871b4a51918b7ef3e57ac58a9ecc",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "basic-active-three-full.jpg",
+      "sha256": "f1de8180db021bc2f44af1a2caa68de34a40adac293464b2c290f8807e3de829",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "canvas-active-full.jpg",
+      "sha256": "0ec19188a822dac015ecb948b45d15941a6285f499d5a009a7385670ae6d3e37",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "canvas-active-three-full.jpg",
+      "sha256": "858cbe836dc73e0d155337da119e3d09ecbaff5db6ed8529436bf1382f7c7448",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "equipment-empty-fixture.jpg",
+      "sha256": "394ffe26f975f253c6371ab510706f3fee7677d95fafe2abc5e4a8e26d25b8e0",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "equipment-full-fixture-partial.jpg",
+      "sha256": "2afdd99a8fe7750e3470c93855384d0252f833742ef97eedd2beb83d20e4e460",
+      "scope": "Only one clone clearly showed cargo; not a four-style pass"
+    },
+    {
+      "file": "field-active-full.jpg",
+      "sha256": "8d8b61d97ef552d3ebb26ed60baebc1b23cc6616e380ec7c94952c9d9b521039",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "field-active-three-full.jpg",
+      "sha256": "5121f83372287ffa39d6492e8713740084c43b839297b11e6e29e4706959e822",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "gallery-final-1.jpg",
+      "sha256": "1d72799a307b346347eefda8555918ba1337d2a01aa70c4873d6bef53e609790",
+      "scope": "Toy gallery before final yellow wing finish; filename retained"
+    },
+    {
+      "file": "gallery-final-2.jpg",
+      "sha256": "d32f025061604a3862a0963969f202b8b3b26c9beb1ea396c503b37b25c7861e",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "gallery-final-3.jpg",
+      "sha256": "07733ab11b63aff9a8ffebe31b8ea89c14d6d2ea8aa0066ce6d099f5be7f4f1c",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "gear-front-prototype.jpg",
+      "sha256": "8a2123e797a71ea9730367c7ccd419b1ac31d5a3341e49688cb5ed50ffa6313d",
+      "scope": "Rejected Fabric material noise"
+    },
+    {
+      "file": "royal-active-full-back.jpg",
+      "sha256": "484ae2c85833a86b2f067a4995e429b1c696fbdd4cfcbefcfaa53c4ef431402e",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "royal-active-full-side.jpg",
+      "sha256": "7baf0bb49de1984cb169bb345aff3b1ea37afa2a98fd2d0d5afffec7e42cf21b",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "royal-active-three-full.jpg",
+      "sha256": "5265ff1ce2b55bc8e42323e4047caa520e1b5c0e1dc02310035649924757a585",
+      "scope": "Active-player trial with temporary appearance override; not purchase/ownership evidence"
+    },
+    {
+      "file": "styles-before-camera-fit.jpg",
+      "sha256": "89b2f3d5dcde34f9b86b873e9b56ea74e4d69d1976654a8deba6c40bca0ce5fb",
+      "scope": "Rejected clipped model"
+    },
+    {
+      "file": "styles-final.jpg",
+      "sha256": "ed1ba59261a31a5ebc7b91e8d5207ec8dfa57fc1e3107b7752d19c918025f38b",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "tech-desktop-gameplay.jpg",
+      "sha256": "5bb35fa9de7a4005b2245ffad630b65fb2ef855ec99054800ec98b4525af283e",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "tech-gallery-prototype.jpg",
+      "sha256": "fce546061add5b813716d75f507ed7dd73138cf5e96f7a31afcac18af9b1adc7",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "toy-poster-edit-preview.jpg",
+      "sha256": "f3a7e5430617d5e67b4ad69cb84a990eddecc53289aad1191565474eb70653ac",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "toys-desktop-before-wing-finish.jpg",
+      "sha256": "a5d152491461549d473574112bb76e1f772f82bcef24e18b351b5cdc6bf248ad",
+      "scope": "Before final yellow wing finish"
+    },
+    {
+      "file": "toys-gallery-prototype.jpg",
+      "sha256": "f13acfdabca9ca118bdb18aa1bc27a03e9c82008366666b26940154d6da1b9e9",
+      "scope": "See rework report for scope; not overall acceptance"
+    },
+    {
+      "file": "treasure-gallery-before-tip-fix.jpg",
+      "sha256": "40344b6ab59584b06676c2c77351d46516944d9e6ccfb04425300395dd137016",
+      "scope": "Rejected split gem tips"
+    }
+  ]
+}

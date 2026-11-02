@@ -101,7 +101,11 @@ local function collect(expected: number, optional: boolean?)
 		local character = player.Character
 		local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
 		return if center
-			then View.collectionTarget(Catalog.items(state.stage), state, center.Position)
+			then View.collectionTarget(
+				Catalog.items(state.stage, state.layout),
+				state,
+				center.Position
+			)
 			else nil
 	end
 	if optional and not target() then
@@ -299,7 +303,7 @@ local ok, result = pcall(function()
 	while os.clock() - began < duration or (duration >= 600 and seconds < 600) do
 		if state.open and state.remaining > 35 then
 			local nextItem = nil
-			for _, item in Catalog.items(state.stage) do
+			for _, item in Catalog.items(state.stage, state.layout) do
 				if not state.collected[item.id] then
 					nextItem = item
 					break

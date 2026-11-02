@@ -43,15 +43,24 @@ return function(): number
 		do
 			ui.Root.Size = UDim2.fromOffset(size.X, size.Y)
 			task.wait()
-			for _, scenario in { { 1, "multi" }, { 2, "multi" }, { 3, "multi" }, { 3, "solo" } } do
+			for _, scenario in
+				{
+					{ 1, "multi" },
+					{ 2, "multi" },
+					{ 3, "multi" },
+					{ 4, "multi" },
+					{ 5, "multi" },
+					{ 5, "solo" },
+				}
+			do
 				local state = {
-					phase = if scenario[1] == 3 then "summary" else "results",
+					phase = if scenario[1] == 5 then "summary" else "results",
 					stage = scenario[1],
 					mode = scenario[2],
 					remaining = 5,
 					rows = rows,
 					matchRows = rows,
-					personal = { earnings = 433, stages = { 100, 200, 133 } },
+					personal = { earnings = 433, stages = { 100, 100, 100, 100, 33 } },
 				}
 				Results.update(results, state, "1", notice)
 				task.wait()

@@ -48,11 +48,19 @@ return function(): number
 		)
 		now = 428
 		s:tick()
-		assert(
-			s:state().phase == "summary",
-			'ImprovementSession.spec: s:state().phase == "summary"'
-		)
-		now = 438
+		assert(s:state().phase == "results", "Third stage no longer ends the match")
+		now = 433
+		s:tick()
+		assert(s:state().stage == 4 and s:state().remaining == 80, "Fourth stage starts")
+		now = 513
+		s:tick()
+		now = 518
+		s:tick()
+		assert(s:state().stage == 5 and s:state().remaining == 60, "Final minute starts")
+		now = 578
+		s:tick()
+		assert(s:state().phase == "summary", "Stage five ends the match")
+		now = 588
 		s:tick()
 		assert(
 			s:state().stage == 1 and s:get("b").eligible,

@@ -1,5 +1,6 @@
 --!strict
 local Ui = require(script.Parent.Ui)
+local Catalog = require(game.ReplicatedStorage.GrabIt.Shared.Catalog)
 local Results = {}
 local widths = { 0.20, 0.25, 0.17, 0.18, 0.20 }
 function Results.table(parent: Instance)
@@ -157,7 +158,7 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 		ui.showStage = false
 		return
 	end
-	local personal = state.personal or { earnings = 0, stages = { 0, 0, 0 } }
+	local personal = state.personal or { earnings = 0, stages = table.create(#Catalog.stages, 0) }
 	local summary = state.phase == "summary"
 	ui.summary = summary
 	layout(ui)
@@ -171,11 +172,10 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 	ui.Tab.Visible = summary and state.mode ~= "solo"
 	ui.Styles.Visible = true
 	ui.Footer.Visible = not summary or lossNotice ~= nil
-	local nextStage = if summary
+	local nextDefinition = Catalog.stages[state.stage + 1]
+	local nextStage = if summary or not nextDefinition
 		then ""
-		else "Next: " .. (if state.stage == 1
-			then "Tech Run | Capacity 14"
-			else "Golden Rush | Capacity 18")
+		else "Next: " .. nextDefinition.name .. " | Capacity " .. nextDefinition.capacity
 	ui.Footer.Text = (lossNotice or "")
 		.. (if lossNotice and not summary then "\n" else "")
 		.. nextStage
@@ -185,11 +185,11 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 		end
 		for i, cells in ui.Rows do
 			for col, cell in cells do
-				cell.Visible = i <= 3
-				if i <= 3 then
+				cell.Visible = i <= #Catalog.stages
+				if i <= #Catalog.stages then
 					cell.Text = ({
 						tostring(i),
-						({ "Toy Dash", "Tech Run", "Golden Rush" })[i],
+						Catalog.stages[i].name,
 						tostring(personal.stages[i]),
 						"",
 						"",
@@ -205,7 +205,7 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 			summary and not ui.showStage
 		)
 	end
-	ui.Tab.Text = if ui.showStage then "Match results" else "Stage 3"
+	ui.Tab.Text = if ui.showStage then "Match results" else "Stage " .. #Catalog.stages
 end
 function Results.board(parent: Instance, part: BasePart)
 	local gui = Instance.new("SurfaceGui")

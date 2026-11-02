@@ -27,7 +27,8 @@ return function()
 		}, false)
 		assert(string.find(ui.Coins.Text, "7"), "banked balance")
 		assert(string.find(ui.Bag.Text, "4 / 10"), "cargo count")
-		assert(string.find(ui.Round.Text, "RETURN"), "closing warning")
+		assert(ui.Round.Text == "0:29", "Timer digits stand alone in the prominent timer")
+		assert(string.find(ui.Metadata.Text, "RETURN"), "closing warning stays in compact metadata")
 		Hud.update(ui, {
 			coins = 105,
 			cargoCount = 0,
@@ -45,14 +46,8 @@ return function()
 		assert(
 			ui.Coins.BackgroundTransparency == 0
 				and ui.Round.BackgroundTransparency == 0
-				and ui.Style.BackgroundTransparency == 0,
+				and ui.Metadata.BackgroundTransparency == 0,
 			"world signs must not bleed through the permanent top HUD"
-		)
-		local tutorialRight = ui.Tutorial.Position.X.Scale + ui.Tutorial.Size.X.Scale
-		local collectLeft = ui.Collect.Position.X.Scale - ui.Collect.Size.X.Scale
-		assert(
-			tutorialRight < collectLeft,
-			"tutorial must leave a gap before the touch collect button"
 		)
 		local available = {
 			coins = 0,
@@ -75,6 +70,15 @@ return function()
 			ui.Collect.Visible and ui.Collect.Text == "Collect",
 			"touch keeps its collection button"
 		)
+		available.tooHeavy = true
+		Hud.update(ui, available, true)
+		assert(
+			ui.Collect.Text == "Collect",
+			"Weight rejection belongs in the target prompt, not another yellow banner"
+		)
+		task.wait(2.1)
+		Hud.update(ui, available, true)
+		assert(not ui.Save.Visible, "Saved stops taking HUD space after two seconds")
 		for _, phase in { "results", "summary", "active" } do
 			available.phase = phase
 			Hud.update(ui, available, true)
@@ -92,5 +96,5 @@ return function()
 	assert(controlsRestored, "Restore controls on HUD cleanup")
 	assert(ok, tostring(err))
 	print("PASS HUD balance, cargo, warnings, progression and safe area")
-	return 8
+	return 9
 end

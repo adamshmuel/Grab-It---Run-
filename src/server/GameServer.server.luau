@@ -187,7 +187,7 @@ local function send(player, entry, r, rows): ()
 		then player.Character:FindFirstChild("HumanoidRootPart")
 		else nil
 	local collected = if p then p.collected else {}
-	local items = Catalog.items(r.stage)
+	local items = Catalog.items(r.stage, r.layout)
 	local target = if p
 			and center
 			and r.open
@@ -224,6 +224,7 @@ local function send(player, entry, r, rows): ()
 		cargoValue = display.value,
 		capacity = Catalog.stages[r.stage].capacity,
 		stage = r.stage,
+		layout = r.layout,
 		stageName = Catalog.stages[r.stage].name,
 		totalItems = #items,
 		bankedCount = if p then p.bankedCount else 0,
@@ -250,7 +251,7 @@ local function send(player, entry, r, rows): ()
 		matchRows = if r.phase == "summary" then session.matchResults else {},
 		personal = {
 			earnings = if p then p.runEarnings else 0,
-			stages = if p then p.stageEarnings else { 0, 0, 0 },
+			stages = if p then p.stageEarnings else table.create(#Catalog.stages, 0),
 		},
 	}
 	local signature = HttpService:JSONEncode(state)
@@ -419,7 +420,7 @@ root.Action.OnServerEvent:Connect(function(player, action, arg)
 		end
 		return
 	end
-	local items = Catalog.items(r.stage)
+	local items = Catalog.items(r.stage, r.layout)
 	if
 		action ~= "collect"
 		or type(arg) ~= "number"
@@ -495,7 +496,7 @@ RunService.Heartbeat:Connect(function(dt)
 	session:tick()
 	local r = session:state()
 	if r.stage ~= previousStage then
-		World.setStage(world, r.stage)
+		World.setStage(world, r.stage, r.layout)
 		previousStage = r.stage
 	end
 	World.setOpen(world, r.open)

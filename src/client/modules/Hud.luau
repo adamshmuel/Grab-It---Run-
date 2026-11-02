@@ -1,5 +1,6 @@
 --!strict
 local GuiService = game:GetService("GuiService")
+local Catalog = require(script.Parent.Parent.Shared.Catalog)
 local Hud = {}
 local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): TextLabel
 	local v = Instance.new("TextLabel")
@@ -9,7 +10,9 @@ local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): Tex
 	v.BackgroundColor3 = Color3.fromRGB(20, 33, 45)
 	v.BackgroundTransparency = 0.12
 	v.TextColor3 = Color3.fromRGB(237, 242, 237)
-	v.TextScaled = true
+	v.TextScaled = false
+	v.TextSize = 18
+	v.Text = ""
 	v.Font = Enum.Font.GothamBold
 	v.TextWrapped = true
 	local corner = Instance.new("UICorner")
@@ -19,12 +22,27 @@ local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): Tex
 	padding.PaddingLeft = UDim.new(0, 8)
 	padding.PaddingRight = UDim.new(0, 8)
 	padding.Parent = v
-	local constraint = Instance.new("UITextSizeConstraint")
-	constraint.MinTextSize = 18
-	constraint.MaxTextSize = 21
-	constraint.Parent = v
 	v.Parent = parent
 	return v
+end
+local function layout(ui)
+	local area = ui.Root.AbsoluteSize
+	if area.X <= 0 or area.Y <= 0 then
+		return
+	end
+	ui.Metadata.Position = UDim2.fromOffset(area.X / 2 - 160, 0)
+	ui.Round.Position = UDim2.fromOffset(area.X / 2 - 66, 22)
+	ui.Scores.Position = UDim2.fromOffset(area.X - 138, 2)
+	ui.Styles.Position = UDim2.fromOffset(area.X - 66, 2)
+	local available = math.max(160, area.X - 318)
+	local width = math.min(360, available)
+	local x = 178 + (available - width) / 2
+	ui.Bag.Position = UDim2.fromOffset(x, area.Y - 48)
+	ui.Bag.Size = UDim2.fromOffset(width, 44)
+	for _, field in { ui.Message, ui.Tutorial } do
+		field.Position = UDim2.fromOffset(x, area.Y - 94)
+		field.Size = UDim2.fromOffset(width, 40)
+	end
 end
 function Hud.create()
 	local screen = Instance.new("ScreenGui")
@@ -34,7 +52,11 @@ function Hud.create()
 	screen.ClipToDeviceSafeArea = true
 	screen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	local initialTouchControls = GuiService.TouchControlsEnabled
+	local layoutConnection: RBXScriptConnection? = nil
 	screen.Destroying:Connect(function()
+		if layoutConnection then
+			layoutConnection:Disconnect()
+		end
 		GuiService.TouchControlsEnabled = initialTouchControls
 	end)
 	local root = Instance.new("Frame")
@@ -42,10 +64,13 @@ function Hud.create()
 	root.Size = UDim2.fromScale(1, 1)
 	root.BackgroundTransparency = 1
 	root.Parent = screen
-	local coins = box(root, "Coins", UDim2.new(0.02, 0, 0, 6), UDim2.new(0.27, 0, 0, 44))
-	local round = box(root, "Round", UDim2.new(0.32, 0, 0, 6), UDim2.new(0.36, 0, 0, 44))
-	local style = box(root, "Style", UDim2.new(0.71, 0, 0, 6), UDim2.new(0.27, 0, 0, 54))
-	for _, field in { coins, round, style } do
+	local coins = box(root, "Coins", UDim2.fromOffset(8, 0), UDim2.fromOffset(144, 22))
+	local save = box(root, "Save", UDim2.fromOffset(8, 24), UDim2.fromOffset(144, 20))
+	save.Visible = false
+	local metadata = box(root, "Metadata", UDim2.new(), UDim2.fromOffset(320, 20))
+	local round = box(root, "Round", UDim2.new(), UDim2.fromOffset(132, 30))
+	round.TextSize = 28
+	for _, field in { coins, save, metadata, round } do
 		field.BackgroundTransparency = 0
 	end
 	local bag = box(root, "Bag", UDim2.new(0.23, 0, 1, -48), UDim2.new(0.54, 0, 0, 44))
@@ -56,8 +81,8 @@ function Hud.create()
 	local button = Instance.new("TextButton")
 	button.Name = "Collect"
 	button.AnchorPoint = Vector2.new(1, 1)
-	button.Position = UDim2.fromScale(0.97, 0.94)
-	button.Size = UDim2.fromScale(0.2, 0.15)
+	button.Position = UDim2.new(1, -8, 1, -8)
+	button.Size = UDim2.fromOffset(120, 56)
 	button.BackgroundColor3 = Color3.fromRGB(240, 189, 75)
 	button.TextColor3 = Color3.fromRGB(25, 38, 47)
 	button.TextScaled = true
@@ -88,9 +113,10 @@ function Hud.create()
 		actionCorner.Parent = actionButton
 		return actionButton
 	end
-	style.Visible = false
-	local scores = action("Scores", "Scores", UDim2.new(0.73, 0, 0, 6), UDim2.new(0.12, 0, 0, 48))
-	local styles = action("Styles", "Styles", UDim2.new(0.86, 0, 0, 6), UDim2.new(0.12, 0, 0, 48))
+	local scores = action("Scores", "Scores", UDim2.new(), UDim2.fromOffset(66, 48))
+	local styles = action("Styles", "Styles", UDim2.new(), UDim2.fromOffset(58, 48))
+	scores.TextSize = 18
+	styles.TextSize = 18
 	local nextButton =
 		action("Next", "Next", UDim2.fromScale(0.31, 0.45), UDim2.new(0.38, 0, 0, 48))
 	local urgent = Instance.new("UIStroke")
@@ -100,11 +126,10 @@ function Hud.create()
 	urgent.Color = Color3.fromRGB(255, 70, 70)
 	urgent.Enabled = false
 	urgent.Parent = round
-	local stagePath = box(root, "StagePath", UDim2.new(0.08, 0, 0, 56), UDim2.new(0.84, 0, 0, 22))
-	stagePath.Text = "Toy Dash > Tech Run > Golden Rush"
-	return {
+	local ui = {
 		InitialTouchControls = initialTouchControls,
-		StagePath = stagePath,
+		Metadata = metadata,
+		Save = save,
 		Next = nextButton,
 		Styles = styles,
 		Scores = scores,
@@ -113,31 +138,47 @@ function Hud.create()
 		Root = root,
 		Coins = coins,
 		Round = round,
-		Style = style,
 		Bag = bag,
 		Message = message,
 		Tutorial = tutorial,
 		Collect = button,
 	}
+	layout(ui)
+	layoutConnection = root:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+		layout(ui)
+	end)
+	return ui
 end
 function Hud.update(ui, state, touch: boolean)
 	GuiService.TouchControlsEnabled = ui.InitialTouchControls
 		and state.phase ~= "results"
 		and state.phase ~= "summary"
-	local warning = string.sub(state.save, 1, 13) == "Not saved yet"
-	ui.Coins.Text = "COINS "
-		.. state.coins
-		.. "\n"
-		.. (if warning then "Not saved yet" else state.save)
+	local save = state.save or ""
+	local warning = string.sub(save, 1, 13) == "Not saved yet"
+	if ui.lastSave ~= save then
+		ui.lastSave = save
+		ui.savedUntil = os.clock() + 2
+	end
+	ui.Coins.Text = "COINS " .. state.coins
+	ui.Save.Text = if warning
+		then "Not saved yet"
+		elseif save == "Studio session only" then "Session only"
+		else save
+	ui.Save.Visible = save ~= "" and (save ~= "Saved" or os.clock() < ui.savedUntil)
 	local seconds = math.max(0, state.remaining)
-	ui.Round.Text = (state.stageName or "Toy Dash")
+	local stage = state.stage or 1
+	ui.Metadata.Text = (state.stageName or Catalog.stages[stage].name)
 		.. " | "
-		.. (state.stage or 1)
-		.. " / 3\n"
-		.. (if state.open
-			then (if state.warning then "RETURN TO BASE" else "WAREHOUSE OPEN")
-			else string.upper(state.phase or "Loading"))
-		.. string.format("  %d:%02d", math.floor(seconds / 60), seconds % 60)
+		.. stage
+		.. "/"
+		.. #Catalog.stages
+		.. " "
+		.. (
+			if state.open
+				then (if state.warning then "RETURN TO BASE" else "OPEN")
+				else string.upper(state.phase or "Loading")
+		)
+	ui.Round.Text = string.format("%d:%02d", math.floor(seconds / 60), seconds % 60)
 	ui.Bag.Text = "Weight "
 		.. tostring(state.cargoWeight or 0)
 		.. " / "
@@ -149,14 +190,17 @@ function Hud.update(ui, state, touch: boolean)
 		.. " / "
 		.. (state.totalItems or 30)
 	ui.Collect.Visible = touch and state.open and state.target ~= nil and state.ready
-	ui.Collect.Text = if state.tooHeavy then "Too heavy" else "Collect"
+	ui.Collect.Text = "Collect"
 	ui.Styles.Visible = state.ready and (state.inBase or not state.open)
 	ui.Scores.Visible = state.ready and state.phase == "active"
 	ui.Next.Visible = state.canNext == true
-	ui.Next.Text = if state.stage == 3
+	ui.Next.Text = if stage == #Catalog.stages
 		then "Finish match"
-		else "Next: " .. (if state.stage == 1 then "Tech Run" else "Golden Rush")
-	ui.Tutorial.Visible = not state.tutorial or not state.ready or warning or state.warning
+		else "Next: " .. (if Catalog.stages[stage + 1]
+			then Catalog.stages[stage + 1].name
+			else "")
+	ui.Tutorial.Visible = (not state.tutorial or not state.ready or warning)
+		and not ui.Message.Visible
 	ui.Tutorial.Text = if not state.ready
 		then state.save
 		elseif warning then state.save

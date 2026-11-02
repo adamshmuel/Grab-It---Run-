@@ -1,6 +1,16 @@
 --!strict
 local Prompt = {}
-type PromptUI = { Gui: ScreenGui, Label: TextLabel, Adornee: BasePart? }
+local TextService = game:GetService("TextService")
+type PromptUI = {
+	Gui: ScreenGui,
+	Label: TextLabel,
+	Adornee: BasePart?,
+	Rejection: UIStroke,
+	WarningUntil: number,
+	WarningTarget: BasePart?,
+	LastText: string?,
+	LastWidth: number?,
+}
 type PromptState = {
 	ready: boolean,
 	open: boolean,
@@ -29,12 +39,30 @@ function Prompt.create(parent: Instance): PromptUI
 	label.TextColor3 = Color3.fromRGB(25, 38, 47)
 	label.Font = Enum.Font.GothamBold
 	label.TextSize = 18
+	label.TextWrapped = true
 	label.Parent = gui
 	local corner = Instance.new("UICorner")
 	corner.CornerRadius = UDim.new(0, 8)
 	corner.Parent = label
+	local rejection = Instance.new("UIStroke")
+	rejection.Name = "Rejection"
+	rejection.Color = Color3.fromRGB(225, 65, 55)
+	rejection.Thickness = 3
+	rejection.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	rejection.Enabled = false
+	rejection.Parent = label
 	gui.Parent = parent
-	return { Gui = gui, Label = label, Adornee = nil }
+	return { Gui = gui, Label = label, Adornee = nil, Rejection = rejection, WarningUntil = 0 }
+end
+
+function Prompt.flash(ui: PromptUI): boolean
+	if not ui.Gui.Enabled or not ui.Adornee then
+		return false
+	end
+	ui.WarningUntil = os.clock() + 2
+	ui.WarningTarget = ui.Adornee
+	ui.Rejection.Enabled = true
+	return true
 end
 
 function Prompt.update(ui: PromptUI, state: PromptState, items: Instance?, touch: boolean): ()
@@ -47,6 +75,9 @@ function Prompt.update(ui: PromptUI, state: PromptState, items: Instance?, touch
 		else nil
 	ui.Adornee = if target and target:IsA("BasePart") then target else nil
 	ui.Gui.Enabled = ui.Adornee ~= nil
+	ui.Rejection.Enabled = state.tooHeavy == true
+		and ui.WarningTarget == ui.Adornee
+		and os.clock() < ui.WarningUntil
 	ui.Label.Text = (if state.targetName then state.targetName .. "\n" else "")
 		.. (if state.tooHeavy then "Too heavy" else (if touch then "Collect" else "Collect [E]"))
 		.. (if state.targetInfo then "\n" .. state.targetInfo else "")
@@ -56,8 +87,11 @@ function Prompt.placement(anchor: Vector2, size: Vector2, bounds): Vector2
 	local half = size / 2
 	local left = bounds.left + half.X + 8
 	local right = math.max(left, bounds.right - half.X - 8)
-	local first = math.clamp(anchor.X - size.X * 0.65, left, right)
-	local second = math.clamp(anchor.X + size.X * 0.65, left, right)
+	local span = bounds.right - bounds.left
+	local leftEnd = math.max(left, bounds.left + span * 0.32 - half.X - 4)
+	local rightStart = math.min(right, bounds.right - span * 0.32 + half.X + 4)
+	local first = math.clamp(anchor.X - size.X * 0.65, left, leftEnd)
+	local second = math.clamp(anchor.X + size.X * 0.65, rightStart, right)
 	local x = if math.abs(first - bounds.headX) > math.abs(second - bounds.headX)
 		then first
 		else second
@@ -80,6 +114,14 @@ function Prompt.place(ui: PromptUI, camera: Camera, bounds): ()
 	if point.Z <= 0 or not Prompt.lineOfSight(camera.CFrame.Position, target.Position, ignore) then
 		ui.Gui.Enabled = false
 		return
+	end
+	local width = math.max(120, math.min(220, math.floor((bounds.right - bounds.left) * 0.32) - 12))
+	if ui.LastText ~= ui.Label.Text or ui.LastWidth ~= width then
+		ui.LastText = ui.Label.Text
+		ui.LastWidth = width
+		local measured =
+			TextService:GetTextSize(ui.Label.Text, 18, ui.Label.Font, Vector2.new(width, 1000))
+		ui.Label.Size = UDim2.fromOffset(width, math.clamp(measured.Y + 12, 66, 88))
 	end
 	local size = Vector2.new(ui.Label.Size.X.Offset, ui.Label.Size.Y.Offset)
 	local placed = Prompt.placement(Vector2.new(point.X, point.Y), size, bounds)

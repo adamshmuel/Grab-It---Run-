@@ -44,7 +44,7 @@ local function currentTarget()
 	if not state or not center or not humanoid or humanoid.Health <= 0 then
 		return nil
 	end
-	return View.collectionTarget(Catalog.items(state.stage), state, center.Position)
+	return View.collectionTarget(Catalog.items(state.stage, state.layout), state, center.Position)
 end
 local function orientCamera(character)
 	local center = character:WaitForChild("HumanoidRootPart", 10)
@@ -127,6 +127,15 @@ table.insert(
 	connections,
 	root.Notice.OnClientEvent:Connect(function(text, kind)
 		play(kind)
+		if
+			text == "Too heavy"
+			and state
+			and state.tooHeavy
+			and displayedTarget == state.target
+			and TargetPrompt.flash(targetPrompt)
+		then
+			return
+		end
 		if kind ~= "collect" then
 			message(text, if kind == "lost" or kind == "style" then 3 else 2, kind)
 		end
@@ -185,7 +194,9 @@ local function render()
 		then player.Character:FindFirstChild("HumanoidRootPart")
 		else nil
 	display.inBase = center ~= nil and center.Position.Z <= 0
-	local item = if displayedTarget then Catalog.items(state.stage)[displayedTarget] else nil
+	local item = if displayedTarget
+		then Catalog.items(state.stage, state.layout)[displayedTarget]
+		else nil
 	display.tooHeavy = state.tooHeavy and displayedTarget == state.target
 	if item then
 		display.targetName = if item.special then "MYSTERY" else item.name
@@ -204,7 +215,13 @@ local function render()
 	Scores.update(scores, state, tostring(player.UserId))
 	results.Panel.Visible = results.Panel.Visible and not collection.Panel.Visible
 	local world = workspace:FindFirstChild("GrabItWorld")
-	local items = if world and world:GetAttribute("Stage") == state.stage
+	local items = if world
+			and world:GetAttribute("Stage") == state.stage
+			and world:GetAttribute("LayoutVariant") == (if state.layout
+				then state.layout.variant
+				else 0)
+			and world:GetAttribute("LayoutFlips")
+				== (if state.layout then state.layout.flips else 0)
 		then world:FindFirstChild("Items")
 		else nil
 	TargetPrompt.update(targetPrompt, display, items, UserInputService.TouchEnabled)
@@ -215,7 +232,7 @@ local function render()
 		TargetPrompt.place(targetPrompt, camera, {
 			left = 0,
 			right = camera.ViewportSize.X,
-			top = inset.Y + ui.StagePath.AbsolutePosition.Y + ui.StagePath.AbsoluteSize.Y,
+			top = inset.Y + ui.Round.AbsolutePosition.Y + ui.Round.AbsoluteSize.Y,
 			bottom = inset.Y + (if ui.Tutorial.Visible
 				then ui.Tutorial.AbsolutePosition.Y
 				else ui.Bag.AbsolutePosition.Y),
@@ -280,7 +297,6 @@ table.insert(
 		nextState.collected = Wire.unpackCollected(nextState.collected)
 		state = nextState
 		if state.warning and not previousWarning then
-			message("Return to base", 3)
 			play("warning")
 		end
 		if state.open and previousOpen == false then
@@ -304,8 +320,8 @@ table.insert(
 table.insert(connections, UserInputService:GetPropertyChangedSignal("TouchEnabled"):Connect(render))
 ui.Coins.Text = "Loading progress"
 ui.Tutorial.Text = "Connecting to warehouse"
-ui.Round.Text = "GRAB IT & RUN"
-ui.Style.Text = ""
+ui.Round.Text = "--:--"
+ui.Metadata.Text = "Connecting"
 ui.Bag.Text = "Weight 0 / 10"
 root.Action:FireServer("ready")
 table.insert(

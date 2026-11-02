@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-01",
+  "scope": "Document rendering only, not Roblox HUD or asset acceptance",
+  "views": [
+    {
+      "file": "reading-overview-before-entities.png",
+      "result": "Rejected: automatic RDoc entity links corrupted by bidi wrapping",
+      "sha256": "f9a8c72f0d1ee405fa710e6aecaa0919b2b017a88f5d1d0f79fbb56bcda4defd"
+    },
+    {
+      "file": "reading-overview-rtl.png",
+      "result": "Scoped pass: Hebrew title, paragraphs and overview table at 1440px",
+      "sha256": "44cc09d19ef81ad7ba57f5ee7e00315bc89a665c13bcc34a60f53a650c7483f0"
+    },
+    {
+      "file": "reading-stage4-table-rtl.png",
+      "result": "Scoped pass: faithful HTML excerpt of stage 4 table and stage 5 heading at 1440px; full stage 5 table not covered",
+      "sha256": "3777f02c97fdd616964423b74edf29e0f8dacb03b24b7ff5c8c167f15956d5d5"
+    }
+  ],
+  "nativePlanning": {
+    "date": "2026-11-01",
+    "studioId": "69762bb5-6312-408f-9f54-1fb8742f02c4",
+    "place": 107553743507220,
+    "universe": 10774185320,
+    "actualViewport": [
+      1083,
+      592
+    ],
+    "actualTouchEnabled": false,
+    "profiles": [
+      [
+        706,
+        281
+      ],
+      [
+        640,
+        281
+      ]
+    ],
+    "scope": "One native solo with temporary GUI, placeholder input areas and synthetic text. No gameplay or mobile device acceptance. Temporary native model previews, not production assets."
+  },
+  "nativeFiles": [
+    {
+      "file": "native-layout-640-final-planning.jpg",
+      "sha256": "0dfa8f84ee319ec7962c8350a8c98e3a1d4a15fa4977abc2a4f087e89d2ff0e8",
+      "scope": "See research report for planning-only limits"
+    },
+    {
+      "file": "native-layout-640-special-planning.jpg",
+      "sha256": "b10a414e35d8b82bca5d1d0093b6966fb9359dbf28564c5ccd1739ac3db809fb",
+      "scope": "See research report for planning-only limits"
+    },
+    {
+      "file": "native-layout-706-final-planning.jpg",
+      "sha256": "a9e10afc5001c67652f6e49bee075c57ef0a3ecb93858efd7f189911266755f3",
+      "scope": "See research report for planning-only limits"
+    },
+    {
+      "file": "native-layout-706-planning.jpg",
+      "sha256": "324bd73ef6203791d9104230b3a59668b4d9f4de8e8afc034c8a92e800386076",
+      "scope": "See research report for planning-only limits"
+    },
+    {
+      "file": "native-layout-measurements.json",
+      "sha256": "31f7c39d9743d87f6cff4fdf0554204c5025eebfe0c1f7c4ba277e533ea36e33",
+      "scope": "See research report for planning-only limits"
+    },
+    {
+      "file": "native-shape-proposals.json",
+      "sha256": "f24dbf5d97cac21f306976017e303a63e481c038e72aef9a173abba733aab728",
+      "scope": "See research report for planning-only limits"
+    },
+    {
+      "file": "native-shapes-faceted-proposal.jpg",
+      "sha256": "fc518822de1381bce83947ea3f755748970d21576e0f6fe9cef775b2edc48ddf",
+      "scope": "See research report for planning-only limits"
+    },
+    {
+      "file": "native-shapes-rounded-nose-rejected.jpg",
+      "sha256": "c94ac76153f74479c3ab1210c1a2482d6b7625e232eed2a469c9b2c8eb3a4e67",
+      "scope": "Rejected prototype"
+    },
+    {
+      "file": "native-shapes-stepped-nose-rejected.jpg",
+      "sha256": "8e890e7a2ada40f5d9d9872e41ae1950f1f344035df9b8aea44bab9cf4a6785a",
+      "scope": "Rejected prototype"
+    }
+  ],
+  "cleanup": {
+    "nativeMode": "Edit",
+    "temporaryGuiAndModelsRemoved": true,
+    "originalHudRestored": true,
+    "onePlayer": true,
+    "rojoStopped": true,
+    "port34872Listening": false
+  }
+}

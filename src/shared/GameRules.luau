@@ -10,6 +10,7 @@ export type PlayerState = {
 	banked: { [number]: boolean },
 	roundId: number,
 	stage: number,
+	layout: Catalog.Layout?,
 	tutorial: boolean,
 	stageScore: number,
 	bankedCount: number,
@@ -38,7 +39,7 @@ function Rules.newPlayer(coins: number?, tutorial: boolean?): PlayerState
 		bankedCount = 0,
 		matchPoints = 0,
 		runEarnings = 0,
-		stageEarnings = { 0, 0, 0 },
+		stageEarnings = table.create(#Catalog.stages, 0),
 		ranked = false,
 		eligible = false,
 		owned = { basic = true },
@@ -46,7 +47,13 @@ function Rules.newPlayer(coins: number?, tutorial: boolean?): PlayerState
 		revision = 0,
 	}
 end
-function Rules.beginStage(p: PlayerState, stage: number, roundId: number): ()
+function Rules.beginStage(
+	p: PlayerState,
+	stage: number,
+	roundId: number,
+	layout: Catalog.Layout?
+): ()
+	p.layout = layout
 	p.stage = stage
 	p.roundId = roundId
 	p.cargo = {}
@@ -59,7 +66,7 @@ end
 function Rules.weight(p: PlayerState): number
 	local total = 0
 	for _, id in p.cargo do
-		total += Catalog.items(p.stage)[id].weight
+		total += Catalog.items(p.stage, p.layout)[id].weight
 	end
 	return total
 end
@@ -69,14 +76,14 @@ end
 function Rules.value(p: PlayerState): number
 	local total = 0
 	for _, id in p.cargo do
-		total += Catalog.items(p.stage)[id].value
+		total += Catalog.items(p.stage, p.layout)[id].value
 	end
 	return total
 end
 function Rules.cargoDisplay(p: PlayerState): { weight: string, value: string, hidden: boolean }
 	local w, v, hidden = 0, 0, false
 	for _, id in p.cargo do
-		local item = Catalog.items(p.stage)[id]
+		local item = Catalog.items(p.stage, p.layout)[id]
 		if item.special then
 			hidden = true
 		else
@@ -96,7 +103,7 @@ function Rules.collect(
 	open: boolean,
 	distance: number
 ): boolean
-	local items = Catalog.items(p.stage)
+	local items = Catalog.items(p.stage, p.layout)
 	if
 		not open
 		or distance ~= distance
@@ -121,7 +128,7 @@ function Rules.bank(p: PlayerState, elapsed: number?): (number, number)
 	for _, id in p.cargo do
 		p.banked[id] = true
 		p.bankedCount += 1
-		local item = Catalog.items(p.stage)[id]
+		local item = Catalog.items(p.stage, p.layout)[id]
 		if item.special then
 			special = item.value
 		end
@@ -135,7 +142,7 @@ function Rules.bank(p: PlayerState, elapsed: number?): (number, number)
 		p.revision += 1
 	end
 	table.clear(p.cargo)
-	if p.bankedCount == #Catalog.items(p.stage) and not p.finishTime then
+	if p.bankedCount == #Catalog.items(p.stage, p.layout) and not p.finishTime then
 		p.finishTime = math.round((elapsed or 0) * 100) / 100
 	end
 	return value, special

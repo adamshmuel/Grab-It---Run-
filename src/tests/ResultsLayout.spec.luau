@@ -30,7 +30,7 @@ return function(): number
 				mode = "multi",
 				remaining = 5,
 				rows = rows,
-				personal = { earnings = 433, stages = { 433, 0, 0 } },
+				personal = { earnings = 433, stages = { 433, 0, 0, 0, 0 } },
 			}, "1")
 			task.wait()
 			local lastRow = results.Rows[8][3]
@@ -52,6 +52,26 @@ return function(): number
 				"Scores and finish times must fit"
 			)
 		end
+		R.update(results, { phase = "results", stage = 4, mode = "solo", remaining = 5 }, "1")
+		assert(
+			results.Footer.Text == "Next: Space Sprint | Capacity 26",
+			"Fourth stage advertises final stage"
+		)
+		R.update(results, {
+			phase = "summary",
+			stage = 5,
+			mode = "solo",
+			remaining = 10,
+			personal = { earnings = 150, stages = { 10, 20, 30, 40, 50 } },
+		}, "1")
+		for stage = 1, 5 do
+			assert(
+				results.Rows[stage][1].Visible
+					and results.Rows[stage][3].Text == tostring(stage * 10),
+				"Five personal earnings rows"
+			)
+		end
+		assert(results.Rows[5][2].Text == "Space Sprint", "Final stage name")
 	end)
 	ui.Screen:Destroy()
 	clone:Destroy()

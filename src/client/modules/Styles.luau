@@ -4,6 +4,73 @@ local shared = script.Parent.Parent.Shared
 local Cosmetics = require(shared.Cosmetics)
 local Gear = require(shared.Gear)
 local Styles = {}
+local function fitPreview(preview: ViewportFrame, model: Model, camera: Camera)
+	local area = preview.AbsoluteSize
+	if area.X <= 0 or area.Y <= 0 then
+		return
+	end
+	local bounds, size = model:GetBoundingBox()
+	local center = bounds.Position
+	local direction = Vector3.new(3, 1.4, -4).Unit
+	local rotation = CFrame.lookAt(direction, Vector3.zero).Rotation
+	local vertical = math.tan(math.rad(camera.FieldOfView / 2))
+	local horizontal = vertical * area.X / area.Y
+	local distance = 0.5
+	for _, x in { -1, 1 } do
+		for _, y in { -1, 1 } do
+			for _, z in { -1, 1 } do
+				local corner = bounds:PointToWorldSpace(size * Vector3.new(x, y, z) / 2)
+				local point = rotation:VectorToObjectSpace(corner - center)
+				distance = math.max(
+					distance,
+					point.Z + math.abs(point.X) / (horizontal * 0.88),
+					point.Z + math.abs(point.Y) / (vertical * 0.88)
+				)
+			end
+		end
+	end
+	camera.CFrame = CFrame.lookAt(center + direction * distance, center)
+end
+local function updateStatus(ui, state)
+	local style = if ui.errorStyle then Cosmetics.get(ui.errorStyle) else nil
+	if
+		style
+		and (os.clock() >= ui.errorUntil or state.coins >= style.price or state.owned[style.id])
+	then
+		ui.errorStyle = nil
+	end
+	local pending = state.purchase or ""
+	ui.Status.Text = if pending ~= ""
+		then pending
+		elseif ui.errorStyle then "Not enough Coins."
+		else ""
+end
+function Styles.activate(ui, id: string)
+	local state = ui.state
+	local style = Cosmetics.get(id)
+	if
+		not style
+		or not state
+		or not state.ready
+		or not ui.Panel.Visible
+		or not (state.inBase or not state.open)
+	then
+		return
+	end
+	if state.owned[id] then
+		ui.errorStyle = nil
+		ui.Request("equip", id)
+	elseif (state.purchase or "") == "" then
+		if state.coins >= style.price then
+			ui.errorStyle = nil
+			ui.Request("buy", id)
+		else
+			ui.errorStyle = id
+			ui.errorUntil = os.clock() + 3
+		end
+	end
+	updateStatus(ui, state)
+end
 function Styles.create(parent: Instance, request: (string, string) -> ())
 	local panel = Ui.panel(parent, "StyleCollection")
 	panel.ZIndex = 30
@@ -22,7 +89,17 @@ function Styles.create(parent: Instance, request: (string, string) -> ())
 		Cards = cards,
 		state = nil,
 		Connections = connections,
+		Request = request,
 	}
+	table.insert(
+		connections,
+		panel:GetPropertyChangedSignal("Visible"):Connect(function()
+			if not panel.Visible then
+				ui.errorStyle = nil
+				ui.Status.Text = if ui.state then ui.state.purchase or "" else ""
+			end
+		end)
+	)
 	table.insert(
 		connections,
 		close.Activated:Connect(function()
@@ -54,21 +131,20 @@ function Styles.create(parent: Instance, request: (string, string) -> ())
 		camera.FieldOfView = 42
 		camera.Parent = preview
 		preview.CurrentCamera = camera
+		fitPreview(preview, model, camera)
+		table.insert(
+			connections,
+			preview:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+				fitPreview(preview, model, camera)
+			end)
+		)
 		local button =
 			Ui.label(card, "Action", UDim2.new(0, 0, 1, -48), UDim2.new(1, 0, 0, 48), "", true)
 		cards[i] = { Button = button, Preview = preview }
 		table.insert(
 			connections,
 			button.Activated:Connect(function()
-				local state = ui.state
-				if not state or not state.ready or not (state.inBase or not state.open) then
-					return
-				end
-				if state.owned[style.id] then
-					request("equip", style.id)
-				elseif state.purchase == "" and state.coins >= style.price then
-					request("buy", style.id)
-				end
+				Styles.activate(ui, style.id)
 			end)
 		)
 	end
@@ -99,7 +175,10 @@ function Styles.update(ui, state)
 			else Color3.fromRGB(113, 81, 40)
 	end
 	ui.Title.Text = "Styles | Coins " .. state.coins .. (if all then " | All designs owned" else "")
-	ui.Status.Text = state.purchase or ""
+	if not ui.Panel.Visible then
+		ui.errorStyle = nil
+	end
+	updateStatus(ui, state)
 end
 function Styles.destroy(ui)
 	for _, c in ui.Connections do

@@ -49,6 +49,17 @@ return function(): number
 			assert(pos.Y - 33 >= 136 and pos.Y + 33 <= 291, "Prompt stays between the HUD rows")
 			assert(math.abs(pos.X - 353) >= 130, "Prompt leaves the avatar head clear")
 		end
+		local placed = Prompt.placement(Vector2.new(353, 150), Vector2.new(211, 66), {
+			left = 0,
+			right = 706,
+			top = 52,
+			bottom = 230,
+			headX = 353,
+		})
+		assert(
+			placed.X + 105.5 <= 706 * 0.32 or placed.X - 105.5 >= 706 * 0.68,
+			"Target information stays outside the central gameplay area"
+		)
 		assert(Prompt.lineOfSight, "Prompt needs an explicit opaque-wall visibility check")
 		local wall = Instance.new("Part")
 		wall.Anchored = true

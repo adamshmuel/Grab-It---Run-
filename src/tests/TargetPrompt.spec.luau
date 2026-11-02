@@ -56,9 +56,16 @@ return function()
 			ui.Gui.Enabled and ui.Label.Text == "Too heavy",
 			"overweight explains unavailable action"
 		)
+		assert(Prompt.flash(ui), "A visible rejection flashes the existing prompt")
+		Prompt.update(ui, state, items, true)
+		assert(
+			ui.Rejection.Enabled,
+			"Weight rejection highlights the prompt without another banner"
+		)
 		state.tooHeavy = false
 		Prompt.update(ui, state, items, true)
 		assert(ui.Label.Text == "Collect", "touch prompt does not ask for a keyboard")
+		assert(not ui.Rejection.Enabled, "A valid action clears rejection highlighting")
 	end)
 	fresh:Destroy()
 	owner:Destroy()
