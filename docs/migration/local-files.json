@@ -1,10 +1,11 @@
 {
-  "date": "2026-11-02",
-  "branch": "codex/v1-improvements",
-  "sourceCommit": "897bedf",
+  "date": "2026-11-05",
+  "branch": "main",
+  "sourceCommit": "87cb194",
   "ruleCommit": "173e7d4",
   "remoteHeadsChecked": {
-    "main": "751530063c75d2178c665b983e602628a6133a0a"
+    "main": "87cb1944c70e22223241c661abee34ba1da5444b",
+    "codex/v1-improvements": "87cb1944c70e22223241c661abee34ba1da5444b"
   },
   "trackedSkillFiles": 72,
   "projectSkills": 14,
@@ -154,7 +155,7 @@
     }
   ],
   "referencePolicy": "Required research and visual-validation dependencies are tracked; Adam approved 2026-10-26.",
-  "remoteHeadsCheckScope": "Historical check before the migration commits; not refreshed after user pushes.",
+  "remoteHeadsCheckScope": "Read-only GitHub heads verification on 2026-11-05 before the saved-place packaging commit; Adam must push this additional commit.",
   "originalLocalBackupCopies": [
     {
       "path": "GrabItV1_DesktopMobile.rbxl",
@@ -181,17 +182,17 @@
   },
   "workingFile": {
     "path": "build/GrabItV1_DesktopMobile.rbxlx",
-    "size": 452266,
-    "sha256": "9db76d85a7514610a1fc876d602806b1c2ca1fb075a8541f77568938db85800d",
+    "size": 486627,
+    "sha256": "8b90ffc755189fd2ad4a465c2f1e9a53761a3d7acfd0985abb55a0d2d20a13f9",
     "transfer": "git",
     "purpose": "current saved working place; preserve unmanaged Studio content",
-    "sourceMatches": 35,
-    "sourceComparison": "35 saved sources match current local files; 24 differ and StageVariety.spec is absent. Preserve saved unmanaged content; sync current sources through Rojo before gameplay. See working-file-audit-2026-11-02.json."
+    "sourceMatches": 60,
+    "sourceComparison": "60 of 61 saved sources match current local files; saved World predates the committed marker-color fix. No missing source. Preserve saved unmanaged content and use Rojo before gameplay from this disk snapshot. See working-file-audit-2026-11-05.json."
   },
   "portableSnapshot": {
-    "date": "2026-11-02",
-    "baseCommit": "799663d",
-    "branch": "codex/v1-improvements",
+    "date": "2026-11-05",
+    "baseCommit": "87cb194",
+    "branch": "main",
     "requiredRojoSourcesTracked": true,
     "referenceFilesVerified": 19,
     "backupVerified": true,
@@ -199,5 +200,5 @@
     "machineSetup": "Studio, pinned tools, account sign-in and MCP connection must be set up per computer; do not commit credentials or machine-specific tool binaries.",
     "workingSourcesNeedRojoSync": true
   },
-  "currentWorkingFileAudit": "docs/migration/working-file-audit-2026-11-02.json"
+  "currentWorkingFileAudit": "docs/migration/working-file-audit-2026-11-05.json"
 }

@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-05",
+  "path": "build/GrabItV1_DesktopMobile.rbxlx",
+  "size": 486627,
+  "sha256": "8b90ffc755189fd2ad4a465c2f1e9a53761a3d7acfd0985abb55a0d2d20a13f9",
+  "comparedToSourceCommit": "87cb1944c70e22223241c661abee34ba1da5444b",
+  "savedScriptCount": 61,
+  "matchingLocalSources": 60,
+  "differentLocalSources": ["src/server/modules/World.luau"],
+  "missingLocalSources": [],
+  "addedInstancePathsSincePreviousTrackedSave": [
+    "ServerStorage.GrabItTests.CargoMarkerColors.spec",
+    "ServerStorage.GrabItTests.StageVariety.spec"
+  ],
+  "removedInstancePathsSincePreviousTrackedSave": [],
+  "temporaryFixtureOrActiveQARunnerPaths": [],
+  "comparison": "Read-only XML comparison by full instance path against default.project.json and local Luau files. The saved World source predates the floor-marker color fix; canonical local World is newer. Preserve Adam's exact saved bytes and unmanaged content. Sync local sources through Rojo before using this disk snapshot for gameplay. No Studio launch, save, rebuild, source replacement, publish or push performed for this packaging task.",
+  "scope": "Preservation of Adam's saved working place for his next push; not a new gameplay or visual acceptance result"
+}

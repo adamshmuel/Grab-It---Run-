@@ -26,19 +26,21 @@
 			<token name="IKControlConstraintSupport">0</token>
 			<token name="ImprovedAnimationConstraint">0</token>
 			<token name="ImprovedPhysicsReplication">0</token>
+			<token name="InputSinkEnabled">0</token>
 			<token name="LayeredClothingCacheOptimizations">0</token>
 			<token name="LuauTypeCheckMode">0</token>
 			<token name="MapTVRemoteToGamepadKeycodes">0</token>
 			<token name="MeshPartHeadsAndAccessories">0</token>
 			<token name="MeshStreamingAndImprovedLods">0</token>
 			<token name="ModelStreamingBehavior">0</token>
+			<token name="NextGenerationPhysicsSolver">0</token>
 			<token name="NextGenerationReplication">0</token>
+			<token name="ParticlesUseDynamicWind">0</token>
 			<token name="PathfindingUseImprovedSearch">0</token>
 			<token name="PhysicsSteppingMethod">0</token>
 			<token name="PlayerCharacterDestroyBehavior">0</token>
 			<token name="PlayerScriptsUseInputActionSystem">0</token>
 			<token name="PredictiveStreamingMode">0</token>
-			<token name="PrimalPhysicsSolver">0</token>
 			<token name="RejectCharacterDeletions">0</token>
 			<token name="RenderingCacheOptimizations">0</token>
 			<token name="ReplicateInstanceDestroySetting">0</token>
@@ -57,7 +59,6 @@
 			<token name="TouchEventsUseCollisionGroups">0</token>
 			<bool name="TouchesUseCollisionGroups">false</bool>
 			<token name="UseFixedSimulation">0</token>
-			<token name="UseInputSink">0</token>
 			<token name="UseNewLuauTypeSolver">1</token>
 			<token name="ValidateEnabledProximityPrompt">0</token>
 			<bool name="AutoSimulate">true</bool>
@@ -876,7 +877,7 @@ local function currentTarget()
 	if not state or not center or not humanoid or humanoid.Health <= 0 then
 		return nil
 	end
-	return View.collectionTarget(Catalog.items(state.stage), state, center.Position)
+	return View.collectionTarget(Catalog.items(state.stage, state.layout), state, center.Position)
 end
 local function orientCamera(character)
 	local center = character:WaitForChild("HumanoidRootPart", 10)
@@ -959,6 +960,15 @@ table.insert(
 	connections,
 	root.Notice.OnClientEvent:Connect(function(text, kind)
 		play(kind)
+		if
+			text == "Too heavy"
+			and state
+			and state.tooHeavy
+			and displayedTarget == state.target
+			and TargetPrompt.flash(targetPrompt)
+		then
+			return
+		end
 		if kind ~= "collect" then
 			message(text, if kind == "lost" or kind == "style" then 3 else 2, kind)
 		end
@@ -1017,7 +1027,9 @@ local function render()
 		then player.Character:FindFirstChild("HumanoidRootPart")
 		else nil
 	display.inBase = center ~= nil and center.Position.Z <= 0
-	local item = if displayedTarget then Catalog.items(state.stage)[displayedTarget] else nil
+	local item = if displayedTarget
+		then Catalog.items(state.stage, state.layout)[displayedTarget]
+		else nil
 	display.tooHeavy = state.tooHeavy and displayedTarget == state.target
 	if item then
 		display.targetName = if item.special then "MYSTERY" else item.name
@@ -1036,7 +1048,13 @@ local function render()
 	Scores.update(scores, state, tostring(player.UserId))
 	results.Panel.Visible = results.Panel.Visible and not collection.Panel.Visible
 	local world = workspace:FindFirstChild("GrabItWorld")
-	local items = if world and world:GetAttribute("Stage") == state.stage
+	local items = if world
+			and world:GetAttribute("Stage") == state.stage
+			and world:GetAttribute("LayoutVariant") == (if state.layout
+				then state.layout.variant
+				else 0)
+			and world:GetAttribute("LayoutFlips")
+				== (if state.layout then state.layout.flips else 0)
 		then world:FindFirstChild("Items")
 		else nil
 	TargetPrompt.update(targetPrompt, display, items, UserInputService.TouchEnabled)
@@ -1047,7 +1065,7 @@ local function render()
 		TargetPrompt.place(targetPrompt, camera, {
 			left = 0,
 			right = camera.ViewportSize.X,
-			top = inset.Y + ui.StagePath.AbsolutePosition.Y + ui.StagePath.AbsoluteSize.Y,
+			top = inset.Y + ui.Round.AbsolutePosition.Y + ui.Round.AbsoluteSize.Y,
 			bottom = inset.Y + (if ui.Tutorial.Visible
 				then ui.Tutorial.AbsolutePosition.Y
 				else ui.Bag.AbsolutePosition.Y),
@@ -1112,7 +1130,6 @@ table.insert(
 		nextState.collected = Wire.unpackCollected(nextState.collected)
 		state = nextState
 		if state.warning and not previousWarning then
-			message("Return to base", 3)
 			play("warning")
 		end
 		if state.open and previousOpen == false then
@@ -1136,8 +1153,8 @@ table.insert(
 table.insert(connections, UserInputService:GetPropertyChangedSignal("TouchEnabled"):Connect(render))
 ui.Coins.Text = "Loading progress"
 ui.Tutorial.Text = "Connecting to warehouse"
-ui.Round.Text = "GRAB IT & RUN"
-ui.Style.Text = ""
+ui.Round.Text = "--:--"
+ui.Metadata.Text = "Connecting"
 ui.Bag.Text = "Weight 0 / 10"
 root.Action:FireServer("ready")
 table.insert(
@@ -1551,6 +1568,7 @@ table.insert(
 						<Content name="LinkedSource"><null></null></Content>
 						<ProtectedString name="Source"><![CDATA[--!strict
 local GuiService = game:GetService("GuiService")
+local Catalog = require(script.Parent.Parent.Shared.Catalog)
 local Hud = {}
 local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): TextLabel
 	local v = Instance.new("TextLabel")
@@ -1560,7 +1578,9 @@ local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): Tex
 	v.BackgroundColor3 = Color3.fromRGB(20, 33, 45)
 	v.BackgroundTransparency = 0.12
 	v.TextColor3 = Color3.fromRGB(237, 242, 237)
-	v.TextScaled = true
+	v.TextScaled = false
+	v.TextSize = 18
+	v.Text = ""
 	v.Font = Enum.Font.GothamBold
 	v.TextWrapped = true
 	local corner = Instance.new("UICorner")
@@ -1570,12 +1590,27 @@ local function box(parent: Instance, name: string, pos: UDim2, size: UDim2): Tex
 	padding.PaddingLeft = UDim.new(0, 8)
 	padding.PaddingRight = UDim.new(0, 8)
 	padding.Parent = v
-	local constraint = Instance.new("UITextSizeConstraint")
-	constraint.MinTextSize = 18
-	constraint.MaxTextSize = 21
-	constraint.Parent = v
 	v.Parent = parent
 	return v
+end
+local function layout(ui)
+	local area = ui.Root.AbsoluteSize
+	if area.X <= 0 or area.Y <= 0 then
+		return
+	end
+	ui.Metadata.Position = UDim2.fromOffset(area.X / 2 - 160, 0)
+	ui.Round.Position = UDim2.fromOffset(area.X / 2 - 66, 22)
+	ui.Scores.Position = UDim2.fromOffset(area.X - 138, 2)
+	ui.Styles.Position = UDim2.fromOffset(area.X - 66, 2)
+	local available = math.max(160, area.X - 318)
+	local width = math.min(360, available)
+	local x = 178 + (available - width) / 2
+	ui.Bag.Position = UDim2.fromOffset(x, area.Y - 48)
+	ui.Bag.Size = UDim2.fromOffset(width, 44)
+	for _, field in { ui.Message, ui.Tutorial } do
+		field.Position = UDim2.fromOffset(x, area.Y - 94)
+		field.Size = UDim2.fromOffset(width, 40)
+	end
 end
 function Hud.create()
 	local screen = Instance.new("ScreenGui")
@@ -1585,7 +1620,11 @@ function Hud.create()
 	screen.ClipToDeviceSafeArea = true
 	screen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	local initialTouchControls = GuiService.TouchControlsEnabled
+	local layoutConnection: RBXScriptConnection? = nil
 	screen.Destroying:Connect(function()
+		if layoutConnection then
+			layoutConnection:Disconnect()
+		end
 		GuiService.TouchControlsEnabled = initialTouchControls
 	end)
 	local root = Instance.new("Frame")
@@ -1593,10 +1632,13 @@ function Hud.create()
 	root.Size = UDim2.fromScale(1, 1)
 	root.BackgroundTransparency = 1
 	root.Parent = screen
-	local coins = box(root, "Coins", UDim2.new(0.02, 0, 0, 6), UDim2.new(0.27, 0, 0, 44))
-	local round = box(root, "Round", UDim2.new(0.32, 0, 0, 6), UDim2.new(0.36, 0, 0, 44))
-	local style = box(root, "Style", UDim2.new(0.71, 0, 0, 6), UDim2.new(0.27, 0, 0, 54))
-	for _, field in { coins, round, style } do
+	local coins = box(root, "Coins", UDim2.fromOffset(8, 0), UDim2.fromOffset(144, 22))
+	local save = box(root, "Save", UDim2.fromOffset(8, 24), UDim2.fromOffset(144, 20))
+	save.Visible = false
+	local metadata = box(root, "Metadata", UDim2.new(), UDim2.fromOffset(320, 20))
+	local round = box(root, "Round", UDim2.new(), UDim2.fromOffset(132, 30))
+	round.TextSize = 28
+	for _, field in { coins, save, metadata, round } do
 		field.BackgroundTransparency = 0
 	end
 	local bag = box(root, "Bag", UDim2.new(0.23, 0, 1, -48), UDim2.new(0.54, 0, 0, 44))
@@ -1607,8 +1649,8 @@ function Hud.create()
 	local button = Instance.new("TextButton")
 	button.Name = "Collect"
 	button.AnchorPoint = Vector2.new(1, 1)
-	button.Position = UDim2.fromScale(0.97, 0.94)
-	button.Size = UDim2.fromScale(0.2, 0.15)
+	button.Position = UDim2.new(1, -8, 1, -8)
+	button.Size = UDim2.fromOffset(120, 56)
 	button.BackgroundColor3 = Color3.fromRGB(240, 189, 75)
 	button.TextColor3 = Color3.fromRGB(25, 38, 47)
 	button.TextScaled = true
@@ -1639,9 +1681,10 @@ function Hud.create()
 		actionCorner.Parent = actionButton
 		return actionButton
 	end
-	style.Visible = false
-	local scores = action("Scores", "Scores", UDim2.new(0.73, 0, 0, 6), UDim2.new(0.12, 0, 0, 48))
-	local styles = action("Styles", "Styles", UDim2.new(0.86, 0, 0, 6), UDim2.new(0.12, 0, 0, 48))
+	local scores = action("Scores", "Scores", UDim2.new(), UDim2.fromOffset(66, 48))
+	local styles = action("Styles", "Styles", UDim2.new(), UDim2.fromOffset(58, 48))
+	scores.TextSize = 18
+	styles.TextSize = 18
 	local nextButton =
 		action("Next", "Next", UDim2.fromScale(0.31, 0.45), UDim2.new(0.38, 0, 0, 48))
 	local urgent = Instance.new("UIStroke")
@@ -1651,11 +1694,10 @@ function Hud.create()
 	urgent.Color = Color3.fromRGB(255, 70, 70)
 	urgent.Enabled = false
 	urgent.Parent = round
-	local stagePath = box(root, "StagePath", UDim2.new(0.08, 0, 0, 56), UDim2.new(0.84, 0, 0, 22))
-	stagePath.Text = "Toy Dash > Tech Run > Golden Rush"
-	return {
+	local ui = {
 		InitialTouchControls = initialTouchControls,
-		StagePath = stagePath,
+		Metadata = metadata,
+		Save = save,
 		Next = nextButton,
 		Styles = styles,
 		Scores = scores,
@@ -1664,31 +1706,47 @@ function Hud.create()
 		Root = root,
 		Coins = coins,
 		Round = round,
-		Style = style,
 		Bag = bag,
 		Message = message,
 		Tutorial = tutorial,
 		Collect = button,
 	}
+	layout(ui)
+	layoutConnection = root:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+		layout(ui)
+	end)
+	return ui
 end
 function Hud.update(ui, state, touch: boolean)
 	GuiService.TouchControlsEnabled = ui.InitialTouchControls
 		and state.phase ~= "results"
 		and state.phase ~= "summary"
-	local warning = string.sub(state.save, 1, 13) == "Not saved yet"
-	ui.Coins.Text = "COINS "
-		.. state.coins
-		.. "\n"
-		.. (if warning then "Not saved yet" else state.save)
+	local save = state.save or ""
+	local warning = string.sub(save, 1, 13) == "Not saved yet"
+	if ui.lastSave ~= save then
+		ui.lastSave = save
+		ui.savedUntil = os.clock() + 2
+	end
+	ui.Coins.Text = "COINS " .. state.coins
+	ui.Save.Text = if warning
+		then "Not saved yet"
+		elseif save == "Studio session only" then "Session only"
+		else save
+	ui.Save.Visible = save ~= "" and (save ~= "Saved" or os.clock() < ui.savedUntil)
 	local seconds = math.max(0, state.remaining)
-	ui.Round.Text = (state.stageName or "Toy Dash")
+	local stage = state.stage or 1
+	ui.Metadata.Text = (state.stageName or Catalog.stages[stage].name)
 		.. " | "
-		.. (state.stage or 1)
-		.. " / 3\n"
-		.. (if state.open
-			then (if state.warning then "RETURN TO BASE" else "WAREHOUSE OPEN")
-			else string.upper(state.phase or "Loading"))
-		.. string.format("  %d:%02d", math.floor(seconds / 60), seconds % 60)
+		.. stage
+		.. "/"
+		.. #Catalog.stages
+		.. " "
+		.. (
+			if state.open
+				then (if state.warning then "RETURN TO BASE" else "OPEN")
+				else string.upper(state.phase or "Loading")
+		)
+	ui.Round.Text = string.format("%d:%02d", math.floor(seconds / 60), seconds % 60)
 	ui.Bag.Text = "Weight "
 		.. tostring(state.cargoWeight or 0)
 		.. " / "
@@ -1700,14 +1758,17 @@ function Hud.update(ui, state, touch: boolean)
 		.. " / "
 		.. (state.totalItems or 30)
 	ui.Collect.Visible = touch and state.open and state.target ~= nil and state.ready
-	ui.Collect.Text = if state.tooHeavy then "Too heavy" else "Collect"
+	ui.Collect.Text = "Collect"
 	ui.Styles.Visible = state.ready and (state.inBase or not state.open)
 	ui.Scores.Visible = state.ready and state.phase == "active"
 	ui.Next.Visible = state.canNext == true
-	ui.Next.Text = if state.stage == 3
+	ui.Next.Text = if stage == #Catalog.stages
 		then "Finish match"
-		else "Next: " .. (if state.stage == 1 then "Tech Run" else "Golden Rush")
-	ui.Tutorial.Visible = not state.tutorial or not state.ready or warning or state.warning
+		else "Next: " .. (if Catalog.stages[stage + 1]
+			then Catalog.stages[stage + 1].name
+			else "")
+	ui.Tutorial.Visible = (not state.tutorial or not state.ready or warning)
+		and not ui.Message.Visible
 	ui.Tutorial.Text = if not state.ready
 		then state.save
 		elseif warning then state.save
@@ -1737,7 +1798,17 @@ return Hud
 						<Content name="LinkedSource"><null></null></Content>
 						<ProtectedString name="Source"><![CDATA[--!strict
 local Prompt = {}
-type PromptUI = { Gui: ScreenGui, Label: TextLabel, Adornee: BasePart? }
+local TextService = game:GetService("TextService")
+type PromptUI = {
+	Gui: ScreenGui,
+	Label: TextLabel,
+	Adornee: BasePart?,
+	Rejection: UIStroke,
+	WarningUntil: number,
+	WarningTarget: BasePart?,
+	LastText: string?,
+	LastWidth: number?,
+}
 type PromptState = {
 	ready: boolean,
 	open: boolean,
@@ -1766,12 +1837,30 @@ function Prompt.create(parent: Instance): PromptUI
 	label.TextColor3 = Color3.fromRGB(25, 38, 47)
 	label.Font = Enum.Font.GothamBold
 	label.TextSize = 18
+	label.TextWrapped = true
 	label.Parent = gui
 	local corner = Instance.new("UICorner")
 	corner.CornerRadius = UDim.new(0, 8)
 	corner.Parent = label
+	local rejection = Instance.new("UIStroke")
+	rejection.Name = "Rejection"
+	rejection.Color = Color3.fromRGB(225, 65, 55)
+	rejection.Thickness = 3
+	rejection.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	rejection.Enabled = false
+	rejection.Parent = label
 	gui.Parent = parent
-	return { Gui = gui, Label = label, Adornee = nil }
+	return { Gui = gui, Label = label, Adornee = nil, Rejection = rejection, WarningUntil = 0 }
+end
+
+function Prompt.flash(ui: PromptUI): boolean
+	if not ui.Gui.Enabled or not ui.Adornee then
+		return false
+	end
+	ui.WarningUntil = os.clock() + 2
+	ui.WarningTarget = ui.Adornee
+	ui.Rejection.Enabled = true
+	return true
 end
 
 function Prompt.update(ui: PromptUI, state: PromptState, items: Instance?, touch: boolean): ()
@@ -1784,6 +1873,9 @@ function Prompt.update(ui: PromptUI, state: PromptState, items: Instance?, touch
 		else nil
 	ui.Adornee = if target and target:IsA("BasePart") then target else nil
 	ui.Gui.Enabled = ui.Adornee ~= nil
+	ui.Rejection.Enabled = state.tooHeavy == true
+		and ui.WarningTarget == ui.Adornee
+		and os.clock() < ui.WarningUntil
 	ui.Label.Text = (if state.targetName then state.targetName .. "\n" else "")
 		.. (if state.tooHeavy then "Too heavy" else (if touch then "Collect" else "Collect [E]"))
 		.. (if state.targetInfo then "\n" .. state.targetInfo else "")
@@ -1793,8 +1885,11 @@ function Prompt.placement(anchor: Vector2, size: Vector2, bounds): Vector2
 	local half = size / 2
 	local left = bounds.left + half.X + 8
 	local right = math.max(left, bounds.right - half.X - 8)
-	local first = math.clamp(anchor.X - size.X * 0.65, left, right)
-	local second = math.clamp(anchor.X + size.X * 0.65, left, right)
+	local span = bounds.right - bounds.left
+	local leftEnd = math.max(left, bounds.left + span * 0.32 - half.X - 4)
+	local rightStart = math.min(right, bounds.right - span * 0.32 + half.X + 4)
+	local first = math.clamp(anchor.X - size.X * 0.65, left, leftEnd)
+	local second = math.clamp(anchor.X + size.X * 0.65, rightStart, right)
 	local x = if math.abs(first - bounds.headX) > math.abs(second - bounds.headX)
 		then first
 		else second
@@ -1817,6 +1912,14 @@ function Prompt.place(ui: PromptUI, camera: Camera, bounds): ()
 	if point.Z <= 0 or not Prompt.lineOfSight(camera.CFrame.Position, target.Position, ignore) then
 		ui.Gui.Enabled = false
 		return
+	end
+	local width = math.max(120, math.min(220, math.floor((bounds.right - bounds.left) * 0.32) - 12))
+	if ui.LastText ~= ui.Label.Text or ui.LastWidth ~= width then
+		ui.LastText = ui.Label.Text
+		ui.LastWidth = width
+		local measured =
+			TextService:GetTextSize(ui.Label.Text, 18, ui.Label.Font, Vector2.new(width, 1000))
+		ui.Label.Size = UDim2.fromOffset(width, math.clamp(measured.Y + 12, 66, 88))
 	end
 	local size = Vector2.new(ui.Label.Size.X.Offset, ui.Label.Size.Y.Offset)
 	local placed = Prompt.placement(Vector2.new(point.X, point.Y), size, bounds)
@@ -1969,6 +2072,7 @@ return Scores
 						<Content name="LinkedSource"><null></null></Content>
 						<ProtectedString name="Source"><![CDATA[--!strict
 local Ui = require(script.Parent.Ui)
+local Catalog = require(game.ReplicatedStorage.GrabIt.Shared.Catalog)
 local Results = {}
 local widths = { 0.20, 0.25, 0.17, 0.18, 0.20 }
 function Results.table(parent: Instance)
@@ -2126,7 +2230,7 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 		ui.showStage = false
 		return
 	end
-	local personal = state.personal or { earnings = 0, stages = { 0, 0, 0 } }
+	local personal = state.personal or { earnings = 0, stages = table.create(#Catalog.stages, 0) }
 	local summary = state.phase == "summary"
 	ui.summary = summary
 	layout(ui)
@@ -2140,11 +2244,10 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 	ui.Tab.Visible = summary and state.mode ~= "solo"
 	ui.Styles.Visible = true
 	ui.Footer.Visible = not summary or lossNotice ~= nil
-	local nextStage = if summary
+	local nextDefinition = Catalog.stages[state.stage + 1]
+	local nextStage = if summary or not nextDefinition
 		then ""
-		else "Next: " .. (if state.stage == 1
-			then "Tech Run | Capacity 14"
-			else "Golden Rush | Capacity 18")
+		else "Next: " .. nextDefinition.name .. " | Capacity " .. nextDefinition.capacity
 	ui.Footer.Text = (lossNotice or "")
 		.. (if lossNotice and not summary then "\n" else "")
 		.. nextStage
@@ -2154,11 +2257,11 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 		end
 		for i, cells in ui.Rows do
 			for col, cell in cells do
-				cell.Visible = i <= 3
-				if i <= 3 then
+				cell.Visible = i <= #Catalog.stages
+				if i <= #Catalog.stages then
 					cell.Text = ({
 						tostring(i),
-						({ "Toy Dash", "Tech Run", "Golden Rush" })[i],
+						Catalog.stages[i].name,
 						tostring(personal.stages[i]),
 						"",
 						"",
@@ -2174,7 +2277,7 @@ function Results.update(ui, state, localId: string, lossNotice: string?)
 			summary and not ui.showStage
 		)
 	end
-	ui.Tab.Text = if ui.showStage then "Match results" else "Stage 3"
+	ui.Tab.Text = if ui.showStage then "Match results" else "Stage " .. #Catalog.stages
 end
 function Results.board(parent: Instance, part: BasePart)
 	local gui = Instance.new("SurfaceGui")
@@ -2314,6 +2417,46 @@ local function fitPreview(preview: ViewportFrame, model: Model, camera: Camera)
 	end
 	camera.CFrame = CFrame.lookAt(center + direction * distance, center)
 end
+local function updateStatus(ui, state)
+	local style = if ui.errorStyle then Cosmetics.get(ui.errorStyle) else nil
+	if
+		style
+		and (os.clock() >= ui.errorUntil or state.coins >= style.price or state.owned[style.id])
+	then
+		ui.errorStyle = nil
+	end
+	local pending = state.purchase or ""
+	ui.Status.Text = if pending ~= ""
+		then pending
+		elseif ui.errorStyle then "Not enough Coins."
+		else ""
+end
+function Styles.activate(ui, id: string)
+	local state = ui.state
+	local style = Cosmetics.get(id)
+	if
+		not style
+		or not state
+		or not state.ready
+		or not ui.Panel.Visible
+		or not (state.inBase or not state.open)
+	then
+		return
+	end
+	if state.owned[id] then
+		ui.errorStyle = nil
+		ui.Request("equip", id)
+	elseif (state.purchase or "") == "" then
+		if state.coins >= style.price then
+			ui.errorStyle = nil
+			ui.Request("buy", id)
+		else
+			ui.errorStyle = id
+			ui.errorUntil = os.clock() + 3
+		end
+	end
+	updateStatus(ui, state)
+end
 function Styles.create(parent: Instance, request: (string, string) -> ())
 	local panel = Ui.panel(parent, "StyleCollection")
 	panel.ZIndex = 30
@@ -2332,7 +2475,17 @@ function Styles.create(parent: Instance, request: (string, string) -> ())
 		Cards = cards,
 		state = nil,
 		Connections = connections,
+		Request = request,
 	}
+	table.insert(
+		connections,
+		panel:GetPropertyChangedSignal("Visible"):Connect(function()
+			if not panel.Visible then
+				ui.errorStyle = nil
+				ui.Status.Text = if ui.state then ui.state.purchase or "" else ""
+			end
+		end)
+	)
 	table.insert(
 		connections,
 		close.Activated:Connect(function()
@@ -2377,15 +2530,7 @@ function Styles.create(parent: Instance, request: (string, string) -> ())
 		table.insert(
 			connections,
 			button.Activated:Connect(function()
-				local state = ui.state
-				if not state or not state.ready or not (state.inBase or not state.open) then
-					return
-				end
-				if state.owned[style.id] then
-					request("equip", style.id)
-				elseif state.purchase == "" and state.coins >= style.price then
-					request("buy", style.id)
-				end
+				Styles.activate(ui, style.id)
 			end)
 		)
 	end
@@ -2416,7 +2561,10 @@ function Styles.update(ui, state)
 			else Color3.fromRGB(113, 81, 40)
 	end
 	ui.Title.Text = "Styles | Coins " .. state.coins .. (if all then " | All designs owned" else "")
-	ui.Status.Text = state.purchase or ""
+	if not ui.Panel.Visible then
+		ui.errorStyle = nil
+	end
+	updateStatus(ui, state)
 end
 function Styles.destroy(ui)
 	for _, c in ui.Connections do
@@ -2484,6 +2632,7 @@ export type PlayerState = {
 	banked: { [number]: boolean },
 	roundId: number,
 	stage: number,
+	layout: Catalog.Layout?,
 	tutorial: boolean,
 	stageScore: number,
 	bankedCount: number,
@@ -2512,7 +2661,7 @@ function Rules.newPlayer(coins: number?, tutorial: boolean?): PlayerState
 		bankedCount = 0,
 		matchPoints = 0,
 		runEarnings = 0,
-		stageEarnings = { 0, 0, 0 },
+		stageEarnings = table.create(#Catalog.stages, 0),
 		ranked = false,
 		eligible = false,
 		owned = { basic = true },
@@ -2520,7 +2669,13 @@ function Rules.newPlayer(coins: number?, tutorial: boolean?): PlayerState
 		revision = 0,
 	}
 end
-function Rules.beginStage(p: PlayerState, stage: number, roundId: number): ()
+function Rules.beginStage(
+	p: PlayerState,
+	stage: number,
+	roundId: number,
+	layout: Catalog.Layout?
+): ()
+	p.layout = layout
 	p.stage = stage
 	p.roundId = roundId
 	p.cargo = {}
@@ -2533,7 +2688,7 @@ end
 function Rules.weight(p: PlayerState): number
 	local total = 0
 	for _, id in p.cargo do
-		total += Catalog.items(p.stage)[id].weight
+		total += Catalog.items(p.stage, p.layout)[id].weight
 	end
 	return total
 end
@@ -2543,14 +2698,14 @@ end
 function Rules.value(p: PlayerState): number
 	local total = 0
 	for _, id in p.cargo do
-		total += Catalog.items(p.stage)[id].value
+		total += Catalog.items(p.stage, p.layout)[id].value
 	end
 	return total
 end
 function Rules.cargoDisplay(p: PlayerState): { weight: string, value: string, hidden: boolean }
 	local w, v, hidden = 0, 0, false
 	for _, id in p.cargo do
-		local item = Catalog.items(p.stage)[id]
+		local item = Catalog.items(p.stage, p.layout)[id]
 		if item.special then
 			hidden = true
 		else
@@ -2570,7 +2725,7 @@ function Rules.collect(
 	open: boolean,
 	distance: number
 ): boolean
-	local items = Catalog.items(p.stage)
+	local items = Catalog.items(p.stage, p.layout)
 	if
 		not open
 		or distance ~= distance
@@ -2595,7 +2750,7 @@ function Rules.bank(p: PlayerState, elapsed: number?): (number, number)
 	for _, id in p.cargo do
 		p.banked[id] = true
 		p.bankedCount += 1
-		local item = Catalog.items(p.stage)[id]
+		local item = Catalog.items(p.stage, p.layout)[id]
 		if item.special then
 			special = item.value
 		end
@@ -2609,7 +2764,7 @@ function Rules.bank(p: PlayerState, elapsed: number?): (number, number)
 		p.revision += 1
 	end
 	table.clear(p.cargo)
-	if p.bankedCount == #Catalog.items(p.stage) and not p.finishTime then
+	if p.bankedCount == #Catalog.items(p.stage, p.layout) and not p.finishTime then
 		p.finishTime = math.round((elapsed or 0) * 100) / 100
 	end
 	return value, special
@@ -2951,9 +3106,11 @@ local View = require(script.Parent.Presentation)
 local Ranking = require(script.Parent.Ranking)
 local Session = {}
 Session.__index = Session
-function Session.new(clock: () -> number)
+function Session.new(clock: () -> number, random: Random?)
 	return setmetatable({
 		clock = clock,
+		random = random or Random.new(),
+		previousLayouts = {},
 		players = {},
 		phase = "idle",
 		stage = 1,
@@ -2982,12 +3139,14 @@ function Session.beginRun(self, at: number): ()
 	for _, p in self.players do
 		p.matchPoints = 0
 		p.runEarnings = 0
-		p.stageEarnings = { 0, 0, 0 }
+		p.stageEarnings = table.create(#Catalog.stages, 0)
 		p.eligible = true
 	end
 	self:beginStage(1, at)
 end
 function Session.beginStage(self, stage: number, at: number): ()
+	self.layout = Catalog.nextLayout(stage, self.random, self.previousLayouts[stage])
+	self.previousLayouts[stage] = self.layout
 	self.stage = stage
 	self.roundId += 1
 	self.phase = "active"
@@ -2996,7 +3155,7 @@ function Session.beginStage(self, stage: number, at: number): ()
 	self.mode = if self:count() == 1 then "solo" else "multi"
 	self.generation += 1
 	for _, p in self.players do
-		Rules.beginStage(p, stage, self.roundId)
+		Rules.beginStage(p, stage, self.roundId, self.layout)
 		p.ranked = true
 	end
 	self.results = {}
@@ -3008,7 +3167,7 @@ function Session.add(self, id: string, coins: number, tutorial: boolean, name: s
 	p.name = name or id
 	p.eligible = false
 	p.ranked = false
-	Rules.beginStage(p, self.stage, self.roundId)
+	Rules.beginStage(p, self.stage, self.roundId, self.layout)
 	local saved = self.cache[id]
 	if saved and saved.roundId == self.roundId then
 		p.banked = table.clone(saved.banked)
@@ -3050,6 +3209,7 @@ function Session.remove(self, id: string): ()
 	if self:count() == 0 then
 		self.phase = "idle"
 		self.stage = 1
+		self.layout = nil
 		self.cache = {}
 		self.results = {}
 		self.matchResults = {}
@@ -3060,7 +3220,7 @@ function Session.allComplete(self): boolean
 		return false
 	end
 	for _, p in self.players do
-		if p.bankedCount < #Catalog.items(self.stage) then
+		if p.bankedCount < #Catalog.items(self.stage, self.layout) then
 			return false
 		end
 	end
@@ -3070,7 +3230,7 @@ function Session.finish(self, at: number): ()
 	if self.phase ~= "active" then
 		return
 	end
-	self.results = Ranking.stage(self.players, #Catalog.items(self.stage))
+	self.results = Ranking.stage(self.players, #Catalog.items(self.stage, self.layout))
 	for _, row in self.results do
 		local p = self.players[row.id]
 		if row.place then
@@ -3081,8 +3241,8 @@ function Session.finish(self, at: number): ()
 		end
 		Rules.lose(p)
 	end
-	self.phase = if self.stage == 3 then "summary" else "results"
-	self.deadline = at + (if self.stage == 3 then 10 else 5)
+	self.phase = if self.stage == #Catalog.stages then "summary" else "results"
+	self.deadline = at + (if self.stage == #Catalog.stages then 10 else 5)
 	self.matchResults = Ranking.match(self.players)
 	self.generation += 1
 end
@@ -3132,6 +3292,7 @@ function Session.state(self)
 		id = self.roundId,
 		roundId = self.roundId,
 		stage = self.stage,
+		layout = self.layout,
 		phase = self.phase,
 		mode = self.mode,
 		open = self.phase == "active",
@@ -3148,7 +3309,7 @@ function Session.collect(self, id: string, itemId: number, x: number, y: number,
 	if not p or self.phase ~= "active" or not View.inWarehouse(x, y, z) then
 		return false
 	end
-	local items = Catalog.items(self.stage)
+	local items = Catalog.items(self.stage, self.layout)
 	if View.nearest(items, p.collected, self.roundId, x, y, z) ~= itemId then
 		return false
 	end
@@ -3183,7 +3344,7 @@ function Session.step(self, id: string, x: number, y: number, z: number)
 end
 function Session.rows(self)
 	return if self.phase == "active"
-		then Ranking.stage(self.players, #Catalog.items(self.stage))
+		then Ranking.stage(self.players, #Catalog.items(self.stage, self.layout))
 		else self.results
 end
 return Session
@@ -3307,15 +3468,178 @@ local stages = {
 			},
 		},
 	},
+	{
+		name = "Expedition Run",
+		seconds = 80,
+		capacity = 22,
+		kinds = {
+			{
+				name = "Camping Lantern",
+				weight = 4,
+				value = 7,
+				size = { 1.5, 2.2, 1.5 },
+				model = 17,
+			},
+			{ name = "Binoculars", weight = 6, value = 12, size = { 2.2, 1.3, 1.7 }, model = 18 },
+			{ name = "Hiking Boots", weight = 8, value = 18, size = { 2.2, 1.5, 2.1 }, model = 19 },
+			{
+				name = "Metal Detector",
+				weight = 10,
+				value = 25,
+				size = { 2.3, 2.5, 1.8 },
+				model = 20,
+			},
+			{ name = "Camping Tent", weight = 12, value = 34, size = { 3, 2.4, 3 }, model = 21 },
+		},
+	},
+	{
+		name = "Space Sprint",
+		seconds = 60,
+		capacity = 26,
+		kinds = {
+			{
+				name = "Astronaut Helmet",
+				weight = 5,
+				value = 10,
+				size = { 1.9, 1.9, 1.7 },
+				model = 23,
+			},
+			{ name = "Moon Rover", weight = 7, value = 16, size = { 3, 2, 2.3 }, model = 24 },
+			{ name = "Satellite", weight = 10, value = 25, size = { 3.2, 2, 2.6 }, model = 25 },
+			{ name = "Mini Rocket", weight = 13, value = 37, size = { 2, 3.2, 2 }, model = 26 },
+			{ name = "Lunar Lander", weight = 16, value = 52, size = { 3, 3, 3 }, model = 27 },
+		},
+	},
 }
 Catalog.stages = stages
-local byStage: { { Item } } = {}
-for stage, definition in stages do
+
+export type Layout = { variant: number, flips: number }
+local specials = {
+	[3] = { name = "Golden Reactor", weight = 14, value = 55, size = { 3.4, 3.8, 3.4 }, model = 16 },
+	[4] = {
+		name = "Explorer Telescope",
+		weight = 18,
+		value = 80,
+		size = { 3.4, 3.4, 3.4 },
+		model = 22,
+	},
+	[5] = { name = "Flying Saucer", weight = 22, value = 110, size = { 3.8, 2.4, 3.8 }, model = 28 },
+}
+local variants: { [number]: { { number } } } = {}
+local function twoTrips(stage: number, counts: { number }): boolean
+	local definition = stages[stage]
+	local remaining = if stage == 4 then 8 else 6
+	local sums: { [number]: boolean } = { [0] = true }
+	local total = 0
+	for kind, count in counts do
+		for _ = 1, math.min(count, remaining) do
+			local weight = definition.kinds[kind].weight
+			total += weight
+			for sum = definition.capacity - weight, 0, -1 do
+				if sums[sum] then
+					sums[sum + weight] = true
+				end
+			end
+		end
+		remaining -= math.min(count, remaining)
+		if remaining == 0 then
+			break
+		end
+	end
+	for sum in sums do
+		if total - sum <= definition.capacity then
+			return true
+		end
+	end
+	return false
+end
+local function compositions(stage: number): { { number } }
+	if variants[stage] then
+		return variants[stage]
+	end
+	local definition = assert(stages[stage], "Invalid stage")
+	local list = {}
+	local baseWeight, baseValue = 0, 0
+	for _, kind in definition.kinds do
+		baseWeight += 6 * kind.weight
+		baseValue += 6 * kind.value
+	end
+	for a = 2, 10 do
+		for b = 2, 10 do
+			for c = 2, 10 do
+				for d = 2, 10 do
+					local counts = { a, b, c, d, 30 - a - b - c - d }
+					local seen, valid = {}, true
+					local weight, value = 0, 0
+					for kind, count in counts do
+						if count < 2 or count > 10 or seen[count] then
+							valid = false
+							break
+						end
+						seen[count] = true
+						weight += count * definition.kinds[kind].weight
+						value += count * definition.kinds[kind].value
+					end
+					if
+						valid
+						and math.abs(weight - baseWeight) * 10 <= baseWeight
+						and math.abs(value - baseValue) * 10 <= baseValue
+						and (stage < 4 or twoTrips(stage, counts))
+					then
+						table.insert(list, table.freeze(counts))
+					end
+				end
+			end
+		end
+	end
+	variants[stage] = table.freeze(list)
+	return variants[stage]
+end
+function Catalog.variantCount(stage: number): number
+	return if stage == 1 then 1 else #compositions(stage)
+end
+function Catalog.nextLayout(stage: number, random: Random, previous: Layout?): Layout?
+	if stage == 1 then
+		return nil
+	end
+	local count = Catalog.variantCount(stage)
+	local variant = random:NextInteger(1, count - (if previous then 1 else 0))
+	if previous and variant >= previous.variant then
+		variant += 1
+	end
+	return table.freeze({ variant = variant, flips = random:NextInteger(0, 32767) })
+end
+local baseline: { [number]: { Item } } = {}
+local cached: { [number]: { layout: Layout, items: { Item } } } = {}
+function Catalog.items(stage: number, layout: Layout?): { Item }
+	local definition = assert(stages[stage], "Invalid stage")
+	if not layout and baseline[stage] then
+		return baseline[stage]
+	end
+	local last = cached[stage]
+	if
+		layout
+		and last
+		and last.layout.variant == layout.variant
+		and last.layout.flips == layout.flips
+	then
+		return last.items
+	end
+	local counts = if layout
+		then assert(compositions(stage)[layout.variant], "Invalid variant")
+		else { 6, 6, 6, 6, 6 }
+	local kinds = {}
+	for kind, count in counts do
+		for _ = 1, count do
+			table.insert(kinds, kind)
+		end
+	end
 	local items: { Item } = {}
 	for row = 1, 15 do
-		local kind = math.ceil(row / 3)
-		local source = definition.kinds[kind]
-		for _, x in { -12, 12 } do
+		local flipped = layout ~= nil and bit32.band(layout.flips, 2 ^ (row - 1)) ~= 0
+		for column, x in { -12, 12 } do
+			local kind = kinds[(row - 1) * 2 + (if flipped then 3 - column else column)]
+			local source = definition.kinds[kind]
 			table.insert(
 				items,
 				table.freeze({
@@ -3333,27 +3657,31 @@ for stage, definition in stages do
 			)
 		end
 	end
-	if stage == 3 then
+	local special = specials[stage]
+	if special then
 		table.insert(
 			items,
 			table.freeze({
 				id = 31,
 				kind = 6,
-				name = "Golden Reactor",
-				weight = 14,
-				value = 55,
-				size = { 3.4, 3.8, 3.4 },
+				name = special.name,
+				weight = special.weight,
+				value = special.value,
+				size = special.size,
 				x = 0,
 				z = 114,
 				special = true,
-				model = 16,
+				model = special.model,
 			})
 		)
 	end
-	byStage[stage] = table.freeze(items)
-end
-function Catalog.items(stage: number): { Item }
-	return assert(byStage[stage], "Invalid stage")
+	table.freeze(items)
+	if layout then
+		cached[stage] = { layout = layout, items = items }
+	else
+		baseline[stage] = items
+	end
+	return items
 end
 return table.freeze(Catalog)
 ]]></ProtectedString>
@@ -4059,7 +4387,7 @@ local function send(player, entry, r, rows): ()
 		then player.Character:FindFirstChild("HumanoidRootPart")
 		else nil
 	local collected = if p then p.collected else {}
-	local items = Catalog.items(r.stage)
+	local items = Catalog.items(r.stage, r.layout)
 	local target = if p
 			and center
 			and r.open
@@ -4096,6 +4424,7 @@ local function send(player, entry, r, rows): ()
 		cargoValue = display.value,
 		capacity = Catalog.stages[r.stage].capacity,
 		stage = r.stage,
+		layout = r.layout,
 		stageName = Catalog.stages[r.stage].name,
 		totalItems = #items,
 		bankedCount = if p then p.bankedCount else 0,
@@ -4122,7 +4451,7 @@ local function send(player, entry, r, rows): ()
 		matchRows = if r.phase == "summary" then session.matchResults else {},
 		personal = {
 			earnings = if p then p.runEarnings else 0,
-			stages = if p then p.stageEarnings else { 0, 0, 0 },
+			stages = if p then p.stageEarnings else table.create(#Catalog.stages, 0),
 		},
 	}
 	local signature = HttpService:JSONEncode(state)
@@ -4291,7 +4620,7 @@ root.Action.OnServerEvent:Connect(function(player, action, arg)
 		end
 		return
 	end
-	local items = Catalog.items(r.stage)
+	local items = Catalog.items(r.stage, r.layout)
 	if
 		action ~= "collect"
 		or type(arg) ~= "number"
@@ -4367,7 +4696,7 @@ RunService.Heartbeat:Connect(function(dt)
 	session:tick()
 	local r = session:state()
 	if r.stage ~= previousStage then
-		World.setStage(world, r.stage)
+		World.setStage(world, r.stage, r.layout)
 		previousStage = r.stage
 	end
 	World.setOpen(world, r.open)
@@ -4667,7 +4996,13 @@ local function productPoster(parent: Model, stage: number, item, transform: CFra
 		Vector3.new(0, 0, -0.01),
 		Color3.fromRGB(230, 236, 233)
 	)
-	local titles = { "TOY DEPARTMENT", "TECH DEPARTMENT", "TREASURE VAULT" }
+	local titles = {
+		"TOY DEPARTMENT",
+		"TECH DEPARTMENT",
+		"TREASURE VAULT",
+		"EXPEDITION SUPPLIES",
+		"SPACE CARGO",
+	}
 	local heading =
 		panel("Department", Vector3.new(7.6, 0.6, 0.05), Vector3.new(0, 2.15, -0.025), frameColor)
 	label(heading, titles[stage], Color3.fromRGB(245, 246, 230))
@@ -4898,7 +5233,7 @@ function World.build(name: string?): Model
 	World.setOpen(root, true)
 	return root
 end
-function World.setStage(root: Model, stage: number)
+function World.setStage(root: Model, stage: number, layout: Catalog.Layout?)
 	local items = root:FindFirstChild("Items")
 	assert(items, "Managed item folder missing")
 	items:ClearAllChildren()
@@ -4930,6 +5265,10 @@ function World.setStage(root: Model, stage: number)
 			Color3.fromRGB(52, 215, 204),
 		},
 	}
+	palettes[4] =
+		{ Color3.fromRGB(46, 113, 86), Color3.fromRGB(244, 177, 65), Color3.fromRGB(160, 200, 192) }
+	palettes[5] =
+		{ Color3.fromRGB(47, 69, 127), Color3.fromRGB(68, 212, 229), Color3.fromRGB(226, 235, 246) }
 	local palette = palettes[stage]
 	for row = 1, 15 do
 		local z = 12 + (row - 1) * 6
@@ -4950,7 +5289,8 @@ function World.setStage(root: Model, stage: number)
 			end
 		end
 	end
-	local posterProducts = { { 1, 7, 19 }, { 1, 7, 13 }, { 7, 13, 25 } }
+	local posterProducts =
+		{ { 1, 7, 19 }, { 1, 7, 13 }, { 7, 13, 25 }, { 1, 7, 25 }, { 1, 13, 19 } }
 	for _, side in { -1, 1 } do
 		for index, z in { 24, 60, 96 } do
 			productPoster(
@@ -4963,7 +5303,7 @@ function World.setStage(root: Model, stage: number)
 		end
 	end
 
-	if stage == 3 then
+	if stage >= 3 then
 		local stand = Instance.new("Model")
 		stand.Name = "SpecialDisplay"
 		stand.Parent = root
@@ -5005,7 +5345,7 @@ function World.setStage(root: Model, stage: number)
 			)
 		end
 	end
-	for _, item in Catalog.items(stage) do
+	for _, item in Catalog.items(stage, layout) do
 		local anchor = part(
 			items,
 			tostring(item.id),
@@ -5024,6 +5364,8 @@ function World.setStage(root: Model, stage: number)
 			CFrame.new(item.x, if item.special then 1.7 else 0.5, item.z)
 		)
 	end
+	root:SetAttribute("LayoutVariant", if layout then layout.variant else 0)
+	root:SetAttribute("LayoutFlips", if layout then layout.flips else 0)
 	root:SetAttribute("Stage", stage)
 	root.Floor.Color = Color3.fromRGB(67, 80, 99)
 end
@@ -5075,7 +5417,7 @@ function Appearance.update(character: Model, p): Model?
 	equipment.Parent = model
 	local shown = {}
 	local special = nil
-	local items = Catalog.items(p.stage)
+	local items = Catalog.items(p.stage, p.layout)
 	for _, id in p.cargo do
 		if items[id].special then
 			special = id
@@ -5181,7 +5523,12 @@ local function build(index: number): Model
 		shape: string?,
 		rotation: CFrame?
 	): BasePart
-		local p = Instance.new(if shape == "wedge" then "WedgePart" else "Part")
+		local p = Instance.new(
+			if shape == "wedge"
+				then "WedgePart"
+				elseif shape == "corner" then "CornerWedgePart"
+				else "Part"
+		)
 		if shape == "ball" then
 			local mesh = Instance.new("SpecialMesh")
 			mesh.MeshType = Enum.MeshType.Sphere
@@ -5622,6 +5969,186 @@ local function build(index: number): Model
 		for _, x in { -0.08, 0.08 } do
 			b("Indicator", 0.06, 0.08, 0.03, x, 0.8, -0.6, "orange")
 		end
+	elseif index == 17 then
+		b("Base", 0.95, 0.18, 0.95, 0, 0.09, 0, "dark")
+		b("Light", 0.62, 1.1, 0.62, 0, 0.72, 0, "yellowLight", "ball")
+		b("Cap", 0.95, 0.16, 0.95, 0, 1.34, 0, "green")
+		for _, x in { -0.38, 0.38 } do
+			b("Guard", 0.12, 1.15, 0.12, x, 0.72, 0, "silver")
+			b("HandleSide", 0.12, 0.5, 0.12, x, 1.62, 0, "dark")
+		end
+		b("Handle", 0.86, 0.12, 0.12, 0, 1.87, 0, "dark")
+		b("Switch", 0.18, 0.14, 0.12, 0, 0.17, -0.5, "orange")
+	elseif index == 18 then
+		b("Bridge", 0.6, 0.3, 0.35, 0, 0.6, 0, "green")
+		for _, x in { -0.43, 0.43 } do
+			b("Barrel", 1, 0.52, 0.52, x, 0.55, 0, "green", "cylinder", front)
+			b("LensRim", 0.14, 0.64, 0.64, x, 0.55, -0.52, "dark", "cylinder", front)
+			b("Lens", 0.12, 0.48, 0.48, x, 0.55, -0.6, "blue", "cylinder", front)
+			b("Eyepiece", 0.25, 0.32, 0.32, x, 0.55, 0.58, "dark", "cylinder", front)
+		end
+		b("FocusDial", 0.3, 0.22, 0.22, 0, 0.77, 0.12, "silver", "cylinder", vertical)
+	elseif index == 19 then
+		for _, x in { -0.42, 0.42 } do
+			b("Sole", 0.68, 0.18, 1.25, x, 0.09, -0.1, "dark")
+			b("Toe", 0.66, 0.44, 0.68, x, 0.35, -0.38, "wood", "ball")
+			b("Ankle", 0.6, 0.83, 0.65, x, 0.58, 0.2, "wood")
+			b("Cuff", 0.64, 0.16, 0.69, x, 1.02, 0.2, "orange")
+			b("Opening", 0.4, 0.12, 0.45, x, 1.11, 0.2, "dark")
+			for _, y in { 0.48, 0.64, 0.8 } do
+				b("Laces", 0.38, 0.12, 0.12, x, y, -0.17, "yellowLight")
+			end
+		end
+	elseif index == 20 then
+		b("Coil", 0.12, 1.15, 1.15, 0, 0.12, -0.4, "dark", "cylinder", vertical)
+		b("CoilInset", 0.14, 0.72, 0.72, 0, 0.13, -0.4, "green", "cylinder", vertical)
+		b("Shaft", 0.14, 1.8, 0.14, 0, 1.03, 0.05, "silver", nil, CFrame.Angles(-0.22, 0, 0))
+		b("ControlBox", 0.66, 0.4, 0.25, 0, 1.55, -0.12, "green", nil, CFrame.Angles(-0.3, 0, 0))
+		b("Screen", 0.4, 0.18, 0.12, 0, 1.58, -0.29, "teal")
+		b("Grip", 0.18, 0.55, 0.18, 0, 2.02, 0.3, "dark", nil, CFrame.Angles(-0.7, 0, 0))
+		b("ArmRest", 0.65, 0.16, 0.48, 0, 2.24, 0.55, "orange")
+	elseif index == 21 then
+		b("Groundsheet", 2.2, 0.14, 2.4, 0, 0.07, 0, "dark")
+		point("Canvas", 2.2, 1.65, 2.3, Vector3.new(0, 0.965, 0), "green")
+		point("Entrance", 1.3, 1.15, 0.14, Vector3.new(0, 0.72, -1.22), "dark")
+		for _, sign in { -1, 1 } do
+			b(
+				"DoorSeam",
+				0.12,
+				1.9,
+				0.12,
+				sign * 0.56,
+				0.98,
+				-1.31,
+				"orange",
+				nil,
+				CFrame.Angles(0, 0, sign * 0.59)
+			)
+			b("Stake", 0.18, 0.15, 0.3, sign * 1.12, 0.13, -1.2, "silver")
+		end
+		b("Ridge", 0.14, 0.14, 2.55, 0, 1.85, 0, "yellowLight")
+	elseif index == 22 then
+		b("TripodHub", 0.4, 0.3, 0.4, 0, 0.95, 0, "dark")
+		for i = 0, 2 do
+			local angle = i * 2 * math.pi / 3
+			b(
+				"TripodLeg",
+				0.14,
+				1.05,
+				0.14,
+				math.sin(angle) * 0.35,
+				0.48,
+				math.cos(angle) * 0.35,
+				"silver",
+				nil,
+				CFrame.Angles(0, angle, 0) * CFrame.Angles(-0.65, 0, 0)
+			)
+		end
+		b("Tube", 1.65, 0.55, 0.55, 0, 1.45, 0, "blue", "cylinder", front)
+		b("ObjectiveRim", 0.2, 0.72, 0.72, 0, 1.45, -0.88, "dark", "cylinder", front)
+		b("ObjectiveLens", 0.12, 0.56, 0.56, 0, 1.45, -1, "teal", "cylinder", front)
+		b("Eyepiece", 0.4, 0.23, 0.23, 0, 1.45, 0.98, "dark", "cylinder", front)
+		b("Finder", 0.7, 0.16, 0.16, 0.3, 1.83, 0, "yellowLight", "cylinder", front)
+		b("FinderMount", 0.14, 0.3, 0.14, 0.3, 1.66, 0, "silver")
+		b("FocusWheel", 0.15, 0.28, 0.28, 0.35, 1.43, 0.6, "silver", "cylinder")
+	elseif index == 23 then
+		b("Collar", 0.2, 1, 1, 0, 0.15, 0, "silver", "cylinder", vertical)
+		b("Shell", 1.5, 1.5, 1.35, 0, 0.94, 0, "white", "ball")
+		b("VisorSeal", 1.22, 0.93, 0.42, 0, 0.99, -0.55, "dark", "ball")
+		b("Visor", 1.04, 0.74, 0.32, 0, 1.01, -0.73, "gold", "ball")
+		for _, x in { -0.77, 0.77 } do
+			b("Comms", 0.18, 0.45, 0.45, x, 0.98, 0, "silver", "cylinder")
+		end
+		b("Reflection", 0.15, 0.33, 0.12, -0.3, 1.15, -0.88, "yellowLight")
+	elseif index == 24 then
+		b("Chassis", 1.25, 0.22, 1.9, 0, 0.55, 0, "silver")
+		b("Cabin", 0.95, 0.55, 0.85, 0, 0.88, -0.3, "white")
+		b("Windshield", 0.8, 0.28, 0.12, 0, 0.98, -0.78, "blue")
+		for _, x in { -0.78, 0.78 } do
+			for _, z in { -0.65, 0, 0.65 } do
+				b("Wheel", 0.26, 0.55, 0.55, x, 0.3, z, "dark", "cylinder")
+				b("Hub", 0.28, 0.25, 0.25, x, 0.3, z, "silver", "cylinder")
+			end
+		end
+		b("SolarPanel", 1.25, 0.14, 0.8, 0, 0.94, 0.62, "blue")
+		b("Mast", 0.12, 0.8, 0.12, 0.3, 1.4, 0.15, "silver")
+		b("Camera", 0.36, 0.22, 0.3, 0.3, 1.82, 0.06, "gold")
+	elseif index == 25 then
+		b("Core", 0.68, 0.8, 0.68, 0, 0.7, 0, "gold")
+		b("Spar", 2.5, 0.15, 0.15, 0, 0.7, 0, "silver")
+		for _, x in { -1, 1 } do
+			b("SolarPanel", 0.8, 0.14, 1.55, x, 0.7, 0, "blue")
+			for _, z in { -0.5, 0, 0.5 } do
+				b("PanelGrid", 0.82, 0.15, 0.12, x, 0.7, z, "silver")
+			end
+		end
+		b("Dish", 0.16, 0.85, 0.85, 0, 1.22, 0, "white", "cylinder", vertical)
+		b("Antenna", 0.12, 0.62, 0.12, 0, 1.6, 0, "silver")
+		b("AntennaTip", 0.2, 0.2, 0.2, 0, 1.94, 0, "teal", "ball")
+	elseif index == 26 then
+		b("Body", 0.7, 1.4, 0.7, 0, 1.15, 0, "white")
+		for i = 0, 3 do
+			local cf = CFrame.Angles(0, i * math.pi / 2, 0)
+				* CFrame.new(0.175, 2.15, 0.175)
+				* CFrame.Angles(0, math.pi / 2, 0)
+			piece("Nose", Vector3.new(0.35, 0.6, 0.35), cf.Position, "red", "corner", cf.Rotation)
+		end
+		b("WindowRim", 0.16, 0.42, 0.42, 0, 1.5, -0.4, "dark", "cylinder", front)
+		b("Window", 0.12, 0.3, 0.3, 0, 1.5, -0.5, "blue", "cylinder", front)
+		for i = 0, 3 do
+			local cf = CFrame.Angles(0, i * math.pi / 2, 0) * CFrame.new(0.52, 0.45, 0)
+			piece("Fin", Vector3.new(0.14, 0.7, 0.65), cf.Position, "red", "wedge", cf.Rotation)
+		end
+		b("Engine", 0.3, 0.5, 0.5, 0, 0.3, 0, "dark", "cylinder", vertical)
+		b("Flame", 0.4, 0.55, 0.4, 0, -0.1, 0, "orange", "ball")
+	elseif index == 27 then
+		b("Cabin", 1.1, 0.85, 1.1, 0, 1.25, 0, "gold")
+		b("Window", 0.6, 0.35, 0.12, 0, 1.37, -0.62, "blue")
+		b("Deck", 1.5, 0.2, 1.5, 0, 0.73, 0, "silver")
+		for _, x in { -0.85, 0.85 } do
+			for _, z in { -0.85, 0.85 } do
+				b("Leg", 0.14, 0.7, 0.14, x, 0.42, z, "silver")
+				b("Foot", 0.15, 0.5, 0.5, x, 0.1, z, "dark", "cylinder", vertical)
+			end
+		end
+		b("Engine", 0.3, 0.5, 0.5, 0, 0.4, 0, "dark", "cylinder", vertical)
+		b("Antenna", 0.12, 0.6, 0.12, 0.4, 1.98, 0, "silver")
+		b("Beacon", 0.22, 0.22, 0.22, 0.4, 2.3, 0, "teal", "ball")
+		for _, y in { 0.35, 0.57, 0.79 } do
+			b("LadderRung", 0.5, 0.12, 0.14, 0, y, -0.94, "white")
+		end
+	elseif index == 28 then
+		b("Rim", 0.18, 2.5, 2.5, 0, 0.6, 0, "silver", "cylinder", vertical)
+		b("Hull", 2.2, 0.65, 2.2, 0, 0.6, 0, "silver", "ball")
+		b("Dome", 1.15, 1.1, 1.15, 0, 1.05, 0, "teal", "ball")
+		b("DomeBase", 0.16, 1.3, 1.3, 0, 0.85, 0, "dark", "cylinder", vertical)
+		for i = 0, 7 do
+			local angle = i * math.pi / 4
+			b(
+				"RunningLight",
+				0.22,
+				0.18,
+				0.22,
+				math.sin(angle) * 1.08,
+				0.73,
+				math.cos(angle) * 1.08,
+				"yellowLight",
+				"ball"
+			)
+		end
+		for i = 0, 2 do
+			local angle = i * 2 * math.pi / 3
+			b(
+				"LandingLeg",
+				0.15,
+				0.45,
+				0.15,
+				math.sin(angle) * 0.65,
+				0.25,
+				math.cos(angle) * 0.65,
+				"dark"
+			)
+		end
 	else
 		error("Unknown model")
 	end
@@ -5882,7 +6409,8 @@ return function()
 		}, false)
 		assert(string.find(ui.Coins.Text, "7"), "banked balance")
 		assert(string.find(ui.Bag.Text, "4 / 10"), "cargo count")
-		assert(string.find(ui.Round.Text, "RETURN"), "closing warning")
+		assert(ui.Round.Text == "0:29", "Timer digits stand alone in the prominent timer")
+		assert(string.find(ui.Metadata.Text, "RETURN"), "closing warning stays in compact metadata")
 		Hud.update(ui, {
 			coins = 105,
 			cargoCount = 0,
@@ -5900,14 +6428,8 @@ return function()
 		assert(
 			ui.Coins.BackgroundTransparency == 0
 				and ui.Round.BackgroundTransparency == 0
-				and ui.Style.BackgroundTransparency == 0,
+				and ui.Metadata.BackgroundTransparency == 0,
 			"world signs must not bleed through the permanent top HUD"
-		)
-		local tutorialRight = ui.Tutorial.Position.X.Scale + ui.Tutorial.Size.X.Scale
-		local collectLeft = ui.Collect.Position.X.Scale - ui.Collect.Size.X.Scale
-		assert(
-			tutorialRight < collectLeft,
-			"tutorial must leave a gap before the touch collect button"
 		)
 		local available = {
 			coins = 0,
@@ -5930,6 +6452,15 @@ return function()
 			ui.Collect.Visible and ui.Collect.Text == "Collect",
 			"touch keeps its collection button"
 		)
+		available.tooHeavy = true
+		Hud.update(ui, available, true)
+		assert(
+			ui.Collect.Text == "Collect",
+			"Weight rejection belongs in the target prompt, not another yellow banner"
+		)
+		task.wait(2.1)
+		Hud.update(ui, available, true)
+		assert(not ui.Save.Visible, "Saved stops taking HUD space after two seconds")
 		for _, phase in { "results", "summary", "active" } do
 			available.phase = phase
 			Hud.update(ui, available, true)
@@ -5947,7 +6478,7 @@ return function()
 	assert(controlsRestored, "Restore controls on HUD cleanup")
 	assert(ok, tostring(err))
 	print("PASS HUD balance, cargo, warnings, progression and safe area")
-	return 8
+	return 9
 end
 ]]></ProtectedString>
 					<string name="ScriptGuid">{759a4a14-eb0f-45c7-8023-3a1e5769b04b}</string>
@@ -6280,9 +6811,16 @@ return function()
 			ui.Gui.Enabled and ui.Label.Text == "Too heavy",
 			"overweight explains unavailable action"
 		)
+		assert(Prompt.flash(ui), "A visible rejection flashes the existing prompt")
+		Prompt.update(ui, state, items, true)
+		assert(
+			ui.Rejection.Enabled,
+			"Weight rejection highlights the prompt without another banner"
+		)
 		state.tooHeavy = false
 		Prompt.update(ui, state, items, true)
 		assert(ui.Label.Text == "Collect", "touch prompt does not ask for a keyboard")
+		assert(not ui.Rejection.Enabled, "A valid action clears rejection highlighting")
 	end)
 	fresh:Destroy()
 	owner:Destroy()
@@ -6890,7 +7428,10 @@ return function(): number
 	local ui = H.create()
 	ui.Screen.Parent = p.PlayerGui
 	ui.Root.Size = UDim2.fromOffset(706, 281)
-	local collection = S.create(ui.Root, function() end)
+	local requests = {}
+	local collection = S.create(ui.Root, function(action, id)
+		table.insert(requests, { action, id })
+	end)
 	collection.Panel.Visible = true
 	local ok, err = pcall(function()
 		task.wait()
@@ -6955,12 +7496,71 @@ return function(): number
 				end
 			end
 		end
+		local owned: { [string]: boolean } = { basic = true }
+		local state = {
+			ready = true,
+			inBase = true,
+			open = true,
+			owned = owned,
+			selected = "basic",
+			coins = 99,
+			purchase = "",
+		}
+		S.update(collection, state)
+		collection.Panel.Visible = true
+		S.activate(collection, "canvas")
+		assert(
+			collection.Status.Text == "Not enough Coins.",
+			"Insufficient Coins has a simple visible message"
+		)
+		assert(#requests == 0, "Rejected purchases do not send buy or equip requests")
+		S.update(collection, state)
+		assert(
+			collection.Status.Text == "Not enough Coins.",
+			"State updates must not erase the message"
+		)
+		state.coins = 100
+		S.update(collection, state)
+		assert(
+			collection.Status.Text == "" and #requests == 0,
+			"New funds clear the error without buying"
+		)
+		S.activate(collection, "canvas")
+		assert(
+			#requests == 1 and requests[1][1] == "buy" and requests[1][2] == "canvas",
+			"Exact funds request one purchase"
+		)
+		state.purchase = "Purchase pending"
+		state.coins = 0
+		S.update(collection, state)
+		S.activate(collection, "field")
+		assert(
+			collection.Status.Text == "Purchase pending" and #requests == 1,
+			"Pending wins over local errors and duplicate buys"
+		)
+		state.purchase = ""
+		state.owned.canvas = true
+		S.update(collection, state)
+		S.activate(collection, "canvas")
+		assert(#requests == 2 and requests[2][1] == "equip", "Owned styles equip with zero Coins")
+		state.owned.canvas = nil
+		S.update(collection, state)
+		S.activate(collection, "canvas")
+		collection.Panel.Visible = false
+		task.wait()
+		collection.Panel.Visible = true
+		S.update(collection, state)
+		assert(collection.Status.Text == "", "Reopening does not restore stale errors")
+		S.activate(collection, "canvas")
+		task.wait(3.1)
+		S.update(collection, state)
+		assert(collection.Status.Text == "", "The simple message expires")
 	end)
 	S.destroy(collection)
 	ui.Screen:Destroy()
 	clone:Destroy()
 	assert(ok, err)
-	return 1
+	return 2
 end
 ]]></ProtectedString>
 					<string name="ScriptGuid">{803dfe90-6495-44f0-9573-140e14a13caa}</string>
@@ -7081,6 +7681,17 @@ return function(): number
 			assert(pos.Y - 33 >= 136 and pos.Y + 33 <= 291, "Prompt stays between the HUD rows")
 			assert(math.abs(pos.X - 353) >= 130, "Prompt leaves the avatar head clear")
 		end
+		local placed = Prompt.placement(Vector2.new(353, 150), Vector2.new(211, 66), {
+			left = 0,
+			right = 706,
+			top = 52,
+			bottom = 230,
+			headX = 353,
+		})
+		assert(
+			placed.X + 105.5 <= 706 * 0.32 or placed.X - 105.5 >= 706 * 0.68,
+			"Target information stays outside the central gameplay area"
+		)
 		assert(Prompt.lineOfSight, "Prompt needs an explicit opaque-wall visibility check")
 		local wall = Instance.new("Part")
 		wall.Anchored = true
@@ -7158,7 +7769,7 @@ return function(): number
 				mode = "multi",
 				remaining = 5,
 				rows = rows,
-				personal = { earnings = 433, stages = { 433, 0, 0 } },
+				personal = { earnings = 433, stages = { 433, 0, 0, 0, 0 } },
 			}, "1")
 			task.wait()
 			local lastRow = results.Rows[8][3]
@@ -7180,6 +7791,26 @@ return function(): number
 				"Scores and finish times must fit"
 			)
 		end
+		R.update(results, { phase = "results", stage = 4, mode = "solo", remaining = 5 }, "1")
+		assert(
+			results.Footer.Text == "Next: Space Sprint | Capacity 26",
+			"Fourth stage advertises final stage"
+		)
+		R.update(results, {
+			phase = "summary",
+			stage = 5,
+			mode = "solo",
+			remaining = 10,
+			personal = { earnings = 150, stages = { 10, 20, 30, 40, 50 } },
+		}, "1")
+		for stage = 1, 5 do
+			assert(
+				results.Rows[stage][1].Visible
+					and results.Rows[stage][3].Text == tostring(stage * 10),
+				"Five personal earnings rows"
+			)
+		end
+		assert(results.Rows[5][2].Text == "Space Sprint", "Final stage name")
 	end)
 	ui.Screen:Destroy()
 	clone:Destroy()
@@ -7252,11 +7883,19 @@ return function(): number
 		)
 		now = 428
 		s:tick()
-		assert(
-			s:state().phase == "summary",
-			'ImprovementSession.spec: s:state().phase == "summary"'
-		)
-		now = 438
+		assert(s:state().phase == "results", "Third stage no longer ends the match")
+		now = 433
+		s:tick()
+		assert(s:state().stage == 4 and s:state().remaining == 80, "Fourth stage starts")
+		now = 513
+		s:tick()
+		now = 518
+		s:tick()
+		assert(s:state().stage == 5 and s:state().remaining == 60, "Final minute starts")
+		now = 578
+		s:tick()
+		assert(s:state().phase == "summary", "Stage five ends the match")
+		now = 588
 		s:tick()
 		assert(
 			s:state().stage == 1 and s:get("b").eligible,
@@ -7631,7 +8270,7 @@ return function(): number
 	local ok, result = pcall(function()
 		local V = require(modules.Visuals)
 		local Catalog = require(shared.Catalog)
-		for stage = 1, 3 do
+		for stage = 1, #Catalog.stages do
 			for _, item in Catalog.items(stage) do
 				local m = V.createItem(item, holder, CFrame.identity, 1)
 				local _, size = m:GetBoundingBox()
@@ -7642,6 +8281,25 @@ return function(): number
 						and size.Z <= expected.Z + 0.01,
 					"catalog envelope for " .. item.name
 				)
+				local carryScale = V.carryScale(item)
+				local carried = V.createItem(item, holder, CFrame.identity, carryScale)
+				local _, carriedSize = carried:GetBoundingBox()
+				assert(
+					(carriedSize - size * carryScale).Magnitude < 0.06,
+					"Carried model preserves fitted proportions: " .. item.name
+				)
+				for index, part in carried:GetChildren() do
+					if part:IsA("BasePart") then
+						local original = m:GetChildren()[index]
+						assert(
+							original and (part.Size - original.Size * carryScale).Magnitude < 0.035,
+							"Native minimum part size distorts carried detail: "
+								.. item.name
+								.. " / "
+								.. part.Name
+						)
+					end
+				end
 				local colors = {}
 				local parts = 0
 				for _, v in m:GetDescendants() do
@@ -7688,6 +8346,25 @@ return function(): number
 			world:FindFirstChild("LiveResults"),
 			'ImprovementVisuals.spec: world:FindFirstChild("LiveResults")'
 		)
+		for stage = 4, 5 do
+			local layout = Catalog.nextLayout(stage, Random.new(12))
+			World.setStage(world, stage, layout)
+			assert(
+				#world.Items:GetChildren() == 31 and world.SpecialDisplay,
+				"Late-stage special display"
+			)
+			assert(
+				world:GetAttribute("LayoutVariant") == layout.variant
+					and world:GetAttribute("LayoutFlips") == layout.flips,
+				"World declares actual layout"
+			)
+			for _, item in Catalog.items(stage, layout) do
+				assert(
+					world.Items[tostring(item.id)]:FindFirstChild(item.name),
+					"Native world uses actual randomized product"
+				)
+			end
+		end
 		World.setStage(world, 1)
 		local posters = 0
 		for _, entry in world.StageDecor:GetChildren() do
@@ -7809,8 +8486,9 @@ return function(): number
 			"ImprovementUI.spec: ui.Next.Visible and ui.Styles.Visible"
 		)
 		assert(
-			ui.StagePath.Text == "Toy Dash > Tech Run > Golden Rush",
-			"all three stage names visible from the start"
+			string.find(ui.Metadata.Text, "Golden Rush", 1, true)
+				and not ui.Root:FindFirstChild("StagePath"),
+			"Current stage stays visible without a full-width route strip"
 		)
 		local Results = clone.ClientModules:FindFirstChild("Results")
 		assert(Results, "RED: results UI missing")
@@ -8019,17 +8697,62 @@ return function(): number
 	local players = game:GetService("Players")
 	assert(players.LocalPlayer, "TouchButtonLayout requires a client")
 	local clone = game:GetService("ReplicatedStorage").GrabIt:Clone()
-	local ui = require(clone.ClientModules.Hud).create()
+	local Hud = require(clone.ClientModules.Hud)
+	local ui = Hud.create()
 	local ok, result = pcall(function()
 		ui.Screen.Parent = players.LocalPlayer.PlayerGui
-		for _, size in { Vector2.new(706, 281), Vector2.new(750, 332), Vector2.new(1920, 1022) } do
+		for _, size in
+			{
+				Vector2.new(640, 281),
+				Vector2.new(706, 281),
+				Vector2.new(750, 332),
+				Vector2.new(1920, 1022),
+			}
+		do
 			ui.Root.Size = UDim2.fromOffset(size.X, size.Y)
+			Hud.update(ui, {
+				ready = true,
+				open = true,
+				phase = "active",
+				stage = 1,
+				stageName = "Expedition Run",
+				coins = 1000000,
+				save = "Saved",
+				remaining = 5,
+				warning = true,
+				tutorial = true,
+				cargoWeight = "4 + ?",
+				cargoValue = "7 + ?",
+				capacity = 22,
+				bankedCount = 31,
+				totalItems = 31,
+			}, true)
 			task.wait()
 			assert(
-				ui.StagePath.AbsolutePosition.Y
-					>= ui.Round.AbsolutePosition.Y + ui.Round.AbsoluteSize.Y,
-				"Stage names must not overlap the timer at desktop resolutions"
+				ui.Coins.TextFits and ui.Metadata.TextFits and ui.Round.TextFits and ui.Bag.TextFits,
+				"Essential HUD data fits at 18px, including a large wallet and the long stage name"
 			)
+			assert(
+				not ui.Root:FindFirstChild("StagePath"),
+				"A full stage-name strip must not cover the game"
+			)
+			assert(ui.Metadata, "Stage information needs a compact metadata row")
+			local origin = ui.Root.AbsolutePosition
+			assert(
+				ui.Metadata.AbsolutePosition.Y + ui.Metadata.AbsoluteSize.Y
+					<= ui.Round.AbsolutePosition.Y,
+				"Stage information must stay above the independent timer"
+			)
+			assert(
+				ui.Round.TextBounds.Y >= 28,
+				"Rendered timer digits remain prominent, not only the configured size"
+			)
+			for _, header in { ui.Coins, ui.Metadata, ui.Round, ui.Scores, ui.Styles } do
+				assert(
+					header.AbsolutePosition.Y + header.AbsoluteSize.Y - origin.Y <= 56,
+					"Header stays within 56px"
+				)
+			end
 			assert(
 				ui.Collect.AbsoluteSize.X >= 48 and ui.Collect.AbsoluteSize.Y >= 48,
 				"Collect must retain a 48px touch target inside the safe area"
@@ -8042,6 +8765,25 @@ return function(): number
 				tutorialBottom <= ui.Bag.AbsolutePosition.Y,
 				"Tutorial and cargo information must not overlap in the mobile safe area"
 			)
+			local bagLeft = ui.Bag.AbsolutePosition.X - origin.X
+			local bagRight = bagLeft + ui.Bag.AbsoluteSize.X
+			assert(
+				bagLeft >= 178 and bagRight <= size.X - 140,
+				"Cargo clears the reserved touch areas"
+			)
+			for _, panel in { ui.Coins, ui.Metadata, ui.Round, ui.Scores, ui.Styles, ui.Bag } do
+				local pos = panel.AbsolutePosition - origin
+				local dim = panel.AbsoluteSize
+				assert(
+					not (
+							pos.X < size.X * 0.68
+							and pos.X + dim.X > size.X * 0.32
+							and pos.Y < size.Y * 0.70
+							and pos.Y + dim.Y > size.Y * 0.24
+						),
+					"Permanent HUD leaves the center clear"
+				)
+			end
 		end
 		return 1
 	end)
@@ -8411,15 +9153,24 @@ return function(): number
 		do
 			ui.Root.Size = UDim2.fromOffset(size.X, size.Y)
 			task.wait()
-			for _, scenario in { { 1, "multi" }, { 2, "multi" }, { 3, "multi" }, { 3, "solo" } } do
+			for _, scenario in
+				{
+					{ 1, "multi" },
+					{ 2, "multi" },
+					{ 3, "multi" },
+					{ 4, "multi" },
+					{ 5, "multi" },
+					{ 5, "solo" },
+				}
+			do
 				local state = {
-					phase = if scenario[1] == 3 then "summary" else "results",
+					phase = if scenario[1] == 5 then "summary" else "results",
 					stage = scenario[1],
 					mode = scenario[2],
 					remaining = 5,
 					rows = rows,
 					matchRows = rows,
-					personal = { earnings = 433, stages = { 100, 200, 133 } },
+					personal = { earnings = 433, stages = { 100, 100, 100, 100, 33 } },
 				}
 				Results.update(results, state, "1", notice)
 				task.wait()
@@ -8555,6 +9306,302 @@ end
 					<UniqueId name="UniqueId">7efa7b9f4882579e0af8aa00000009bb</UniqueId>
 				</Properties>
 			</Item>
+			<Item class="ModuleScript" referent="RBX00554d527e4a410081fb5c69dacb92f3">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[--!strict
+return function(): number
+	local shared = game.ReplicatedStorage.GrabIt.Shared:Clone()
+	local ok, result = pcall(function()
+		local C = require(shared.Catalog)
+		local S = require(shared.Session)
+		assert(#C.stages == 5, "A match contains five stages")
+		assert(C.stages[4].seconds == 80 and C.stages[4].capacity == 22, "Expedition stage budget")
+		assert(
+			C.stages[5].seconds == 60 and C.stages[5].capacity == 26,
+			"Final minute and capacity"
+		)
+		for stage = 1, 5 do
+			local baseline = C.items(stage)
+			assert(
+				#baseline == (if stage >= 3 then 31 else 30),
+				"One additional special in each late stage"
+			)
+			if stage >= 3 then
+				assert(baseline[31].special and baseline[31].z == 114, "Dedicated far-end special")
+			end
+		end
+		for stage, expected in { [2] = 750, [3] = 800, [4] = 877, [5] = 834 } do
+			assert(
+				C.variantCount(stage) == expected,
+				"Every allowed composition remains selectable"
+			)
+			local baseWeight, baseValue = 0, 0
+			for _, kind in C.stages[stage].kinds do
+				baseWeight += 6 * kind.weight
+				baseValue += 6 * kind.value
+			end
+			for variant = 1, expected do
+				local items = C.items(stage, { variant = variant, flips = variant % 32768 })
+				local counts, weight, value = { 0, 0, 0, 0, 0 }, 0, 0
+				for id = 1, 30 do
+					local item = items[id]
+					assert(item.id == id and not item.special, "Slot IDs remain regular and stable")
+					assert(
+						math.abs(item.x) == 12 and item.z == 12 + math.floor((id - 1) / 2) * 6,
+						"Fixed accessible slots"
+					)
+					counts[item.kind] += 1
+					weight += item.weight
+					value += item.value
+				end
+				local seen = {}
+				for _, n in counts do
+					assert(n >= 2 and n <= 10 and not seen[n], "Five different per-type quantities")
+					seen[n] = true
+				end
+				assert(
+					math.abs(weight - baseWeight) * 10 <= baseWeight,
+					"Aggregate weight stays within 10 percent"
+				)
+				assert(
+					math.abs(value - baseValue) * 10 <= baseValue,
+					"Aggregate value stays within 10 percent"
+				)
+				if stage >= 4 then
+					local n = if stage == 4 then 8 else 6
+					local total, light = 0, {}
+					for id = 1, n do
+						light[id] = items[id].weight
+						total += light[id]
+					end
+					local fits = false
+					for mask = 0, 2 ^ n - 1 do
+						local first = 0
+						for id, w in light do
+							if bit32.band(mask, 2 ^ (id - 1)) ~= 0 then
+								first += w
+							end
+						end
+						if
+							first <= C.stages[stage].capacity
+							and total - first <= C.stages[stage].capacity
+						then
+							fits = true
+							break
+						end
+					end
+					assert(fits, "Required lightweight items fit in two trips")
+				end
+			end
+		end
+		local Rules = require(shared.GameRules)
+		for stage = 4, 5 do
+			local p = Rules.newPlayer()
+			local layout = C.nextLayout(stage, Random.new(stage))
+			Rules.beginStage(p, stage, stage, layout)
+			assert(Rules.collect(p, 31, stage, true, 0), "New special fits stage capacity")
+			local display = Rules.cargoDisplay(p)
+			assert(
+				display.hidden and display.weight == "?" and display.value == "?",
+				"New special does not leak weight or value"
+			)
+			Rules.lose(p)
+			assert(
+				not p.collected[31] and Rules.collect(p, 31, stage, true, 0),
+				"Lost special returns to its original slot"
+			)
+			local reward = Rules.bank(p, 10)
+			assert(
+				reward == C.items(stage, layout)[31].value and p.banked[31],
+				"Special becomes known only after banking"
+			)
+		end
+		local now = 0
+		local session = S.new(function()
+			return now
+		end, Random.new(17))
+		local a = session:add("a", 0, false)
+		now = 3
+		session:tick()
+		session:beginStage(2, now)
+		local layout = session.layout
+		local items = C.items(2, layout)
+		local b = session:add("b", 0, false)
+		assert(
+			a.layout == layout and b.layout == layout,
+			"Current and late players share one server layout"
+		)
+		local changed = nil
+		for id = 1, 30 do
+			if items[id].model ~= C.items(2)[id].model then
+				changed = id
+				break
+			end
+		end
+		local id = assert(changed, "Random quantities differ from the fixed preview")
+		local item = items[id]
+		assert(session:collect("a", id, item.x, 2.5, item.z), "Collect from the live layout")
+		session:step("a", 0, 4, -8)
+		assert(a.coins == item.value and a.bankedCount == 1, "Banking uses actual layout value")
+		session:remove("a")
+		local rejoined = session:add("a", 0, true)
+		assert(
+			rejoined.layout == layout and rejoined.banked[id],
+			"Rejoin preserves layout and banked slot"
+		)
+		assert(
+			not session:collect("a", id, item.x, 2.5, item.z),
+			"Rejoin cannot duplicate a banked item"
+		)
+		session:beginStage(2, now)
+		assert(
+			session.layout.variant ~= layout.variant,
+			"Next attempt of the same stage changes composition"
+		)
+		local run = S.new(function()
+			return now
+		end, Random.new(5))
+		local p = run:add("solo", 0, false)
+		now += 3
+		run:tick()
+		assert(#p.stageEarnings == 5, "Personal results include all five stages")
+		for stage = 1, 5 do
+			assert(run.stage == stage and run.phase == "active", "Each stage starts once")
+			now += C.stages[stage].seconds
+			run:tick()
+			assert(
+				run.phase == (if stage == 5 then "summary" else "results"),
+				"Only stage five ends the match"
+			)
+			if stage < 5 then
+				now += 5
+				run:tick()
+			end
+		end
+		assert(p.matchPoints == 50, "All five stage placements contribute to the match")
+		local multi = S.new(function()
+			return now
+		end, Random.new(10))
+		multi:add("first", 0, false)
+		multi:add("second", 0, false)
+		multi:beginStage(5, now)
+		multi:add("late", 0, false)
+		for _, name in { "first", "second", "late" } do
+			local player = multi:get(name)
+			for _, cargoItem in C.items(5, multi.layout) do
+				if not Rules.collect(player, cargoItem.id, player.roundId, true, 0) then
+					Rules.bank(player, 1)
+					assert(
+						Rules.collect(player, cargoItem.id, player.roundId, true, 0),
+						"New-stage item fits an empty bag"
+					)
+				end
+			end
+			Rules.bank(player, 2)
+			multi:tick()
+			assert(
+				multi.phase == (if name == "late" then "summary" else "active"),
+				"Shared final stage waits for the Unranked late joiner too"
+			)
+		end
+		return 5
+	end)
+	shared:Destroy()
+	assert(ok, result)
+	return result
+end
+]]></ProtectedString>
+					<string name="ScriptGuid">{cf7c4d38-ba0e-46c6-bd23-fa5c732afd3b}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">StageVariety.spec</string>
+					<BinaryString name="SerializedOverrides"></BinaryString>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">09d7294fd6590db50afde54b00001548</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXd0f8610979ca4de8b4a2c887fe92d655">
+				<Properties>
+					<Content name="LinkedSource"><null></null></Content>
+					<ProtectedString name="Source"><![CDATA[--!strict
+return function(): number
+	local modules = game:GetService("ServerScriptService").GrabItModules:Clone()
+	local World = require(modules.World)
+	local Catalog = require(game:GetService("ReplicatedStorage").GrabIt.Shared.Catalog)
+	local root = World.build("GrabItCargoMarkerTest")
+	local ok, result = pcall(function()
+		local function markerFor(item): BasePart
+			local found: BasePart? = nil
+			local count = 0
+			for _, marker in root.StageDecor:GetChildren() do
+				if marker:IsA("BasePart") and marker.Name == "CargoMarker" then
+					count += 1
+					if
+						math.abs(marker.Position.X - item.x) < 0.01
+						and math.abs(marker.Position.Z - item.z) < 0.01
+					then
+						assert(not found, "Only one marker per product position")
+						found = marker
+					end
+				end
+			end
+			assert(count == 30, "Thirty regular markers after every layout change")
+			return assert(found, "Each regular product has a floor marker")
+		end
+		for stage = 1, 5 do
+			World.setStage(root, stage)
+			local colors = {}
+			for _, item in Catalog.items(stage) do
+				if not item.special then
+					colors[item.kind] = markerFor(item).Color
+				end
+			end
+			if stage > 1 then
+				for _, layout in
+					{
+						{ variant = 1, flips = 0 },
+						{ variant = 1, flips = 32767 },
+						{ variant = Catalog.variantCount(stage), flips = 21845 },
+					}
+				do
+					World.setStage(root, stage, layout)
+					for _, item in Catalog.items(stage, layout) do
+						if not item.special then
+							assert(
+								markerFor(item).Color == colors[item.kind],
+								"Floor marker preserves product color after random quantities and side flips: "
+									.. item.name
+							)
+						end
+					end
+					task.wait()
+				end
+			end
+		end
+		return 1
+	end)
+	root:Destroy()
+	modules:Destroy()
+	assert(ok, result)
+	return result
+end
+]]></ProtectedString>
+					<string name="ScriptGuid">{20ba8da9-231e-4869-a8ad-376647e623c8}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">CargoMarkerColors.spec</string>
+					<BinaryString name="SerializedOverrides"></BinaryString>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<UniqueId name="UniqueId">09d7294fd6590db50afde54b000015ab</UniqueId>
+				</Properties>
+			</Item>
 		</Item>
 		<Item class="Folder" referent="RBX4adb79e7606c4e779feb163784a03161">
 			<Properties>
@@ -8678,7 +9725,11 @@ local function collect(expected: number, optional: boolean?)
 		local character = player.Character
 		local center = if character then character:FindFirstChild("HumanoidRootPart") else nil
 		return if center
-			then View.collectionTarget(Catalog.items(state.stage), state, center.Position)
+			then View.collectionTarget(
+				Catalog.items(state.stage, state.layout),
+				state,
+				center.Position
+			)
 			else nil
 	end
 	if optional and not target() then
@@ -8876,7 +9927,7 @@ local ok, result = pcall(function()
 	while os.clock() - began < duration or (duration >= 600 and seconds < 600) do
 		if state.open and state.remaining > 35 then
 			local nextItem = nil
-			for _, item in Catalog.items(state.stage) do
+			for _, item in Catalog.items(state.stage, state.layout) do
 				if not state.collected[item.id] then
 					nextItem = item
 					break
@@ -9314,7 +10365,10 @@ return function(encodedRoutes: string, duration: number, context)
 	local plans = config.stages or config
 	local finishCosmetics = config.finishCosmetics == true
 	assert(not finishCosmetics or duration == 900, "bounded full cosmetics run")
-	assert(#plans == 3, "route plan covers all stages")
+	assert(
+		#plans == #Catalog.stages,
+		"Route plan must cover the current five-stage catalog; historical three-stage plans are invalid"
+	)
 	local journal = {}
 	local purchases = {}
 	for cycle = 1, if finishCosmetics then 3 else 1 do
@@ -9324,8 +10378,24 @@ return function(encodedRoutes: string, duration: number, context)
 			awaitCondition(function()
 				return getState().stage == stage and getState().open
 			end, 200, "route stage did not open")
-			walk(0, -8, 0.9)
 			local startRemaining, initialCoins = getState().remaining, getState().coins
+			local items = Catalog.items(stage, getState().layout)
+			for _, ids in plan do
+				local weight, seen = 0, {}
+				for _, id in ids do
+					assert(
+						items[id] and not seen[id],
+						"Route slot must exist and be unique within a trip"
+					)
+					seen[id] = true
+					weight += items[id].weight
+				end
+				assert(
+					weight <= Catalog.stages[stage].capacity,
+					"Route trip exceeds capacity in the actual randomized layout"
+				)
+			end
+			walk(0, -8, 0.9)
 			local entries = {}
 			for _, ids in plan do
 				local expected = 0
@@ -9334,7 +10404,7 @@ return function(encodedRoutes: string, duration: number, context)
 						getState().stage == stage and getState().open,
 						"route ran out of stage time"
 					)
-					local item = Catalog.items(stage)[id]
+					local item = items[id]
 					walk(
 						if item.special then 0 else item.x * 2 / 3,
 						if item.special then item.z - 4 else item.z,
@@ -9372,7 +10442,7 @@ return function(encodedRoutes: string, duration: number, context)
 				end
 			end
 			if not economyOnly then
-				local minimum = ({ 30, 18, 15 })[stage]
+				local minimum = ({ 30, 18, 15, 8, 6 })[stage]
 				assert(getState().bankedCount >= minimum, "required banked item count")
 				if stage == 1 then
 					assert(
@@ -9463,7 +10533,7 @@ return function(encodedRoutes: string, duration: number, context)
 			getState().owned.canvas and getState().owned.field and getState().owned.royal,
 			"all styles earned and purchased"
 		)
-		for _, item in Catalog.items(getState().stage) do
+		for _, item in Catalog.items(getState().stage, getState().layout) do
 			if not getState().collected[item.id] and not item.special then
 				local before = getState().coins
 				walk(item.x * 2 / 3, item.z, 0.9)
