@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-05",
+  "scope": "Restore regular product floor-marker colors after randomized quantities and side flips",
+  "target": {
+    "studioId": "ae5d7cc2-23b9-4688-9e80-aa759877f5aa",
+    "placeId": 107553743507220,
+    "universeId": 10774185320,
+    "mode": "Edit"
+  },
+  "red": {
+    "suite": "CargoMarkerColors.spec",
+    "passed": false,
+    "message": "Floor marker preserves product color after random quantities and side flips: Camera"
+  },
+  "green": [
+    { "suite": "CargoMarkerColors.spec", "passed": true, "result": 1 },
+    { "suite": "World.spec", "passed": true, "result": 7 },
+    { "suite": "ImprovementVisuals.spec", "passed": true, "result": 4 },
+    { "suite": "StageVariety.spec", "passed": true, "result": 5 },
+    { "suite": "WallFinish.spec", "passed": true, "result": 1 }
+  ],
+  "coverage": {
+    "baselineStages": [1, 2, 3, 4, 5],
+    "randomizedStages": [2, 3, 4, 5],
+    "layoutsPerRandomizedStage": [
+      { "variant": 1, "flips": 0 },
+      { "variant": 1, "flips": 32767 },
+      { "variant": "last legal variant", "flips": 21845 }
+    ],
+    "checks": [
+      "Every regular product has exactly one marker at its actual position",
+      "Marker color matches that product kind's baseline color",
+      "Thirty markers remain after every layout change",
+      "Existing stage palettes, marker shapes and special displays remain unchanged"
+    ]
+  },
+  "finalSourceSync": {
+    "method": "Compare byte length and rolling hash (multiplier 65599, modulo 2^32) between local files and Studio Source",
+    "World": { "bytes": 14992, "hash": 2681292627, "matched": true },
+    "CargoMarkerColors.spec": { "bytes": 1799, "hash": 1309249250, "matched": true }
+  },
+  "staticChecks": { "stylua": "passed", "selene": "zero errors and warnings", "diffWhitespace": "passed" },
+  "mainChatCodeReview": {
+    "result": "No blocking findings",
+    "reasoning": "Markers and collectible models use the same live Catalog.items result. Color depends on kind rather than row, preserving baseline colors. Special items are excluded from floor markers. Positions, geometry, economy, networking and persistence are unchanged. Regression test failed on the old implementation before the fix."
+  },
+  "visualVerification": {
+    "status": "unverified",
+    "reason": "Explicitly targeted native screen_capture attempts returned sky and a white surface instead of the generated fixture, despite inspecting the correct stage and floor colors in the verified Edit DataModel. These captures do not establish visual acceptance.",
+    "limit": "No new mobile, human enjoyment, multiplayer or overall art acceptance claim"
+  },
+  "cleanup": {
+    "temporaryWorldRemoved": true,
+    "originalCameraRestored": true,
+    "temporaryCameraAttributeRemoved": true,
+    "studioRemainsInEdit": true,
+    "unmanagedContentPreserved": true
+  },
+  "documentation": {
+    "spec": "docs/specs/v1/stage-content.md",
+    "plan": "docs/plans/v1/stage-content.md",
+    "preview": "docs/previews/v1/stage-content.html",
+    "rtlVisualCheck": "Deferred following Adam's instruction to focus on the game and avoid unnecessary browser permissions"
+  },
+  "publication": "No publish or push performed; existing player data was not changed",
+  "workingFile": "Adam's modified build/GrabItV1_DesktopMobile.rbxlx was preserved and excluded from this fix commit"
+}

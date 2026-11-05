@@ -428,15 +428,15 @@ function World.setStage(root: Model, stage: number, layout: Catalog.Layout?)
 	palettes[5] =
 		{ Color3.fromRGB(47, 69, 127), Color3.fromRGB(68, 212, 229), Color3.fromRGB(226, 235, 246) }
 	local palette = palettes[stage]
-	for row = 1, 15 do
-		local z = 12 + (row - 1) * 6
-		for _, x in { -12, 12 } do
+	local stageItems = Catalog.items(stage, layout)
+	for _, item in stageItems do
+		if not item.special then
 			local marker = decoration(
 				decor,
 				"CargoMarker",
 				Vector3.new(4.8, 0.025, 4.8),
-				Vector3.new(x, 0.525, z),
-				palette[(math.ceil(row / 3) - 1) % 3 + 1]
+				Vector3.new(item.x, 0.525, item.z),
+				palette[(item.kind - 1) % 3 + 1]
 			)
 			if stage == 1 then
 				marker.Shape = Enum.PartType.Cylinder
@@ -503,7 +503,7 @@ function World.setStage(root: Model, stage: number, layout: Catalog.Layout?)
 			)
 		end
 	end
-	for _, item in Catalog.items(stage, layout) do
+	for _, item in stageItems do
 		local anchor = part(
 			items,
 			tostring(item.id),
